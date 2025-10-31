@@ -1,0 +1,126 @@
+/* ========== LEFT SIDE FORM ========== */
+.widgetContainerLeft {
+  position: fixed;
+  top: 30%;
+  left: 0;
+  z-index: 9999;
+  transition: transform 0.4s ease;
+  transform: translateX(-280px);
+  font-family: Arial, sans-serif;
+}
+
+.openLeft {
+  transform: translateX(0);
+}
+
+.toggleButtonLeft {
+  position: absolute;
+  top: 0;
+  right: -40px;
+  background: linear-gradient(180deg, #a35ad3, #6c2dbf);
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  padding: 12px 10px;
+  border-radius: 0 15px 15px 0;
+  cursor: pointer;
+}
+
+.formContainer {
+  width: 280px;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 0 6px 6px 0;
+}
+
+.formContainer h3 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.formContainer input,
+.formContainer textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.formContainer button {
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(90deg, #a35ad3, #6c2dbf);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ========== RIGHT SIDE SHARED STYLES ========== */
+.toggleButtonRight {
+  position: absolute;
+  top: 0;
+  left: -40px;
+  background: linear-gradient(180deg, #a35ad3, #6c2dbf);
+  color: #fff;
+  font-weight: bold;
+  font-size: 12px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  padding: 12px 8px;
+  border-radius: 6px 0 0 6px;
+  cursor: pointer;
+}
+
+/* ========== RIGHT MESSAGE WIDGET ========== */
+.widgetContainerRightMessage {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  z-index: 9999;
+  transition: transform 0.4s ease;
+  transform: translateX(180px);
+  font-family: Arial, sans-serif;
+}
+
+.openRightMessage {
+  transform: translateX(0);
+}
+
+/* ========== RIGHT CALL WIDGET ========== */
+.widgetContainerRightCall {
+  position: fixed;
+  top: 65%;
+  right: 0;
+  z-index: 9999;
+  transition: transform 0.4s ease;
+  transform: translateX(180px);
+  font-family: Arial, sans-serif;
+}
+
+.openRightCall {
+  transform: translateX(0);
+}
+
+/* Simple Info Boxes */
+.simpleBox {
+  width: 180px;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: 6px 0 0 6px;
+  text-align: center;
+}
+
+.simpleBox h4 {
+  font-size: 14px;
+  margin: 0;
+  color: #333;
+}
