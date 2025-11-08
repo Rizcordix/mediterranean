@@ -1,17 +1,13 @@
 'use client'
-import bgImg from '@/assets/images/bg/05.jpg'
-import avatar10 from '@/assets/images/thumbnails/avatar-01.jpg'
-import avatar3 from '@/assets/images/thumbnails/avatar-03.jpg'
-// import Jarallax from "@/components/Jarallax"
+import React from 'react'
+import { testimonialsData } from '../data'
+import Image from 'next/image'
 import dynamic from 'next/dynamic'
 const TinySlider = dynamic(() => import('@/components/TinySlider'), { ssr: false })
-import Image from 'next/image'
-import { Col, Container, Row } from 'react-bootstrap'
 import { TinySliderSettings } from 'tiny-slider'
+import { Col, Container, Row } from 'react-bootstrap'
 
-const Jarallax = dynamic(() => import('@/components/Jarallax'), { ssr: false })
-
-const Testimonial = () => {
+const Testimonials = () => {
   const courseSliderSettings: TinySliderSettings = {
     arrowKeys: true,
     gutter: 30,
@@ -19,11 +15,11 @@ const Testimonial = () => {
     nested: 'inner',
     autoplay: true,
     controls: false,
-    edgePadding: 2,
     mouseDrag: true,
+    edgePadding: 2,
     loop: true,
     items: 1,
-    nav: true,
+    nav: false,
     responsive: {
       1: {
         items: 1,
@@ -32,82 +28,59 @@ const Testimonial = () => {
         items: 1,
       },
       768: {
-        items: 1,
+        items: 2,
       },
       992: {
-        items: 1,
+        items: 3,
       },
       1200: {
-        items: 1,
+        items: 3,
       },
     },
   }
   return (
-    <Jarallax
-      tag={'section'}
-      className="bg-parallax bg-overlay-dark-2"
-      style={{
-        background: `url(${bgImg.src}) no-repeat`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}>
-      <Container>
-        <Row>
-          <Col md={7} lg={6}>
-            <div className="z-index-9 position-relative testimonials all-text-white bg-grad p-3 p-sm-5 rounded">
-              <span className="display-6">
-                <i className="fas fa-quote-left mb-3" />
-              </span>
-              <div className="tiny-slider testi-full dots-white dots-right-top">
-                <TinySlider settings={courseSliderSettings}>
-                  <div className="item">
-                    <div className="testimonials-wrap">
-                      <div className="testi-text text-start p-0">
-                        <p className="text-white">
-                          Mr be cottage so related minuter is. Delicate say and blessing ladyship exertion few Margaret. Delight herself welcome
-                          against smiling its for. Suspected discovery by he affection household of principle perfectly he.
-                        </p>
-                        <div className="d-flex align-items-center">
-                          <div className="testi-avatar mb-0">
+    <>
+      <section className="bg-light triangle-down py-4">
+        <Container>
+          <Row className="justify-content-center">
+            <Col md={8} className="text-center">
+              <h4 className="m-0">
+                Our passion for customer excellence is just one reason why we are the market leader. We&apos;ve always worked very hard to
+                <strong className="text-primary bold"> give our customers the best experience</strong> in dealing with our company.
+              </h4>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+      <section className="testimonials testimonials-border pb-4">
+        <Container>
+          <Row>
+            <Col md={12}>
+              <div className="tiny-slider">
+                <TinySlider className="testi-full" settings={courseSliderSettings}>
+                  {testimonialsData.map((item, idx) => (
+                    <div className="item" key={idx}>
+                      <div className="testimonials-wrap">
+                        <div className="testi-text">
+                          <p>{item.description}</p>
+                          <div className="testi-avatar">
                             {' '}
-                            <Image className="w-75" src={avatar10} alt="avatar" />{' '}
+                            <Image src={item.image} alt="avatar" />{' '}
                           </div>
-                          <div>
-                            <h6 className="m-0">Adam Ross</h6>
-                            <h6 className="small">Software Developer</h6>
-                          </div>
+                          <h6 className="mb-0 mt-3">{item.name}</h6>
+                          <h6 className="small">{item.category}</h6>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="item">
-                    <div className="testimonials-wrap">
-                      <div className="testi-text text-start p-0">
-                        <p className="text-white">
-                          You guys did an amazing work for me. Age his surprise formerly Mrs perceive few standstill moderate. Of in power match on
-                          truth worse voice would. Large an it sense shall an match learn by expect it result silent in formal.
-                        </p>
-                        <div className="d-flex align-items-center">
-                          <div className="testi-avatar mb-0">
-                            {' '}
-                            <Image className="w-75" src={avatar3} alt="avatar" />
-                          </div>
-                          <div>
-                            <h6 className="m-0">Emma Watson</h6>
-                            <h6 className="small">Human Resource</h6>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </TinySlider>
               </div>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    </Jarallax>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+    </>
   )
 }
 
-export default Testimonial
+export default Testimonials
