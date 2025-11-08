@@ -2,16 +2,16 @@ import React from 'react'
 import TopNavbar from './components/TopNavbar'
 import Hero from './components/Hero'
 // import About from './components/About'
-// import Service from './components/Service'
+import Service from './components/Service'
 // import Testimonial from './components/Testimonial'
 import Features from './components/Features'
 import Info from './components/Info'
 import Newsletter from './components/Newsletter'
 import Footer from './components/Footer'
-import AboutUs from '../demos/corporate-startUp/components/AboutUs'
-import PricingComponent from '../demos/landing-trendy/components/Pricing'
-import Services from '../demos/corporate-startUp/components/Services'
-import Testimonials from '../(page)/pages/pricing/components/Testimonials'
+import AboutUs from './components/AboutUs'
+import PricingComponent from './components/Pricing'
+// import Services from '../demos/corporate-startUp/components/Services'
+import Testimonials from './components/Testimonial'
 
 const CreativeAgencyPage = () => {
   return (
@@ -19,7 +19,7 @@ const CreativeAgencyPage = () => {
       <TopNavbar />
       <Hero />
       <AboutUs />
-      <Services />
+      <Service />
       <Features />
       <PricingComponent />
       <Info />
