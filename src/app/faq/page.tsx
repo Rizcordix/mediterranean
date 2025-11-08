@@ -1,18 +1,18 @@
 import React from 'react'
 import Hero from './components/Hero'
-import Contact from './components/Contact'
-import MoreInfo from './components/MoreInfo'
+import Careers from './components/Careers'
 import TopNavbar from '../home/components/TopNavbar'
+import Footer from '../home/components/Footer'
 
-const ContactPage = () => {
+const FaqPage = () => {
   return (
     <>
       <TopNavbar />
       <Hero />
-      <Contact />
-      <MoreInfo />
+      <Careers />
+      <Footer />
     </>
   )
 }
 
-export default ContactPage
+export default FaqPage
