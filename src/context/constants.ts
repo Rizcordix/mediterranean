@@ -14,4 +14,4 @@ export const buyLink = ''
 
 export const basePath = '/larexa-next/'
 
-export const DEFAULT_PAGE_TITLE = 'Larexa Next-Js | Creative Multipurpose Bootstrap Template'
+export const DEFAULT_PAGE_TITLE = 'Mediterranean Publishing - Quality Books for Discerning Readers'

@@ -15,7 +15,7 @@ import clients5 from '@/assets/images/clients/05.png'
 import clients6 from '@/assets/images/clients/06.png'
 import clients7 from '@/assets/images/clients/07.png'
 import clients8 from '@/assets/images/clients/08.png'
-import logoImg from '@/assets/images/logo.png'
+import logoImg from '@/assets/images/medi_logo2.png'
 
 const GlightBox = dynamic(() => import('@/components/GlightBox'), { ssr: false })
 import { renderToString } from 'react-dom/server'

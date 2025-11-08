@@ -1,6 +1,7 @@
 import AppProviders from '@/components/wrappers/AppProviders'
 import { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
+import WidgetClientWrapper from '@/components/wrappers/WidgetWrapper'
 
 import 'aos/dist/aos.css'
 import '@/assets/scss/style.scss'
@@ -13,11 +14,8 @@ const inter = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: {
-    template: '%s | Larexa - NextJs | Creative Multipurpose Bootstrap Template',
-    default: DEFAULT_PAGE_TITLE,
-  },
-  description: 'Creative Multipurpose Bootstrap Template',
+  title: 'Mediterranean Publishing',
+  description: 'Discover Mediterranean Publishing - Your gateway to captivating stories, expert insights, and vibrant culture. Explore our diverse collection of books and resources today!',
 }
 
 export default function RootLayout({
@@ -34,7 +32,9 @@ export default function RootLayout({
         <div id="__next_splash">
           <AppProviders>{children}</AppProviders>
         </div>
+        <WidgetClientWrapper />
       </body>
+      
     </html>
   )
 }

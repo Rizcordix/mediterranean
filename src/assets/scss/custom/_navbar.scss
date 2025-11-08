@@ -61,7 +61,8 @@ header.navbar-sticky-on {
     padding-bottom: $sticky-navbar-brand-padding-y;
 
     .navbar-brand-item {
-      height: $sticky-navbar-brand-height;
+      // height: $sticky-navbar-brand-height;
+      height: 50px;
     }
   }
 }
@@ -175,9 +176,11 @@ header.navbar-sticky-on {
   padding-bottom: $navbar-brand-padding-y;
 
   .navbar-brand-item {
-    height: $navbar-brand-height;
+    // height: $navbar-brand-height;
     display: block;
+    height: 60px;
     width: auto;
+
   }
 }
 
