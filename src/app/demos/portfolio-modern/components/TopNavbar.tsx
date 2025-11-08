@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import React from 'react'
-import logo from '@/assets/images/logo.png'
+import logo from '@/assets/images/medi_logo2.png'
 import TopMenu from '@/components/TopMenu'
 import { Button, Col, Collapse, Container, Row } from 'react-bootstrap'
 import useScrollEvent from '@/hooks/useScrollEvent'

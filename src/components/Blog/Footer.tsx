@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import logo from '@/assets/images/logo.png'
+import logo from '@/assets/images/medi_logo2.png'
 import woldMap from '@/assets/images/world-map.png'
 import { Col, Container, Row } from 'react-bootstrap'
 import { currentYear } from '@/context/constants'

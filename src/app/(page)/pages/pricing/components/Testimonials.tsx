@@ -40,7 +40,7 @@ const Testimonials = () => {
   }
   return (
     <>
-      <section className="bg-light triangle-down py-5">
+      <section className="bg-light triangle-down py-4">
         <Container>
           <Row className="justify-content-center">
             <Col md={8} className="text-center">

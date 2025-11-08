@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import { Offcanvas, OffcanvasBody, OffcanvasHeader } from 'react-bootstrap'
-import logoImg from '@/assets/images/logo.png'
+import logoImg from '@/assets/images/medi_logo2.png'
 import Image from 'next/image'
 
 type OpenMenuType = {

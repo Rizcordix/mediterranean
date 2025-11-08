@@ -2,7 +2,7 @@
 import TopMenu from '@/components/TopMenu'
 import Image from 'next/image'
 import React from 'react'
-import logo from '@/assets/images/logo.png'
+import logo from '@/assets/images/medi_logo2.png'
 import useScrollEvent from '@/hooks/useScrollEvent'
 import { Col, Collapse, Container, Row } from 'react-bootstrap'
 import Link from 'next/link'

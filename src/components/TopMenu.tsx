@@ -2,7 +2,7 @@
 import useToggle from '@/hooks/useToggle'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Col, Collapse, Container, Dropdown, DropdownHeader, DropdownItem, DropdownMenu, DropdownToggle, Row } from 'react-bootstrap'
+import { Col, Collapse, Container, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Row } from 'react-bootstrap'
 
 type OpenType = {
   isOpen?: boolean
@@ -12,542 +12,382 @@ type OpenType = {
 const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
   const pathname = usePathname()
 
-  const { isOpen: dropdownOpen, toggle } = useToggle()
-  const { isOpen: gridOpen, toggle: gridToggle } = useToggle()
-  const { isOpen: blogOpen, toggle: blogToggle } = useToggle()
-  const { isOpen: pageMenuOpen, toggle: pageMenuToggle } = useToggle()
-  const { isOpen: loginMenuOpen, toggle: loginMenuToggle } = useToggle()
-
   const isActive = (url: any) => pathname === url || pathname.startsWith(url)
 
   return (
-    <Collapse in={isOpen} className="navbar-collapse">
-      {/* <div> */}
-      <ul className={`navbar-nav navbar-nav-scroll navbar-nav-scroll ${menuCenter ? 'mx-auto' : 'ms-auto'}  `}>
-        <Dropdown className="nav-item">
-          <DropdownToggle as={'a'} className={`nav-link ${isActive('/demos') ? 'active' : ''}`} role="button">
-            Demos
-          </DropdownToggle>
-          <DropdownMenu className="pb-3 pb-lg-0" renderOnMount>
-            <div className="d-block d-sm-flex">
-              <ul className="list-unstyled w-100 w-sm-50 pe-0 pe-lg-5">
-                <DropdownHeader>Business Homepages</DropdownHeader>
-                <li>
-                  {' '}
-                  <DropdownItem as={Link} className={`${pathname === '/demos/home' ? 'active' : ''}`} href="/">
-                    Classic Default<span className="badge bg-success ms-2">Hot</span>
-                  </DropdownItem>{' '}
-                </li>
-                <li>
-                  {' '}
-                  <DropdownItem as={Link} className={`${pathname === '/demos/corporate-startUp' ? 'active' : ''}`} href="/demos/corporate-startUp">
-                    Corporate Start-Up
-                  </DropdownItem>{' '}
-                </li>
-                <li>
-                  {' '}
-                  <DropdownItem as={Link} className={`${pathname === '/demos/landing-trendy' ? 'active' : ''}`} href="/demos/landing-trendy">
-                    Landing Trendy
-                  </DropdownItem>{' '}
-                </li>
-                <li>
-                  {' '}
-                  <DropdownItem as={Link} className={`${pathname === '/demos/portfolio-modern' ? 'active' : ''}`} href="/demos/portfolio-modern">
-                    Portfolio Modern
-                  </DropdownItem>
-                </li>
-                <li>
-                  {' '}
-                  <DropdownItem as={Link} className={`${pathname === '/demos/agency-startUp' ? 'active' : ''}`} href="/demos/agency-startUp">
-                    Agency Start-Up
-                  </DropdownItem>{' '}
-                </li>
-              </ul>
-              <ul className="list-unstyled w-100 w-sm-50 pe-0 pe-lg-5">
-                <DropdownHeader className="mt-3 mt-sm-0">Classic Homepages</DropdownHeader>
-                <li>
-                  {' '}
-                  <DropdownItem as={Link} className={`${pathname === '/demos/classic-corporate' ? 'active' : ''}`} href="/demos/classic-corporate">
-                    Classic Corporate
-                  </DropdownItem>{' '}
-                </li>
-                <li>
-                  {' '}
-                  <DropdownItem as={Link} className={`${pathname === '/demos/creative-agency' ? 'active' : ''}`} href="/demos/creative-agency">
-                    Creative agency
-                  </DropdownItem>{' '}
-                </li>
-                <li>
-                  {' '}
-                  <DropdownItem as={Link} className={`${pathname === '/demos/home-elegant' ? 'active' : ''}`} href="/demos/home-elegant">
-                    Home Elegant
-                  </DropdownItem>{' '}
-                </li>
-                <li>
-                  {' '}
-                  <DropdownItem as={Link} className={`${pathname === '/demos/marketplace' ? 'active' : ''}`} href="/demos/marketplace">
-                    Marketplace
-                  </DropdownItem>{' '}
-                </li>
-                <li>
-                  {' '}
-                  <DropdownItem as={Link} className={`${pathname === '/demos/personal-portfolio' ? 'active' : ''}`} href="/demos/personal-portfolio">
-                    Personal Portfolio
-                  </DropdownItem>{' '}
-                </li>
-              </ul>
-            </div>
-            <div className="w-100 bg-grad pattern-overlay-2 p-4 mt-3 all-text-white d-none d-lg-flex">
-              <div className="align-self-center me-4">
-                <h4 className="mb-0">Checkout the doc!</h4>
-                <p className="mb-0 small">For better understanding of theme standard</p>
-              </div>
-              <Link
-                href="https://larexa-next.netlify.app/"
-                target="_blank"
-                className="btn btn-outline-white btn-sm mb-0 align-self-center ms-auto">
-                Read more!
-              </Link>
-            </div>
-          </DropdownMenu>
-        </Dropdown>
+    <>
+      <style jsx global>{`
+        .services-megamenu .dropdown-menu {
+          width: 900px;
+          left: 50% !important;
+          right: auto !important;
+          transform: translateX(-50%) translateY(10%) !important;
+          border: none !important;
+          border-radius: 14px;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+          padding: 25px 20px;
+          margin-top: 8px;
+          background: white;
+        }
 
-        <Dropdown className="nav-item">
-          <DropdownToggle as={'a'} className={`nav-link ${isActive('/blog') ? 'active' : ''}`} role="button">
-            Blog
-          </DropdownToggle>
-          <DropdownMenu className="dropdown-menu" renderOnMount>
-            <li className="dropdown-submenu">
-              <Dropdown className="dropdown">
-                <DropdownToggle as={'a'} onClick={toggle} className={`dropdown-item ${isActive('/default') ? 'active' : ''}`}>
-                  Blog default
-                </DropdownToggle>
-                <ul className={`dropdown-menu ${dropdownOpen && 'show'} `}>
-                  <li>
-                    {' '}
-                    <DropdownItem as={Link} className={`${pathname === '/blog/default/full-width' ? 'active' : ''}`} href="/blog/default/full-width">
-                      Full Width
-                    </DropdownItem>{' '}
-                  </li>
-                  <li>
-                    {' '}
-                    <DropdownItem as={Link} className={`${pathname === '/blog/default/left-sidebar' ? 'active' : ''}`} href="/blog/default/left-sidebar">
-                      Left Sidebar
-                    </DropdownItem>{' '}
-                  </li>
-                  <li>
-                    {' '}
-                    <DropdownItem as={Link} className={`${pathname === '/blog/default/right-sidebar' ? 'active' : ''}`} href="/blog/default/right-sidebar">
-                      Right Sidebar
-                    </DropdownItem>{' '}
-                  </li>
-                </ul>
-              </Dropdown>
-            </li>
-            <li className="dropdown-submenu">
-              <Dropdown className="dropdown">
-                <DropdownToggle as={'a'} onClick={gridToggle} className={`dropdown-item ${isActive('/blog-grid') ? 'active' : ''}`}>
-                  Blog Grid
-                </DropdownToggle>
-                <ul className={`dropdown-menu ${gridOpen && 'show'}`}>
-                  <li>
-                    {' '}
-                    <DropdownItem as={Link} className={`${pathname === '/blog/blog-grid/three-column' ? 'active' : ''}`} href="/blog/blog-grid/three-column">
-                      Three column
-                    </DropdownItem>{' '}
-                  </li>
-                  <li>
-                    {' '}
-                    <DropdownItem as={Link} className={`${pathname === '/blog/blog-grid/four-column' ? 'active' : ''}`} href="/blog/blog-grid/four-column">
-                      Four column
-                    </DropdownItem>{' '}
-                  </li>
-                  <li>
-                    {' '}
-                    <DropdownItem as={Link} className={`${pathname === '/blog/blog-grid/left-sidebar' ? 'active' : ''}`} href="/blog/blog-grid/left-sidebar">
-                      Left Sidebar
-                    </DropdownItem>{' '}
-                  </li>
-                  <li>
-                    {' '}
-                    <DropdownItem
-                      className={`${pathname === '/blog/blog-grid/right-sidebar' ? 'active' : ''}`}
-                      href="/blog/blog-grid/right-sidebar">
-                      Right Sidebar
-                    </DropdownItem>{' '}
-                  </li>
-                </ul>
-              </Dropdown>
-            </li>
-            <li>
-              <DropdownItem href="/blog/blog-minimal">Blog minimal</DropdownItem>
-            </li>
-            <li className="dropdown-submenu">
-              <Dropdown className="dropdown">
-                <DropdownToggle as={'a'} onClick={blogToggle} className="dropdown-item">
-                  Blog Single
-                </DropdownToggle>
-                <ul className={`dropdown-menu ${blogOpen && 'show'}`}>
-                  <li>
-                    {' '}
-                    <DropdownItem
-                      className={`${pathname === '/blog/blog-single/single-classic' ? 'active' : ''}`}
-                      href="/blog/blog-single/single-classic">
-                      Single classic
-                    </DropdownItem>{' '}
-                  </li>
-                  <li>
-                    {' '}
-                    <DropdownItem
-                      className={`${pathname === '/blog/blog-single/single-minimal' ? 'active' : ''}`}
-                      href="/blog/blog-single/single-minimal">
-                      Single Minimal
-                    </DropdownItem>{' '}
-                  </li>
-                </ul>
-              </Dropdown>
-            </li>
-          </DropdownMenu>
-        </Dropdown>
+        .services-megamenu .dropdown-menu .container {
+          max-width: 100%;
+          padding: 0;
+        }
 
-        <Dropdown className="nav-item">
-          <DropdownToggle onClick={pageMenuToggle} as={'a'} className={`nav-link ${isActive('/pages') ? 'active' : ''}`} role="button">
-            Pages
-          </DropdownToggle>
-          <ul className={`dropdown-menu ${pageMenuOpen && 'show'}`} data-bs-popper="static">
-            <li>
-              {' '}
-              <DropdownItem as={Link} className={`${pathname === '/pages/about-classic' ? 'active' : ''}`} href="/pages/about-classic">
-                About Classic
-              </DropdownItem>
-            </li>
-            <li>
-              {' '}
-              <DropdownItem as={Link} className={`${pathname === '/pages/about-advance' ? 'active' : ''}`} href="/pages/about-advance">
-                About Advance
-              </DropdownItem>{' '}
-            </li>
-            <li>
-              {' '}
-              <DropdownItem as={Link} className={`${pathname === '/pages/service' ? 'active' : ''}`} href="/pages/service">
-                Service
-              </DropdownItem>{' '}
-            </li>
-            <li>
-              {' '}
-              <DropdownItem as={Link} className={`${pathname === '/pages/contact' ? 'active' : ''}`} href="/pages/contact">
-                Contact
-              </DropdownItem>{' '}
-            </li>
-            <li>
-              {' '}
-              <DropdownItem as={Link} className={`${pathname === '/pages/team' ? 'active' : ''}`} href="/pages/team">
-                Team
-              </DropdownItem>{' '}
-            </li>
-            <li>
-              {' '}
-              <DropdownItem as={Link} className={`${pathname === '/pages/careers' ? 'active' : ''}`} href="/pages/careers">
-                Careers
-              </DropdownItem>{' '}
-            </li>
-            <li>
-              {' '}
-              <DropdownItem as={Link} className={`${pathname === '/pages/careers-single' ? 'active' : ''}`} href="/pages/careers-single">
-                Careers single
-              </DropdownItem>{' '}
-            </li>
-            <li className="dropdown-submenu">
-              <Dropdown className="dropdown">
-                <DropdownToggle onClick={loginMenuToggle} className="dropdown-item">
-                  Login &amp; Signup
-                </DropdownToggle>
-                <ul className={`dropdown-menu ${loginMenuOpen && 'show'}`}>
-                  <li>
-                    {' '}
-                    <DropdownItem as={Link} className={`${pathname === '/auth/sign-in' ? 'active' : ''}`} href="/auth/sign-in">
-                      Sign in
-                    </DropdownItem>{' '}
-                  </li>
-                  <li>
-                    {' '}
-                    <DropdownItem as={Link} className={`${pathname === '/auth/sign-up' ? 'active' : ''}`} href="/auth/sign-up">
-                      Sign up
-                    </DropdownItem>{' '}
-                  </li>
-                  <li>
-                    {' '}
-                    <DropdownItem as={Link} className={`${pathname === '/auth/password-recovery' ? 'active' : ''}`} href="/auth/password-recovery">
-                      Password recovery
-                    </DropdownItem>{' '}
-                  </li>
-                </ul>
-              </Dropdown>
-            </li>
-            <li>
-              {' '}
-              <DropdownItem as={Link} className={`${pathname === '/pages/pricing' ? 'active' : ''}`} href="/pages/pricing">
-                Pricing
-              </DropdownItem>{' '}
-            </li>
-            <li>
-              {' '}
-              <DropdownItem as={Link} className={`${pathname === '/pages/timeline' ? 'active' : ''}`} href="/pages/timeline">
-                Timeline
-              </DropdownItem>{' '}
-            </li>
-            <li>
-              {' '}
-              <DropdownItem as={Link} className={`${pathname === '/pages/faq' ? 'active' : ''}`} href="/pages/faq">
-                FAQs
-              </DropdownItem>{' '}
-            </li>
-            <li>
-              {' '}
-              <DropdownItem as={Link} className={`${pathname === '/maintenance' ? 'active' : ''}`} href="/maintenance">
-                Maintenance mode
-              </DropdownItem>{' '}
-            </li>
-            <li>
-              {' '}
-              <DropdownItem as={Link} className={`${pathname === '/pages/error-404' ? 'active' : ''}`} href="/pages/error-404">
-                Error 404
-              </DropdownItem>{' '}
-            </li>
-          </ul>
-        </Dropdown>
-        <Dropdown className="nav-item">
-          <DropdownToggle as={'a'} className={`nav-link ${isActive('/portfolio') ? 'active' : ''}`} role="button">
-            Portfolio
-          </DropdownToggle>
-          <DropdownMenu renderOnMount>
-            <li>
-              {' '}
-              <DropdownItem as={Link} className={` ${pathname === '/portfolio/column-2' ? 'active' : ''}`} href="/portfolio/column-2">
-                Portfolio Column 2
-              </DropdownItem>{' '}
-            </li>
-            <li>
-              {' '}
-              <DropdownItem as={Link} className={` ${pathname === '/portfolio/column-3' ? 'active' : ''}`} href="/portfolio/column-3">
-                Portfolio Column 3
-              </DropdownItem>{' '}
-            </li>
-            <li>
-              {' '}
-              <DropdownItem as={Link} className={` ${pathname === '/portfolio/column-4' ? 'active' : ''}`} href="/portfolio/column-4">
-                Portfolio Column 4
-              </DropdownItem>{' '}
-            </li>
-            <li>
-              {' '}
-              <DropdownItem as={Link} className={` ${pathname === '/portfolio/column-5' ? 'active' : ''}`} href="/portfolio/column-5">
-                Portfolio Column 5
-              </DropdownItem>{' '}
-            </li>
-            <li>
-              {' '}
-              <DropdownItem as={Link} className={` ${pathname === '/portfolio/column-6' ? 'active' : ''}`} href="/portfolio/column-6">
-                Portfolio Column 6
-              </DropdownItem>{' '}
-            </li>
-            <li>
-              {' '}
-              <DropdownItem as={Link} className={` ${pathname === '/portfolio/single' ? 'active' : ''}`} href="/portfolio/single">
-                Portfolio Single
-              </DropdownItem>{' '}
-            </li>
-            <li>
-              {' '}
-              <DropdownItem as={Link} className={` ${pathname === '/portfolio/single-2' ? 'active' : ''}`} href="/portfolio/single-2">
-                Portfolio Single 2
-              </DropdownItem>{' '}
-            </li>
-            <li>
-              {' '}
-              <DropdownItem as={Link} className={` ${pathname === '/portfolio/case-studies' ? 'active' : ''}`} href="/portfolio/case-studies">
-                Portfolio case studies <span className="badge bg-success ms-2">Hot</span>
-              </DropdownItem>{' '}
-            </li>
-          </DropdownMenu>
-        </Dropdown>
+        .service-item {
+          padding: 12px 15px;
+          border-radius: 6px;
+          transition: all 0.2s ease;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          text-decoration: none;
+          color: #1f2937;
+          margin-bottom: 4px;
+          background: transparent;
+        }
 
-        <Dropdown className="nav-item megamenu">
-          <DropdownToggle
-            as={'a'}
-            className={`nav-link ${isActive('/elements') ? 'active' : ''}`}
-            id="elementsMenu"
-            data-bs-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false">
-            Elements
-          </DropdownToggle>
-          <DropdownMenu renderOnMount>
-            <Container>
-              <Row className="w-100">
-                <Col sm={6} lg={3}>
-                  <ul className="list-unstyled">
-                    <li>
-                      {' '}
-                      <DropdownItem as={Link} className={`${pathname === '/elements/accordions' ? 'active' : ''}`} href="/elements/accordions">
-                        Accordion
-                      </DropdownItem>{' '}
-                    </li>
-                    <li>
-                      {' '}
-                      <DropdownItem as={Link} className={` ${pathname === '/elements/action-box' ? 'active' : ''}`} href="/elements/action-box">
-                        Action box
-                      </DropdownItem>{' '}
-                    </li>
-                    <li>
-                      {' '}
-                      <DropdownItem as={Link} className={` ${pathname === '/elements/alerts' ? 'active' : ''}`} href="/elements/alerts">
-                        Alerts
-                      </DropdownItem>{' '}
-                    </li>
-                    <li>
-                      {' '}
-                      <DropdownItem
-                        className={` ${pathname === '/elements/animated-headlines' ? 'active' : ''}`}
-                        href="/elements/animated-headlines">
-                        Animated Headlines
-                      </DropdownItem>
-                    </li>
-                    <li>
-                      {' '}
-                      <DropdownItem as={Link} className={` ${pathname === '/elements/blockquote' ? 'active' : ''}`} href="/elements/blockquote">
-                        Blockquote
-                      </DropdownItem>{' '}
-                    </li>
-                    <li>
-                      {' '}
-                      <DropdownItem as={Link} className={` ${pathname === '/elements/buttons' ? 'active' : ''}`} href="/elements/buttons">
-                        Buttons
-                      </DropdownItem>{' '}
-                    </li>
-                  </ul>
-                </Col>
-                <Col sm={6} lg={3}>
-                  <ul className="list-unstyled">
-                    <li>
-                      {' '}
-                      <DropdownItem as={Link} className={` ${pathname === '/elements/clients' ? 'active' : ''}`} href="/elements/clients">
-                        Clients
-                      </DropdownItem>{' '}
-                    </li>
-                    <li>
-                      {' '}
-                      <DropdownItem as={Link} className={` ${pathname === '/elements/counter' ? 'active' : ''}`} href="/elements/counter">
-                        Counter
-                      </DropdownItem>{' '}
-                    </li>
-                    <li>
-                      {' '}
-                      <DropdownItem as={Link} className={` ${pathname === '/elements/divider' ? 'active' : ''}`} href="/elements/divider">
-                        Divider
-                      </DropdownItem>{' '}
-                    </li>
-                    <li>
-                      {' '}
-                      <DropdownItem as={Link} className={` ${pathname === '/elements/feature-box' ? 'active' : ''}`} href="/elements/feature-box">
-                        Feature box
-                      </DropdownItem>{' '}
-                    </li>
-                    <li>
-                      {' '}
-                      <DropdownItem as={Link} className={` ${pathname === '/elements/forms' ? 'active' : ''}`} href="/elements/forms">
-                        Forms
-                      </DropdownItem>{' '}
-                    </li>
-                    <li>
-                      {' '}
-                      <DropdownItem as={Link} className={` ${pathname === '/elements/grid' ? 'active' : ''}`} href="/elements/grid">
-                        Grid
-                      </DropdownItem>{' '}
-                    </li>
-                  </ul>
-                </Col>
-                <Col sm={6} lg={3}>
-                  <ul className="list-unstyled">
-                    <li>
-                      {' '}
-                      <DropdownItem as={Link} className={` ${pathname === '/elements/list-styles' ? 'active' : ''}`} href="/elements/list-styles">
-                        list styles
-                      </DropdownItem>{' '}
-                    </li>
-                    <li>
-                      {' '}
-                      <DropdownItem as={Link} className={` ${pathname === '/elements/map' ? 'active' : ''}`} href="/elements/map">
-                        Map
-                      </DropdownItem>{' '}
-                    </li>
-                    <li>
-                      {' '}
-                      <DropdownItem as={Link} className={` ${pathname === '/elements/modal' ? 'active' : ''}`} href="/elements/modal">
-                        Modal
-                      </DropdownItem>{' '}
-                    </li>
-                    <li>
-                      {' '}
-                      <DropdownItem as={Link} className={` ${pathname === '/elements/skill' ? 'active' : ''}`} href="/elements/skill">
-                        skill
-                      </DropdownItem>{' '}
-                    </li>
-                    <li>
-                      {' '}
-                      <DropdownItem as={Link} className={` ${pathname === '/elements/social-icon' ? 'active' : ''}`} href="/elements/social-icon">
-                        social icon
-                      </DropdownItem>{' '}
-                    </li>
-                    <li>
-                      {' '}
-                      <DropdownItem as={Link} className={` ${pathname === '/elements/tabs' ? 'active' : ''}`} href="/elements/tabs">
-                        Tab
-                      </DropdownItem>{' '}
-                    </li>
-                  </ul>
-                </Col>
-                <Col sm={6} lg={3}>
-                  <ul className="list-unstyled">
-                    <li>
-                      {' '}
-                      <DropdownItem as={Link} className={` ${pathname === '/elements/table' ? 'active' : ''}`} href="/elements/table">
-                        Table
-                      </DropdownItem>{' '}
-                    </li>
-                    <li>
-                      {' '}
-                      <DropdownItem as={Link} className={` ${pathname === '/elements/team' ? 'active' : ''}`} href="/elements/team">
-                        Team
-                      </DropdownItem>{' '}
-                    </li>
-                    <li>
-                      {' '}
-                      <DropdownItem as={Link} className={` ${pathname === '/elements/tiny-slider' ? 'active' : ''}`} href="/elements/tiny-slider">
-                        Tiny slider
-                      </DropdownItem>{' '}
-                    </li>
-                    <li>
-                      {' '}
-                      <DropdownItem as={Link} className={` ${pathname === '/elements/typography' ? 'active' : ''}`} href="/elements/typography">
-                        Typography
-                      </DropdownItem>{' '}
-                    </li>
-                    <li>
-                      {' '}
-                      <DropdownItem as={Link} className={` ${pathname === '/elements/video' ? 'active' : ''}`} href="/elements/video">
-                        Video
-                      </DropdownItem>{' '}
-                    </li>
-                  </ul>
-                </Col>
-              </Row>
-            </Container>
-          </DropdownMenu>
-        </Dropdown>
-      </ul>
-      {/* </div> */}
-    </Collapse>
+        .service-item:hover {
+          background-color: #f3f4f6;
+          transform: translateX(4px);
+        }
+
+        .service-icon {
+          width: 35px;
+          height: 35px;
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #364a52;
+          transition: color 0.2s ease;
+        }
+
+        .service-item:hover .service-icon {
+          color: #364a52;
+        }
+
+        .service-icon svg {
+          width: 100%;
+          height: 100%;
+        }
+
+        .service-icon img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+
+        .service-content {
+          flex: 1;
+        }
+
+        .service-title {
+          font-size: 14px;
+          font-weight: 600;
+          margin-bottom: 2px;
+          color: #1f2937;
+          line-height: 1.3;
+        }
+
+        .service-description {
+          font-size: 12px;
+          margin: 0;
+          color: #6b7280;
+          line-height: 1.4;
+        }
+
+        .services-footer {
+          background-color: #0f252f;
+          color: white;
+          padding: 20px;
+          margin-top: 20px;
+          border-radius: 6px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 20px;
+        }
+
+        .services-footer-content h4 {
+          margin: 0 0 6px 0;
+          font-size: 16px;
+          font-weight: 600;
+          color: white;
+        }
+
+        .services-footer-content p {
+          margin: 0;
+          opacity: 0.9;
+          font-size: 13px;
+          line-height: 1.5;
+        }
+
+        .services-footer-btn {
+          background-color: #748185;
+          color: white;
+          padding: 10px 24px;
+          border-radius: 5px;
+          text-decoration: none;
+          font-weight: 600;
+          font-size: 14px;
+          transition: all 0.2s ease;
+          white-space: nowrap;
+        }
+
+        .services-footer-btn:hover {
+          background-color: #81b9c4ff;
+          color: white;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(139, 107, 176, 0.3);
+        }
+
+        @media (max-width: 992px) {
+          .services-megamenu .dropdown-menu {
+            width: 90vw;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .services-megamenu .dropdown-menu {
+            position: static !important;
+            transform: none !important;
+            width: 100%;
+          }
+          
+          .services-footer {
+            flex-direction: column;
+            gap: 15px;
+            text-align: center;
+          }
+        }
+      `}</style>
+
+      <Collapse in={isOpen} className="navbar-collapse">
+        <ul className={`navbar-nav navbar-nav-scroll navbar-nav-scroll ${menuCenter ? 'mx-auto' : 'ms-auto'}  `}>
+          
+          {/* 1. Home Link */}
+          <li className="nav-item">
+            <Link 
+              className={`nav-link ${pathname === '/' ? 'active' : ''}`} 
+              href="/">
+              Home
+            </Link>
+          </li>
+
+          {/* 2. About Link */}
+          <li className="nav-item">
+            <Link 
+              className={`nav-link ${isActive('/pages/about') ? 'active' : ''}`} 
+              href="/about">
+              About
+            </Link>
+          </li>
+
+          {/* 3. Services Dropdown (Updated Megamenu) */}
+          <Dropdown className="nav-item megamenu services-megamenu">
+            <DropdownToggle
+              as={'a'}
+              className={`nav-link ${isActive('/elements') ? 'active' : ''}`}
+              id="servicesMenu"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false">
+              Services
+            </DropdownToggle>
+            <DropdownMenu renderOnMount>
+              <Container>
+                <Row className="w-100">
+                  <Col md={4}>
+                    <Link href="/elements/accordions" className="service-item">
+                      <div className="service-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="currentColor">
+                          <path d="M10 15h30v3H10zm0 7h30v3H10zm0 7h30v3H10z"/>
+                        </svg>
+                      </div>
+                      <div className="service-content">
+                        <div className="service-title">Book Writing</div>
+                        <div className="service-description">Turning Your Creativity into Timeless Stories</div>
+                      </div>
+                    </Link>
+
+                    <Link href="/elements/action-box" className="service-item">
+                      <div className="service-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="currentColor">
+                          <path d="M15 10h20v3H15zm0 7h20v3H15zm0 7h15v3H15z"/>
+                        </svg>
+                      </div>
+                      <div className="service-content">
+                        <div className="service-title">eBook Ghostwriting</div>
+                        <div className="service-description">Your Ideas, Our Words, Our eBooks</div>
+                      </div>
+                    </Link>
+
+                    <Link href="/elements/alerts" className="service-item">
+                      <div className="service-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="currentColor">
+                          <path d="M25 5L5 15v10c0 12 8 20 20 25 12-5 20-13 20-25V15L25 5z"/>
+                        </svg>
+                      </div>
+                      <div className="service-content">
+                        <div className="service-title">Article Publication</div>
+                        <div className="service-description">Establishing Your Authority</div>
+                      </div>
+                    </Link>
+
+                    <Link href="/elements/animated-headlines" className="service-item">
+                      <div className="service-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="currentColor">
+                          <rect x="10" y="10" width="30" height="30" rx="2"/>
+                        </svg>
+                      </div>
+                      <div className="service-content">
+                        <div className="service-title">Cover Design</div>
+                        <div className="service-description">Stunning Book Cover Designs For Your Books</div>
+                      </div>
+                    </Link>
+                  </Col>
+
+                  <Col md={4}>
+                    <Link href="/elements/blockquote" className="service-item highlighted">
+                      <div className="service-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="currentColor">
+                          <path d="M25 10c-8 0-15 5-15 12 0 4 2 7 5 9l-3 9 10-5c1 0 2 0 3 0 8 0 15-5 15-12s-7-13-15-13z"/>
+                        </svg>
+                      </div>
+                      <div className="service-content">
+                        <div className="service-title">Audio Books</div>
+                        <div className="service-description">Engaging Audio Books For All Genres</div>
+                      </div>
+                    </Link>
+
+                    <Link href="/elements/buttons" className="service-item">
+                      <div className="service-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="currentColor">
+                          <path d="M20 10l-5 5 10 10-10 10 5 5 15-15z"/>
+                        </svg>
+                      </div>
+                      <div className="service-content">
+                        <div className="service-title">Book Printing</div>
+                        <div className="service-description">Affordable Book Printing Solutions</div>
+                      </div>
+                    </Link>
+
+                    <Link href="/elements/clients" className="service-item">
+                      <div className="service-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="currentColor">
+                          <path d="M25 5L10 15v20l15 10 15-10V15z"/>
+                        </svg>
+                      </div>
+                      <div className="service-content">
+                        <div className="service-title">Book Video Trailer</div>
+                        <div className="service-description">Bringing Creativity to Life Through Videos</div>
+                      </div>
+                    </Link>
+
+                    <Link href="/elements/counter" className="service-item">
+                      <div className="service-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="currentColor">
+                          <circle cx="17" cy="25" r="5"/>
+                          <circle cx="33" cy="25" r="5"/>
+                          <circle cx="25" cy="15" r="5"/>
+                        </svg>
+                      </div>
+                      <div className="service-content">
+                        <div className="service-title">Web Design Seo</div>
+                        <div className="service-description">Creating Beautiful Web Designs</div>
+                      </div>
+                    </Link>
+                  </Col>
+
+                  <Col md={4}>
+                    <Link href="/elements/divider" className="service-item">
+                      <div className="service-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="currentColor">
+                          <path d="M25 10c-8 0-15 7-15 15s7 15 15 15 15-7 15-15-7-15-15-15zm0 25c-6 0-10-4-10-10s4-10 10-10 10 4 10 10-4 10-10 10z"/>
+                        </svg>
+                      </div>
+                      <div className="service-content">
+                        <div className="service-title">Blog Writing</div>
+                        <div className="service-description">Bespoke Blog Writing Services</div>
+                      </div>
+                    </Link>
+
+                    <Link href="/elements/feature-box" className="service-item">
+                      <div className="service-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="currentColor">
+                          <path d="M10 10h15v15H10zm0 17h15v15H10zm17-17h15v15H27zm0 17h15v15H27z"/>
+                        </svg>
+                      </div>
+                      <div className="service-content">
+                        <div className="service-title">Book Marketing</div>
+                        <div className="service-description">Promoting Your Authors with Their Audience</div>
+                      </div>
+                    </Link>
+
+                    <Link href="/elements/forms" className="service-item">
+                      <div className="service-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="currentColor">
+                          <path d="M15 5v40l10-7 10 7V5z"/>
+                        </svg>
+                      </div>
+                      <div className="service-content">
+                        <div className="service-title">Book illustration</div>
+                        <div className="service-description">Painting Your Words in Color</div>
+                      </div>
+                    </Link>
+
+                    <Link href="/elements/grid" className="service-item">
+                      <div className="service-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="currentColor">
+                          <path d="M10 10h30v5H10zm5 10h20v3H15zm0 8h25v3H15z"/>
+                        </svg>
+                      </div>
+                      <div className="service-content">
+                        <div className="service-title">Website Content Writing</div>
+                        <div className="service-description">Content that Fuels Your Online Presence</div>
+                      </div>
+                    </Link>
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col>
+                    <div className="services-footer">
+                      <div className="services-footer-content">
+                        <h4>Our Expert Writers Always Assist You</h4>
+                        <p>We provide a wide range of services in book publishing including everything from book writing to publishing and marketing.</p>
+                      </div>
+                      <Link href="/contact" className="services-footer-btn">
+                        Contact Now
+                      </Link>
+                    </div>
+                  </Col>
+                </Row>
+              </Container>
+            </DropdownMenu>
+          </Dropdown>
+
+          <li className="nav-item">
+            <Link 
+              className={`nav-link ${pathname === '/pages/contact' ? 'active' : ''}`} 
+              href="/contact">
+              Contact
+            </Link>
+          </li>
+
+          <li className="nav-item">
+            <Link 
+              className={`nav-link ${pathname === '/reviews' ? 'active' : ''}`} 
+              href="/reviews">
+              Reviews
+            </Link>
+          </li>
+        </ul>
+      </Collapse>
+    </>
   )
 }
 

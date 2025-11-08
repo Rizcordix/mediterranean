@@ -12,7 +12,7 @@
 
 <!-- change border and center element color below -->
 <style type="text/css">
-	.border-color{stroke:#4cbd89; fill:none; stroke-miterlimit:10; stroke-dasharray:12.2685,12.2685; }
+	.border-color{stroke:#364a52; fill:none; stroke-miterlimit:10; stroke-dasharray:12.2685,12.2685; }
 	.center-element{fill:#FFFFFF;}
 </style>
 

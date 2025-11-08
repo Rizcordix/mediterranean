@@ -1,4 +1,4 @@
-import logo from '@/assets/images/logo.png'
+import logo from '@/assets/images/medi_logo2.png'
 import woldMap from '@/assets/images/world-map.png'
 import { currentYear } from '@/context/constants'
 import Image from 'next/image'
