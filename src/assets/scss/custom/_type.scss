@@ -59,3 +59,11 @@
 .bg-dark-grad{
   background: linear-gradient(150deg, $gray-800 0%, lighten($gray-800, 20%) 100%);
 }
+
+.bg-grad1{ 
+  background: linear-gradient(150deg, #eeeae7 0%, #9d8c7f 100%);
+}
+
+.bg-grad2{ 
+  background: linear-gradient(150deg, #9d8c7f 0%, #7e7167 100%);
+}
