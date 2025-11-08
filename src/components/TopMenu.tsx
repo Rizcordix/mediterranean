@@ -21,7 +21,7 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
           width: 900px;
           left: 50% !important;
           right: auto !important;
-          transform: translateX(-50%) translateY(10%) !important;
+          transform: translateX(-50%) translateY(12%) !important;
           border: none !important;
           border-radius: 14px;
           box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -126,7 +126,7 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
         }
 
         .services-footer-btn {
-          background-color: #748185;
+          background-color: #8f8985f0;
           color: white;
           padding: 10px 24px;
           border-radius: 5px;
@@ -138,10 +138,10 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
         }
 
         .services-footer-btn:hover {
-          background-color: #81b9c4ff;
+          background-color: #8f8985ff;
           color: white;
-          transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(139, 107, 176, 0.3);
+          transform: translateY(-1px);
+          box-shadow: 0 4px 12px rgba(136, 133, 121, 0.3);
         }
 
         @media (max-width: 992px) {
@@ -171,7 +171,7 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
           {/* 1. Home Link */}
           <li className="nav-item">
             <Link 
-              className={`nav-link ${pathname === '/' ? 'active' : ''}`} 
+              className={`nav-link ${pathname === '/home' ? 'active' : ''}`} 
               href="/">
               Home
             </Link>
@@ -180,7 +180,7 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
           {/* 2. About Link */}
           <li className="nav-item">
             <Link 
-              className={`nav-link ${isActive('/pages/about') ? 'active' : ''}`} 
+              className={`nav-link ${isActive('/about') ? 'active' : ''}`} 
               href="/about">
               About
             </Link>
@@ -201,7 +201,7 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
               <Container>
                 <Row className="w-100">
                   <Col md={4}>
-                    <Link href="/elements/accordions" className="service-item">
+                    <Link href="/services/bookwriting" className="service-item">
                       <div className="service-icon">
                         <svg width="50" height="50" viewBox="0 0 50 50" fill="currentColor">
                           <path d="M10 15h30v3H10zm0 7h30v3H10zm0 7h30v3H10z"/>
@@ -213,7 +213,7 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
                       </div>
                     </Link>
 
-                    <Link href="/elements/action-box" className="service-item">
+                    <Link href="/services/ebook-ghostwriting" className="service-item">
                       <div className="service-icon">
                         <svg width="50" height="50" viewBox="0 0 50 50" fill="currentColor">
                           <path d="M15 10h20v3H15zm0 7h20v3H15zm0 7h15v3H15z"/>
@@ -225,7 +225,7 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
                       </div>
                     </Link>
 
-                    <Link href="/elements/alerts" className="service-item">
+                    <Link href="/services/article-publication" className="service-item">
                       <div className="service-icon">
                         <svg width="50" height="50" viewBox="0 0 50 50" fill="currentColor">
                           <path d="M25 5L5 15v10c0 12 8 20 20 25 12-5 20-13 20-25V15L25 5z"/>
@@ -237,7 +237,7 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
                       </div>
                     </Link>
 
-                    <Link href="/elements/animated-headlines" className="service-item">
+                    <Link href="/services/cover-design" className="service-item">
                       <div className="service-icon">
                         <svg width="50" height="50" viewBox="0 0 50 50" fill="currentColor">
                           <rect x="10" y="10" width="30" height="30" rx="2"/>
@@ -251,7 +251,7 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
                   </Col>
 
                   <Col md={4}>
-                    <Link href="/elements/blockquote" className="service-item highlighted">
+                    <Link href="/services/audio-book" className="service-item highlighted">
                       <div className="service-icon">
                         <svg width="50" height="50" viewBox="0 0 50 50" fill="currentColor">
                           <path d="M25 10c-8 0-15 5-15 12 0 4 2 7 5 9l-3 9 10-5c1 0 2 0 3 0 8 0 15-5 15-12s-7-13-15-13z"/>
@@ -263,7 +263,7 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
                       </div>
                     </Link>
 
-                    <Link href="/elements/buttons" className="service-item">
+                    <Link href="/services/book-printing" className="service-item">
                       <div className="service-icon">
                         <svg width="50" height="50" viewBox="0 0 50 50" fill="currentColor">
                           <path d="M20 10l-5 5 10 10-10 10 5 5 15-15z"/>
@@ -275,7 +275,7 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
                       </div>
                     </Link>
 
-                    <Link href="/elements/clients" className="service-item">
+                    <Link href="/services/book-video-trailer" className="service-item">
                       <div className="service-icon">
                         <svg width="50" height="50" viewBox="0 0 50 50" fill="currentColor">
                           <path d="M25 5L10 15v20l15 10 15-10V15z"/>
@@ -287,7 +287,7 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
                       </div>
                     </Link>
 
-                    <Link href="/elements/counter" className="service-item">
+                    <Link href="/services/web-design-seo" className="service-item">
                       <div className="service-icon">
                         <svg width="50" height="50" viewBox="0 0 50 50" fill="currentColor">
                           <circle cx="17" cy="25" r="5"/>
@@ -303,7 +303,7 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
                   </Col>
 
                   <Col md={4}>
-                    <Link href="/elements/divider" className="service-item">
+                    <Link href="/services/blog-writing" className="service-item">
                       <div className="service-icon">
                         <svg width="50" height="50" viewBox="0 0 50 50" fill="currentColor">
                           <path d="M25 10c-8 0-15 7-15 15s7 15 15 15 15-7 15-15-7-15-15-15zm0 25c-6 0-10-4-10-10s4-10 10-10 10 4 10 10-4 10-10 10z"/>
@@ -315,7 +315,7 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
                       </div>
                     </Link>
 
-                    <Link href="/elements/feature-box" className="service-item">
+                    <Link href="/services/book-marketing" className="service-item">
                       <div className="service-icon">
                         <svg width="50" height="50" viewBox="0 0 50 50" fill="currentColor">
                           <path d="M10 10h15v15H10zm0 17h15v15H10zm17-17h15v15H27zm0 17h15v15H27z"/>
@@ -327,7 +327,7 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
                       </div>
                     </Link>
 
-                    <Link href="/elements/forms" className="service-item">
+                    <Link href="/services/book-illustration" className="service-item">
                       <div className="service-icon">
                         <svg width="50" height="50" viewBox="0 0 50 50" fill="currentColor">
                           <path d="M15 5v40l10-7 10 7V5z"/>
@@ -339,7 +339,7 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
                       </div>
                     </Link>
 
-                    <Link href="/elements/grid" className="service-item">
+                    <Link href="/services/website-content-writing" className="service-item">
                       <div className="service-icon">
                         <svg width="50" height="50" viewBox="0 0 50 50" fill="currentColor">
                           <path d="M10 10h30v5H10zm5 10h20v3H15zm0 8h25v3H15z"/>
@@ -370,13 +370,38 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
             </DropdownMenu>
           </Dropdown>
 
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link 
-              className={`nav-link ${pathname === '/pages/contact' ? 'active' : ''}`} 
+              className={`nav-link ${pathname === '/contact' ? 'active' : ''}`} 
               href="/contact">
               Contact
             </Link>
-          </li>
+          </li> */}
+          <Dropdown className="nav-item">
+          <DropdownToggle as={'a'} className={`nav-link`} role="button">
+            Support
+          </DropdownToggle>
+          <DropdownMenu renderOnMount>
+            <li>
+              {' '}
+              <DropdownItem as={Link} className={` ${pathname === '/contact' ? 'active' : ''}`} href="/contact">
+                Contact Us
+              </DropdownItem>{' '}
+            </li>
+            <li>
+              {' '}
+              <DropdownItem as={Link} className={` ${pathname === '/terms' ? 'active' : ''}`} href="/terms">
+                Terms of Service
+              </DropdownItem>{' '}
+            </li>
+            <li>
+              {' '}
+              <DropdownItem as={Link} className={` ${pathname === '/privacy' ? 'active' : ''}`} href="/privacy">
+                Privacy Policy
+              </DropdownItem>{' '}
+            </li>
+          </DropdownMenu>
+        </Dropdown>
 
           <li className="nav-item">
             <Link 
@@ -385,6 +410,15 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
               Reviews
             </Link>
           </li>
+
+          <li className="nav-item">
+            <Link 
+              className={`nav-link ${pathname === '/reviews' ? 'active' : ''}`} 
+              href="/reviews">
+              Samples
+            </Link>
+          </li>
+
         </ul>
       </Collapse>
     </>

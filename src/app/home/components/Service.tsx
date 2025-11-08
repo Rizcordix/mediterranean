@@ -12,7 +12,7 @@ const Services = () => {
         icon: 'ti-pencil',
         title: 'Book Writing',
         description: 'Transform your ideas into compelling narratives with our professional book writing services. Our experienced writers craft engaging stories across all genres, bringing your vision to life with creativity and precision.',
-        link: '/services/book-writing'
+        link: '/services/bookwriting'
       },
       middleColumn: [
         {

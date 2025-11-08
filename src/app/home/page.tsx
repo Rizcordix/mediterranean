@@ -12,6 +12,9 @@ import AboutUs from './components/AboutUs'
 import PricingComponent from './components/Pricing'
 // import Services from '../demos/corporate-startUp/components/Services'
 import Testimonials from './components/Testimonial'
+import ActionBox from '../about/components/ActionBox'
+import Clients from '../services/bookwriting/components/Clients'
+import Categories from './components/Categories'
 
 const CreativeAgencyPage = () => {
   return (
@@ -19,12 +22,16 @@ const CreativeAgencyPage = () => {
       <TopNavbar />
       <Hero />
       <AboutUs />
+      <div className="divider mb-3" />
+      <Clients />
+      <div className="divider mt-2" />
       <Service />
       <Features />
       <PricingComponent />
       <Info />
+      <Categories />
       <Testimonials />
-      <Newsletter />
+      <ActionBox />
       <Footer />
     </>
   )
