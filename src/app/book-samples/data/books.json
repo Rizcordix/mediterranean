@@ -1,0 +1,18 @@
+[
+  {
+    "id": "b1",
+    "title": "The Quiet Editor",
+    "author": "A. N. Author",
+    "cover": "/images/booksamples/book1.webp",
+    "blurb": "A crisp manual about editing prose for clarity and rhythm.",
+    "previewPages": ["/previews/quiet-1.jpg","/previews/quiet-2.jpg","/previews/quiet-3.jpg"]
+  },
+  {
+    "id": "b2",
+    "title": "Paper & Ink",
+    "author": "B. Writer",
+    "cover": "images/booksamples/book1.webp",
+    "blurb": "An illustrated guide to book production and its culture.",
+    "previewPages": ["/previews/paper-1.jpg","/previews/paper-2.jpg","/previews/paper-3.jpg"]
+  }
+]

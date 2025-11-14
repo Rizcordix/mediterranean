@@ -1,5 +1,5 @@
 'use client'
-import useToggle from '@/hooks/useToggle'
+// import useToggle from '@/hooks/useToggle'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Col, Collapse, Container, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Row } from 'react-bootstrap'
@@ -414,7 +414,7 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
           <li className="nav-item">
             <Link 
               className={`nav-link ${pathname === '/reviews' ? 'active' : ''}`} 
-              href="/reviews">
+              href="/book-samples">
               Samples
             </Link>
           </li>

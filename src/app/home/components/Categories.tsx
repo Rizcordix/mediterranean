@@ -2,9 +2,7 @@
 
 import Image from 'next/image'
 import React from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
-import dynamic from 'next/dynamic'
-const GlightBox = dynamic(() => import('@/components/GlightBox'), { ssr: false })
+import { Container } from 'react-bootstrap'
 
 // temporary icons (replace later)
 import icon1 from '@/assets/images/icons/market.svg'
