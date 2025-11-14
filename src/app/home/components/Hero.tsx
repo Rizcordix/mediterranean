@@ -1,8 +1,8 @@
 'use client'
 import React from 'react'
 import banner8 from '@/assets/images/banner/mainhero.png'
-import Typist from 'react-text-typist'
-import { Container } from 'react-bootstrap'
+// import Typist from 'react-text-typist'
+// import { Container } from 'react-bootstrap'
 // import Jarallax from '@/components/Jarallax';
 import dynamic from 'next/dynamic'
 
