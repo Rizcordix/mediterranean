@@ -96,7 +96,7 @@ const FeaturedBooksSection = () => {
 
         {/* Books Display */}
         <div className="row justify-content-center g-5 mt-5 pt-4">
-          {books.map((book, index) => (
+          {books.map((book) => (
             <div key={book.id} className="col-lg-3 col-md-6 col-sm-6">
               <div 
                 className="position-relative"

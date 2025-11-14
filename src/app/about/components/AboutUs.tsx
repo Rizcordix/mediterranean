@@ -155,14 +155,14 @@ const AboutPage = () => {
                 color: '#364a52',
                 lineHeight: '1.7'
               }}>
-                Our team of seasoned professionals combines traditional publishing expertise with modern digital strategies, ensuring your work reaches its full potential in today's dynamic literary landscape.
+                Our team of seasoned professionals combines traditional publishing expertise with modern digital strategies, ensuring your work reaches its full potential in today&apos;s dynamic literary landscape.
               </p>
               <p style={{
                 fontSize: '1.125rem',
                 color: '#364a52',
                 lineHeight: '1.7'
               }}>
-                We've helped hundreds of authors achieve their dreams—from first-time writers to established professionals—and we're passionate about making your publishing journey seamless, rewarding, and successful.
+                We&apos;ve helped hundreds of authors achieve their dreams—from first-time writers to established professionals—and we&apos;re passionate about making your publishing journey seamless, rewarding, and successful.
               </p>
             </div>
             <div>
@@ -321,7 +321,7 @@ const AboutPage = () => {
                 color: '#364a52',
                 lineHeight: '1.7'
               }}>
-                At Mediterranean Publishing, we don't just publish books—we build lasting partnerships with our authors. Our commitment goes beyond the manuscript to ensure your success at every stage.
+                At Mediterranean Publishing, we don&apos;t just publish books—we build lasting partnerships with our authors. Our commitment goes beyond the manuscript to ensure your success at every stage.
               </p>
               <p style={{
                 fontSize: '1.125rem',
@@ -371,7 +371,7 @@ const AboutPage = () => {
             color: '#eeeae7',
             opacity: 0.9
           }}>
-            Join hundreds of successful authors who trusted us with their dreams. Let's create something extraordinary together.
+            Join hundreds of successful authors who trusted us with their dreams. Let&apos;s create something extraordinary together.
           </p>
           <div style={{
             display: 'flex',
