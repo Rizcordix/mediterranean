@@ -19,16 +19,16 @@ const Contact = () => {
   const { handleSubmit, control } = useForm({
     resolver: yupResolver(contactSchema),
   })
+
   return (
     <section className="contact-page">
       <Container>
         <Row>
           <Col xs={12} lg={8} className="mx-auto">
             <div className="title text-center">
-              <h2>How can we assist you?</h2>
+              <h2>Ready to Bring Your Story to Life?</h2>
               <p>
-                Larexa customer support is available free of charge. Connection charges can vary when calling from outside the area, abroad or from a
-                mobile phone.
+                Our dedicated team at Mediterranean Publishing is here to answer your questions and guide you through every step of your publishing journey. Reach out today and let's turn your vision into a published masterpiece.
               </p>
             </div>
           </Col>
@@ -42,25 +42,25 @@ const Contact = () => {
                 <div className="fs-4">
                   <i className="ti-map-alt" />
                 </div>
-                <h5 className="mb-2">Address</h5>
-                <p>1421 Coburn Hollow Road Metamora, Near Center Point, IL 61548.</p>
+                <h5 className="mb-2">Our Location</h5>
+                <p>Suite C125, 4 - 6, Greatorex Street, London, United Kingdom, E1 5NF</p>
               </div>
               <div className="all-text-white mb-4">
                 <div className="fs-4">
                   <i className="ti-email" />
                 </div>
-                <h5 className="mb-2">E-mail</h5>
-                <p>help@larexa.com</p>
+                <h5 className="mb-2">Email Us</h5>
+                <p>info@mediterraneanpublishing.com</p>
               </div>
               <div className="all-text-white">
                 <div className="fs-4">
                   <i className="ti-panel" />
                 </div>
-                <h5 className="mb-2">Phone</h5>
+                <h5 className="mb-2">Call Us</h5>
                 <p className="mb-0">
-                  (+251) 854-6308
+                  +1 (832) 558-5865
                   <br />
-                  (+001) 564-2589
+                  +1 (888) 430-7753
                 </p>
               </div>
             </div>
@@ -69,7 +69,7 @@ const Contact = () => {
             <div className="h-100">
               <iframe
                 className="w-100 h-100 grayscale rounded"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878428698!3d40.74076684379132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sin!4v1586000412513!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.7578704188604!2d-0.06938302312052916!3d51.517658009953465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761ccba805424d%3A0x86c7bb9e6e7121f1!2sc125%2C%204-6%20Greatorex%20St%2C%20Greater%2C%20London%20E1%205NF%2C%20UK!5e0!3m2!1sen!2s!4v1761922111344!5m2!1sen!2s"
                 style={{ border: 0 }}
                 aria-hidden="false"
                 tabIndex={0}
@@ -78,8 +78,8 @@ const Contact = () => {
           </Col>
           <Col md={6}>
             <div className="h-100">
-              <h3>Have a project? Let&apos;s make something great together!</h3>
-              <p>Get in touch with us to see how we can help you with your project</p>
+              <h3>Let&apos;s Start Your Publishing Journey Together</h3>
+              <p>Share your ideas with us and discover how Mediterranean Publishing can help bring your book to readers worldwide</p>
               <form
                 onSubmit={handleSubmit(() => {})}
                 className="contact-form needs-validation"
@@ -91,27 +91,27 @@ const Contact = () => {
                 <Row>
                   <Col md={6}>
                     <div className="mb-3 position-relative">
-                      <TextFormInput control={control} className="form-control" name="name" placeholder="Name" />
+                      <TextFormInput control={control} className="form-control" name="name" placeholder="Your Name" />
                     </div>
                   </Col>
                   <Col md={6}>
                     <div className="mb-3 position-relative">
-                      <TextFormInput control={control} className="form-control" name="email" placeholder="E-mail" />
+                      <TextFormInput control={control} className="form-control" name="email" placeholder="Your Email" />
                     </div>
                   </Col>
                   <Col md={12}>
                     <div className="mb-3 position-relative">
-                      <TextFormInput control={control} className="form-control" name="subject" placeholder="Subject" />
+                      <TextFormInput control={control} className="form-control" name="subject" placeholder="What can we help you with?" />
                     </div>
                   </Col>
                   <Col md={12}>
                     <div className="mb-3 position-relative">
-                      <TextAreaFormInput name="message" control={control} rows={6} />
+                      <TextAreaFormInput name="message" control={control} rows={6} placeholder="Tell us about your project..." />
                     </div>
                   </Col>
                   <Col md={12} className="d-grid">
                     <button className="btn btn-dark m-0" type="submit">
-                      Send Message
+                      Get Started
                     </button>
                   </Col>
                 </Row>

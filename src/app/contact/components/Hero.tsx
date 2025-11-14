@@ -10,7 +10,7 @@ const Hero = () => {
       <Container>
         <Row className="all-text-white">
           <Col md={12} className="align-self-center">
-            <h6 className="display-6 fw-bold mt-9 mb-0">Call us at (+251) 854-6308</h6>
+            <h6 className="display-6 fw-bold mt-9 mb-0">Call us at +1 (832) 558-5865</h6>
             <h1 className="fw-bold display-1 mb-2 mb-md-n4">Contact Us</h1>
           </Col>
         </Row>

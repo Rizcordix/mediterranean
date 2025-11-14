@@ -15,6 +15,8 @@ import Testimonials from './components/Testimonial'
 import ActionBox from '../about/components/ActionBox'
 import Clients from '../services/bookwriting/components/Clients'
 import Categories from './components/Categories'
+import FeaturedBooksSection from './components/portfolio'
+import ProcedureSection from './components/procedure'
 
 const CreativeAgencyPage = () => {
   return (
@@ -26,8 +28,10 @@ const CreativeAgencyPage = () => {
       <Clients />
       <div className="divider mt-2" />
       <Service />
+      <FeaturedBooksSection />
       <Features />
       <PricingComponent />
+      <ProcedureSection />
       <Info />
       <Categories />
       <Testimonials />
