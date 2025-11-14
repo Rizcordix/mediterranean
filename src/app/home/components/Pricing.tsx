@@ -561,7 +561,7 @@ const PricingComponent: React.FC = () => {
             lineHeight: '1.6',
             margin: 0
           }}>
-            If you're not exactly sure which pricing strategy will work for your business. <span style={{color: '#aeb7b8'}}><Link href="/contact" style={{ color: '#aeb7b8' }} >Contact us</Link></span> we will help you to choose your best pricing plan.
+            If you&apos;re not exactly sure which pricing strategy will work for your business. <span style={{color: '#aeb7b8'}}><Link href="/contact" style={{ color: '#aeb7b8' }} >Contact us</Link></span> we will help you to choose your best pricing plan.
           </h6>
         </div>
       </div>
