@@ -25,7 +25,7 @@ export const bookData: Book[] = [
     title: 'The Quiet Editor',
     author: 'A. N. Author',
     cover: coverImage, 
-    blurb: 'A crisp manual about editing prose for clarity and rhythm. lorem ipsum dolor sit amet, consectetur adipiA crisp manual about editing prose for clarity and rhythm. lorem ipsum dolor sit amet, consectetur adipiscing elit.scing elit. A crisp manual about editing prose for clarity and rhythm. lorem ipsum dolor sit amet, consectetur adipiscing elit. A crisp manual about editing prose for clarity and rhythm. lorem ipsum dolor sit amet, consectetur adipiscing elit.A crisp manual about editing prose for clarity and rhythm. lorem ipsum dolor sit amet, consectetur adipiscing elit.A crisp manual about editing prose for clarity and rhythm. lorem ipsum dolor sit amet,',
+    blurb: 'A crisp manual about editing prose for clarity and rhythm. lorem ipsum dolor sit amet, consectetur adipiA crisp manual about editing prose for clarity and rhythm. lorem ipsum dolor sit amet, consectetur adipiscing elit.scing elit. A crisp manual about editing prose for clarity and rhythm. lorem ipsum dolor sit amet, consectetur adipiscing elit. A crisp manual about editing prose for clarity and rhythm.',
     previewPages: [quietPreview1, quietPreview2, quietPreview1],
   },
   {
@@ -33,7 +33,7 @@ export const bookData: Book[] = [
     title: 'Paper & Ink',
     author: 'B. Writer',
     cover: coverImage, // Reusing the same image as in the source data
-    blurb: 'An illustrated guide to book production and its culture. lorem ipsum dolor sit amet, consectetur adipiA crisp manual about editing prose for clarity and rhythm. lorem ipsum dolor sit amet, consectetur adipiscing elit.scing elit. A crisp manual about editing prose for clarity and rhythm. lorem ipsum dolor sit amet, consectetur adipiscing elit. A crisp manual about editing prose for clarity and rhythm. lorem ipsum dolor sit amet, consectetur adipiscing elit.A crisp manual about editing prose for clarity and rhythm. lorem ipsum dolor sit amet, consectetur adipiscing elit.A crisp manual about editing prose for clarity and rhythm. lorem ipsum dolor sit amet,',
+    blurb: 'An illustrated guide to book production and its culture. lorem ipsum dolor sit amet, consectetur adipiA crisp manual about editing prose for clarity and rhythm. lorem ipsum dolor sit amet, consectetur adipiscing elit.scing elit. A crisp manual about editing prose for clarity and rhythm. ',
     previewPages: [quietPreview1, quietPreview1, quietPreview1],
   },
   {

@@ -15,7 +15,7 @@ const Hero = () => {
       className="p-0  h-500 h-lg-700 bg-overlay-dark-2 bg-parallax"
       style={{ background: `url(${banner8.src}) no-repeat 65% 0%`, backgroundSize: 'cover' }}>
       <div className="position-absolute bottom-0 all-text-white w-100">
-        <Container>
+        {/* <Container>
           <p className="lead alt-font fst-italic mb-n4">The most important things are not things, so we’ll design experiences.</p>
           <h5 className="fw-bold display-1 mt-3 p-0 cd-headline clip big-clip is-full-width">
             <span className="pt-0">We luv </span>
@@ -31,7 +31,7 @@ const Hero = () => {
               />
             </span>
           </h5>
-        </Container>
+        </Container> */}
       </div>
     </Jarallax>
   )
