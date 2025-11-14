@@ -133,7 +133,7 @@ export default function HeroSlider({ books }: Props) {
         .hero-slider {
           position: relative;
           min-height: 85vh;
-          max-height: 95vh;
+          // max-height: 95vh;
           background-color: var(--bg-primary2);
           display: flex;
           flex-direction: column;
@@ -188,7 +188,7 @@ export default function HeroSlider({ books }: Props) {
         .book-cover {
           position: relative;
           width: 420px;
-          height: 620px;
+          height: 520px;
           border-radius: 8px;
           overflow: hidden;
           box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
