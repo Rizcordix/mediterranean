@@ -122,7 +122,7 @@ const Services = () => {
     }
   ]
 
-  const totalSlides = slides.length
+  // const totalSlides = slides.length
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index)

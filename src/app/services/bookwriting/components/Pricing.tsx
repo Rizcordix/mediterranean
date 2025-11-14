@@ -604,7 +604,7 @@ const PricingComponent: React.FC<PricingComponentProps> = ({ defaultTab }) => {
               margin: 0,
             }}
           >
-            If you're not exactly sure which pricing strategy will work for your
+            If you&apos;re not exactly sure which pricing strategy will work for your
             business.{" "}
             <span style={{ color: "#aeb7b8" }}>
               <Link href="/contact" style={{ color: "#aeb7b8" }}>
