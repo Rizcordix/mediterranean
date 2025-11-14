@@ -28,7 +28,7 @@ const Contact = () => {
             <div className="title text-center">
               <h2>Ready to Bring Your Story to Life?</h2>
               <p>
-                Our dedicated team at Mediterranean Publishing is here to answer your questions and guide you through every step of your publishing journey. Reach out today and let's turn your vision into a published masterpiece.
+                Our dedicated team at Mediterranean Publishing is here to answer your questions and guide you through every step of your publishing journey. Reach out today and let&apos;s turn your vision into a published masterpiece.
               </p>
             </div>
           </Col>

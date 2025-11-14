@@ -1,5 +1,6 @@
 'use client'
 import React from 'react'
+import Image from 'next/image'
 
 interface Review {
   id: number;
@@ -97,7 +98,7 @@ const Reviews: React.FC = () => {
             <span style={{ color: '#364a52' }}>Say About Our Services</span>
           </h2>
           <p style={{ color: '#364a52', fontSize: '1.1rem', lineHeight: '1.6' }}>
-            We have a proven track record of providing high-quality services. Here are some of our clients' thoughts on our work.
+            We have a proven track record of providing high-quality services. Here are some of our clients&apos; thoughts on our work.
           </p>
         </div>
         
@@ -148,9 +149,11 @@ const ReviewCard: React.FC<{ review: Review }> = ({ review }) => {
             boxShadow: '0 5px 20px rgba(15, 37, 47, 0.15)'
           }}
         >
-          <img 
+          <Image 
             src={review.bookCover} 
             alt="Book cover"
+            width={100}
+            height={140}
             style={{
               width: '100%',
               height: '100%',
@@ -169,7 +172,7 @@ const ReviewCard: React.FC<{ review: Review }> = ({ review }) => {
           marginBottom: '1.5rem'
         }}
       >
-        "{review.text}"
+        &quot;{review.text}&quot;
       </p>
 
       <div>

@@ -1,8 +1,8 @@
 import React from 'react'
 import Hero from './components/Hero'
 import AboutUs from './components/AboutUs'
-import WhyUs from './components/WhyUs'
-import Solutions from './components/Solutions'
+// import WhyUs from './components/WhyUs'
+// import Solutions from './components/Solutions'
 import ActionBox from './components/ActionBox'
 import TopNavbar from '../home/components/TopNavbar'
 import Footer from '../home/components/Footer'
@@ -15,7 +15,7 @@ const AboutAdvancePage = () => {
       <AboutUs />
       {/* <WhyUs /> */}
       {/* <Solutions /> */}
-      {/* <ActionBox /> */}
+       <ActionBox />
       <Footer />
     </>
   )
