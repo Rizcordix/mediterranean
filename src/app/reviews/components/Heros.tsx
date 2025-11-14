@@ -17,11 +17,11 @@ const Hero = () => {
           <Col md={12} className="align-self-center">
             {/* Replaced the phone number with a relevant sub-heading */}
             <h6 className="display-6 fw-bold mt-9 mb-0">
-              Empowering authors. Elevating stories
+              Hear What Our Clients Say
             </h6>
             {/* Updated the main heading */}
             <h1 className="fw-bold display-1 mb-2 mb-md-n4">
-              About Us
+              Client Reviews
             </h1>
           </Col>
         </Row>

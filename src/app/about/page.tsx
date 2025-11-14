@@ -13,9 +13,9 @@ const AboutAdvancePage = () => {
       <TopNavbar />
       <Hero />
       <AboutUs />
-      <WhyUs />
-      <Solutions />
-      <ActionBox />
+      {/* <WhyUs /> */}
+      {/* <Solutions /> */}
+      {/* <ActionBox /> */}
       <Footer />
     </>
   )
