@@ -85,9 +85,9 @@ const Reviews: React.FC = () => {
     <section style={{ backgroundColor: '#eeeae7', padding: '80px 20px' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto 60px', textAlign: 'center' }}>
-          <h2 
+          <h1 
             style={{ 
-              fontSize: 'clamp(2rem, 5vw, 2.5rem)',
+              // fontSize: 'clamp(2rem, 5vw, 2.5rem)',
               color: '#0f252f',
               lineHeight: '1.2',
               marginBottom: '1rem',
@@ -96,10 +96,10 @@ const Reviews: React.FC = () => {
           >
             Here Is What Our Clients{' '}
             <span style={{ color: '#364a52' }}>Say About Our Services</span>
-          </h2>
-          <p style={{ color: '#364a52', fontSize: '1.1rem', lineHeight: '1.6' }}>
+          </h1>
+          <h4 style={{ color: '#364a52', lineHeight: '1.6' }}>
             We have a proven track record of providing high-quality services. Here are some of our clients&apos; thoughts on our work.
-          </p>
+          </h4>
         </div>
         
         <div style={{ 
