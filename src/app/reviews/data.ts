@@ -34,4 +34,14 @@ export const careersData: CareersType[] = [
     description:
       'The refund is provided as per with our cancellation policy. The refund can be credited to the source of payment (Example: debit card, credit card, net banking).',
   },
+  {
+    title: 'How can I contact customer service?',
+    description:
+      'You can contact our customer service by emailing us at or calling us at (251) 854-6308. Our customer service team is available 24/7 to assist you with any questions or concerns you may have.',
+  },
+  {
+    title: 'Do you offer discounts for bulk orders?',
+    description:
+      'Yes, we offer discounts for bulk orders. Please contact us directly to discuss your specific needs and we will be happy to provide you with a customized quote.',
+  },
 ]

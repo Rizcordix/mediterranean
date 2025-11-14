@@ -34,9 +34,9 @@ const ProcedureSection = () => {
       <div className="container">
         {/* Header */}
         <div className="text-center mb-5">
-          <h2 className="display-5 fw-bold mb-3" style={{ color: '#0f252f', letterSpacing: '-0.5px' }}>
+          <h1 className="fw-bold mb-3" style={{ color: '#0f252f', letterSpacing: '-0.5px' }}>
             OUR QUICK PROCEDURE
-          </h2>
+          </h1>
           <p className="mx-auto" style={{ maxWidth: '900px', color: '#364a52', fontSize: '1.05rem' }}>
             Over this seamless process, we prioritize open communication, teamwork, and achieving your intellectual goals. 
             Join us as we center your story to create art. That's the steps

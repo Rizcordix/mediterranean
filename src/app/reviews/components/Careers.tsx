@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, ChangeEvent, FormEvent } from 'react'
+import { Accordion, AccordionBody, AccordionHeader, AccordionItem, Col } from 'react-bootstrap'
 import { careersData } from '../data'
 
 const Careers = () => {
@@ -27,34 +28,18 @@ const Careers = () => {
     <section className="pb-3">
       <div className="container">
         <div className="row">
-          <div className="col-md-8 mb-5">
-            <div className="accordion accordion-icon-gradient" id="accordionExample3">
-              {careersData.map((item, idx) => (
-                <div className="accordion-item" key={idx}>
-                  <h2 className="accordion-header" id={`heading${idx}`}>
-                    <button
-                      className={`accordion-button ${idx !== 0 ? 'collapsed' : ''}`}
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target={`#collapse${idx}`}
-                      aria-expanded={idx === 0 ? 'true' : 'false'}
-                      aria-controls={`collapse${idx}`}
-                    >
-                      {item.title}
-                    </button>
-                  </h2>
-                  <div
-                    id={`collapse${idx}`}
-                    className={`accordion-collapse collapse ${idx === 0 ? 'show' : ''}`}
-                    aria-labelledby={`heading${idx}`}
-                    data-bs-parent="#accordionExample3"
-                  >
-                    <div className="accordion-body">{item.description}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <Col md={8} className="mb-5">
+                      <Accordion defaultActiveKey={'0'} className="accordion-icon-gradient" id="accordionExample3">
+                        {careersData.map((item, idx) => (
+                          <AccordionItem eventKey={`${idx}`} key={idx}>
+                            <AccordionHeader as={'h2'} id="heading7">
+                              {item.title}
+                            </AccordionHeader>
+                            <AccordionBody>{item.description}</AccordionBody>
+                          </AccordionItem>
+                        ))}
+                      </Accordion>
+                    </Col>
           <div className="col-md-4 sidebar">
             <div className="widget p-4 border-0 rounded" style={{ backgroundColor: '#eeeae7' }}>
               <h4 className="mb-4" style={{ color: '#0f252f' }}>Get Your Book Report</h4>
