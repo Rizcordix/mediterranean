@@ -190,7 +190,7 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
           <Dropdown className="nav-item megamenu services-megamenu">
             <DropdownToggle
               as={'a'}
-              className={`nav-link ${isActive('/elements') ? 'active' : ''}`}
+              className={`nav-link ${pathname.startsWith('/services/') ? 'active' : ''}`}
               id="servicesMenu"
               data-bs-toggle="dropdown"
               aria-haspopup="true"
@@ -378,9 +378,9 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
             </Link>
           </li> */}
           <Dropdown className="nav-item">
-          <DropdownToggle as={'a'} className={`nav-link`} role="button">
+            <DropdownToggle as={'a'} className={`nav-link ${pathname === '/contact' || pathname === '/terms' || pathname === '/privacy' ? 'active' : ''}`} role="button">
             Support
-          </DropdownToggle>
+            </DropdownToggle>
           <DropdownMenu renderOnMount>
             <li>
               {' '}
@@ -413,7 +413,7 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
 
           <li className="nav-item">
             <Link 
-              className={`nav-link ${pathname === '/reviews' ? 'active' : ''}`} 
+              className={`nav-link ${pathname === '/book-samples' ? 'active' : ''}`} 
               href="/book-samples">
               Samples
             </Link>

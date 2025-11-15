@@ -4,7 +4,7 @@ import Hero from './components/Hero'
 // import About from './components/About'
 import Service from './components/Service'
 // import Testimonial from './components/Testimonial'
-import Features from './components/Features'
+import CTA from './components/Features'
 import Info from './components/Info'
 // import Newsletter from './components/Newsletter'
 import Footer from './components/Footer'
@@ -29,7 +29,7 @@ const CreativeAgencyPage = () => {
       <div className="divider mt-2" />
       <Service />
       <FeaturedBooksSection />
-      <Features />
+      <CTA />
       <PricingComponent />
       <ProcedureSection />
       <Info />
