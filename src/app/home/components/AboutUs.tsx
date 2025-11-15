@@ -1,4 +1,6 @@
 import React from 'react';
+import Image from 'next/image';
+import imagesrc from '@/assets/images/cta/800x740.png';
 
 const AboutUs = () => {
   return (
@@ -35,8 +37,10 @@ const AboutUs = () => {
               }}
             />
             
-            <img
-              src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&q=80"
+            <Image
+              src={imagesrc.src}
+              width={800}
+              height={740}
               alt="About us"
               className="img-fluid rounded shadow-lg"
               style={{ 
