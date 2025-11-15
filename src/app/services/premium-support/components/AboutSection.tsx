@@ -126,9 +126,8 @@ const Details = () => {
                 letterSpacing: '-0.5px',
               }}
             >
-              A Complete Book
-              <br />
-              <span style={{ fontWeight: '600' }}>Writing Solution</span>
+              Exceptional Author Support for a
+              <span style={{ fontWeight: '600' }}> Seamless Publishing Experience</span>
             </h2>
 
             {/* Lead Paragraph */}
@@ -141,10 +140,7 @@ const Details = () => {
                 fontWeight: '400',
               }}
             >
-              Writing a book can be overwhelming, but it doesn&apos;t have to be. With
-              our professional book writing service, you get a creative partner who
-              understands your concept, supports your goals, and transforms your
-              ideas into a clear, structured, and engaging narrative.
+              Publishing a book involves countless decisions—and we&apos;re here to make every step easier. Our premium support gives you direct access to experienced specialists who provide personalized advice, timely updates, and complete clarity from start to finish. No matter the question or concern, our team is always ready to help.
             </p>
 
             {/* Body Paragraph */}
@@ -157,12 +153,7 @@ const Details = () => {
                 opacity: 0.9,
               }}
             >
-              Our team of skilled writers works closely with you to develop your
-              storyline, refine your message, and craft every chapter with
-              precision. Whether you&apos;re writing fiction, nonfiction, business,
-              self-help, or memoirs, we ensure your manuscript is thoroughly
-              researched, beautifully written, and ready for editing, publishing,
-              and marketing.
+              With Mediterranean Publishing&apos;s premium support, you&apos;re never navigating the process alone. We keep you informed, handle challenges proactively, and ensure your project stays on track with professional oversight. From writing and design to marketing and launch, we offer the ongoing support and attention your book deserves—so you can feel confident, empowered, and fully supported throughout your publishing journey.
             </p>
 
             {/* Signature Statement */}

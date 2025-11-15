@@ -126,9 +126,9 @@ const Details = () => {
                 letterSpacing: '-0.5px',
               }}
             >
-              A Complete Book
+              Custom Illustrations to 
               <br />
-              <span style={{ fontWeight: '600' }}>Writing Solution</span>
+              <span style={{ fontWeight: '600' }}> Enhance Your Book&apos;s Appeal</span>
             </h2>
 
             {/* Lead Paragraph */}
@@ -141,10 +141,7 @@ const Details = () => {
                 fontWeight: '400',
               }}
             >
-              Writing a book can be overwhelming, but it doesn&apos;t have to be. With
-              our professional book writing service, you get a creative partner who
-              understands your concept, supports your goals, and transforms your
-              ideas into a clear, structured, and engaging narrative.
+              Illustrations are more than just images—they tell a story, evoke emotion, and engage readers in a unique way. Our team of professional illustrators collaborates with you to design artwork that perfectly complements your text and strengthens your book&apos;s visual identity.
             </p>
 
             {/* Body Paragraph */}
@@ -157,12 +154,7 @@ const Details = () => {
                 opacity: 0.9,
               }}
             >
-              Our team of skilled writers works closely with you to develop your
-              storyline, refine your message, and craft every chapter with
-              precision. Whether you&apos;re writing fiction, nonfiction, business,
-              self-help, or memoirs, we ensure your manuscript is thoroughly
-              researched, beautifully written, and ready for editing, publishing,
-              and marketing.
+              From character design and scene creation to cover art and full-page illustrations, we ensure every detail aligns with your vision. Whether it&apos;s a children&apos;s story, graphic novel, or illustrated guide, Mediterranean Publishing delivers high-quality, polished illustrations that captivate readers, enrich the reading experience, and help your book stand out in a crowded marketplace.
             </p>
 
             {/* Signature Statement */}

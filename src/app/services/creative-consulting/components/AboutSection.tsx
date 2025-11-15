@@ -126,9 +126,8 @@ const Details = () => {
                 letterSpacing: '-0.5px',
               }}
             >
-              A Complete Book
-              <br />
-              <span style={{ fontWeight: '600' }}>Writing Solution</span>
+              Strategic Guidance to
+              <span style={{ fontWeight: '600' }}> Elevate Your Book Project</span>
             </h2>
 
             {/* Lead Paragraph */}
@@ -141,10 +140,7 @@ const Details = () => {
                 fontWeight: '400',
               }}
             >
-              Writing a book can be overwhelming, but it doesn&apos;t have to be. With
-              our professional book writing service, you get a creative partner who
-              understands your concept, supports your goals, and transforms your
-              ideas into a clear, structured, and engaging narrative.
+              Every successful book starts with a clear vision and plan. Our creative consulting services help you refine your ideas, structure your content, and develop strategies that maximize your book&apos;s impact. Whether it&apos;s story development, design direction, or marketing planning, we provide tailored guidance to ensure your project stays on track.
             </p>
 
             {/* Body Paragraph */}
@@ -157,12 +153,7 @@ const Details = () => {
                 opacity: 0.9,
               }}
             >
-              Our team of skilled writers works closely with you to develop your
-              storyline, refine your message, and craft every chapter with
-              precision. Whether you&apos;re writing fiction, nonfiction, business,
-              self-help, or memoirs, we ensure your manuscript is thoroughly
-              researched, beautifully written, and ready for editing, publishing,
-              and marketing.
+              Mediterranean Publishing works closely with you to understand your goals, audience, and unique voice. From brainstorming and conceptualization to detailed feedback on writing, design, and promotion, our consulting empowers authors to make informed decisions and bring their vision to life. With our expertise, your book project is guided with clarity, creativity, and confidence from start to finish.
             </p>
 
             {/* Signature Statement */}

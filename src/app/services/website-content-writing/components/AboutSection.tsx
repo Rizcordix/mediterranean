@@ -126,9 +126,8 @@ const Details = () => {
                 letterSpacing: '-0.5px',
               }}
             >
-              A Complete Book
-              <br />
-              <span style={{ fontWeight: '600' }}>Writing Solution</span>
+              Professional Web Copy Tailored
+              <span style={{ fontWeight: '600' }}> to Your Brand Voice</span>
             </h2>
 
             {/* Lead Paragraph */}
@@ -141,10 +140,7 @@ const Details = () => {
                 fontWeight: '400',
               }}
             >
-              Writing a book can be overwhelming, but it doesn&apos;t have to be. With
-              our professional book writing service, you get a creative partner who
-              understands your concept, supports your goals, and transforms your
-              ideas into a clear, structured, and engaging narrative.
+              Effective website content is more than just text—it&apos;s strategy, clarity, and persuasion working together. With our Website Content Writing service, we craft content that aligns with your brand messaging, communicates your value instantly, and guides your visitors through a smooth, conversion-driven journey.
             </p>
 
             {/* Body Paragraph */}
@@ -157,12 +153,7 @@ const Details = () => {
                 opacity: 0.9,
               }}
             >
-              Our team of skilled writers works closely with you to develop your
-              storyline, refine your message, and craft every chapter with
-              precision. Whether you&apos;re writing fiction, nonfiction, business,
-              self-help, or memoirs, we ensure your manuscript is thoroughly
-              researched, beautifully written, and ready for editing, publishing,
-              and marketing.
+              We create SEO-optimized web copy for homepages, service pages, product pages, about sections, and more. Every word is chosen with purpose: to improve readability, enhance search visibility, and inspire action. Whether you&apos;re building a brand-new website or refreshing an existing one, our content brings your digital presence to life with the perfect blend of creativity and professionalism.
             </p>
 
             {/* Signature Statement */}

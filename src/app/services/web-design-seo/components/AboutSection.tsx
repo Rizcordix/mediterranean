@@ -126,9 +126,8 @@ const Details = () => {
                 letterSpacing: '-0.5px',
               }}
             >
-              A Complete Book
-              <br />
-              <span style={{ fontWeight: '600' }}>Writing Solution</span>
+              A Complete Digital Experience
+              <span style={{ fontWeight: '600' }}> Built for Performance</span>
             </h2>
 
             {/* Lead Paragraph */}
@@ -141,10 +140,7 @@ const Details = () => {
                 fontWeight: '400',
               }}
             >
-              Writing a book can be overwhelming, but it doesn&apos;t have to be. With
-              our professional book writing service, you get a creative partner who
-              understands your concept, supports your goals, and transforms your
-              ideas into a clear, structured, and engaging narrative.
+             A great website isn&apos;t just beautiful—it&apos;s strategic, optimized, and built to grow with your business. Our Web Design & SEO service blends modern design principles with data-driven optimization to ensure your site doesn’t just look good but performs exceptionally well across devices and search engines.
             </p>
 
             {/* Body Paragraph */}
@@ -157,12 +153,7 @@ const Details = () => {
                 opacity: 0.9,
               }}
             >
-              Our team of skilled writers works closely with you to develop your
-              storyline, refine your message, and craft every chapter with
-              precision. Whether you&apos;re writing fiction, nonfiction, business,
-              self-help, or memoirs, we ensure your manuscript is thoroughly
-              researched, beautifully written, and ready for editing, publishing,
-              and marketing.
+              We create visually captivating, fast-loading, and user-friendly websites tailored to your brand’s identity and goals. Then, we layer in smart SEO practices—keyword optimization, on-page structure, technical enhancements, and content strategy—to increase your visibility and drive organic traffic. With our approach, you don’t just get a website; you get a digital ecosystem designed to rank higher, convert better, and support long-term business success.
             </p>
 
             {/* Signature Statement */}

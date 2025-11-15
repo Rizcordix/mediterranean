@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { usePopup } from '@/components/wrappers/PopupContext';
+import { Button } from 'react-bootstrap';
 
 // --- Type Definitions ---
 
@@ -276,6 +278,8 @@ const PricingComponent: React.FC = () => {
     { id: 'marketing', label: 'Book Marketing' }
   ];
 
+  const { openQuote } = usePopup();
+
   return (
     <div style={{
       backgroundColor: '#f8f9fa',
@@ -508,9 +512,9 @@ const PricingComponent: React.FC = () => {
               </div>
 
               <div style={{ display: 'flex', gap: '10px', marginTop: 'auto', alignItems: 'center', justifyContent: 'center' }}>
-                <Link href="" className=" btn btn-m btn-grad text-white mb-0 w-100">
+                <Button onClick={openQuote} className=" btn btn-m btn-grad text-white mb-0 w-100">
                 Get Quote
-              </Link>
+              </Button>
                 {/* <Link href="/contact" >
                 <button
                   style={{

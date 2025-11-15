@@ -126,9 +126,9 @@ const Details = () => {
                 letterSpacing: '-0.5px',
               }}
             >
-              A Complete Book
+              Professional
               <br />
-              <span style={{ fontWeight: '600' }}>Writing Solution</span>
+              <span style={{ fontWeight: '600' }}>  Printing Solutions</span>
             </h2>
 
             {/* Lead Paragraph */}
@@ -141,10 +141,7 @@ const Details = () => {
                 fontWeight: '400',
               }}
             >
-              Writing a book can be overwhelming, but it doesn&apos;t have to be. With
-              our professional book writing service, you get a creative partner who
-              understands your concept, supports your goals, and transforms your
-              ideas into a clear, structured, and engaging narrative.
+              A well-printed book leaves a lasting impression on readers. Our printing services cover everything from paperbacks to hardcovers, offering a range of sizes, bindings, and finishes to suit your project. Every book is produced with attention to quality and durability.
             </p>
 
             {/* Body Paragraph */}
@@ -157,12 +154,7 @@ const Details = () => {
                 opacity: 0.9,
               }}
             >
-              Our team of skilled writers works closely with you to develop your
-              storyline, refine your message, and craft every chapter with
-              precision. Whether you&apos;re writing fiction, nonfiction, business,
-              self-help, or memoirs, we ensure your manuscript is thoroughly
-              researched, beautifully written, and ready for editing, publishing,
-              and marketing.
+              We guide you through the entire printing process, from selecting materials and formats to proofing and final production. Whether it&apos;s a novel, nonfiction work, or illustrated book, Mediterranean Publishing ensures your printed book looks professional, feels premium, and represents your work exactly as you envisioned. With our expertise, your book will be ready to impress readers and stand out on any bookshelf.
             </p>
 
             {/* Signature Statement */}

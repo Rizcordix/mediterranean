@@ -20,7 +20,7 @@ const AgencyStartUpPage = () => {
       <div className="divider mt-5" />
       <AboutUs />
       <CTA />
-      <PricingComponent defaultTab={1} />
+      <PricingComponent defaultTab={4} />
       <ProcedureSection />
       <Categories />
       <Testimonials />

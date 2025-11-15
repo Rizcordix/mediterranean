@@ -17,9 +17,9 @@ const Hero = () => {
           <Col sm={10} lg={6} className="all-text-white my-5 mt-md-0 position-relative">
             <div className="text-start py-0 py-md-5 my-5">
               <h6>You found it!</h6>
-              <h2 className="display-4 fw-normal">Professional Book Writing Services.</h2>
+              <h2 className="display-4 fw-normal">Web Design & SEO That Elevates Your Online Presence.</h2>
               <p className="mb-4 display-8 lh-0 fw-normal">
-                Every great book starts with a powerful idea — and we&apos;re here to turn yours into a polished, compelling manuscript. At Meditarranean Publishing, our expert writers help you craft books that captivate readers, reflect your unique voice, and meet the highest publishing standards.
+                Your website is the face of your brand—make it unforgettable. With our Web Design & SEO service, we combine stunning visuals with powerful search optimization to help you attract, engage, and convert your ideal audience effortlessly.
               </p>
               <Button onClick={openQuote} variant="white" className="me-3">
                 Get Your Instant Quote

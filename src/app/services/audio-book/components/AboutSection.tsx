@@ -126,9 +126,9 @@ const Details = () => {
                 letterSpacing: '-0.5px',
               }}
             >
-              A Complete Book
+              High-Quality
               <br />
-              <span style={{ fontWeight: '600' }}>Writing Solution</span>
+              <span style={{ fontWeight: '600' }}> Audiobook Production.</span>
             </h2>
 
             {/* Lead Paragraph */}
@@ -141,10 +141,7 @@ const Details = () => {
                 fontWeight: '400',
               }}
             >
-              Writing a book can be overwhelming, but it doesn&apos;t have to be. With
-              our professional book writing service, you get a creative partner who
-              understands your concept, supports your goals, and transforms your
-              ideas into a clear, structured, and engaging narrative.
+              Audiobooks are one of the fastest-growing formats in publishing, and having your book available in audio can dramatically increase your audience. Our expert narrators, voiceover artists, and audio engineers work together to transform your written content into a compelling, engaging, and emotionally rich listening experience.
             </p>
 
             {/* Body Paragraph */}
@@ -157,12 +154,7 @@ const Details = () => {
                 opacity: 0.9,
               }}
             >
-              Our team of skilled writers works closely with you to develop your
-              storyline, refine your message, and craft every chapter with
-              precision. Whether you&apos;re writing fiction, nonfiction, business,
-              self-help, or memoirs, we ensure your manuscript is thoroughly
-              researched, beautifully written, and ready for editing, publishing,
-              and marketing.
+             From selecting the right narrator to recording, sound mastering, and preparing files for distribution, we handle everything professionally and seamlessly. Whether your book is fiction, nonfiction, self-help, memoir, or business-focused, we ensure every chapter is delivered with clarity, expression, and polished audio quality. With Mediterranean Publishing, you get an audiobook that resonates with listeners, strengthens your branding, and opens new sales opportunities across platforms like Audible, Apple Books, and Spotify.
             </p>
 
             {/* Signature Statement */}
