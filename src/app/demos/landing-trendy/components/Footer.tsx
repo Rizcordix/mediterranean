@@ -12,13 +12,12 @@ const Footer = () => {
         <Container>
           <Row>
             <Col md={8} className="mx-auto">
-              <div className="widget text-center mt-5">
+              <div className="widget text-center mt-1">
                 <Link href="/" className="footer-logo mb-3 d-block">
                   <Image src={logoImg} alt="logo" className="footer-logo-item" />
                 </Link>
                 <p className="mt-3">
-                  We aim to achieve the goal as we provide innovative ideas, designs, and multimedia solutions to our clients. Our services reflect
-                  our knowledge and in depth understanding of the project.
+                  At Meditarranean Publishing, we are committed to helping authors, businesses, and creators bring their stories to life with professional writing, design, and publishing solutions. Your success is our passion—let&apos;s create something extraordinary together.
                 </p>
                 <ul className="p-0 list-inline">
                   <li className="list-inline-item me-4">
@@ -29,41 +28,41 @@ const Footer = () => {
                     <i className="me-1 text-primary ti-headphone-alt" /> (251) 854-6308{' '}
                   </li>
                   <li className="list-inline-item me-4">
-                    <i className="me-1 text-primary ti-email" /> <Link href="mailto:yourid@website.com">help@larexa.com</Link>{' '}
+                    <i className="me-1 text-primary ti-email" /> <Link href="mailto:info@mediterraneanpublishing.com">info@mediterraneanpublishing.com</Link>{' '}
                   </li>
                 </ul>
                 <div className="divider my-3" />
                 <div className="copyright-links my-2">
                   <ul className="list-inline">
                     <li className="list-inline-item ps-2">
-                      <Link className="list-group-item-action" href="">
-                        Home
-                      </Link>
-                    </li>
-                    <li className="list-inline-item ps-2">
-                      <Link className="list-group-item-action" href="">
+                      <Link className="list-group-item-action" href="/about">
                         About Us
                       </Link>
                     </li>
                     <li className="list-inline-item ps-2">
-                      <Link className="list-group-item-action" href="">
-                        Career
+                      <Link className="list-group-item-action" href="/contact">
+                        Contact
                       </Link>
                     </li>
                     <li className="list-inline-item ps-2">
-                      <Link className="list-group-item-action" href="">
+                      <Link className="list-group-item-action" href="/reviews">
+                        Reviews
+                      </Link>
+                    </li>
+                    <li className="list-inline-item ps-2">
+                      <Link className="list-group-item-action" href="/privacy">
                         Privacy Policy
                       </Link>
                     </li>
                     <li className="list-inline-item ps-2">
-                      <Link className="list-group-item-action pe-0" href="">
-                        Use of terms
+                      <Link className="list-group-item-action pe-0" href="/terms">
+                        terms of service
                       </Link>
                     </li>
                   </ul>
                 </div>
                 <div className="copyright-text">
-                  ©{currentYear} All Rights Reserved by <Link href=""> Larexa.</Link>
+                  ©{currentYear} All Rights Reserved by <Link href=""> Mediterranean Publishing.</Link>
                 </div>
               </div>
             </Col>
