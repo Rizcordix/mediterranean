@@ -140,7 +140,7 @@ const Details = () => {
                 fontWeight: '400',
               }}
             >
-             Whether you're a first-time writer or a seasoned author, our publishing options are built to elevate your book&apos;s quality, visibility, and reader impact—all while keeping the process smooth and stress-free.
+             Whether you&apos;re a first-time writer or a seasoned author, our publishing options are built to elevate your book&apos;s quality, visibility, and reader impact—all while keeping the process smooth and stress-free.
             </p>
 
             {/* Body Paragraph */}
