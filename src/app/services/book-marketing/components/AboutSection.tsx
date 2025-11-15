@@ -126,9 +126,9 @@ const Details = () => {
                 letterSpacing: '-0.5px',
               }}
             >
-              A Complete Book
+              Comprehensive
               <br />
-              <span style={{ fontWeight: '600' }}>Writing Solution</span>
+              <span style={{ fontWeight: '600' }}> Marketing Solutions.</span>
             </h2>
 
             {/* Lead Paragraph */}
@@ -141,10 +141,7 @@ const Details = () => {
                 fontWeight: '400',
               }}
             >
-              Writing a book can be overwhelming, but it doesn&apos;t have to be. With
-              our professional book writing service, you get a creative partner who
-              understands your concept, supports your goals, and transforms your
-              ideas into a clear, structured, and engaging narrative.
+              Publishing a book is just the beginning—getting it into readers&apos; hands requires effective marketing. Our team develops customized strategies that include social media promotion, email campaigns, blog content, and other targeted marketing efforts designed to maximize your book&apos;s reach.
             </p>
 
             {/* Body Paragraph */}
@@ -157,12 +154,7 @@ const Details = () => {
                 opacity: 0.9,
               }}
             >
-              Our team of skilled writers works closely with you to develop your
-              storyline, refine your message, and craft every chapter with
-              precision. Whether you&apos;re writing fiction, nonfiction, business,
-              self-help, or memoirs, we ensure your manuscript is thoroughly
-              researched, beautifully written, and ready for editing, publishing,
-              and marketing.
+              We focus on building your author brand while promoting your book. From crafting persuasive copy to managing ad campaigns, influencer collaborations, and book launch promotions, Mediterranean Publishing ensures your work is seen, appreciated, and shared. Our goal is simple: to help your book succeed commercially while establishing your presence as a trusted author in your genre
             </p>
 
             {/* Signature Statement */}

@@ -1,6 +1,8 @@
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
+import { usePopup } from "@/components/wrappers/PopupContext";
 import Link from "next/link";
+import { Button } from "react-bootstrap";
 
 // --- Type Definitions ---
 
@@ -310,6 +312,7 @@ const PricingComponent: React.FC<PricingComponentProps> = ({ defaultTab }) => {
 
   // If defaultTab prop is provided we will hide the tab bar and disable switching.
   const locked = typeof defaultTab !== "undefined";
+  const { openQuote } = usePopup();
 
   return (
     <div
@@ -575,9 +578,9 @@ const PricingComponent: React.FC<PricingComponentProps> = ({ defaultTab }) => {
                   justifyContent: "center",
                 }}
               >
-                <Link href="" className=" btn btn-m btn-grad text-white mb-0 w-100">
+                <Button onClick={ openQuote } className=" btn btn-m btn-grad text-white mb-0 w-100">
                   Get Quote
-                </Link>
+                </Button>
               </div>
             </div>
           ))}

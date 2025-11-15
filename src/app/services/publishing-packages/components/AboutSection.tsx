@@ -126,9 +126,8 @@ const Details = () => {
                 letterSpacing: '-0.5px',
               }}
             >
-              A Complete Book
-              <br />
-              <span style={{ fontWeight: '600' }}>Writing Solution</span>
+             Comprehensive Publishing Solutions
+              <span style={{ fontWeight: '600' }}> for Every Author</span>
             </h2>
 
             {/* Lead Paragraph */}
@@ -141,10 +140,7 @@ const Details = () => {
                 fontWeight: '400',
               }}
             >
-              Writing a book can be overwhelming, but it doesn&apos;t have to be. With
-              our professional book writing service, you get a creative partner who
-              understands your concept, supports your goals, and transforms your
-              ideas into a clear, structured, and engaging narrative.
+             Whether you're a first-time writer or a seasoned author, our publishing options are built to elevate your book&apos;s quality, visibility, and reader impact—all while keeping the process smooth and stress-free.
             </p>
 
             {/* Body Paragraph */}
@@ -157,12 +153,7 @@ const Details = () => {
                 opacity: 0.9,
               }}
             >
-              Our team of skilled writers works closely with you to develop your
-              storyline, refine your message, and craft every chapter with
-              precision. Whether you&apos;re writing fiction, nonfiction, business,
-              self-help, or memoirs, we ensure your manuscript is thoroughly
-              researched, beautifully written, and ready for editing, publishing,
-              and marketing.
+              Our Publishing Packages include everything from editorial polish and professional formatting to compelling cover design, global distribution, and strategic marketing essentials. Each package is crafted to support you at every stage of your publishing journey, giving you full control with expert guidance. No hidden steps, no confusion—just a clear, structured path to getting your book out into the world in the best possible light.
             </p>
 
             {/* Signature Statement */}

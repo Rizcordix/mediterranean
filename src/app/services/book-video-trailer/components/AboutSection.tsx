@@ -126,9 +126,8 @@ const Details = () => {
                 letterSpacing: '-0.5px',
               }}
             >
-              A Complete Book
-              <br />
-              <span style={{ fontWeight: '600' }}>Writing Solution</span>
+              Engaging Video Trailers to
+              <span style={{ fontWeight: '600' }}> Promote Your Book</span>
             </h2>
 
             {/* Lead Paragraph */}
@@ -141,10 +140,7 @@ const Details = () => {
                 fontWeight: '400',
               }}
             >
-              Writing a book can be overwhelming, but it doesn&apos;t have to be. With
-              our professional book writing service, you get a creative partner who
-              understands your concept, supports your goals, and transforms your
-              ideas into a clear, structured, and engaging narrative.
+              A book video trailer is a powerful marketing tool that visually tells your story and sparks interest. Our creative team develops cinematic, attention-grabbing trailers tailored to your book&apos;s theme, genre, and target audience.
             </p>
 
             {/* Body Paragraph */}
@@ -157,12 +153,7 @@ const Details = () => {
                 opacity: 0.9,
               }}
             >
-              Our team of skilled writers works closely with you to develop your
-              storyline, refine your message, and craft every chapter with
-              precision. Whether you&apos;re writing fiction, nonfiction, business,
-              self-help, or memoirs, we ensure your manuscript is thoroughly
-              researched, beautifully written, and ready for editing, publishing,
-              and marketing.
+              From concept development and storyboarding to animation, voiceovers, and editing, we manage every aspect of production. Mediterranean Publishing ensures your trailer communicates your book&apos;s unique appeal, builds anticipation, and boosts engagement across social media, websites, and other promotional channels. Make your book unforgettable with a professional video trailer that draws readers in and drives sales.
             </p>
 
             {/* Signature Statement */}

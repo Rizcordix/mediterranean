@@ -126,9 +126,9 @@ const Details = () => {
                 letterSpacing: '-0.5px',
               }}
             >
-              A Complete Book
+              High Quality and Impactful
               <br />
-              <span style={{ fontWeight: '600' }}>Writing Solution</span>
+              <span style={{ fontWeight: '600' }}> eBook Ghostwriting.</span>
             </h2>
 
             {/* Lead Paragraph */}
@@ -141,10 +141,7 @@ const Details = () => {
                 fontWeight: '400',
               }}
             >
-              Writing a book can be overwhelming, but it doesn&apos;t have to be. With
-              our professional book writing service, you get a creative partner who
-              understands your concept, supports your goals, and transforms your
-              ideas into a clear, structured, and engaging narrative.
+              Writing an eBook can be overwhelming, especially when you have a great idea but no time to put it into words. Our skilled ghostwriters partner with you to understand your goals, tone, and message—then craft an engaging, well-structured manuscript that aligns perfectly with your voice and audience.
             </p>
 
             {/* Body Paragraph */}
@@ -157,12 +154,7 @@ const Details = () => {
                 opacity: 0.9,
               }}
             >
-              Our team of skilled writers works closely with you to develop your
-              storyline, refine your message, and craft every chapter with
-              precision. Whether you&apos;re writing fiction, nonfiction, business,
-              self-help, or memoirs, we ensure your manuscript is thoroughly
-              researched, beautifully written, and ready for editing, publishing,
-              and marketing.
+              From research and outlining to writing, revisions, and final polishing, we handle the entire process with professionalism and confidentiality. Whether you need a nonfiction guide, self-help book, fiction story, business eBook, or educational content, Mediterranean Publishing ensures your final manuscript is original, impactful, and publication-ready. With our ghostwriting expertise, you get a high-quality eBook that strengthens your brand and positions you as an authority in your niche.
             </p>
 
             {/* Signature Statement */}

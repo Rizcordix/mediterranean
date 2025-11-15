@@ -126,9 +126,9 @@ const Details = () => {
                 letterSpacing: '-0.5px',
               }}
             >
-              A Complete Book
-              <br />
-              <span style={{ fontWeight: '600' }}>Writing Solution</span>
+              Grow Your Authority With 
+              
+              <span style={{ fontWeight: '600' }}> Strategic Article Publishing</span>
             </h2>
 
             {/* Lead Paragraph */}
@@ -141,10 +141,7 @@ const Details = () => {
                 fontWeight: '400',
               }}
             >
-              Writing a book can be overwhelming, but it doesn&apos;t have to be. With
-              our professional book writing service, you get a creative partner who
-              understands your concept, supports your goals, and transforms your
-              ideas into a clear, structured, and engaging narrative.
+              Publishing well-written articles is one of the most effective ways to establish yourself as a thought leader. Our team assists you in crafting engaging, research-backed, and SEO-optimized articles that reflect your expertise and resonate with your target readers.
             </p>
 
             {/* Body Paragraph */}
@@ -157,12 +154,7 @@ const Details = () => {
                 opacity: 0.9,
               }}
             >
-              Our team of skilled writers works closely with you to develop your
-              storyline, refine your message, and craft every chapter with
-              precision. Whether you&apos;re writing fiction, nonfiction, business,
-              self-help, or memoirs, we ensure your manuscript is thoroughly
-              researched, beautifully written, and ready for editing, publishing,
-              and marketing.
+              From idea development to writing, editing, and securing placements on relevant blogs, magazines, and online platforms, we manage the entire process for you. Whether you&apos;re an author promoting a new book, a professional showcasing your knowledge, or a business looking to expand your digital presence, our article publication service helps you reach the right audience with a powerful, polished message. Let Mediterranean Publishing elevate your brand through strategic content distribution and high-impact storytelling.
             </p>
 
             {/* Signature Statement */}

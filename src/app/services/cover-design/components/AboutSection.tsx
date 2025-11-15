@@ -126,9 +126,8 @@ const Details = () => {
                 letterSpacing: '-0.5px',
               }}
             >
-              A Complete Book
-              <br />
-              <span style={{ fontWeight: '600' }}>Writing Solution</span>
+              Professional Cover Design to
+              <span style={{ fontWeight: '600' }}> Showcase Your Book</span>
             </h2>
 
             {/* Lead Paragraph */}
@@ -141,10 +140,7 @@ const Details = () => {
                 fontWeight: '400',
               }}
             >
-              Writing a book can be overwhelming, but it doesn&apos;t have to be. With
-              our professional book writing service, you get a creative partner who
-              understands your concept, supports your goals, and transforms your
-              ideas into a clear, structured, and engaging narrative.
+              Your book cover is the first thing readers notice, and a well-designed cover can make all the difference in grabbing attention. Our experienced designers work closely with you to create visually stunning covers that reflect your book&apos;s genre, tone, and theme.
             </p>
 
             {/* Body Paragraph */}
@@ -157,12 +153,7 @@ const Details = () => {
                 opacity: 0.9,
               }}
             >
-              Our team of skilled writers works closely with you to develop your
-              storyline, refine your message, and craft every chapter with
-              precision. Whether you&apos;re writing fiction, nonfiction, business,
-              self-help, or memoirs, we ensure your manuscript is thoroughly
-              researched, beautifully written, and ready for editing, publishing,
-              and marketing.
+              From concept sketches and typography to color palettes and final design, Mediterranean Publishing ensures every detail aligns with your vision. We combine creativity with market insights to produce covers that not only look beautiful but also sell effectively. Whether it&apos;s a paperback, hardcover, or ebook, your cover will leave a memorable impression and entice readers to explore your story.
             </p>
 
             {/* Signature Statement */}
