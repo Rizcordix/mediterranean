@@ -16,9 +16,9 @@ const Hero = () => {
         <Row className="all-text-white">
           <Col md={12} className="align-self-center">
             {/* Replaced the phone number with a relevant sub-heading */}
-            <h6 className="display-6 fw-bold mt-9 mb-0">
+            <h1 className="display-6 fw-bold mt-9 mb-0">
               Hear What Our Clients Say
-            </h6>
+            </h1>
             {/* Updated the main heading */}
             <h1 className="fw-bold display-1 mb-2 mb-md-n4">
               Client Reviews

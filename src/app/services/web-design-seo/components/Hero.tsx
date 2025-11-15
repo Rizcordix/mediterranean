@@ -1,13 +1,15 @@
 'use client'
 
-import Image from 'next/image'
+// import Image from 'next/image'
 import React from 'react'
-import blog1 from '@/assets/images/blog/01.jpg'
+// import blog1 from '@/assets/images/blog/01.jpg'
 import { Button, Col, Container, Row } from 'react-bootstrap'
-import dynamic from 'next/dynamic'
-const GlightBox = dynamic(() => import('@/components/GlightBox'), { ssr: false })
+// import dynamic from 'next/dynamic'
+import { usePopup } from '@/components/wrappers/PopupContext'
+// const GlightBox = dynamic(() => import('@/components/GlightBox'), { ssr: false })
 
 const Hero = () => {
+  const { openQuote } = usePopup();
   return (
     <section className="p-0 py-5 bg-grad2 pattern-overlay-2">
       <Container>
@@ -15,25 +17,17 @@ const Hero = () => {
           <Col sm={10} lg={6} className="all-text-white my-5 mt-md-0 position-relative">
             <div className="text-start py-0 py-md-5 my-5">
               <h6>You found it!</h6>
-              <h2 className="display-4 fw-normal">Expect nothing less than perfect.</h2>
+              <h2 className="display-4 fw-normal">Web Design & SEO That Elevates Your Online Presence.</h2>
               <p className="mb-4 display-8 lh-0 fw-normal">
-                Our friendly team members are always willing to help you understand your present technology requirements and provide suggestions on
-                your future needs.
+                Your website is the face of your brand—make it unforgettable. With our Web Design & SEO service, we combine stunning visuals with powerful search optimization to help you attract, engage, and convert your ideal audience effortlessly.
               </p>
-              <Button variant="white" className="me-3">
-                Get a demo
+              <Button onClick={openQuote} variant="white" className="me-3">
+                Get Your Instant Quote
               </Button>
-              <Button variant="outline-white">Learn more!</Button>
             </div>
           </Col>
           <Col sm={10} md={6} className="d-none d-lg-block mb-5 position-relative">
-            <Image className="rounded shadow" src={blog1} alt="blog1" />
-            <div className="position-absolute top-50 start-50 translate-middle">
-              <GlightBox className="btn btn-grad btn-round btn-lg zoom-on-hover" data-glightbox href="https://youtu.be/n_Cn8eFo7u8">
-                {' '}
-                <i className="fa fa-play" />{' '}
-              </GlightBox>
-            </div>
+            <img className="rounded shadow" src='https://placehold.co/600x400' width={600} height={400} alt="blog1" />
           </Col>
         </Row>
       </Container>

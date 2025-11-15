@@ -1,104 +1,170 @@
-import Image from 'next/image'
-import React from 'react'
-import signature from '@/assets/images/mockups/signature.png'
-import service9 from '@/assets/images/service/09.jpg'
-import { Col, Container, Row } from 'react-bootstrap'
+import React from 'react';
 
 const AboutUs = () => {
   return (
-    <section className="position-relative bg-light">
-      <Container>
-        <Row className="justify-content-between align-items-center">
-          <Col md={6}>
-            <figure className="w-100 ie-height-600">
-              <svg
-                version="1.1"
-                id="about-image"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlnsXlink="http://www.w3.org/1999/xlink"
-                x="0px"
-                y="0px"
-                viewBox="0 0 678 595"
-                xmlSpace="preserve">
-                <defs>
-                  <linearGradient id="BgGradient">
-                    <stop className="fill-grad-start" offset="0%" />
-                    <stop className="fill-grad-end" offset="100%" />
-                  </linearGradient>
-                </defs>
-                <path
-                  id="about-image-bg"
-                  fill="url(#BgGradient)"
-                  d="M652.2,493.6c-51.9,58.8-395.9,51.9-395.9,51.9S7.4,581.8,50.6,396.8
-          C82.3,261.5,2.2,56.3,97.3,20c49-18.7,351.7-49,487.8,70.9C713.1,203.4,677.3,465.1,652.2,493.6z"
-                />
-                <g id="XMLID_120_">
-                  <defs>
-                    <path
-                      id="XMLID_7_"
-                      d="M635.5,506.9c-51.9,58.8-395.9,51.9-395.9,51.9S-9.3,595,34,410C65.6,274.7-14.4,69.5,80.6,33.2
-              c49-18.7,351.7-49,487.8,70.9C696.4,216.7,660.6,478.4,635.5,506.9z"
-                    />
-                  </defs>
-                  <clipPath id="XMLID_155_">
-                    <use xlinkHref="#XMLID_7_" style={{ overflow: 'visible' }} />
-                  </clipPath>
-                  <g style={{ clipPath: 'url(#XMLID_155_)' }}>
-                    <image
-                      style={{ overflow: 'visible' }}
-                      width={700}
-                      height={700}
-                      id="XMLID_121_"
-                      xlinkHref={service9.src}
-                      transform="matrix(0.9999 0 0 0.9999 1 -81)"></image>
-                  </g>
-                </g>
-                <circle fill="none" stroke="url(#BgGradient)" strokeWidth={8} strokeMiterlimit={10} cx={60} cy={539} r={40} />
-                <path
-                  id="XMLID_149_"
-                  fill="url(#BgGradient)"
-                  d="M52.6,104.3L25.5,46.5c-2-4.2-0.1-9.4,4.1-11.3l0,0c4.2-2,9.4-0.1,11.3,4.1L68,97c2,4.2,0.1,9.4-4.1,11.3
-            l0,0C59.7,110.4,54.6,108.5,52.6,104.3z"
-                />
-                <path
-                  id="XMLID_150_"
-                  fill="url(#BgGradient)"
-                  d="M48.1,140.6l-12.8-27.2c-2-4.2-0.1-9.4,4.1-11.3l0,0c4.2-2,9.4-0.1,11.3,4.1l12.8,27.2
-            c2,4.2,0.1,9.4-4.1,11.3l0,0C55.2,146.7,50.1,144.8,48.1,140.6z"
-                />
-                <circle id="XMLID_151_" fill="url(#BgGradient)" cx="590.9" cy="23.9" r="9.1" />
-                <circle id="XMLID_152_" fill="url(#BgGradient)" cx="596.8" cy="76.4" r="14.6" />
-                <circle id="XMLID_153_" fill="url(#BgGradient)" cx="630.8" cy="42.8" r="5.3" />
-              </svg>
-            </figure>
-          </Col>
-          <Col md={6} className="mt-4 mt-md-0">
-            <h6 className="text-primary">About us</h6>
-            <h2 className="h1">Your technical partner towards web success.</h2>
-            <p className="lead">
-              Our friendly team members are always willing to help you understand your present technology requirements and provide suggestions on your
-              future needs.
+    <section className="position-relative bg-light" style={{ overflow: 'hidden' }}>
+      {/* Decorative quote marks */}
+      <div 
+        className="position-absolute opacity-25" 
+        style={{ 
+          top: '5%', 
+          right: '10%', 
+          fontSize: '200px', 
+          color: '#364a52',
+          lineHeight: 1,
+          pointerEvents: 'none'
+        }}
+      >
+        &quot;
+      </div>
+      
+      <div className="container py-5">
+        <div className="row justify-content-between align-items-center g-5">
+          <div className="col-md-6 position-relative">
+            {/* Decorative corner accent */}
+            <div 
+              className="position-absolute" 
+              style={{
+                top: '-20px',
+                left: '-20px',
+                width: '80px',
+                height: '80px',
+                border: '3px solid #364a52',
+                borderRight: 'none',
+                borderBottom: 'none'
+              }}
+            />
+            
+            <img
+              src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&q=80"
+              alt="About us"
+              className="img-fluid rounded shadow-lg"
+              style={{ 
+                position: 'relative',
+                zIndex: 1
+              }}
+            />
+            
+            {/* Decorative corner accent bottom */}
+            <div 
+              className="position-absolute" 
+              style={{
+                bottom: '-20px',
+                right: '-20px',
+                width: '80px',
+                height: '80px',
+                border: '3px solid #364a52',
+                borderLeft: 'none',
+                borderTop: 'none'
+              }}
+            />
+            
+            {/* Decorative book spine accent */}
+            <div 
+              className="position-absolute d-none d-lg-block" 
+              style={{
+                bottom: '30px',
+                left: '-40px',
+                width: '15px',
+                height: '200px',
+                background: 'linear-gradient(180deg, #364a52 0%, #0f252f 100%)',
+                borderRadius: '2px'
+              }}
+            />
+          </div>
+          
+          <div className="col-md-6 mt-4 mt-md-0 position-relative">
+            {/* Subtle page curl decoration */}
+            <div 
+              className="position-absolute d-none d-lg-block" 
+              style={{
+                top: '-30px',
+                left: '0',
+                width: '60px',
+                height: '60px',
+                background: '#eeeae7',
+                clipPath: 'polygon(0 0, 100% 0, 0 100%)',
+                opacity: 0.5
+              }}
+            />
+            
+            <div className="mb-3" style={{ 
+              display: 'inline-block',
+              borderLeft: '4px solid #364a52',
+              paddingLeft: '16px'
+            }}>
+              <h6 className="text-uppercase mb-0" style={{ 
+                color: '#364a52',
+                letterSpacing: '2px',
+                fontSize: '0.875rem',
+                fontWeight: 600
+              }}>
+                About us
+              </h6>
+            </div>
+            
+            <h2 className="mb-4" style={{ 
+              fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
+              lineHeight: 1.3,
+              color: '#0f252f',
+              fontWeight: 600
+            }}>
+              Bringing Stories to Life With Professional Publishing Excellence.
+            </h2>
+            
+            <p className="mb-4" style={{ 
+              fontSize: '1.125rem',
+              lineHeight: 1.8,
+              // color: '#364a52'
+            }}>
+              Since our founding in 2022, Mediterranean Publishing has been dedicated to transforming the dreams of authors into beautifully crafted books that captivate readers worldwide.
             </p>
-            <p>
-              {' '}
-              Additions can suspected its concealed put furnished. Met the why particular devonshire decisively considered partiality. Certain it
-              waiting no entered is. Passed her indeed uneasy shy polite appear denied. Oh less girl no walk. At he spot with five of view.
+            
+            <p className="mb-4" style={{ 
+              lineHeight: 1.8,
+              // color: '#364a52',
+              opacity: 2.9
+            }}>
+              At Mediterranean Publishing, we believe every story deserves to be heard, celebrated, and shared with the world. Our mission is to empower authors by providing high-quality writing, editing, design, and publishing services tailored to their unique creative vision. From aspiring writers to established authors, we support every stage of the publishing journey with expertise, passion, and unwavering commitment to quality.
             </p>
-            <p>
-              <span className="text-dark fw-bold">— Jessica Mores,</span> CEO larexa
-            </p>
-            <Row>
-              <Col xs={5}>
-                <Image src={signature.src} width={591} height={591} alt="signature" />
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </Container>
-      <figure className="position-absolute top-0 start-0 w-100 d-none d-md-block ie-d-none mt-n3">
+            
+            {/* Signature style element */}
+            <div className="d-flex align-items-center mt-5 pt-4" style={{
+              borderTop: '1px solid rgba(54, 74, 82, 0.2)'
+            }}>
+              <div style={{
+                width: '3px',
+                height: '40px',
+                background: '#364a52',
+                marginRight: '16px'
+              }} />
+              <div>
+                <p className="mb-0" style={{ 
+                  color: '#0f252f',
+                  fontSize: '1.125rem',
+                  fontWeight: 600,
+                  fontStyle: 'italic'
+                }}>
+                  Imran Zammarud
+                </p>
+                <p className="mb-0" style={{
+                  fontSize: '0.875rem',
+                  color: '#364a52',
+                  opacity: 0.8,
+                  letterSpacing: '0.5px'
+                }}>
+                  Co-founder & CEO
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Top wave */}
+      <figure className="position-absolute top-0 start-0 w-100 d-none d-md-block" style={{ marginTop: '-2px' }}>
         <svg
           version="1.1"
-          id="wave-1"
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
           x="0px"
@@ -106,16 +172,16 @@ const AboutUs = () => {
           viewBox="0 0 1920 43.4"
           xmlSpace="preserve">
           <path
-            id="wave-1-path"
-            className="fill-light"
+            fill="#f8f9fa"
             d="M0,23.3c0,0,405.1-43.5,697.6,0c316.5,1.5,108.9-2.6,480.4-14.1c0,0,139-12.2,458.7,14.3 c0,0,67.8,19.2,283.3-22.7v35.1H0V23.3z"
           />
         </svg>
       </figure>
-      <figure className="position-absolute bottom-0 start-0 w-100 d-none d-md-block ie-d-none mb-n3">
+      
+      {/* Bottom wave */}
+      <figure className="position-absolute bottom-0 start-0 w-100 d-none d-md-block" style={{ marginBottom: '-2px' }}>
         <svg
           version="1.1"
-          id="wave-2"
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
           x="0px"
@@ -123,14 +189,13 @@ const AboutUs = () => {
           viewBox="0 0 1920 43.4"
           xmlSpace="preserve">
           <path
-            id="wave-2-path_"
-            className="fill-white"
+            fill="#ffffff"
             d="M0,23.3c0,0,405.1-43.5,697.6,0c316.5,1.5,108.9-2.6,480.4-14.1c0,0,139-12.2,458.7,14.3 c0,0,67.8,19.2,283.3-22.7v35.1H0V23.3z"
           />
         </svg>
       </figure>
     </section>
-  )
-}
+  );
+};
 
-export default AboutUs
+export default AboutUs;
