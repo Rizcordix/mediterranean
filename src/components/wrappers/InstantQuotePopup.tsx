@@ -1,8 +1,8 @@
 "use client";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { X, ChevronRight, Clock } from "lucide-react";
-import icon1 from '@/assets/images/icons/confidential.svg';
-import icon2 from '@/assets/images/icons/ssl.svg';
+import icon1 from "@/assets/images/icons/confidential.svg";
+import icon2 from "@/assets/images/icons/ssl.svg";
 import Image from "next/image";
 
 export default function InstantQuotePopup({ isOpen, onClose }: any) {
@@ -18,6 +18,8 @@ export default function InstantQuotePopup({ isOpen, onClose }: any) {
   });
 
   const [showCustomTime, setShowCustomTime] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
 
   // Category data with icons
   const categories = [
@@ -30,44 +32,14 @@ export default function InstantQuotePopup({ isOpen, onClose }: any) {
 
   // Services map
   const servicesMap: Record<string, string[]> = {
-    "Ebook Writing": [
-      "Book Writing",
-      "eBook Ghostwriting",
-      "Article Publication",
-      "Editing",
-      "Proofreading",
-    ],
-    "Cover Design & Layout": [
-      "Cover Design",
-      "Book Printing",
-      "Web Design SEO",
-      "Editing",
-    ],
-    "Book Publishing": [
-      "Audio Books",
-      "Article Publication",
-      "Book Printing",
-      "Editing",
-      "Proofreading",
-    ],
+    "Ebook Writing": ["Book Writing", "eBook Ghostwriting", "Article Publication", "Editing", "Proofreading"],
+    "Cover Design & Layout": ["Cover Design", "Book Printing", "Web Design SEO", "Editing"],
+    "Book Publishing": ["Audio Books", "Article Publication", "Book Printing", "Editing", "Proofreading"],
     "Book Video Trailer": ["Book Video Trailer"],
-    "Book Marketing": [
-      "Book Marketing",
-      "Blog Writing",
-      "Website Content Writing",
-      "Web Design SEO",
-    ],
+    "Book Marketing": ["Book Marketing", "Blog Writing", "Website Content Writing", "Web Design SEO"],
   };
 
-  const turnaroundOptions = [
-    "4 hours",
-    "8 hours",
-    "12 hours",
-    "24 hours",
-    "48 hours",
-    "72 hours",
-    "1 week",
-  ];
+  const turnaroundOptions = ["4 hours", "8 hours", "12 hours", "24 hours", "48 hours", "72 hours", "1 week"];
 
   const handleChange = (e: any) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -86,16 +58,101 @@ export default function InstantQuotePopup({ isOpen, onClose }: any) {
     setShowCustomTime(false);
   };
 
-  const handleSubmit = () => {
-    console.log("Form submitted:", form);
-    onClose();
+  // toast auto-hide
+  useEffect(() => {
+    if (!toast) return;
+    const t = window.setTimeout(() => setToast(null), 3500);
+    return () => clearTimeout(t);
+  }, [toast]);
+
+  const showToast = (message: string, type: "success" | "error" = "success") => {
+    setToast({ message, type });
+  };
+
+  const handleSubmit = async () => {
+    // Basic safety validation - the button is already disabled when fields are incomplete,
+    // but double-check before sending.
+    const { name, email, words, title, category, service, turnaround, customTime } = form;
+    if (!email || !email.includes("@") || !category || !service || !turnaround) {
+      showToast("⚠️ Please complete all required fields.", "error");
+      return;
+    }
+
+    setSubmitting(true);
+
+    try {
+      const payload = {
+        name,
+        email,
+        words,
+        title,
+        category,
+        service,
+        turnaround,
+        customTime,
+      };
+
+      const res = await fetch("/api/sendEmail/getquote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok) {
+        showToast("✅ Quote request sent — we'll contact you shortly.", "success");
+        // reset form
+        setForm({
+          name: "",
+          email: "",
+          words: "",
+          title: "",
+          category: "",
+          service: "",
+          turnaround: "",
+          customTime: "",
+        });
+        setShowCustomTime(false);
+        // close popup after a short delay so user sees the toast briefly
+       setTimeout(() => {
+          try {
+            onClose?.();
+          } catch {
+            // ignore
+          }
+        }, 900);
+        
+      } else {
+        console.error("GetQuote API error:", data?.message ?? data);
+        showToast("❌ Unsuccessful — please try again later.", "error");
+      }
+    } catch (err) {
+      console.error("GetQuote submit error:", err);
+      showToast("❌ Unsuccessful — please try again later.", "error");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (!isOpen) return null;
 
+  const isSubmitDisabled = submitting || !form.category || !form.service || !form.turnaround || !form.email || !form.email.includes("@");
+
   return (
     <div className="overlay">
-      <div className="popup">
+      {/* toast */}
+      {toast && (
+        <div
+          className={`popup-toast ${toast.type === "success" ? "toast-success" : "toast-error"}`}
+          role="status"
+          aria-live="polite"
+        >
+          {toast.message}
+        </div>
+      )}
+
+      <div className="popup" role="dialog" aria-modal="true" aria-label="Instant quote">
         <button onClick={onClose} className="close-btn" aria-label="Close">
           <X size={24} />
         </button>
@@ -106,41 +163,10 @@ export default function InstantQuotePopup({ isOpen, onClose }: any) {
         <div>
           {/* Basic Info */}
           <div className="form-grid">
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              value={form.name}
-              onChange={handleChange}
-              required
-              className="input-field"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email Address"
-              value={form.email}
-              onChange={handleChange}
-              required
-              className="input-field"
-            />
-            <input
-              type="number"
-              name="words"
-              placeholder="Number of Words"
-              value={form.words}
-              onChange={handleChange}
-              required
-              className="input-field"
-            />
-            <input
-              type="text"
-              name="title"
-              placeholder="Title (Optional)"
-              value={form.title}
-              onChange={handleChange}
-              className="input-field"
-            />
+            <input type="text" name="name" placeholder="Your Name" value={form.name} onChange={handleChange} className="input-field" />
+            <input type="email" name="email" placeholder="Email Address" value={form.email} onChange={handleChange} required className="input-field" />
+            <input type="number" name="words" placeholder="Number of Words" value={form.words} onChange={handleChange} className="input-field" />
+            <input type="text" name="title" placeholder="Title (Optional)" value={form.title} onChange={handleChange} className="input-field" />
           </div>
 
           {/* Three-Step Selection */}
@@ -155,27 +181,19 @@ export default function InstantQuotePopup({ isOpen, onClose }: any) {
                 {categories.map((cat) => (
                   <div
                     key={cat.id}
-                    className={`option-item ${
-                      form.category === cat.id ? "selected" : ""
-                    }`}
+                    className={`option-item ${form.category === cat.id ? "selected" : ""}`}
                     onClick={() => handleCategorySelect(cat.id)}
                   >
                     <span className="option-icon">{cat.icon}</span>
                     <span className="option-label">{cat.label}</span>
-                    {form.category === cat.id && (
-                      <ChevronRight size={18} className="check-icon" />
-                    )}
+                    {form.category === cat.id && <ChevronRight size={18} className="check-icon" />}
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Step 2: Service */}
-            <div
-              className={`selection-box ${
-                form.category ? "active" : "disabled"
-              } ${form.service ? "completed" : ""}`}
-            >
+            <div className={`selection-box ${form.category ? "active" : "disabled"} ${form.service ? "completed" : ""}`}>
               <div className="box-header">
                 <span className="step-number">2</span>
                 <h3 className="box-title">Select a Service</h3>
@@ -183,17 +201,9 @@ export default function InstantQuotePopup({ isOpen, onClose }: any) {
               {form.category ? (
                 <div className="options-list">
                   {servicesMap[form.category]?.map((srv) => (
-                    <div
-                      key={srv}
-                      className={`option-item ${
-                        form.service === srv ? "selected" : ""
-                      }`}
-                      onClick={() => handleServiceSelect(srv)}
-                    >
+                    <div key={srv} className={`option-item ${form.service === srv ? "selected" : ""}`} onClick={() => handleServiceSelect(srv)}>
                       <span className="option-label">{srv}</span>
-                      {form.service === srv && (
-                        <ChevronRight size={18} className="check-icon" />
-                      )}
+                      {form.service === srv && <ChevronRight size={18} className="check-icon" />}
                     </div>
                   ))}
                 </div>
@@ -205,11 +215,7 @@ export default function InstantQuotePopup({ isOpen, onClose }: any) {
             </div>
 
             {/* Step 3: Turnaround Time */}
-            <div
-              className={`selection-box ${
-                form.service ? "active" : "disabled"
-              } ${form.turnaround ? "completed" : ""}`}
-            >
+            <div className={`selection-box ${form.service ? "active" : "disabled"} ${form.turnaround ? "completed" : ""}`}>
               <div className="box-header">
                 <span className="step-number">3</span>
                 <h3 className="box-title">Turnaround Time</h3>
@@ -220,47 +226,29 @@ export default function InstantQuotePopup({ isOpen, onClose }: any) {
                     {turnaroundOptions.map((option) => (
                       <div
                         key={option}
-                        className={`option-item turnaround-option ${
-                          form.turnaround === option ? "selected" : ""
-                        }`}
+                        className={`option-item turnaround-option ${form.turnaround === option ? "selected" : ""}`}
                         onClick={() => handleTurnaroundSelect(option)}
                       >
                         <Clock size={16} className="clock-icon" />
                         <span className="option-label">{option}</span>
-                        {form.turnaround === option && (
-                          <ChevronRight size={18} className="check-icon" />
-                        )}
+                        {form.turnaround === option && <ChevronRight size={18} className="check-icon" />}
                       </div>
                     ))}
                   </div>
-                  
+
                   {!showCustomTime ? (
-                    <button
-                      type="button"
-                      className="custom-time-btn"
-                      onClick={() => setShowCustomTime(true)}
-                    >
+                    <button type="button" className="custom-time-btn" onClick={() => setShowCustomTime(true)}>
                       Need it faster?
                     </button>
                   ) : (
                     <div className="custom-time-input">
-                      <input
-                        type="text"
-                        name="customTime"
-                        placeholder="Enter custom time (e.g., 2 hours)"
-                        value={form.customTime}
-                        onChange={handleChange}
-                        className="input-field"
-                      />
+                      <input type="text" name="customTime" placeholder="Enter custom time (e.g., 2 hours)" value={form.customTime} onChange={handleChange} className="input-field" />
                       <button
                         type="button"
                         className="set-btn"
                         onClick={() => {
                           if (form.customTime) {
-                            setForm({
-                              ...form,
-                              turnaround: form.customTime,
-                            });
+                            setForm({ ...form, turnaround: form.customTime });
                           }
                           setShowCustomTime(false);
                         }}
@@ -282,19 +270,15 @@ export default function InstantQuotePopup({ isOpen, onClose }: any) {
           <div className="footer">
             <div className="security-badges">
               <div className="badge">
-                <Image src={icon1} alt="Confidential" width={170}  />
+                <Image src={icon1} alt="Confidential" width={170} />
               </div>
               <div className="badge">
-                <Image src={icon2} alt="SSL Encrypted" width={114}/>
+                <Image src={icon2} alt="SSL Encrypted" width={114} />
               </div>
             </div>
 
-            <button
-              onClick={handleSubmit}
-              className="submit-btn"
-              disabled={!form.category || !form.service || !form.turnaround}
-            >
-              Get Instant Quote
+            <button onClick={handleSubmit} className="submit-btn" disabled={isSubmitDisabled}>
+              {submitting ? "Sending..." : "Get Instant Quote"}
             </button>
           </div>
         </div>
@@ -628,6 +612,54 @@ export default function InstantQuotePopup({ isOpen, onClose }: any) {
         .submit-btn:disabled {
           opacity: 0.5;
           cursor: not-allowed;
+        }
+
+        /* toast styles */
+        .popup-toast {
+          position: fixed;
+          top: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          padding: 12px 18px;
+          border-radius: 8px;
+          color: #000;
+          font-weight: 600;
+          font-size: 14px;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+          z-index: 11000;
+          animation: slideDown 0.4s ease, fadeOut 0.4s ease 3s forwards;
+          font-family: system-ui, sans-serif;
+          max-width: 90%;
+        }
+
+        .toast-success {
+          background: #d9fdd3;
+          border: 1px solid #b7e6b2;
+          color: #0f5132;
+        }
+
+        .toast-error {
+          background: #f8d7da;
+          border: 1px solid #f5c2c7;
+          color: #842029;
+        }
+
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            transform: translate(-50%, -20px);
+          }
+          to {
+            opacity: 1;
+            transform: translate(-50%, 0);
+          }
+        }
+
+        @keyframes fadeOut {
+          to {
+            opacity: 0;
+            transform: translate(-50%, -10px);
+          }
         }
 
         @media (max-width: 1024px) {

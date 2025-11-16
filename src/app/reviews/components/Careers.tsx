@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, ChangeEvent, FormEvent } from 'react'
+import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react'
 import { Accordion, AccordionBody, AccordionHeader, AccordionItem, Col } from 'react-bootstrap'
 import { careersData } from '../data'
 
@@ -11,6 +11,19 @@ const Careers = () => {
     description: ''
   })
 
+  const [submitting, setSubmitting] = useState(false)
+  const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null)
+
+  useEffect(() => {
+    if (!toast) return
+    const t = window.setTimeout(() => setToast(null), 3500)
+    return () => clearTimeout(t)
+  }, [toast])
+
+  const showToast = (message: string, type: 'success' | 'error' = 'success') => {
+    setToast({ message, type })
+  }
+
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
@@ -18,28 +31,89 @@ const Careers = () => {
     })
   }
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
-    // Add your form submission logic here
+
+    // basic validation
+    const { email, bookTitle, wordCount, description } = formData
+    if (!email || !email.includes('@') || !bookTitle || !wordCount || !description) {
+      showToast('⚠️ Please fill in all fields with valid information.', 'error')
+      return
+    }
+
+    setSubmitting(true)
+
+    try {
+      // Create payload consistent with your other endpoints (backend expects `message`)
+      const payload = {
+        email,
+        bookTitle,
+        wordCount,
+        description, 
+      }
+
+      const res = await fetch('/api/sendEmail/reportform', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+
+      const data = await res.json().catch(() => ({}))
+
+      if (res.ok) {
+        showToast('✅ Report request sent — we will email you shortly.', 'success')
+        setFormData({ email: '', bookTitle: '', wordCount: '', description: '' })
+      } else {
+        console.error('Report API error:', data?.message ?? data)
+        showToast('❌ Unsuccessful — please try again later.', 'error')
+      }
+    } catch (err) {
+      console.error('Report submit error:', err)
+      showToast('❌ Unsuccessful — please try again later.', 'error')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
     <section className="pb-3">
+      {/* toast */}
+      {toast && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 20,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            padding: '12px 18px',
+            borderRadius: 10,
+            zIndex: 11000,
+            fontWeight: 600,
+            boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
+            background: toast.type === 'success' ? '#d9fdd3' : '#f8d7da',
+            color: toast.type === 'success' ? '#0f5132' : '#842029'
+          }}
+          role="status"
+          aria-live="polite"
+        >
+          {toast.message}
+        </div>
+      )}
+
       <div className="container">
         <div className="row">
           <Col md={8} className="mb-5">
-                      <Accordion defaultActiveKey={'0'} className="accordion-icon-gradient" id="accordionExample3">
-                        {careersData.map((item, idx) => (
-                          <AccordionItem eventKey={`${idx}`} key={idx}>
-                            <AccordionHeader as={'h2'} id="heading7">
-                              {item.title}
-                            </AccordionHeader>
-                            <AccordionBody>{item.description}</AccordionBody>
-                          </AccordionItem>
-                        ))}
-                      </Accordion>
-                    </Col>
+            <Accordion defaultActiveKey={'0'} className="accordion-icon-gradient" id="accordionExample3">
+              {careersData.map((item, idx) => (
+                <AccordionItem eventKey={`${idx}`} key={idx}>
+                  <AccordionHeader as={'h2'} id="heading7">
+                    {item.title}
+                  </AccordionHeader>
+                  <AccordionBody>{item.description}</AccordionBody>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </Col>
           <div className="col-md-4 sidebar">
             <div className="widget p-4 border-0 rounded" style={{ backgroundColor: '#eeeae7' }}>
               <h4 className="mb-4" style={{ color: '#0f252f' }}>Get Your Book Report</h4>
@@ -56,7 +130,7 @@ const Careers = () => {
                     onChange={handleChange}
                     placeholder="Enter your email"
                     required
-                    style={{ 
+                    style={{
                       borderColor: '#364a52',
                       backgroundColor: '#fff'
                     }}
@@ -75,7 +149,7 @@ const Careers = () => {
                     onChange={handleChange}
                     placeholder="Enter book title"
                     required
-                    style={{ 
+                    style={{
                       borderColor: '#364a52',
                       backgroundColor: '#fff'
                     }}
@@ -94,7 +168,7 @@ const Careers = () => {
                     onChange={handleChange}
                     placeholder="e.g., 50000"
                     required
-                    style={{ 
+                    style={{
                       borderColor: '#364a52',
                       backgroundColor: '#fff'
                     }}
@@ -113,7 +187,7 @@ const Careers = () => {
                     rows={4}
                     placeholder="Share a brief description of your book..."
                     required
-                    style={{ 
+                    style={{
                       borderColor: '#364a52',
                       backgroundColor: '#fff'
                     }}
@@ -123,15 +197,18 @@ const Careers = () => {
                 <button
                   type="submit"
                   className="btn w-100"
-                  style={{ 
+                  disabled={submitting}
+                  style={{
                     backgroundColor: '#0f252f',
                     borderColor: '#0f252f',
                     color: '#fff',
                     fontWeight: '600',
-                    padding: '12px'
+                    padding: '12px',
+                    opacity: submitting ? 0.8 : 1,
+                    cursor: submitting ? 'wait' : 'pointer'
                   }}
                 >
-                  Get Report
+                  {submitting ? 'Sending...' : 'Get Report'}
                 </button>
               </form>
             </div>

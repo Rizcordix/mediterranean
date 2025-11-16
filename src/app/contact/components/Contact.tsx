@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import bgImg from '@/assets/images/bg/04.jpg'
 import { Col, Container, Row } from 'react-bootstrap'
 import * as yup from 'yup'
@@ -7,6 +7,13 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import TextFormInput from '@/components/form/TextFormInput'
 import TextAreaFormInput from '@/components/form/TextAreaFormInput'
+
+type ContactFormValues = {
+  name: string
+  subject: string
+  message: string
+  email: string
+}
 
 const Contact = () => {
   const contactSchema = yup.object({
@@ -16,12 +23,85 @@ const Contact = () => {
     email: yup.string().email().required('Please enter email'),
   })
 
-  const { handleSubmit, control } = useForm({
+  const { handleSubmit, control, reset } = useForm<ContactFormValues>({
     resolver: yupResolver(contactSchema),
+    defaultValues: { name: '', subject: '', message: '', email: '' },
   })
+
+  const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null)
+  const [submitting, setSubmitting] = useState(false)
+
+  // auto-hide toast
+  useEffect(() => {
+    if (!toast) return
+    const t = window.setTimeout(() => setToast(null), 3500)
+    return () => clearTimeout(t)
+  }, [toast])
+
+  const showToast = (message: string, type: 'success' | 'error' = 'success') => {
+    setToast({ message, type })
+  }
+
+  const onSubmit = async (values: ContactFormValues) => {
+    // values validated by yup
+    setSubmitting(true)
+
+    try {
+      const payload = {
+        name: values.name,
+        email: values.email,
+        message: values.message,
+        subject: values.subject,
+      }
+
+      const res = await fetch('/api/sendEmail/contactpage', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+
+      const data = await res.json().catch(() => ({}))
+
+      if (res.ok) {
+        showToast('✅ Message sent — we will contact you shortly.', 'success')
+        reset()
+      } else {
+        console.error('Contact API failed:', data?.message ?? data)
+        showToast('❌ Unsuccessful — please try again later.', 'error')
+      }
+    } catch (err) {
+      console.error('Contact submit error:', err)
+      showToast('❌ Unsuccessful — please try again later.', 'error')
+    } finally {
+      setSubmitting(false)
+    }
+  }
 
   return (
     <section className="contact-page">
+      {/* toast */}
+      {toast && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 20,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            padding: '12px 18px',
+            borderRadius: 10,
+            zIndex: 11000,
+            fontWeight: 600,
+            boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
+            background: toast.type === 'success' ? '#d9fdd3' : '#f8d7da',
+            color: toast.type === 'success' ? '#0f5132' : '#842029'
+          }}
+          role="status"
+          aria-live="polite"
+        >
+          {toast.message}
+        </div>
+      )}
+
       <Container>
         <Row>
           <Col xs={12} lg={8} className="mx-auto">
@@ -81,12 +161,10 @@ const Contact = () => {
               <h3>Let&apos;s Start Your Publishing Journey Together</h3>
               <p>Share your ideas with us and discover how Mediterranean Publishing can help bring your book to readers worldwide</p>
               <form
-                onSubmit={handleSubmit(() => {})}
+                onSubmit={handleSubmit(onSubmit)}
                 className="contact-form needs-validation"
                 id="contact-form"
                 name="contactform"
-                method="POST"
-                action="assets/include/contact-action.php"
                 noValidate>
                 <Row>
                   <Col md={6}>
@@ -110,8 +188,8 @@ const Contact = () => {
                     </div>
                   </Col>
                   <Col md={12} className="d-grid">
-                    <button className="btn btn-dark m-0" type="submit">
-                      Get Started
+                    <button className="btn btn-dark m-0" type="submit" disabled={submitting}>
+                      {submitting ? 'Sending...' : 'Get Started'}
                     </button>
                   </Col>
                 </Row>
