@@ -17,6 +17,7 @@ import Clients from '../services/bookwriting/components/Clients'
 import Categories from './components/Categories'
 import FeaturedBooksSection from './components/portfolio'
 import ProcedureSection from './components/procedure'
+import EditingSamples from './components/editing'
 
 const CreativeAgencyPage = () => {
   return (
@@ -28,7 +29,9 @@ const CreativeAgencyPage = () => {
       <Clients />
       <div className="divider mt-2" />
       <Service />
+      {/* <EditingSamples /> */}
       <FeaturedBooksSection />
+      <EditingSamples />
       <CTA />
       <PricingComponent />
       <ProcedureSection />
