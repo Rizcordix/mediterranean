@@ -1,6 +1,4 @@
 import React from 'react'
-import { aboutData } from '../data'
-import Image from 'next/image'
 import { Col, Container, Row } from 'react-bootstrap'
 
 const About = () => {
@@ -16,21 +14,6 @@ const About = () => {
               comparison uncommonly me he difficulty diminution resolution.
             </p>
           </Col>
-        </Row>
-        <Row>
-          {aboutData.map((item, idx) => {
-            return (
-              <Col md={4} key={idx}>
-                <div className={`feature-box h-100 text-center px-4 py-5 ${item.isPopular && 'all-text-white bg-grad rounded'}`}>
-                  <div className="feature-box-icon">
-                    <Image className="w-25" src={item.image} alt="icon" />
-                  </div>
-                  <h3 className="feature-box-title">{item.title}</h3>
-                  <p className="feature-box-desc">{item.description}</p>
-                </div>
-              </Col>
-            )
-          })}
         </Row>
       </Container>
     </section>
