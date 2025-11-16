@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import WidgetClientWrapper from '@/components/wrappers/WidgetWrapper'
 import { PopupProvider } from '@/components/wrappers/PopupContext'
+import PopupClientWrapper from "@/components/popup/popupclient";
 
 import 'aos/dist/aos.css'
 import '@/assets/scss/style.scss'
@@ -36,6 +37,7 @@ export default function RootLayout({
             <AppProviders>{children}</AppProviders>
           </PopupProvider>
         </div>
+          <PopupClientWrapper />
         <WidgetClientWrapper />
       </body>
     </html>
