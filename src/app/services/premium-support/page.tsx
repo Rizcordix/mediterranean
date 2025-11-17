@@ -11,6 +11,40 @@ import Categories from '@/app/home/components/Categories'
 import CTA from '@/app/home/components/Features'
 import ProcedureSection from '@/app/home/components/procedure'
 
+export const metadata = {
+  title: "Premium Support | Mediterranean Publishing – Dedicated Assistance for Authors",
+  description: "Experience premium support with priority assistance, project management, and personalized guidance throughout your publishing journey.",
+  keywords: [
+    "premium support",
+    "author support services",
+    "publishing assistance",
+    "priority author support",
+    "Mediterranean Publishing support",
+    "dedicated publishing help"
+  ],
+  openGraph: {
+    title: "Premium Support | Mediterranean Publishing",
+    description: "Dedicated support and assistance for authors and clients.",
+    url: "https://www.mediterraneanpublishing.com/premium-support",
+    siteName: "Mediterranean Publishing",
+    images: [
+      {
+        url: "https://www.mediterraneanpublishing.com/og-premium-support.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Premium Support – Mediterranean Publishing"
+      }
+    ],
+    type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Premium Support | Mediterranean Publishing",
+    description: "Priority publishing assistance and author support.",
+    images: ["https://www.mediterraneanpublishing.com/og-premium-support.jpg"]
+  }
+};
+
 const AgencyStartUpPage = () => {
   return (
     <>

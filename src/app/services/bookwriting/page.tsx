@@ -11,6 +11,42 @@ import Categories from '@/app/home/components/Categories'
 import ProcedureSection from '@/app/home/components/procedure'
 import CTA from '@/app/home/components/Features'
 
+export const metadata = {
+  title: "Book Writing Services | Mediterranean Publishing – Turn Ideas Into Timeless Books",
+  description: "Professional book writing services by Mediterranean Publishing. We transform your ideas into compelling, well-structured, and publish-ready books across all genres.",
+  keywords: [
+    "book writing services",
+    "hire a book writer",
+    "professional book writers",
+    "Mediterranean Publishing book writing",
+    "custom book writing",
+    "write my book",
+    "book manuscript writing",
+    "author writing services"
+  ],
+  openGraph: {
+    title: "Book Writing Services | Mediterranean Publishing",
+    description: "Turn your ideas into a powerful book with our expert writing services.",
+    url: "https://www.mediterraneanpublishing.com/bookwriting",
+    siteName: "Mediterranean Publishing",
+    images: [
+      {
+        url: "https://www.mediterraneanpublishing.com/og-book-writing.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Book Writing Services – Mediterranean Publishing"
+      }
+    ],
+    type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Book Writing Services | Mediterranean Publishing",
+    description: "Expert book writing and manuscript development services.",
+    images: ["https://www.mediterraneanpublishing.com/og-book-writing.jpg"]
+  }
+};
+
 const AgencyStartUpPage = () => {
   return (
     <>

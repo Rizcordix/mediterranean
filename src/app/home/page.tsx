@@ -19,9 +19,49 @@ import FeaturedBooksSection from './components/portfolio'
 import ProcedureSection from './components/procedure'
 import EditingSamples from './components/editing'
 
+export const metadata = {
+  title: "Mediterranean Publishing | Professional eBook Writing, Publishing & Marketing Services",
+  description: "Mediterranean Publishing offers expert eBook writing, editing, cover design, book publishing, and marketing services. Transform your ideas into published books with professional support.",
+  keywords: [
+    "eBook writing",
+    "book publishing",
+    "book marketing",
+    "cover design",
+    "proofreading",
+    "ghostwriting",
+    "audio books",
+    "book video trailer",
+    "Mediterranean Publishing"
+  ],
+  openGraph: {
+    title: "Mediterranean Publishing | Professional eBook Writing & Publishing",
+    description: "Expert eBook writing, editing, cover design, book publishing, and marketing services to bring your book ideas to life.",
+    url: "https://www.mediterraneanpublishing.com/",
+    siteName: "Mediterranean Publishing",
+    images: [
+      {
+        url: "https://www.mediterraneanpublishing.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Mediterranean Publishing Services"
+      }
+    ],
+    type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mediterranean Publishing | Professional eBook Writing & Publishing",
+    description: "Expert eBook writing, editing, cover design, book publishing, and marketing services.",
+    images: ["https://www.mediterraneanpublishing.com/og-image.jpg"]
+  }
+};
+
+
 const CreativeAgencyPage = () => {
+
   return (
     <>
+
       <TopNavbar />
       <Hero />
       <AboutUs />
