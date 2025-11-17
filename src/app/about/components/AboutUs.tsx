@@ -1,5 +1,7 @@
 'use client'
 import React from 'react';
+import { Button } from 'react-bootstrap';
+import { usePopup } from '@/components/wrappers/PopupContext';
 
 const AboutPage = () => {
   const stats = [
@@ -69,6 +71,8 @@ const AboutPage = () => {
     </svg>
   );
 
+  const { openQuote } = usePopup();
+
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#eeeae7' }}>
       {/* Hero Section */}
@@ -92,18 +96,18 @@ const AboutPage = () => {
             display: 'grid', 
             gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
             gap: '32px',
-            marginTop: '80px'
+            marginTop: '5px'
           }}>
             {stats.map((stat, idx) => (
               <div key={idx} style={{
                 textAlign: 'center',
-                padding: '32px',
+                padding: '22px',
                 borderRadius: '12px',
                 backgroundColor: 'rgba(54, 74, 82, 0.3)',
                 backdropFilter: 'blur(10px)'
               }}>
                 <div style={{
-                  fontSize: '3rem',
+                  fontSize: '2rem',
                   fontWeight: 'bold',
                   marginBottom: '8px',
                   color: '#eeeae7'
@@ -134,7 +138,6 @@ const AboutPage = () => {
           }}>
             <div>
               <h2 style={{
-                fontSize: '3rem',
                 fontWeight: 'bold',
                 marginBottom: '24px',
                 color: '#0f252f'
@@ -142,7 +145,6 @@ const AboutPage = () => {
                 Our Story
               </h2>
               <p style={{
-                fontSize: '1.125rem',
                 marginBottom: '16px',
                 color: '#364a52',
                 lineHeight: '1.7'
@@ -150,7 +152,6 @@ const AboutPage = () => {
                 Founded in 2009, Mediterranean Publishing emerged from a simple belief: every story deserves to be told with excellence. What began as a small editorial service has blossomed into a full-spectrum publishing powerhouse, serving authors across genres and continents.
               </p>
               <p style={{
-                fontSize: '1.125rem',
                 marginBottom: '16px',
                 color: '#364a52',
                 lineHeight: '1.7'
@@ -158,7 +159,6 @@ const AboutPage = () => {
                 Our team of seasoned professionals combines traditional publishing expertise with modern digital strategies, ensuring your work reaches its full potential in today&apos;s dynamic literary landscape.
               </p>
               <p style={{
-                fontSize: '1.125rem',
                 color: '#364a52',
                 lineHeight: '1.7'
               }}>
@@ -176,7 +176,6 @@ const AboutPage = () => {
                   <AwardIcon />
                 </div>
                 <h3 style={{
-                  fontSize: '1.5rem',
                   fontWeight: 'bold',
                   marginBottom: '16px',
                   color: '#eeeae7'
@@ -212,7 +211,6 @@ const AboutPage = () => {
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
           <div style={{ textAlign: 'center', marginBottom: '64px' }}>
             <h2 style={{
-              fontSize: '3rem',
               fontWeight: 'bold',
               marginBottom: '16px',
               color: '#eeeae7'
@@ -220,7 +218,6 @@ const AboutPage = () => {
               Comprehensive Services
             </h2>
             <p style={{
-              fontSize: '1.25rem',
               maxWidth: '600px',
               margin: '0 auto',
               color: '#eeeae7',
@@ -249,7 +246,6 @@ const AboutPage = () => {
                   {service.icon}
                 </div>
                 <h3 style={{
-                  fontSize: '1.5rem',
                   fontWeight: 'bold',
                   marginBottom: '12px',
                   color: '#eeeae7'
@@ -295,7 +291,6 @@ const AboutPage = () => {
                       <CheckIcon />
                     </div>
                     <p style={{
-                      fontSize: '0.875rem',
                       fontWeight: '500',
                       color: '#eeeae7',
                       lineHeight: '1.5'
@@ -308,7 +303,6 @@ const AboutPage = () => {
             </div>
             <div>
               <h2 style={{
-                fontSize: '3rem',
                 fontWeight: 'bold',
                 marginBottom: '24px',
                 color: '#0f252f'
@@ -316,7 +310,6 @@ const AboutPage = () => {
                 Why Authors Choose Us
               </h2>
               <p style={{
-                fontSize: '1.125rem',
                 marginBottom: '24px',
                 color: '#364a52',
                 lineHeight: '1.7'
@@ -324,26 +317,37 @@ const AboutPage = () => {
                 At Mediterranean Publishing, we don&apos;t just publish books—we build lasting partnerships with our authors. Our commitment goes beyond the manuscript to ensure your success at every stage.
               </p>
               <p style={{
-                fontSize: '1.125rem',
                 marginBottom: '32px',
                 color: '#364a52',
                 lineHeight: '1.7'
               }}>
                 With a dedicated team of publishing professionals, cutting-edge technology, and a proven track record, we provide the support and expertise you need to bring your vision to life.
               </p>
-              <button style={{
-                padding: '16px 32px',
-                borderRadius: '50px',
-                fontWeight: '600',
-                transition: 'all 0.3s',
-                boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
-                backgroundColor: '#0f252f',
-                color: '#eeeae7',
-                border: 'none',
-                cursor: 'pointer'
-              }}>
+              <Button 
+                href='/contact'
+              
+                style={{
+                  padding: '16px 32px',
+                  borderRadius: '50px',
+                  fontWeight: '600',
+                  transition: 'all 0.3s',
+                  boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
+                  backgroundColor: '#0f252f',
+                  color: '#eeeae7',
+                  border: 'none',
+                  cursor: 'pointer'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.3)';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.2)';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+              >
                 Get Started Today
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -358,7 +362,6 @@ const AboutPage = () => {
           textAlign: 'center'
         }}>
           <h2 style={{
-            fontSize: '3rem',
             fontWeight: 'bold',
             marginBottom: '24px',
             color: '#eeeae7'
@@ -366,7 +369,6 @@ const AboutPage = () => {
             Ready to Publish Your Story?
           </h2>
           <p style={{
-            fontSize: '1.25rem',
             marginBottom: '32px',
             color: '#eeeae7',
             opacity: 0.9
@@ -380,33 +382,51 @@ const AboutPage = () => {
             justifyContent: 'center',
             flexWrap: 'wrap'
           }}>
-            <button style={{
+            <Button 
+              onClick={openQuote}
+            style={{
               padding: '16px 32px',
               borderRadius: '50px',
               fontWeight: '600',
-              fontSize: '1.125rem',
               transition: 'all 0.3s',
               boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
               backgroundColor: '#eeeae7',
               color: '#0f252f',
               border: 'none',
               cursor: 'pointer'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.3)';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.2)';
+              e.currentTarget.style.transform = 'translateY(0)';
             }}>
-              Schedule Consultation
-            </button>
-            <button style={{
+              Get a Free Quote
+            </Button>
+            <Button 
+              href="/book-samples"
+            style={{
               padding: '16px 32px',
               borderRadius: '50px',
               fontWeight: '600',
-              fontSize: '1.125rem',
               transition: 'all 0.3s',
               border: '2px solid #eeeae7',
               color: '#eeeae7',
               backgroundColor: 'transparent',
               cursor: 'pointer'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = '#eeeae7';
+              e.currentTarget.style.color = '#0f252f';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'transparent';
+              e.currentTarget.style.color = '#eeeae7';
             }}>
               View Our Portfolio
-            </button>
+            </Button>
           </div>
         </div>
       </section>
