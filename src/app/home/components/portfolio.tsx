@@ -1,682 +1,500 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-
-
-const FeaturedBooksSection = () => {
-
+const PortfolioSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-
   const [isAnimating, setIsAnimating] = useState(false);
-
-
+  const [isMobile, setIsMobile] = useState(false);
 
   const books = [
-
     {
-
       id: 1,
-
-      title: "WHISPERS OF THE AEGEAN",
-
+      title: "Whispers of the Aegean",
       subtitle: "A Tale of Ancient Secrets",
-
       author: "Elena Markos",
-
-      image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=600&fit=crop",
-
-      textColor: "#eeeae7"
-
+      image: "https://placehold.co/600x900/364a52/eeeae7"
     },
-
     {
-
       id: 2,
-
-      title: "BENEATH OLIVE GROVES",
-
+      title: "Beneath Olive Groves",
       subtitle: "Stories from the Coast",
-
       author: "Marco Santini",
-
-      image: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400&h=600&fit=crop",
-
-      textColor: "#eeeae7"
-
+      image: "https://placehold.co/300x450/0f252f/eeeae7"
     },
-
     {
-
       id: 3,
-
-      title: "SAILING HOME",
-
+      title: "Sailing Home",
       subtitle: "A Journey Across Seas",
-
       author: "Sofia Valencia",
-
-      image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=600&fit=crop",
-
-      textColor: "#eeeae7"
-
+      image: "https://placehold.co/300x450/4a6572/eeeae7"
     },
-
     {
-
       id: 4,
-
-      title: "THE LAST VOYAGE",
-
+      title: "The Last Voyage",
       subtitle: "Chronicles of Discovery",
-
       author: "Andreas Dimitri",
-
-      image: "https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=400&h=600&fit=crop",
-
-      textColor: "#eeeae7"
-
+      image: "https://placehold.co/300x450/2a3f47/eeeae7"
     },
-
     {
-
       id: 5,
-
-      title: "WHISPERS OF THE AEGEAN",
-
-      subtitle: "A Tale of Ancient Secrets",
-
-      author: "Elena Markos",
-
-      image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=600&fit=crop",
-
-      textColor: "#eeeae7"
-
+      title: "Mediterranean Dreams",
+      subtitle: "Poems of the Coast",
+      author: "Isabella Romano",
+      image: "https://placehold.co/300x450/364a52/eeeae7"
     },
-
     {
-
       id: 6,
-
-      title: "BENEATH OLIVE GROVES",
-
-      subtitle: "Stories from the Coast",
-
-      author: "Marco Santini",
-
-      image: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400&h=600&fit=crop",
-
-      textColor: "#eeeae7"
-
+      title: "Tides of Fortune",
+      subtitle: "A Merchant's Tale",
+      author: "Nicolas Laurent",
+      image: "https://placehold.co/300x450/0f252f/eeeae7"
     },
-
     {
-
       id: 7,
-
-      title: "SAILING HOME",
-
-      subtitle: "A Journey Across Seas",
-
-      author: "Sofia Valencia",
-
-      image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=600&fit=crop",
-
-      textColor: "#eeeae7"
-
+      title: "The Lighthouse Keeper",
+      subtitle: "Stories of Solitude",
+      author: "Maria Kostas",
+      image: "https://placehold.co/300x450/4a6572/eeeae7"
     },
-
     {
-
       id: 8,
-
-      title: "THE LAST VOYAGE",
-
-      subtitle: "Chronicles of Discovery",
-
-      author: "Andreas Dimitri",
-
-      image: "https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=400&h=600&fit=crop",
-
-      textColor: "#eeeae7"
-
+      title: "Beyond the Horizon",
+      subtitle: "Tales of Adventure",
+      author: "Thomas Beaumont",
+      image: "https://placehold.co/300x450/2a3f47/eeeae7"
     }
-
   ];
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') {
+        handlePrevSlide();
+      } else if (e.key === 'ArrowRight') {
+        handleNextSlide();
+      }
+    };
 
-  // Calculate books per slide based on screen size (default to 4 for desktop)
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentSlide, isAnimating]);
 
-  const booksPerSlide = 4;
-
-  const totalSlides = Math.max(1, Math.ceil(books.length / booksPerSlide));
-
- 
-
-  // Repeat books to fill empty slots if needed
-
-  const displayBooks = React.useMemo(() => {
-  const needed = booksPerSlide * totalSlides;
-  if (books.length >= needed) return books;
-  return [...books, ...books.slice(0, needed - books.length)];
-}, [booksPerSlide, totalSlides]);
-
-
-
+  const booksPerSlide = isMobile ? 1 : 4;
+  const totalSlides = Math.ceil(books.length / booksPerSlide);
 
   const handleSlideChange = (index: number) => {
-
     if (isAnimating || index === currentSlide) return;
-
     setIsAnimating(true);
-
     setCurrentSlide(index);
-
-    setTimeout(() => setIsAnimating(false), 600);
-
+    setTimeout(() => setIsAnimating(false), 400);
   };
 
+  const handleNextSlide = () => {
+    if (isAnimating) return;
+    const nextSlide = (currentSlide + 1) % totalSlides;
+    handleSlideChange(nextSlide);
+  };
 
+  const handlePrevSlide = () => {
+    if (isAnimating) return;
+    const prevSlide = currentSlide === 0 ? totalSlides - 1 : currentSlide - 1;
+    handleSlideChange(prevSlide);
+  };
 
   const getCurrentBooks = () => {
-
     const startIndex = currentSlide * booksPerSlide;
-
-    return displayBooks.slice(startIndex, startIndex + booksPerSlide);
-
+    return books.slice(startIndex, startIndex + booksPerSlide);
   };
 
-
-
   return (
-
-    <section className="py-5" style={{
-
-      background: "linear-gradient(135deg, #eeeae7 0%, #d4cfc9 50%, #eeeae7 100%)",
-
-      position: "relative",
-
-      overflow: "hidden"
-
-    }}>
-
-      {/* Decorative Background Elements */}
-
-      <div style={{
-
-        position: "absolute",
-
-        top: "0",
-
-        left: "0",
-
-        width: "100%",
-
-        height: "100%",
-
-        opacity: "0.05",
-
-        backgroundImage: `repeating-linear-gradient(45deg, #0f252f 0px, #0f252f 2px, transparent 2px, transparent 10px)`,
-
-        pointerEvents: "none"
-
-      }}></div>
-
-
-
-      <div className="container position-relative" style={{ zIndex: 1 }}>
-
-        {/* Header */}
-
-        <div className="text-center mb-5">
-
-          <h2
-
-            className="display-4 fw-light mb-3"
-
-            style={{
-
-              color: "#0f252f",
-
-              letterSpacing: "2px",
-
-              fontFamily: "Georgia, serif"
-
-            }}
-
-          >
-
-            Literary Treasures of the <span style={{ color: "#364a52", fontWeight: "600" }}>Mediterranean</span>
-
-          </h2>
-
-          <h3
-
-            className="h4 mb-4"
-
-            style={{
-
-              color: "#364a52",
-
-              fontWeight: "400",
-
-              fontFamily: "Georgia, serif"
-
-            }}
-
-          >
-
-            Explore Our Distinguished Collection
-
-          </h3>
-
-          <p
-
-            className="mx-auto"
-
-            style={{
-
-              maxWidth: "900px",
-
-              color: "#0f252f",
-
-              fontSize: "1.1rem",
-
-              lineHeight: "1.8",
-
-              opacity: "0.9"
-
-            }}
-
-          >
-
-            At Mediterranean Publishing, we craft narratives that transport readers across azure waters and sun-drenched shores.
-
-            Our expert authors weave tales of adventure, romance, and mystery, bringing the rich cultural tapestry of the
-
-            Mediterranean to life through every carefully chosen word.
-
-          </p>
-
-        </div>
-
-
-
-        {/* Books Display */}
-
-        <div
-
-          className="row justify-content-center g-5 mt-5 pt-4"
-
-          style={{
-
-            transition: "opacity 0.6s ease, transform 0.6s ease",
-
-            opacity: isAnimating ? 0 : 1,
-
-            transform: isAnimating ? "translateY(20px)" : "translateY(0)"
-
-          }}
-
-        >
-
-          {getCurrentBooks().map((book, index) => (
-
-            <div key={`${book.id}-${currentSlide}-${index}`} className="col-lg-3 col-md-6 col-sm-6">
-
-              <div
-
-                className="position-relative"
-
-                style={{
-
-                  minHeight: "450px",
-
-                  display: "flex",
-
-                  justifyContent: "center",
-
-                  alignItems: "center",
-
-                  perspective: "1000px"
-
-                }}
-
-              >
-
-                {/* Book Stack - Two books */}
-
-                <div style={{ position: "relative", width: "100%", maxWidth: "260px" }}>
-
-                  {/* Back Book */}
-
-                  <div
-
-                    style={{
-
-                      width: "260px",
-
-                      height: "380px",
-
-                      backgroundImage: `url(${book.image})`,
-
-                      backgroundSize: "cover",
-
-                      backgroundPosition: "center",
-
-                      borderRadius: "8px",
-
-                      boxShadow: "0 20px 40px rgba(15, 37, 47, 0.3)",
-
-                      position: "absolute",
-
-                      left: "0",
-
-                      top: "0",
-
-                      transform: "rotate(-5deg) translateX(-10px)",
-
-                      transition: "all 0.3s ease",
-
-                      zIndex: 1,
-
-                      filter: "brightness(0.9)"
-
-                    }}
-
-                    className="book-back"
-
-                  ></div>
-
-
-
-                  {/* Front Book */}
-
-                  <div
-
-                    style={{
-
-                      width: "260px",
-
-                      height: "380px",
-
-                      backgroundImage: `url(${book.image})`,
-
-                      backgroundSize: "cover",
-
-                      backgroundPosition: "center",
-
-                      borderRadius: "8px",
-
-                      boxShadow: "0 25px 50px rgba(15, 37, 47, 0.4)",
-
-                      position: "relative",
-
-                      transform: "rotate(5deg) translateX(10px)",
-
-                      transition: "all 0.3s ease",
-
-                      zIndex: 2,
-
-                      cursor: "pointer",
-
-                      overflow: "hidden"
-
-                    }}
-
-                    className="book-front"
-
-                    onMouseEnter={(e) => {
-
-                      const parent = e.currentTarget.parentElement;
-
-                      const backBook = parent?.querySelector('.book-back') as HTMLElement|null;
-
-                      if (backBook) {
-
-                        backBook.style.transform = "rotate(-8deg) translateX(-15px)";
-
-                      }
-
-                      e.currentTarget.style.transform = "rotate(8deg) translateX(15px) translateY(-10px)";
-
-                    }}
-
-                    onMouseLeave={(e) => {
-
-                      const parent = e.currentTarget.parentElement;
-
-                      const backBook = parent?.querySelector('.book-back')as HTMLElement|null;
-
-                      if (backBook) {
-
-                        backBook.style.transform = "rotate(-5deg) translateX(-10px)";
-
-                      }
-
-                      e.currentTarget.style.transform = "rotate(5deg) translateX(10px)";
-
-                    }}
-
-                  >
-
-                    {/* Dark Overlay for Text Readability */}
-
-                    <div style={{
-
-                      position: "absolute",
-
-                      top: 0,
-
-                      left: 0,
-
-                      right: 0,
-
-                      bottom: 0,
-
-                      background: "linear-gradient(to bottom, rgba(15, 37, 47, 0.3) 0%, rgba(15, 37, 47, 0.8) 100%)",
-
-                      display: "flex",
-
-                      flexDirection: "column",
-
-                      justifyContent: "flex-end",
-
-                      padding: "30px 25px"
-
-                    }}>
-
-                      {/* Book Title & Info */}
-
-                      <div style={{ position: "relative", zIndex: 1 }}>
-
-                        <h4
-
-                          style={{
-
-                            color: book.textColor,
-
-                            fontSize: "1.5rem",
-
-                            fontWeight: "bold",
-
-                            marginBottom: "8px",
-
-                            letterSpacing: "1px",
-
-                            textShadow: "2px 2px 6px rgba(0,0,0,0.5)",
-
-                            lineHeight: "1.3"
-
-                          }}
-
-                        >
-
-                          {book.title}
-
-                        </h4>
-
-                        <p
-
-                          style={{
-
-                            color: book.textColor,
-
-                            fontSize: "0.95rem",
-
-                            fontStyle: "italic",
-
-                            opacity: "0.9",
-
-                            marginBottom: "15px",
-
-                            textShadow: "1px 1px 3px rgba(0,0,0,0.5)"
-
-                          }}
-
-                        >
-
-                          {book.subtitle}
-
-                        </p>
-
-                        <div
-
-                          style={{
-
-                            width: "60px",
-
-                            height: "2px",
-
-                            background: book.textColor,
-
-                            margin: "0 0 12px 0",
-
-                            opacity: "0.6"
-
-                          }}
-
-                        ></div>
-
-                        <p
-
-                          style={{
-
-                            color: book.textColor,
-
-                            fontSize: "1rem",
-
-                            fontStyle: "italic",
-
-                            marginBottom: "0",
-
-                            textShadow: "1px 1px 3px rgba(0,0,0,0.5)"
-
-                          }}
-
-                        >
-
-                          by {book.author}
-
-                        </p>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          ))}
-
-        </div>
-
-
-
-        {/* Navigation Dots */}
-
-        <div className="text-center mt-5 pt-3">
-
-          <div className="d-inline-flex gap-3">
-
-            {Array.from({ length: totalSlides }).map((_, dot) => (
-
-              <button
-
-                key={dot}
-
-                onClick={() => handleSlideChange(dot)}
-
-                disabled={isAnimating}
-
-                style={{
-
-                  width: "12px",
-
-                  height: "12px",
-
-                  borderRadius: "50%",
-
-                  backgroundColor: dot === currentSlide ? "#364a52" : "#d4cfc9",
-
-                  border: "none",
-
-                  cursor: isAnimating ? "not-allowed" : "pointer",
-
-                  transition: "all 0.3s ease",
-
-                  opacity: isAnimating ? 0.5 : 1
-
-                }}
-
-                onMouseEnter={(e) => {
-
-                  if (!isAnimating) {
-
-                    e.currentTarget.style.backgroundColor = "#364a52";
-
-                    e.currentTarget.style.transform = "scale(1.2)";
-
-                  }
-
-                }}
-
-                onMouseLeave={(e) => {
-
-                  if (dot !== currentSlide) {
-
-                    e.currentTarget.style.backgroundColor = "#d4cfc9";
-
-                  }
-
-                  e.currentTarget.style.transform = "scale(1)";
-
-                }}
-
-                aria-label={`View book collection ${dot + 1}`}
-
-              ></button>
-
-            ))}
-
+    <>
+      <section className="portfolio-section">
+        <div className="container">
+          {/* Header */}
+          <div className="section-header">
+            <h1 className="fw-bold mb-3" style={{ color: '#0f252f', letterSpacing: '-0.5px' }}>
+              FEATURED <span className="title-accent">COLLECTION</span>
+            </h1>
+            <h5 className="section-description">
+              Explore our curated collection of Mediterranean literature, where each story captures the essence of sun-drenched shores and timeless tales.
+            </h5>
           </div>
 
+          {/* Books Slider */}
+          <div className="slider-container">
+            <button 
+              className="nav-button nav-button-left" 
+              onClick={handlePrevSlide}
+              disabled={isAnimating}
+              aria-label="Previous books"
+            >
+              <ChevronLeft size={24} />
+            </button>
+
+            <div className="books-grid">
+              {getCurrentBooks().map((book, index) => (
+                <div 
+                  key={`${book.id}-${currentSlide}-${index}`} 
+                  className={`book-card ${isAnimating ? 'animating' : ''}`}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="book-image-wrapper">
+                    <img 
+                      src={book.image} 
+                      alt={book.title}
+                      className="book-image"
+                    />
+                    <div className="book-overlay">
+                      <div className="book-info">
+                        <h3 className="book-title">{book.title}</h3>
+                        <p className="book-subtitle">{book.subtitle}</p>
+                        <div className="book-divider"></div>
+                        <p className="book-author">by {book.author}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <button 
+              className="nav-button nav-button-right" 
+              onClick={handleNextSlide}
+              disabled={isAnimating}
+              aria-label="Next books"
+            >
+              <ChevronRight size={24} />
+            </button>
+          </div>
+
+          {/* Navigation Dots */}
+          <div className="dots-container">
+            {Array.from({ length: totalSlides }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => handleSlideChange(index)}
+                disabled={isAnimating}
+                className={`dot ${index === currentSlide ? 'dot-active' : ''}`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
+      </section>
 
-      </div>
+      <style jsx>{`
+        .portfolio-section {
+          padding: 4rem 1rem;
+          background: linear-gradient(135deg, #eeeae7 0%, #d4cfc9 50%, #eeeae7 100%);
+          position: relative;
+          overflow: hidden;
+        }
 
-    </section>
+        .portfolio-section::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-image: repeating-linear-gradient(
+            45deg,
+            #0f252f 0px,
+            #0f252f 1px,
+            transparent 1px,
+            transparent 12px
+          );
+          opacity: 0.03;
+          pointer-events: none;
+        }
 
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 1;
+        }
+
+        .section-header {
+          text-align: center;
+          margin-bottom: 3rem;
+        }
+
+        .section-title {
+          color: #0f252f;
+          letter-spacing: 1px;
+          margin-bottom: 1rem;
+        }
+
+        .title-accent {
+          color: #364a52;
+          font-weight: 600;
+        }
+
+        .section-description {
+          max-width: 600px;
+          margin: 0 auto;
+          color: #0f252f;
+          opacity: 0.85;
+          line-height: 1.6;
+        }
+
+        .slider-container {
+          position: relative;
+          padding: 0 3rem;
+        }
+
+        .nav-button {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background: rgba(54, 74, 82, 0.9);
+          color: #eeeae7;
+          border: none;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          z-index: 10;
+          backdrop-filter: blur(10px);
+        }
+
+        .nav-button:hover:not(:disabled) {
+          background: #364a52;
+          transform: translateY(-50%) scale(1.1);
+        }
+
+        .nav-button:disabled {
+          opacity: 0.4;
+          cursor: not-allowed;
+        }
+
+        .nav-button-left {
+          left: 0;
+        }
+
+        .nav-button-right {
+          right: 0;
+        }
+
+        .books-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 2rem;
+          min-height: 400px;
+        }
+
+        .book-card {
+          opacity: 0;
+          animation: fadeInUp 0.4s ease forwards;
+        }
+
+        .book-card.animating {
+          animation: fadeOut 0.4s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeOut {
+          from {
+            opacity: 1;
+            transform: translateY(0);
+          }
+          to {
+            opacity: 0;
+            transform: translateY(-20px);
+          }
+        }
+
+        .book-image-wrapper {
+          position: relative;
+          aspect-ratio: 2/3;
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0 10px 30px rgba(15, 37, 47, 0.2);
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+
+        .book-image-wrapper:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 15px 40px rgba(15, 37, 47, 0.3);
+        }
+
+        .book-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .book-overlay {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: linear-gradient(to top, rgba(15, 37, 47, 0.95) 0%, rgba(15, 37, 47, 0.7) 60%, transparent 100%);
+          padding: 1.5rem 1rem;
+          transform: translateY(100%);
+          transition: transform 0.3s ease;
+        }
+
+        .book-image-wrapper:hover .book-overlay {
+          transform: translateY(0);
+        }
+
+        .book-info {
+          color: #eeeae7;
+        }
+
+        .book-title {
+          margin-bottom: 0.25rem;
+          letter-spacing: 0.5px;
+          color: #eeeae7;
+        }
+
+        .book-subtitle {
+          font-style: italic;
+          opacity: 0.9;
+          margin-bottom: 0.75rem;
+        }
+
+        .book-divider {
+          width: 40px;
+          height: 2px;
+          background: #eeeae7;
+          opacity: 0.5;
+          margin-bottom: 0.5rem;
+        }
+
+        .book-author {
+          font-style: italic;
+          opacity: 0.95;
+          margin: 0;
+        }
+
+        .dots-container {
+          display: flex;
+          justify-content: center;
+          gap: 0.75rem;
+          margin-top: 2.5rem;
+        }
+
+        .dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: #d4cfc9;
+          border: none;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          padding: 0;
+        }
+
+        .dot:hover:not(:disabled) {
+          background: #364a52;
+          transform: scale(1.2);
+        }
+
+        .dot:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+
+        .dot-active {
+          background: #364a52;
+          transform: scale(1.3);
+        }
+
+        @media (max-width: 1024px) {
+          .books-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+          }
+
+          .slider-container {
+            padding: 0 2.5rem;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .portfolio-section {
+            padding: 3rem 1rem;
+          }
+
+          .section-header {
+            margin-bottom: 2rem;
+          }
+
+          .books-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            min-height: 450px;
+          }
+
+          .slider-container {
+            padding: 0 2rem;
+          }
+
+          .nav-button {
+            width: 36px;
+            height: 36px;
+          }
+
+          .book-image-wrapper {
+            max-width: 300px;
+            margin: 0 auto;
+          }
+
+          .book-overlay {
+            transform: translateY(0);
+          }
+        }
+
+        @media (max-width: 480px) {
+          .portfolio-section {
+            padding: 2rem 0.5rem;
+          }
+
+          .slider-container {
+            padding: 0 1.5rem;
+          }
+
+          .nav-button {
+            width: 32px;
+            height: 32px;
+          }
+
+          .section-description {
+            padding: 0 1rem;
+          }
+        }
+      `}</style>
+    </>
   );
-
 };
 
-
-
-export default FeaturedBooksSection;
+export default PortfolioSection;

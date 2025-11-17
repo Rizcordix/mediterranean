@@ -6,6 +6,8 @@ import AboutUs from './components/AboutUs'
 import ActionBox from './components/ActionBox'
 import TopNavbar from '../home/components/TopNavbar'
 import Footer from '../home/components/Footer'
+import ProcedureSection from '../home/components/procedure'
+import FeaturedBooksSection from '../home/components/portfolio'
 
 const AboutAdvancePage = () => {
   return (
@@ -15,6 +17,8 @@ const AboutAdvancePage = () => {
       <AboutUs />
       {/* <WhyUs /> */}
       {/* <Solutions /> */}
+      <FeaturedBooksSection />
+      <ProcedureSection />
        <ActionBox />
       <Footer />
     </>

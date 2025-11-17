@@ -12,13 +12,12 @@ import {
   Square,
   Headphones,
   Printer,
-  // PlayCircle,
+  PlayCircle,
   Globe,
   PencilLine,
   Megaphone,
   Palette,
-  FileEdit,
-  FileVideoCamera
+  FileEdit
 } from "lucide-react"
 
 type OpenType = {
@@ -231,7 +230,7 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
                     </Link>
 
                     <Link href="/services/book-video-trailer" className="service-item">
-                      <div className="service-icon"><FileVideoCamera size={32} /></div>
+                      <div className="service-icon"><PlayCircle size={32} /></div>
                       <div className="service-content">
                         <div className="service-title">Book Video Trailer</div>
                         <div className="service-description">Bringing Creativity to Life Through Videos</div>
