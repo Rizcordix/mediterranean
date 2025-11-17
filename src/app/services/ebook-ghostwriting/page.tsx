@@ -11,6 +11,40 @@ import Categories from '@/app/home/components/Categories'
 import CTA from '@/app/home/components/Features'
 import ProcedureSection from '@/app/home/components/procedure'
 
+export const metadata = {
+  title: "eBook Ghostwriting | Mediterranean Publishing – Your Ideas, Our Words",
+  description: "Transform your ideas into professionally written eBooks with our expert ghostwriting services. Mediterranean Publishing delivers polished, publish-ready content.",
+  keywords: [
+    "ebook ghostwriting",
+    "hire ebook writer",
+    "ghostwriting services",
+    "ebook writing services",
+    "Mediterranean Publishing ebook",
+    "professional ghostwriter"
+  ],
+  openGraph: {
+    title: "eBook Ghostwriting | Mediterranean Publishing",
+    description: "Get a professionally written, ready-to-publish eBook.",
+    url: "https://www.mediterraneanpublishing.com/ebook-ghostwriting",
+    siteName: "Mediterranean Publishing",
+    images: [
+      {
+        url: "https://www.mediterraneanpublishing.com/og-ebook-ghostwriting.jpg",
+        width: 1200,
+        height: 630,
+        alt: "eBook Ghostwriting – Mediterranean Publishing"
+      }
+    ],
+    type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "eBook Ghostwriting | Mediterranean Publishing",
+    description: "Professional eBook ghostwriting for all genres.",
+    images: ["https://www.mediterraneanpublishing.com/og-ebook-ghostwriting.jpg"]
+  }
+};
+
 const AgencyStartUpPage = () => {
   return (
     <>

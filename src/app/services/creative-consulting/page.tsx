@@ -11,6 +11,40 @@ import Categories from '@/app/home/components/Categories'
 import CTA from '@/app/home/components/Features'
 import ProcedureSection from '@/app/home/components/procedure'
 
+export const metadata = {
+  title: "Creative Consultancy | Mediterranean Publishing – Professional Guidance for Authors",
+  description: "Get expert creative consultancy for your book, brand, or publishing journey. Mediterranean Publishing helps authors refine ideas, develop concepts, and build successful strategies.",
+  keywords: [
+    "creative consultancy",
+    "author consulting",
+    "book consulting services",
+    "publishing consultancy",
+    "Mediterranean Publishing consulting",
+    "creative strategy for authors"
+  ],
+  openGraph: {
+    title: "Creative Consultancy | Mediterranean Publishing",
+    description: "Professional creative guidance for authors and publishers.",
+    url: "https://www.mediterraneanpublishing.com/creative-consultancy",
+    siteName: "Mediterranean Publishing",
+    images: [
+      {
+        url: "https://www.mediterraneanpublishing.com/og-creative-consultancy.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Creative Consultancy – Mediterranean Publishing"
+      }
+    ],
+    type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Creative Consultancy | Mediterranean Publishing",
+    description: "Expert creative consulting for authors and businesses.",
+    images: ["https://www.mediterraneanpublishing.com/og-creative-consultancy.jpg"]
+  }
+};
+
 const AgencyStartUpPage = () => {
   return (
     <>
