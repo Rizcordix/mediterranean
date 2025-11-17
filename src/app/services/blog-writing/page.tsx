@@ -11,6 +11,40 @@ import Categories from '@/app/home/components/Categories'
 import CTA from '@/app/home/components/Features'
 import ProcedureSection from '@/app/home/components/procedure'
 
+export const metadata = {
+  title: "Blog Writing Services | Mediterranean Publishing – SEO-Optimized, Engaging Content",
+  description: "Boost your online presence with Mediterranean Publishing’s SEO-optimized blog writing services. High-quality blog posts crafted for engagement and ranking.",
+  keywords: [
+    "blog writing services",
+    "SEO blog writing",
+    "hire blog writer",
+    "content writing services",
+    "Mediterranean Publishing blogs",
+    "professional blog writing"
+  ],
+  openGraph: {
+    title: "Blog Writing Services | Mediterranean Publishing",
+    description: "Engaging, SEO-friendly blogs written by expert content writers.",
+    url: "https://www.mediterraneanpublishing.com/blog-writing",
+    siteName: "Mediterranean Publishing",
+    images: [
+      {
+        url: "https://www.mediterraneanpublishing.com/og-blog-writing.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Blog Writing Services – Mediterranean Publishing"
+      }
+    ],
+    type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog Writing Services | Mediterranean Publishing",
+    description: "SEO-optimized blog writing for stronger online visibility.",
+    images: ["https://www.mediterraneanpublishing.com/og-blog-writing.jpg"]
+  }
+};
+
 const AgencyStartUpPage = () => {
   return (
     <>
