@@ -37,10 +37,10 @@ const ProcedureSection = () => {
           <h1 className="fw-bold mb-3" style={{ color: '#0f252f', letterSpacing: '-0.5px' }}>
             OUR QUICK PROCEDURE
           </h1>
-          <p className="mx-auto" style={{ maxWidth: '900px', color: '#364a52', fontSize: '1.05rem' }}>
+          <h5 className="mx-auto" style={{ maxWidth: '900px', color: '#364a52', fontSize: '1.05rem' }}>
             Over this seamless process, we prioritize open communication, teamwork, and achieving your intellectual goals. 
             Join us as we center your story to create art. That&apos;s the steps
-          </p>
+          </h5>
         </div>
 
         {/* Horizontal Steps */}
