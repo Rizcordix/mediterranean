@@ -19,7 +19,7 @@ const Hero = () => {
               <h6>You found it!</h6>
               <h2 className="display-4 fw-normal">Engaging Blog Writing That Connects.</h2>
               <p className="mb-4 display-8 lh-0 fw-normal">
-                At Meditarranean Publishing, we create high-quality, SEO-optimized blog content that captures your audience&apos;s attention, builds authority, and drives traffic to your website. Let your ideas and expertise shine through professionally crafted articles.
+                In today&apos;s digital landscape, consistent, high-quality blog content is essential for building your author platform, engaging readers, and driving book sales. Our bespoke blog writing services deliver SEO-optimized, engaging content that positions you as an authority in your niche, grows your audience, and creates meaningful connections with potential readers.
               </p>
               <Button onClick={openQuote} variant="white" className="me-3">
                 Get Your Instant Quote

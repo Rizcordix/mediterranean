@@ -19,7 +19,7 @@ const Hero = () => {
               <h6>You found it!</h6>
               <h2 className="display-4 fw-normal">Professional Article Publication Services.</h2>
               <p className="mb-4 display-8 lh-0 fw-normal">
-                Get your voice heard and your expertise recognized. At Meditarranean Publishing, we help authors, professionals, and businesses publish high-quality articles on reputable platforms to build credibility, authority, and audience trust.
+                Build credibility, expand your reach, and establish yourself as an industry thought leader with our article publication services. We write, optimize, and publish high-quality articles on reputable platforms, industry publications, and high-traffic websites—putting your expertise in front of the right audience and boosting your online authority.
               </p>
               <Button onClick={openQuote} variant="white" className="me-3">
                 Get Your Instant Quote

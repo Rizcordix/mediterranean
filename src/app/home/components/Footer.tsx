@@ -1,3 +1,4 @@
+"use client"
 import { currentYear } from '@/context/constants'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -16,59 +17,104 @@ const Footer = () => {
                 <Link href="/" className="footer-logo mb-3 d-block">
                   <Image src={logoImg} alt="logo" className="footer-logo-item" />
                 </Link>
+
                 <p className="mt-3">
                   At Meditarranean Publishing, we are committed to helping authors, businesses, and creators bring their stories to life with professional writing, design, and publishing solutions. Your success is our passion—let&apos;s create something extraordinary together.
                 </p>
+
                 <ul className="p-0 list-inline">
                   <li className="list-inline-item me-4">
                     <i className="me-1 text-primary ti-map-alt" />
-                    1421 Coburn, Near Center Point, IL 61548.{' '}
+                    1421 Coburn, Near Center Point, IL 61548.
                   </li>
                   <li className="list-inline-item me-4">
-                    <i className="me-1 text-primary ti-headphone-alt" /> (251) 854-6308{' '}
+                    <i className="me-1 text-primary ti-headphone-alt" /> (251) 854-6308
                   </li>
                   <li className="list-inline-item me-4">
-                    <i className="me-1 text-primary ti-email" /> <Link href="mailto:info@mediterraneanpublishing.com">info@mediterraneanpublishing.com</Link>{' '}
+                    <i className="me-1 text-primary ti-email" />{' '}
+                    <Link href="mailto:info@mediterraneanpublishing.com">info@mediterraneanpublishing.com</Link>
                   </li>
                 </ul>
+
+                <ul className="social-icons si-colored-bg-on-hover si-medium mt-3 justify-content-center">
+                <li className="social-icons-item social-facebook">
+                  <Link className="social-icons-link" href="https://www.facebook.com/share/17L6o8vpt1/" target='_blank'>
+                    <i className="fab fa-facebook-f" />
+                  </Link>
+                </li>
+                <li className="social-icons-item social-instagram">
+                  <Link className="social-icons-link" href="https://www.instagram.com/mediterraneanpublishing/" target='_blank'>
+                    <i className="fab fa-instagram" />
+                  </Link>
+                </li>
+              </ul>
+
+
                 <div className="divider my-3" />
+
                 <div className="copyright-links my-2">
                   <ul className="list-inline">
                     <li className="list-inline-item ps-2">
-                      <Link className="list-group-item-action" href="/about">
-                        About Us
-                      </Link>
+                      <Link className="list-group-item-action" href="/about">About Us</Link>
                     </li>
                     <li className="list-inline-item ps-2">
-                      <Link className="list-group-item-action" href="/contact">
-                        Contact
-                      </Link>
+                      <Link className="list-group-item-action" href="/contact">Contact</Link>
                     </li>
                     <li className="list-inline-item ps-2">
-                      <Link className="list-group-item-action" href="/reviews">
-                        Reviews
-                      </Link>
+                      <Link className="list-group-item-action" href="/reviews">Reviews</Link>
                     </li>
                     <li className="list-inline-item ps-2">
-                      <Link className="list-group-item-action" href="/privacy">
-                        Privacy Policy
-                      </Link>
+                      <Link className="list-group-item-action" href="/privacy">Privacy Policy</Link>
                     </li>
                     <li className="list-inline-item ps-2">
-                      <Link className="list-group-item-action pe-0" href="/terms">
-                        terms of service
-                      </Link>
+                      <Link className="list-group-item-action pe-0" href="/terms">terms of service</Link>
                     </li>
                   </ul>
                 </div>
+
                 <div className="copyright-text">
-                  ©{currentYear} All Rights Reserved by <Link href=""> Mediterranean Publishing.</Link>
+                  ©{currentYear} All Rights Reserved by{' '}
+                  <Link href="https://www.mediterraneanpublishing.com"> Mediterranean Publishing.</Link>
                 </div>
               </div>
             </Col>
           </Row>
         </Container>
       </div>
+      <style jsx>{`
+  .social-wrapper {
+    margin-top: 20px;
+  }
+
+  .social-square {
+    width: 48px;
+    height: 48px;
+    background: #ffffff;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.25s ease;
+  }
+
+  .social-square i {
+    font-size: 24px;
+  }
+
+  .social-square.instagram i {
+    color: #E1306C; /* Instagram pink */
+  }
+
+  .social-square.facebook i {
+    color: #1877F2; /* Facebook blue */
+  }
+
+  .social-square:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.25);
+  }
+`}</style>
     </footer>
   )
 }

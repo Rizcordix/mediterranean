@@ -19,7 +19,7 @@ const Hero = () => {
               <h6>You found it!</h6>
               <h2 className="display-4 fw-normal">Book Covers That Make a Lasting Impression.</h2>
               <p className="mb-4 display-8 lh-0 fw-normal">
-                At Meditarranean Publishing, we design professional book covers that capture your story&apos;s essence and attract readers at first glance. A compelling cover is the first step to standing out in a crowded market.
+                Your book cover is your first—and often only—chance to capture a reader&apos;s attention. Our professional cover design services create stunning, genre-appropriate covers that stand out in crowded marketplaces, communicate your book&apos;s essence instantly, and drive clicks into purchases. Great writing deserves a great cover—let us create yours.
               </p>
               <Button onClick={openQuote} variant="white" className="me-3">
                 Get Your Instant Quote
