@@ -19,7 +19,7 @@ const Hero = () => {
               <h6>You found it!</h6>
               <h2 className="display-4 fw-normal">Turning Your Creativity into Timeless Stories.</h2>
               <p className="mb-4 display-8 lh-0 fw-normal">
-                Have a powerful story inside you but struggling to put it on paper? Our professional book writing services transform your raw ideas into captivating narratives that readers can't put down. Whether you're writing fiction, non-fiction, memoirs, business books, or any genre in between—our experienced authors and writers bring your vision to life with creativity, precision, and authenticity.
+                Have a powerful story inside you but struggling to put it on paper? Our professional book writing services transform your raw ideas into captivating narratives that readers can&apos;t put down. Whether you&apos;re writing fiction, non-fiction, memoirs, business books, or any genre in between—our experienced authors and writers bring your vision to life with creativity, precision, and authenticity.
               </p>
               <Button onClick={openQuote} variant="white" className="me-3">
                 Start Your Book Journey

@@ -19,7 +19,7 @@ const Hero = () => {
               <h6>You found it!</h6>
               <h2 className="display-4 fw-normal">Painting Your Words in Color.</h2>
               <p className="mb-4 display-8 lh-0 fw-normal">
-                Transform your manuscript into a visual masterpiece with professional book illustration services. Whether you're creating a children&aos;s book, graphic novel, illustrated guide, or adding visual elements to any genre—our talented artists bring your words to life with stunning artwork that captivates readers and enhances storytelling.
+                Transform your manuscript into a visual masterpiece with professional book illustration services. Whether you&apos;re creating a children&aos;s book, graphic novel, illustrated guide, or adding visual elements to any genre—our talented artists bring your words to life with stunning artwork that captivates readers and enhances storytelling.
               </p>
               <Button onClick={openQuote} variant="white" className="me-3">
                 Get Your Instant Quote

@@ -2,16 +2,16 @@
 import React from 'react';
 import { Clock, RefreshCw, ArrowRight, Check, Sparkles, Package } from 'lucide-react';
 
-type Service = {
-  id: number;
-  title: string;
-  tagLine: string;
-  fullDescription: string;
-  highlights: string[];
-  perfectFor: string[];
-  deliverables: string[];
-  eta: string;
-};
+// type Service = {
+//   id: number;
+//   title: string;
+//   tagLine: string;
+//   fullDescription: string;
+//   highlights: string[];
+//   perfectFor: string[];
+//   deliverables: string[];
+//   eta: string;
+// };
 
 const SERVICES = [
   {
@@ -453,7 +453,7 @@ export default function Component({ id = 1 }: { id?: number }) {
               </div>
 
               <div className="content-card">
-                <h3 className="card-subtitle">What You'll Receive</h3>
+                <h3 className="card-subtitle">What You&apos;ll Receive</h3>
                 <ul className="detail-list">
                   {service.deliverables.map((item, idx) => (
                     <li key={idx}>{item}</li>
