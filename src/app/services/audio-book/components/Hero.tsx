@@ -17,12 +17,12 @@ const Hero = () => {
           <Col sm={10} lg={6} className="all-text-white my-5 mt-md-0 position-relative">
             <div className="text-start py-0 py-md-5 my-5">
               <h6>You found it!</h6>
-              <h2 className="display-4 fw-normal">Professional Audiobook Creation.</h2>
+              <h2 className="display-4 fw-normal">Engaging Audio Books For All Genres</h2>
               <p className="mb-4 display-8 lh-0 fw-normal">
-                Turn your manuscript into an immersive listening experience. At Meditarranean Publishing, we produce high-quality audiobooks with professional narration, studio-grade sound, and flawless editing—perfect for authors who want to expand their reach across major audio platforms.
+                The audiobook market is exploding, with millions of listeners consuming books during commutes, workouts, and daily routines. Our professional audiobook production services transform your written work into captivating audio experiences that reach audiences wherever they are. From voice casting to final mastering, we handle every technical aspect while delivering broadcast-quality results.
               </p>
               <Button onClick={openQuote} variant="white" className="me-3">
-                Get Your Instant Quote
+                Get Audiobook Quote
               </Button>
             </div>
           </Col>

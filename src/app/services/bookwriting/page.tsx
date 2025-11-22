@@ -10,6 +10,7 @@ import AboutUs from './components/AboutSection'
 import Categories from '@/app/home/components/Categories'
 import ProcedureSection from '@/app/home/components/procedure'
 import CTA from '@/app/home/components/Features'
+import Component0 from './components/Special'
 
 export const metadata = {
   title: "Book Writing Services | Mediterranean Publishing – Turn Ideas Into Timeless Books",
@@ -22,7 +23,8 @@ export const metadata = {
     "custom book writing",
     "write my book",
     "book manuscript writing",
-    "author writing services"
+    "author writing services",
+    "professional book writing services, hire book writer, custom book writing, fiction writer for hire, non-fiction book writer, autobiography writer, memoir writing services, business book writer",
   ],
   openGraph: {
     title: "Book Writing Services | Mediterranean Publishing",
@@ -56,6 +58,7 @@ const AgencyStartUpPage = () => {
       <div className="divider mt-5" />
       <AboutUs />
       <CTA />
+      <Component0 id={1} />
       <PricingComponent defaultTab={1} />
       <ProcedureSection />
       <Categories />

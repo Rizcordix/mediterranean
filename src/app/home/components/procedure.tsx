@@ -6,7 +6,7 @@ const ProcedureSection = () => {
     {
       number: "01",
       title: "Enrollment Process for Users",
-      description: "Join us today by signing up for an account. It's easy and quick. In simple terms, becoming a member of our service is easy and will open doors to a wealth of resources for writers and professionals.",
+      description: "Join us today by Contacting us through Whatsapp /Contact Form /Email. It's easy and quick. In simple terms, becoming a member of our service is easy and will open doors to a wealth of resources for writers and professionals.",
       isDark: true
     },
     {
