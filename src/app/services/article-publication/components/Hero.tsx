@@ -1,8 +1,8 @@
 'use client'
 
-// import Image from 'next/image'
+import Image from 'next/image'
+import image1 from '@/assets/images/services/article1.png'
 import React from 'react'
-// import blog1 from '@/assets/images/blog/01.jpg'
 import { Button, Col, Container, Row } from 'react-bootstrap'
 // import dynamic from 'next/dynamic'
 import { usePopup } from '@/components/wrappers/PopupContext'
@@ -27,7 +27,7 @@ const Hero = () => {
             </div>
           </Col>
           <Col sm={10} md={6} className="d-none d-lg-block mb-5 position-relative">
-            <img className="rounded shadow" src='https://placehold.co/600x400' width={600} height={400} alt="blog1" />
+            <Image className="rounded shadow" src={image1} width={600} height={400} alt="blog1" />
           </Col>
         </Row>
       </Container>
