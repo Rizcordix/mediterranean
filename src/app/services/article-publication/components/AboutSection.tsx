@@ -1,5 +1,7 @@
 import React from 'react';
 // import Image from 'next/image';
+import Image from 'next/image'
+import image2 from '@/assets/images/services/article2.png'
 
 const Details = () => {
   return (
@@ -49,8 +51,8 @@ const Details = () => {
                   boxShadow: '0 20px 60px rgba(15, 37, 47, 0.15)',
                 }}
               >
-                <img
-                  src="https://placehold.co/600x800"
+                <Image
+                  src={image2}
                   alt="Book Writing Service"
                   width={600}
                   height={800}

@@ -29,7 +29,8 @@ export default function PreviewCarousel({ pages }: Props) {
             <Image
               src={pages[i]}
               alt={`Page ${i + 1}`}
-              fill
+              width={400}
+              height={600}
               draggable={false}
             />
           </motion.div>
