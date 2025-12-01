@@ -7,6 +7,9 @@ import { Button, Col, Container, Row } from 'react-bootstrap'
 // import dynamic from 'next/dynamic'
 import { usePopup } from '@/components/wrappers/PopupContext'
 // const GlightBox = dynamic(() => import('@/components/GlightBox'), { ssr: false })
+import Image from 'next/image'
+import image1 from '@/assets/images/services/bookprinting1.png'
+
 
 const Hero = () => {
   const { openQuote } = usePopup();
@@ -17,17 +20,17 @@ const Hero = () => {
           <Col sm={10} lg={6} className="all-text-white my-5 mt-md-0 position-relative">
             <div className="text-start py-0 py-md-5 my-5">
               <h6>You found it!</h6>
-              <h2 className="display-4 fw-normal">High-Quality Book Printing Services.</h2>
+              <h2 className="display-4 fw-normal">Affordable Book Printing Solutions</h2>
               <p className="mb-4 display-8 lh-0 fw-normal">
-                At Meditarranean Publishing, we provide professional book printing services that ensure your manuscript transforms into a beautifully crafted physical book. From paper quality to finishes, every detail is handled with care.
+                Transform your digital manuscript into beautiful physical books with our professional printing services. Whether you need print-on-demand for self-publishing, bulk printing for events, or premium hardcovers for special editions—we deliver high-quality, affordable printing with fast turnaround and worldwide shipping.
               </p>
               <Button onClick={openQuote} variant="white" className="me-3">
-                Get Your Instant Quote
+                Get Printing Quote
               </Button>
             </div>
           </Col>
           <Col sm={10} md={6} className="d-none d-lg-block mb-5 position-relative">
-            <img className="rounded shadow" src='https://placehold.co/600x400' width={600} height={400} alt="blog1" />
+            <Image className="rounded shadow" src={image1} width={600} height={400} alt="bookprinting" />
           </Col>
         </Row>
       </Container>

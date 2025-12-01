@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { createPortal } from "react-dom";
+import Image from "next/image";
+import bookCoverImg from "@/assets/images/banner/discountbanner.png";
 
 type Props = {
   showOnEveryVisit?: boolean;
@@ -512,8 +514,8 @@ const PopupCard: React.FC<Props> = ({ showOnEveryVisit = true, delayMs = 600 }) 
             <div className="popup-content">
               <div className="popup-left">
                 <div className="popup-discount-badge">50% OFF</div>
-                <img 
-                  src="https://placehold.co/1200x1440" 
+                <Image 
+                  src={bookCoverImg} 
                   alt="Book Cover" 
                   className="popup-book-image"
                 />

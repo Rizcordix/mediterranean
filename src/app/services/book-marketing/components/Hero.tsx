@@ -7,6 +7,8 @@ import { Button, Col, Container, Row } from 'react-bootstrap'
 // import dynamic from 'next/dynamic'
 import { usePopup } from '@/components/wrappers/PopupContext'
 // const GlightBox = dynamic(() => import('@/components/GlightBox'), { ssr: false })
+import Image from 'next/image'
+import image1 from '@/assets/images/services/marketing1.png'
 
 const Hero = () => {
   const { openQuote } = usePopup();
@@ -17,9 +19,9 @@ const Hero = () => {
           <Col sm={10} lg={6} className="all-text-white my-5 mt-md-0 position-relative">
             <div className="text-start py-0 py-md-5 my-5">
               <h6>You found it!</h6>
-              <h2 className="display-4 fw-normal">Effective Book Marketing.</h2>
+              <h2 className="display-4 fw-normal">Promoting Your Authors.</h2>
               <p className="mb-4 display-8 lh-0 fw-normal">
-                At Meditarranean Publishing, we help authors reach the right readers with strategic, results-driven book marketing. From online campaigns to promotional content, we ensure your book gains visibility and drives engagement across multiple channels.
+                Writing a great book is only half the battle—getting it in front of readers is where real success happens. Our comprehensive book marketing services combine proven strategies with cutting-edge tactics to maximize your book&apos;s visibility, drive sales, and build your author brand. From launch campaigns to sustained promotion, we turn your book into a bestseller.
               </p>
               <Button onClick={openQuote} variant="white" className="me-3">
                 Get Your Instant Quote
@@ -27,7 +29,7 @@ const Hero = () => {
             </div>
           </Col>
           <Col sm={10} md={6} className="d-none d-lg-block mb-5 position-relative">
-            <img className="rounded shadow" src='https://placehold.co/600x400' width={600} height={400} alt="blog1" />
+            <Image className="rounded shadow" src={image1} width={600} height={400} alt="bookmarketing" />
           </Col>
         </Row>
       </Container>

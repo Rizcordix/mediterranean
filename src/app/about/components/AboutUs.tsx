@@ -425,7 +425,7 @@ const AboutPage = () => {
               e.currentTarget.style.backgroundColor = 'transparent';
               e.currentTarget.style.color = '#eeeae7';
             }}>
-              View Our Portfolio
+              View Book Samples
             </Button>
           </div>
         </div>

@@ -1,9 +1,11 @@
+"use client"
 import background from '@/assets/images/cta/bgCTA.jpg'
 import booksimage from '@/assets/images/cta/ctabooks.png'
 import Image from 'next/image'
 import { Button, Col, Container, Row } from 'react-bootstrap'
 // import Link from 'next/link'
 import type { CSSProperties } from 'react'
+import { usePopup } from '@/components/wrappers/PopupContext'
 
 const CTA = () => {
     // const showThriller = true;
@@ -19,6 +21,8 @@ const CTA = () => {
         zIndex: 1, 
       }
     };
+
+      const { openQuote } = usePopup();
 
     return (
         <section
@@ -114,6 +118,7 @@ const CTA = () => {
                                 </Button>
 
                                 <Button
+                                    onClick={openQuote}
                                     variant="outline-light"
                                     className="d-inline-flex align-items-center px-4 py-2" 
                                     style={{
@@ -124,7 +129,7 @@ const CTA = () => {
                                         zIndex: 2
                                     }}
                                 >
-                                    Get a Demo
+                                    Get a Quote
                                 </Button>
                             </div>
                         </div>

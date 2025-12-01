@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import imagesrc from '@/assets/images/cta/800x740.png';
+import imagesrc from '@/assets/images/banner/homeabout.png';
 
 const AboutUs = () => {
   return (

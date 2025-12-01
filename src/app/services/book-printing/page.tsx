@@ -10,6 +10,7 @@ import AboutUs from './components/AboutSection'
 import Categories from '@/app/home/components/Categories'
 import CTA from '@/app/home/components/Features'
 import ProcedureSection from '@/app/home/components/procedure'
+import Component0 from '../bookwriting/components/Special'
 
 export const metadata = {
   title: "Book Printing Services | Mediterranean Publishing – Premium & Affordable",
@@ -53,6 +54,7 @@ const AgencyStartUpPage = () => {
       <Clients />
       <div className="divider mt-5" />
       <AboutUs />
+      <Component0 id={5} />
       <CTA />
       <PricingComponent defaultTab={2} />
       <ProcedureSection />

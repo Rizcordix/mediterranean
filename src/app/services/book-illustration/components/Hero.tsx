@@ -7,6 +7,8 @@ import { Button, Col, Container, Row } from 'react-bootstrap'
 // import dynamic from 'next/dynamic'
 import { usePopup } from '@/components/wrappers/PopupContext'
 // const GlightBox = dynamic(() => import('@/components/GlightBox'), { ssr: false })
+import Image from 'next/image'
+import image1 from '@/assets/images/services/bookillustrations1.png'
 
 const Hero = () => {
   const { openQuote } = usePopup();
@@ -17,9 +19,9 @@ const Hero = () => {
           <Col sm={10} lg={6} className="all-text-white my-5 mt-md-0 position-relative">
             <div className="text-start py-0 py-md-5 my-5">
               <h6>You found it!</h6>
-              <h2 className="display-4 fw-normal">Stunning Book Illustrations.</h2>
+              <h2 className="display-4 fw-normal">Painting Your Words in Color.</h2>
               <p className="mb-4 display-8 lh-0 fw-normal">
-                At Meditarranean Publishing, we create custom illustrations that capture the essence of your story. From children&apos;s books to graphic novels, our artistic designs make your book visually captivating and unforgettable.
+                Transform your manuscript into a visual masterpiece with professional book illustration services. Whether you&apos;re creating a children&aos;s book, graphic novel, illustrated guide, or adding visual elements to any genre—our talented artists bring your words to life with stunning artwork that captivates readers and enhances storytelling.
               </p>
               <Button onClick={openQuote} variant="white" className="me-3">
                 Get Your Instant Quote
@@ -27,7 +29,7 @@ const Hero = () => {
             </div>
           </Col>
           <Col sm={10} md={6} className="d-none d-lg-block mb-5 position-relative">
-            <img className="rounded shadow" src='https://placehold.co/600x400' width={600} height={400} alt="blog1" />
+            <Image className="rounded shadow" src={image1} width={600} height={400} alt="bookillustrations" />
           </Col>
         </Row>
       </Container>

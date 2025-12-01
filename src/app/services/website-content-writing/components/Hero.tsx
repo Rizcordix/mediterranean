@@ -7,6 +7,8 @@ import { Button, Col, Container, Row } from 'react-bootstrap'
 // import dynamic from 'next/dynamic'
 import { usePopup } from '@/components/wrappers/PopupContext'
 // const GlightBox = dynamic(() => import('@/components/GlightBox'), { ssr: false })
+import Image from 'next/image'
+import image1 from '@/assets/images/services/websitecontent1.png'
 
 const Hero = () => {
   const { openQuote } = usePopup();
@@ -17,17 +19,17 @@ const Hero = () => {
           <Col sm={10} lg={6} className="all-text-white my-5 mt-md-0 position-relative">
             <div className="text-start py-0 py-md-5 my-5">
               <h6>You found it!</h6>
-              <h2 className="display-4 fw-normal">Website Content Writing Services.</h2>
+              <h2 className="display-4 fw-normal">Content that Fuels Your Online Presence.</h2>
               <p className="mb-4 display-8 lh-0 fw-normal">
-                Your website deserves words that work. Our Website Content Writing service delivers clear, compelling, and brand-focused content that builds trust, boosts engagement, and turns visitors into customers.
+                Your website content is your 24/7 sales team—working tirelessly to engage visitors, showcase your expertise, and convert browsers into book buyers. Our professional website content writing services create compelling, SEO-optimized copy that captures attention, builds trust, and drives action. From homepage headlines to detailed About pages-we write content that connects and converts.
               </p>
               <Button onClick={openQuote} variant="white" className="me-3">
-                Get Your Instant Quote
+                Get Compelling Web Content
               </Button>
             </div>
           </Col>
           <Col sm={10} md={6} className="d-none d-lg-block mb-5 position-relative">
-            <img className="rounded shadow" src='https://placehold.co/600x400' width={600} height={400} alt="blog1" />
+            <Image className="rounded shadow" src={image1} width={600} height={400} alt="WebsiteContentWriting1" />
           </Col>
         </Row>
       </Container>

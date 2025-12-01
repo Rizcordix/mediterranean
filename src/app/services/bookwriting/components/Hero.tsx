@@ -7,6 +7,8 @@ import { Button, Col, Container, Row } from 'react-bootstrap'
 // import dynamic from 'next/dynamic'
 import { usePopup } from '@/components/wrappers/PopupContext'
 // const GlightBox = dynamic(() => import('@/components/GlightBox'), { ssr: false })
+import Image from 'next/image'
+import image1 from '@/assets/images/services/bookwriting1.png'
 
 const Hero = () => {
   const { openQuote } = usePopup();
@@ -17,17 +19,17 @@ const Hero = () => {
           <Col sm={10} lg={6} className="all-text-white my-5 mt-md-0 position-relative">
             <div className="text-start py-0 py-md-5 my-5">
               <h6>You found it!</h6>
-              <h2 className="display-4 fw-normal">Professional Book Writing Services.</h2>
+              <h2 className="display-4 fw-normal">Turning Your Creativity into Timeless Stories.</h2>
               <p className="mb-4 display-8 lh-0 fw-normal">
-                Every great book starts with a powerful idea — and we&apos;re here to turn yours into a polished, compelling manuscript. At Meditarranean Publishing, our expert writers help you craft books that captivate readers, reflect your unique voice, and meet the highest publishing standards.
+                Have a powerful story inside you but struggling to put it on paper? Our professional book writing services transform your raw ideas into captivating narratives that readers can&apos;t put down. Whether you&apos;re writing fiction, non-fiction, memoirs, business books, or any genre in between—our experienced authors and writers bring your vision to life with creativity, precision, and authenticity.
               </p>
               <Button onClick={openQuote} variant="white" className="me-3">
-                Get Your Instant Quote
+                Start Your Book Journey
               </Button>
             </div>
           </Col>
           <Col sm={10} md={6} className="d-none d-lg-block mb-5 position-relative">
-            <img className="rounded shadow" src='https://placehold.co/600x400' width={600} height={400} alt="blog1" />
+            <Image className="rounded shadow" src={image1} width={600} height={400} alt="bookwriting1" />
           </Col>
         </Row>
       </Container>
