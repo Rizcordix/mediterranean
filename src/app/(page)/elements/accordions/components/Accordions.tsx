@@ -23,7 +23,7 @@ const DefaultAccordion = () => {
 const AccordionColor = () => {
   return (
     <Col md={6} className="mb-5">
-      <h5 className="mb-3">Accordion primary color</h5>
+      <h5 className="mb-3">Accordion primarys color</h5>
       <Accordion defaultActiveKey={'0'} className="accordion-icon-primary" id="accordionExample2">
         {accordionsData.map((item, idx) => (
           <AccordionItem eventKey={`${idx}`} className="accordion-item" key={idx}>
