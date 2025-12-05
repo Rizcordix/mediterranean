@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import banner8 from '@/assets/images/banner/Herobg3.png'
+import banner8 from '@/assets/images/banner/Herobg6.png'
 import { Container, Button } from 'react-bootstrap'
 import trustedplatforms from '@/assets/images/banner/trusted-platforms.png'
 import bookImage from '@/assets/images/banner/bookhero.png'
