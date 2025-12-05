@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import React, { useEffect } from 'react'
-import preloader from '@/assets/images/preloader.svg'
+import preloader from '@/assets/images/medipreloader.svg'
 
 const Loader = () => {
   useEffect(() => {
