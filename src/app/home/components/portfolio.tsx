@@ -14,56 +14,56 @@ const PortfolioSection = () => {
       title: "Whispers of the Aegean",
       subtitle: "A Tale of Ancient Secrets",
       author: "Elena Markos",
-      image: "https://placehold.co/600x900/364a52/eeeae7"
+      image: "/portfolio_images/1.png"
     },
     {
       id: 2,
       title: "Beneath Olive Groves",
       subtitle: "Stories from the Coast",
       author: "Marco Santini",
-      image: "https://placehold.co/300x450/0f252f/eeeae7"
+      image: "/portfolio_images/2.png"
     },
     {
       id: 3,
       title: "Sailing Home",
       subtitle: "A Journey Across Seas",
       author: "Sofia Valencia",
-      image: "https://placehold.co/300x450/4a6572/eeeae7"
+      image: "/portfolio_images/3.png"
     },
     {
       id: 4,
       title: "The Last Voyage",
       subtitle: "Chronicles of Discovery",
       author: "Andreas Dimitri",
-      image: "https://placehold.co/300x450/2a3f47/eeeae7"
+      image: "/portfolio_images/4.png"
     },
     {
       id: 5,
       title: "Mediterranean Dreams",
       subtitle: "Poems of the Coast",
       author: "Isabella Romano",
-      image: "https://placehold.co/300x450/364a52/eeeae7"
+      image: "/portfolio_images/5.png"
     },
     {
       id: 6,
       title: "Tides of Fortune",
       subtitle: "A Merchant's Tale",
       author: "Nicolas Laurent",
-      image: "https://placehold.co/300x450/0f252f/eeeae7"
+      image: "/portfolio_images/6.png"
     },
     {
       id: 7,
       title: "The Lighthouse Keeper",
       subtitle: "Stories of Solitude",
       author: "Maria Kostas",
-      image: "https://placehold.co/300x450/4a6572/eeeae7"
+      image: "/portfolio_images/7.png"
     },
     {
       id: 8,
       title: "Beyond the Horizon",
       subtitle: "Tales of Adventure",
       author: "Thomas Beaumont",
-      image: "https://placehold.co/300x450/2a3f47/eeeae7"
+      image: "/portfolio_images/8.png"
     }
   ];
 

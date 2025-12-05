@@ -26,7 +26,7 @@ const Hero = () => {
             </div>
           </Col>
           <Col sm={10} md={6} className="d-none d-lg-block mt-4 position-relative">
-            <img className="rounded shadow" src="https://placehold.co/400x500" width={400} height={500} alt="blog1" />
+            <img className="rounded shadow" src="portfolio_images/Proudly.jpg" width={400} height={500} alt="blog1" />
           </Col>
         </Row>
       </Container>

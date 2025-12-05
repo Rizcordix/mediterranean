@@ -11,8 +11,6 @@ export interface Book {
 // --- Import all necessary image assets ---
 
 // Cover Image (Used for both books in the provided data)
-import coverImage from '../../assets/images/booksamples/book1.webp'; 
-import coverImage2 from '../../assets/images/booksamples/840x1240.png';
 
 // Preview Pages for "The Quiet Editor" (b1)
 // import quietPreview1 from '../../assets/images/booksamples/book1.webp';
@@ -27,7 +25,7 @@ export const bookData: Book[] = [
     id: 'b1',
     title: 'The Quiet Editor',
     author: 'A. N. Author',
-    cover: coverImage2, 
+    cover: "/sample_cover/1.png", 
     blurb: 'A crisp manual about editing prose for clarity and rhythm. lorem ipsum dolor sit amet, consectetur adipiA crisp manual about editing prose for clarity and rhythm. lorem ipsum dolor sit amet, consectetur adipiscing elit.scing elit. A crisp manual about editing prose for clarity and rhythm. lorem ipsum dolor sit amet, consectetur adipiscing elit. A crisp manual about editing prose for clarity and rhythm.',
     previewPages: [quietPreview4, quietPreview3, quietPreview3],
   },
@@ -35,7 +33,7 @@ export const bookData: Book[] = [
     id: 'b2',
     title: 'Paper & Ink',
     author: 'B. Writer',
-    cover: coverImage, // Reusing the same image as in the source data
+    cover: "/sample_cover/2.png", // Reusing the same image as in the source data
     blurb: 'An illustrated guide to book production and its culture. lorem ipsum dolor sit amet, consectetur adipiA crisp manual about editing prose for clarity and rhythm. lorem ipsum dolor sit amet, consectetur adipiscing elit.scing elit. A crisp manual about editing prose for clarity and rhythm. ',
     previewPages: [quietPreview4, quietPreview3, quietPreview3],
   },
@@ -43,7 +41,7 @@ export const bookData: Book[] = [
     id: 'b3',
     title: 'The Quiet Editor',
     author: 'A. N. Author',
-    cover: coverImage, 
+    cover: "/sample_cover/3.png", 
     blurb: 'A crisp manual about editing prose for clarity and rhythm.',
     previewPages: [quietPreview4, quietPreview3, quietPreview3],
   },
