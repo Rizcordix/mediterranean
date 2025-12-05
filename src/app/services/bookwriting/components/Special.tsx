@@ -1,6 +1,8 @@
 "use client";
 import React from 'react';
 import { Clock, RefreshCw, ArrowRight, Check, Sparkles, Package } from 'lucide-react';
+import { Button } from 'react-bootstrap';
+import { usePopup } from '@/components/wrappers/PopupContext';
 
 // type Service = {
 //   id: number;
@@ -372,6 +374,7 @@ const SERVICES = [
 
 export default function Component({ id = 1 }: { id?: number }) {
   const service = SERVICES.find((s) => s.id === id) ?? SERVICES[0];
+  const { openQuote } = usePopup();
 
   return (
     <section className="service-wrapper">
@@ -414,13 +417,13 @@ export default function Component({ id = 1 }: { id?: number }) {
             </div>
 
             <div className="cta-section">
-              <button className="btn-primary">
+              <Button onClick={openQuote} className="btn-primary">
                 <span>Book a Free Demo</span>
                 <ArrowRight size={16} />
-              </button>
-              <button className="btn-secondary">
+              </Button>
+              <Button href='/book-samples' className="btn-secondary">
                 View Samples
-              </button>
+              </Button>
             </div>
           </aside>
 
