@@ -53,17 +53,17 @@ const PortfolioSection = () => {
     },
     {
       id: 7,
-      title: "The Magic Apprentice",
-      subtitle: "Stories of Solitude.",
-      author: "Genevieve Kote",
-      image: "/portfolio_images/7.png"
+      title: "The Sheriff's Tale",
+      subtitle: "A Ballad of Duty and a Silent Heart.",
+      author: "Kira Elington",
+      image: "/portfolio_images/Sheriff_Tale_Book_Cover.png"
     },
     {
       id: 8,
-      title: "The Dragon's Whisper",
-      subtitle: "Tales of Adventure.",
-      author: "Samuel Drake",
-      image: "/portfolio_images/8.png"
+      title: "The Librarian of Lost Things",
+      subtitle: "Every object holds a memory. Some are deadly.",
+      author: "Jennifer Delmont",
+      image: "/portfolio_images/6.png"
     }
   ];
 
