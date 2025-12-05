@@ -1,8 +1,8 @@
 'use client'
 
-// import Image from 'next/image'
+import Image from 'next/image'
 import React from 'react'
-// import blog1 from '@/assets/images/blog/01.jpg'
+import blog1 from '@/assets/images/portfolio_images/booksamplehero.png'
 import { Button, Col, Container, Row } from 'react-bootstrap'
 import { usePopup } from '@/components/wrappers/PopupContext'
 
@@ -26,7 +26,7 @@ const Hero = () => {
             </div>
           </Col>
           <Col sm={10} md={6} className="d-none d-lg-block mt-4 position-relative">
-            <img className="rounded shadow" src="portfolio_images/Proudly.jpg" width={400} height={500} alt="blog1" />
+            <Image className="rounded shadow" src={blog1} width={600} height={400} alt="Book Samples" />
           </Col>
         </Row>
       </Container>
