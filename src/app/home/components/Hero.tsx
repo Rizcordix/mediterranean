@@ -6,10 +6,12 @@ import trustedplatforms from '@/assets/images/banner/trusted-platforms.png'
 import bookImage from '@/assets/images/banner/bookhero.png'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
+import { usePopup } from '@/components/wrappers/PopupContext'
 
 const Jarallax = dynamic(() => import('@/components/Jarallax'), { ssr: false })
 
 const Hero = () => {
+  const { openQuote } = usePopup();
   return (
     <Jarallax
       tag={'section'}
@@ -33,11 +35,11 @@ const Hero = () => {
           </p>
 
           <div className="mt-4 d-flex gap-3">
-            <Button className="btn btn-primary px-4 py-2 rounded-pill" style={{ color:'#eeeae7' }}>
+            <Button onClick={openQuote} className="btn btn-primary px-4 py-2 rounded-pill" style={{ color:'#eeeae7' }}>
               Get Started
             </Button>
 
-            <Button className="btn btn-outline-light px-4 py-2 rounded-pill" style={{borderColor: '#ffffff', color: '#0f252f'}}>
+            <Button href='/contact' className="btn btn-outline-light px-4 py-2 rounded-pill" style={{borderColor: '#ffffff', color: '#0f252f'}}>
               Learn More
             </Button>
           </div>
