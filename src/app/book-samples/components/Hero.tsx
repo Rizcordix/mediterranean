@@ -9,7 +9,9 @@ import { usePopup } from '@/components/wrappers/PopupContext'
 const Hero = () => {
   const { openQuote } = usePopup();
   return (
-    <section className="p-0 py-5 bg-grad2 pattern-overlay-2">
+    <section className="p-0 py-5 position-relative" style={{ 
+      background: 'linear-gradient(175deg, #eeeae7 0%, #364a52 25%, #0f252f 100%)',
+    }}>
       <Container>
         <Row className="py-0 py-md-5 justify-content-between align-items-center">
           <Col sm={10} lg={6} className="all-text-white my-5 mt-md-0 position-relative">

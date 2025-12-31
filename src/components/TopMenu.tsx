@@ -110,7 +110,7 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
         }
 
         .services-footer-btn {
-          background-color: #8f8985f0;
+          background-color: #364a52;
           color: white;
           padding: 10px 24px;
           border-radius: 5px;
@@ -119,10 +119,11 @@ const TopMenu = ({ isOpen, menuCenter }: OpenType) => {
           font-size: 14px;
           transition: all 0.2s ease;
           white-space: nowrap;
+          box-shadow: 0 2px 8px rgba(136, 133, 121, 0.2);
         }
 
         .services-footer-btn:hover {
-          background-color: #8f8985ff;
+          background-color: #364a56;
           color: white;
           transform: translateY(-1px);
           box-shadow: 0 4px 12px rgba(136, 133, 121, 0.3);
