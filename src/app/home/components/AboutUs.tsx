@@ -149,7 +149,7 @@ const AboutUs = () => {
                   fontWeight: 600,
                   fontStyle: 'italic'
                 }}>
-                  Imran Zammarud
+                  Message From
                 </p>
                 <p className="mb-0" style={{
                   fontSize: '0.875rem',
@@ -157,7 +157,7 @@ const AboutUs = () => {
                   opacity: 0.8,
                   letterSpacing: '0.5px'
                 }}>
-                  Co-founder & CEO
+                  Founders & CEO
                 </p>
               </div>
             </div>

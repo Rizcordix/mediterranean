@@ -140,7 +140,7 @@ const Services = () => {
               <p>
                 From manuscript to marketing, we provide comprehensive publishing services to bring your literary vision to life. Partner with us for professional, personalized solutions tailored to your unique needs.
               </p>
-              <div className="bg-light p-4 p-lg-5">
+              <div className="bg-light2 p-4 p-lg-5">
                 <span className="display-5 icon-primary">
                   <i className={slides[currentSlide].leftColumn.icon} />
                 </span>
@@ -158,7 +158,7 @@ const Services = () => {
             </div>
             <div className="col-md-4 mt-5">
               {slides[currentSlide].middleColumn.map((service, index) => (
-                <div className="bg-light p-4 p-lg-5 mb-5" key={index}>
+                <div className="bg-light2 p-4 p-lg-5 mb-5" key={index}>
                   <span className="display-5 icon-primary">
                     <i className={service.icon} />
                   </span>
@@ -178,7 +178,7 @@ const Services = () => {
             <div className="col-md-4">
               {slides[currentSlide].rightColumn.map((service, index) => (
                 <div 
-                  className={`${service.highlight ? 'bg-grad all-text-white' : 'bg-light'} p-4 p-lg-5 mb-5`} 
+                  className={`${service.highlight ? 'bg-grad all-text-white' : 'bg-light2'} p-4 p-lg-5 mb-5`} 
                   key={index}
                 >
                   <span className={`display-5 ${service.highlight ? 'icon-white' : 'icon-primary'}`}>
@@ -219,7 +219,7 @@ const Services = () => {
             >
               {slides.map((slide) => (
                 <div key={slide.id} style={{ minWidth: '100%' }}>
-                  <div className="bg-light p-4 mb-4">
+                  <div className="bg-light2 p-4 mb-4">
                     <span className="display-5 icon-primary">
                       <i className={slide.leftColumn.icon} />
                     </span>
@@ -229,7 +229,7 @@ const Services = () => {
                     </p>
                   </div>
                   {slide.middleColumn.map((service, index) => (
-                    <div className="bg-light p-4 mb-4" key={index}>
+                    <div className="bg-light2 p-4 mb-4" key={index}>
                       <span className="display-5 icon-primary">
                         <i className={service.icon} />
                       </span>
@@ -247,7 +247,7 @@ const Services = () => {
                   ))}
                   {slide.rightColumn.map((service, index) => (
                     <div 
-                      className={`${service.highlight ? 'bg-grad all-text-white' : 'bg-light'} p-4 mb-4`} 
+                      className={`${service.highlight ? 'bg-grad all-text-white' : 'bg-light2'} p-4 mb-4`} 
                       key={index}
                     >
                       <span className={`display-5 ${service.highlight ? 'icon-white' : 'icon-primary'}`}>
@@ -301,6 +301,10 @@ const Services = () => {
         .bg-grad {
           background: linear-gradient(135deg, #364a52 0%, #0f252f 100%);
         }
+        .bg-light2 {
+          background-color: #eeeae7;
+        }
+
         .icon-primary {
           color: #364a52;
         }

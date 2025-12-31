@@ -1,6 +1,8 @@
 "use client";
 import React from 'react';
 import { Clock, RefreshCw, ArrowRight, Check, Sparkles, Package } from 'lucide-react';
+import { Button } from 'react-bootstrap';
+import { usePopup } from '@/components/wrappers/PopupContext';
 
 // type Service = {
 //   id: number;
@@ -372,6 +374,7 @@ const SERVICES = [
 
 export default function Component({ id = 1 }: { id?: number }) {
   const service = SERVICES.find((s) => s.id === id) ?? SERVICES[0];
+  const { openQuote } = usePopup();
 
   return (
     <section className="service-wrapper">
@@ -414,13 +417,14 @@ export default function Component({ id = 1 }: { id?: number }) {
             </div>
 
             <div className="cta-section">
-              <button className="btn-primary">
+              <Button onClick={openQuote} className="btn-primary">
                 <span>Book a Free Demo</span>
                 <ArrowRight size={16} />
-              </button>
-              <button className="btn-secondary">
+              </Button>
+
+              <Button href='/book-samples' className="btn-secondary">
                 View Samples
-              </button>
+              </Button>
             </div>
           </aside>
 
@@ -671,7 +675,7 @@ export default function Component({ id = 1 }: { id?: number }) {
 
         .btn-secondary {
           width: 100%;
-          background: white;
+          background: linear-gradient(135deg, #364a52 0%, #0f252f 100%);
           color: #364a52;
           border: 2px solid rgba(54, 74, 82, 0.15);
           padding: 14px 24px;
@@ -685,6 +689,27 @@ export default function Component({ id = 1 }: { id?: number }) {
         .btn-secondary:hover {
           border-color: #364a52;
           background: rgba(54, 74, 82, 0.03);
+          transform: translateY(-1px);
+        }
+
+
+        .btn-secondary3 {
+          width: 100%;
+          background: #eeeae7;
+          box-shadow: 0 4px 12px rgba(15, 37, 47, 0.1);
+          color: #364a52;
+          border: 2px solid rgba(54, 74, 82, 0.15);
+          padding: 14px 24px;
+          border-radius: 14px;
+          font-size: 15px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .btn-secondary3:hover {
+          border-color: #eeeae7;
+          background: #f8f6f4;
           transform: translateY(-1px);
         }
 

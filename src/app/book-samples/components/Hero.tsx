@@ -1,15 +1,17 @@
 'use client'
 
-// import Image from 'next/image'
+import Image from 'next/image'
 import React from 'react'
-// import blog1 from '@/assets/images/blog/01.jpg'
+import blog1 from '@/assets/images/portfolio_images/booksamplehero.png'
 import { Button, Col, Container, Row } from 'react-bootstrap'
 import { usePopup } from '@/components/wrappers/PopupContext'
 
 const Hero = () => {
   const { openQuote } = usePopup();
   return (
-    <section className="p-0 py-5 bg-grad2 pattern-overlay-2">
+    <section className="p-0 py-5 position-relative" style={{ 
+      background: 'linear-gradient(175deg, #eeeae7 0%, #364a52 25%, #0f252f 100%)',
+    }}>
       <Container>
         <Row className="py-0 py-md-5 justify-content-between align-items-center">
           <Col sm={10} lg={6} className="all-text-white my-5 mt-md-0 position-relative">
@@ -26,7 +28,7 @@ const Hero = () => {
             </div>
           </Col>
           <Col sm={10} md={6} className="d-none d-lg-block mt-4 position-relative">
-            <img className="rounded shadow" src="portfolio_images/Proudly.jpg" width={400} height={500} alt="blog1" />
+            <Image className="rounded shadow" src={blog1} width={600} height={400} alt="Book Samples" />
           </Col>
         </Row>
       </Container>

@@ -11,59 +11,59 @@ const PortfolioSection = () => {
   const books = [
     {
       id: 1,
-      title: "Whispers of the Aegean",
-      subtitle: "A Tale of Ancient Secrets",
-      author: "Elena Markos",
+      title: "The House You Build Within",
+      subtitle: "A Guide to Building Your Inner Self",
+      author: "Liam Green",
       image: "/portfolio_images/1.png"
     },
     {
       id: 2,
-      title: "Beneath Olive Groves",
-      subtitle: "Stories from the Coast",
-      author: "Marco Santini",
+      title: "Marshall's Keep",
+      subtitle: "Love is a Fortess.",
+      author: "Ryan Marshall",
       image: "/portfolio_images/2.png"
     },
     {
       id: 3,
-      title: "Sailing Home",
-      subtitle: "A Journey Across Seas",
-      author: "Sofia Valencia",
+      title: "BILLI",
+      subtitle: "One Woman's Fight for Survival.",
+      author: "Robert K Bateman",
       image: "/portfolio_images/3.png"
     },
     {
       id: 4,
-      title: "The Last Voyage",
-      subtitle: "Chronicles of Discovery",
-      author: "Andreas Dimitri",
+      title: "Beyong The Resume:",
+      subtitle: "A 40-Year Framework for the Modern Professional.",
+      author: "Joshua Sciascia",
       image: "/portfolio_images/4.png"
     },
     {
       id: 5,
-      title: "Mediterranean Dreams",
-      subtitle: "Poems of the Coast",
-      author: "Isabella Romano",
-      image: "/portfolio_images/5.png"
+      title: "The Last Good Liar",
+      subtitle: "Followed by Millions. Hunted by One.",
+      author: "Clara Monet",
+      image: "/portfolio_images/thelastgoodliar.jpg"
     },
     {
       id: 6,
-      title: "Tides of Fortune",
-      subtitle: "A Merchant's Tale",
-      author: "Nicolas Laurent",
-      image: "/portfolio_images/6.png"
+      title: "The Magical Moon",
+      subtitle: "A Celestial Story for Earthly Hearts.",
+      author: "Melissa Jacob",
+      image: "/portfolio_images/5.png"
     },
     {
       id: 7,
-      title: "The Lighthouse Keeper",
-      subtitle: "Stories of Solitude",
-      author: "Maria Kostas",
-      image: "/portfolio_images/7.png"
+      title: "The Sheriff's Tale",
+      subtitle: "A Ballad of Duty and a Silent Heart.",
+      author: "Kira Elington",
+      image: "/portfolio_images/Sheriff_Tale_Book_Cover.png"
     },
     {
       id: 8,
-      title: "Beyond the Horizon",
-      subtitle: "Tales of Adventure",
-      author: "Thomas Beaumont",
-      image: "/portfolio_images/8.png"
+      title: "The Librarian of Lost Things",
+      subtitle: "Every object holds a memory. Some are deadly.",
+      author: "Jennifer Delmont",
+      image: "/portfolio_images/6.png"
     }
   ];
 

@@ -4,17 +4,17 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
-import logoImg from '@/assets/images/logo-white.png'
+import logoImg from '@/assets/images/medi_logo_white2.png'
 
 const Footer = () => {
   return (
-    <footer className="footer footer-dark section-pt">
+    <footer className="footer footer-dark section-footer-pt">
       <div className="footer-content">
         <Container>
           <Row>
             <Col md={8} className="mx-auto">
-              <div className="widget text-center mt-1">
-                <Link href="/" className="footer-logo mb-3 d-block">
+              <div className="widget text-center mt-0">
+                <Link href="/" className="footer-logo mb-4 d-block">
                   <Image src={logoImg} alt="logo" className="footer-logo-item" />
                 </Link>
 

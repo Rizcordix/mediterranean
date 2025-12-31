@@ -19,7 +19,7 @@ export async function POST(req) {
       port: 465,
       secure: true,
       auth: {
-        user: "domyebook@gmail.com",
+        user: "mediterraneanpublishing@gmail.com",
         pass: process.env.EMAIL_PASSWORD,
       },
     });
@@ -29,8 +29,8 @@ export async function POST(req) {
     console.log("SMTP Connection verified ✅");
 
     await transporter.sendMail({
-      from: '"Get a Quote Form Mediterranean Publishing" <domyebook@gmail.com>',
-      to: "domyebook@gmail.com",
+      from: '"Get a Quote Form Mediterranean Publishing" <mediterraneanpublishing@gmail.com>',
+      to: "mediterraneanpublishing@gmail.com",
       subject: "Mediterranean Publishing Get a Quote Form Filled",
       text: `Mediterranean Publishing\nGet a Quote Filled\n\nName: ${name}\nEmail: ${email}\nTitle: ${title}\nCategory: ${category}\nService: ${service}\nWord Count: ${words}\nTurnaround: ${turnaround}\nCustom Time: ${customTime}`,
     });
