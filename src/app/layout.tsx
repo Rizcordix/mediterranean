@@ -5,6 +5,7 @@ import WidgetClientWrapper from '@/components/wrappers/WidgetWrapper'
 import { PopupProvider } from '@/components/wrappers/PopupContext'
 import PopupClientWrapper from "@/components/popup/popupclient";
 import Script from 'next/script'
+import { DiscountPopupProvider } from '@/components/popup/DiscountPopupContext'
 
 import 'aos/dist/aos.css'
 import '@/assets/scss/style.scss'
@@ -34,6 +35,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <div id="__next_splash">
+          <DiscountPopupProvider>
           <PopupProvider>
             <AppProviders>{children}</AppProviders>
             <Script
@@ -42,6 +44,7 @@ export default function RootLayout({
           async
         />
           </PopupProvider>
+          </DiscountPopupProvider>
         </div>
           <PopupClientWrapper />
         <WidgetClientWrapper />
