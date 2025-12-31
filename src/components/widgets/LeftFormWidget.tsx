@@ -345,150 +345,28 @@ const FloatingWidgets: React.FC = () => {
         </div>
       </div>
 
-      {/* RIGHT MESSAGE WIDGET */}
-      <div
-        style={{
-          position: "fixed",
-          top: "20%",
-          right: 0,
-          zIndex: 9999,
-          transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-          transform: isMessageOpen ? "translateX(0)" : "translateX(100%)",
-          fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "-56px",
-            transform: "translateY(-50%)",
-            background: "linear-gradient(135deg, #304c55 0%, #032532 100%)",
-            color: "#fff",
-            padding: "16px",
-            borderRadius: "12px 0 0 12px",
-            cursor: "pointer",
-            boxShadow: "-2px 4px 12px rgba(102, 126, 234, 0.4)",
-            transition: "all 0.3s ease",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center"
-          }}
-          onClick={() => setIsMessageOpen(!isMessageOpen)}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLElement).style.transform =
-              "translateY(-50%) translateX(-3px)";
-            (e.currentTarget as HTMLElement).style.boxShadow =
-              "-2px 6px 16px rgba(102, 126, 234, 0.5)";
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLElement).style.transform = "translateY(-50%)";
-            (e.currentTarget as HTMLElement).style.boxShadow =
-              "-2px 4px 12px rgba(102, 126, 234, 0.4)";
-          }}
-        >
-          <i className={isMessageOpen ? "fas fa-times" : "fas fa-comments"} style={{ fontSize: "20px" }}></i>
-        </div>
-
-        <div
-          style={{
-            width: "280px",
-            background: "#ffffff",
-            boxShadow: "0 10px 40px rgba(0, 0, 0, 0.15)",
-            padding: "28px 24px",
-            borderRadius: "16px 0 0 16px"
-          }}
-        >
-          <div style={{ textAlign: "center" }}>
-            <div
-              style={{
-                width: "56px",
-                height: "56px",
-                background: "linear-gradient(135deg, #032532 0%, #304c55 100%)",
-                borderRadius: "16px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                margin: "0 auto 16px",
-                boxShadow: "0 4px 12px rgba(102, 126, 234, 0.3)"
-              }}
-            >
-              <i className="fas fa-comments" style={{ fontSize: "28px", color: "#fff" }}></i>
-            </div>
-            <h4
-              style={{
-                fontSize: "18px",
-                fontWeight: "700",
-                color: "#1a202c",
-                marginBottom: "8px"
-              }}
-            >
-              Message Us
-            </h4>
-            <p
-              style={{
-                fontSize: "14px",
-                color: "#718096",
-                lineHeight: "1.6",
-                marginBottom: "20px"
-              }}
-            >
-              Have a question? Our team is ready to help you anytime!
-            </p>
-            <Button
-              href="/contact"
-              style={{
-                width: "100%",
-                padding: "12px",
-                background: "linear-gradient(135deg, #032532 0%, #304c55 100%)",
-                color: "white",
-                border: "none",
-                borderRadius: "10px",
-                fontSize: "14px",
-                fontWeight: "600",
-                cursor: "pointer",
-                transition: "all 0.3s ease",
-                boxShadow: "0 4px 12px rgba(102, 126, 234, 0.3)"
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
-                (e.currentTarget as HTMLElement).style.boxShadow =
-                  "0 6px 16px rgba(102, 126, 234, 0.4)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-                (e.currentTarget as HTMLElement).style.boxShadow =
-                  "0 4px 12px rgba(102, 126, 234, 0.3)";
-              }}
-            >
-              Start Chat
-            </Button>
-          </div>
-        </div>
-      </div>
-
       {/* RIGHT CALL WIDGET */}
       <div
         style={{
           position: "fixed",
-          top: "30%",
-          right: 0,
+          top: "47%",
+          left: 0,
           zIndex: 9999,
           transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-          transform: isCallOpen ? "translateX(0)" : "translateX(100%)",
+          transform: isCallOpen ? "translateX(0)" : "translateX(-100%)",
           fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
         }}
       >
         <div
           style={{
             position: "absolute",
-            top: "50%",
-            left: "-56px",
+            top: "60%",
+            right: "-56px",
             transform: "translateY(-50%)",
             background: "linear-gradient(135deg, #032532 0%, #304c55 100%)",
             color: "#fff",
-            padding: "16px",
-            borderRadius: "12px 0 0 12px",
+            padding: "18px",
+            borderRadius: "0 12px 12px 0",
             cursor: "pointer",
             boxShadow: "-2px 4px 12px rgba(72, 187, 120, 0.4)",
             transition: "all 0.3s ease",
@@ -499,7 +377,7 @@ const FloatingWidgets: React.FC = () => {
           onClick={() => setIsCallOpen(!isCallOpen)}
           onMouseEnter={(e) => {
             (e.currentTarget as HTMLElement).style.transform =
-              "translateY(-50%) translateX(-3px)";
+              "translateY(-50%) translateX(3px)";
             (e.currentTarget as HTMLElement).style.boxShadow =
               "-2px 6px 16px rgba(72, 187, 120, 0.5)";
           }}
@@ -518,7 +396,7 @@ const FloatingWidgets: React.FC = () => {
             background: "#ffffff",
             boxShadow: "0 10px 40px rgba(0, 0, 0, 0.15)",
             padding: "28px 24px",
-            borderRadius: "16px 0 0 16px"
+            borderRadius: "0 16px 16px 0"
           }}
         >
           <div style={{ textAlign: "center" }}>

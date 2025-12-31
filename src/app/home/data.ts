@@ -1,9 +1,10 @@
 import { StaticImageData } from 'next/image'
 
-import avatar1 from '@/assets/images/thumbnails/Liam_Green.jpg'
-import avatar2 from '@/assets/images/thumbnails/John_Doe.jpg'
-import avatar3 from '@/assets/images/thumbnails/Emma_Johnson.jpg'
-import avatar4 from '@/assets/images/thumbnails/Sophia_Miller.jpg'
+import avatar1 from '@/assets/images/flags/fr.svg'
+import avatar2 from '@/assets/images/flags/gr.svg'
+import avatar3 from '@/assets/images/flags/uk.svg'
+import avatar4 from '@/assets/images/flags/sp.svg'
+import avatar5 from '@/assets/images/flag-main/us.svg'
 
 
 type TestimonialsType = {
@@ -15,6 +16,13 @@ type TestimonialsType = {
 
 
 export const testimonialsData: TestimonialsType[] = [
+  {
+  image: avatar5,
+  name: 'Michael Smith',
+  category: 'Author',
+  description:
+    'Mediterranean Publishing exceeded my expectations in every way. Their team was professional, communicative, and truly cared about bringing my vision to life. Highly recommend their services!',
+},
   {
   image: avatar1,
   name: 'Liam Green',

@@ -4,6 +4,7 @@ import { Poppins } from 'next/font/google'
 import WidgetClientWrapper from '@/components/wrappers/WidgetWrapper'
 import { PopupProvider } from '@/components/wrappers/PopupContext'
 import PopupClientWrapper from "@/components/popup/popupclient";
+import Script from 'next/script'
 
 import 'aos/dist/aos.css'
 import '@/assets/scss/style.scss'
@@ -35,6 +36,11 @@ export default function RootLayout({
         <div id="__next_splash">
           <PopupProvider>
             <AppProviders>{children}</AppProviders>
+            <Script
+          src="https://embed.tawk.to/6954e038d5d3bd197b4d818f/1jdponnti"
+          strategy="afterInteractive"
+          async
+        />
           </PopupProvider>
         </div>
           <PopupClientWrapper />
@@ -43,3 +49,4 @@ export default function RootLayout({
     </html>
   )
 }
+
