@@ -12,7 +12,7 @@ export async function POST(req) {
       port: 465,
       secure: true,
       auth: {
-        user: "domyebook@gmail.com",
+        user: "mediterraneanpublishing@gmail.com",
         pass: process.env.EMAIL_PASSWORD,
       },
     });
@@ -22,8 +22,8 @@ export async function POST(req) {
     console.log("SMTP Connection verified ✅");
 
     await transporter.sendMail({
-      from: '"Newsletter Subscribed Mediterranean Publishing" <domyebook@gmail.com>',
-      to: "domyebook@gmail.com",
+      from: '"Newsletter Subscribed Mediterranean Publishing" <mediterraneanpublishing@gmail.com>',
+      to: "mediterraneanpublishing@gmail.com",
       subject: "Mediterranean Publishing Newsletter Subscribed",
       text: `Mediterranean Publishing\nNewsletter Subscribed\n\nEmail: ${email}`,
     });
