@@ -2,6 +2,7 @@
 import React, { useState, useRef } from 'react'
 import { CSSProperties } from 'react'; // Import CSSProperties for style objects
 import { Button } from 'react-bootstrap';
+import { usePopup } from '@/components/wrappers/PopupContext'
 
 // --- 1. Define Core Types ---
 
@@ -337,6 +338,7 @@ export default function EditingSamples() {
     ))
   }
 
+  const { openQuote } = usePopup();
   return (
     <section style={{ padding: '5rem 0', backgroundColor: '#f5f7fa' }}>
       <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 20px' }}>
@@ -582,7 +584,7 @@ export default function EditingSamples() {
             Want professional editing for your manuscript?
           </p>
           <Button 
-            href="/contact"
+            onClick={openQuote}
             style={{
               backgroundColor: '#1a202c',
               color: '#fff',

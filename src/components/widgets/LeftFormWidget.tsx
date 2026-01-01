@@ -13,7 +13,6 @@ type Toast = { message: string; type: "success" | "error" } | null;
 
 const FloatingWidgets: React.FC = () => {
   const [isLeftOpen, setIsLeftOpen] = useState(false);
-  const [isMessageOpen, setIsMessageOpen] = useState(false);
   const [isCallOpen, setIsCallOpen] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     name: "",

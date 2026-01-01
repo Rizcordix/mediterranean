@@ -417,13 +417,14 @@ export default function Component({ id = 1 }: { id?: number }) {
             </div>
 
             <div className="cta-section">
-              <Button onClick={openQuote} className="btn-primary">
+              <Button href='/calendly' target='_blank' className="btn-primary">
                 <span>Book a Free Demo</span>
                 <ArrowRight size={16} />
               </Button>
 
-              <Button href='/book-samples' className="btn-secondary">
-                View Samples
+              <Button onClick={openQuote} className="btn-secondary">
+                <span>Get a Quote</span>
+                <ArrowRight size={16} />
               </Button>
             </div>
           </aside>
