@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
-import bookCoverImg from "@/assets/images/banner/discountbanner.png";
+import bookCoverImg from "@/assets/images/banner/mainpopup.png";
 
 type Props = {
   showOnEveryVisit?: boolean;
@@ -22,12 +22,16 @@ const PopupCard: React.FC<Props> = ({ showOnEveryVisit = true, delayMs = 600 }) 
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    mountedRef.current = true;
-    const alreadySeen = false;
 
-    if (showOnEveryVisit || !alreadySeen) {
+    mountedRef.current = true;
+
+    // Check sessionStorage to see if popup has already been shown
+    const alreadyShown = sessionStorage.getItem("popupShown") === "true";
+
+    if (showOnEveryVisit && !alreadyShown) {
       const t = window.setTimeout(() => {
         setIsOpen(true);
+        sessionStorage.setItem("popupShown", "true"); // mark as shown
       }, delayMs);
       return () => clearTimeout(t);
     }

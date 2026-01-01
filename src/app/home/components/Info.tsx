@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import service1 from '@/assets/images/banner/whychooseus1.png'
-import service2 from '@/assets/images/banner/whychooseus2.png'
+import service2 from '@/assets/images/banner/whyus1.png'
 import { Col, Container, Row } from 'react-bootstrap'
 import Link from 'next/link'
 

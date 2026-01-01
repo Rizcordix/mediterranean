@@ -9,20 +9,17 @@ import { Ghost, Castle , Sparkles, TheaterIcon } from 'lucide-react'
 
 const Categories = () => {
   const categories = [
+    
+    { icon: <i className="ti-heart-broken" style={{ fontSize: 48, color: '#ffffff' }} />, title: 'Romance' },
+     { icon: <Ghost size={48} color="#ffffff" />, title: 'Horror' },
     { icon: <Castle size={48} color="#ffffff" />, title: 'Fiction & Fantasy' },
     { icon: <i className="ti-target" style={{ fontSize: 48, color: '#ffffff' }} />, title: 'Mystery' },
     { icon: <i className="ti-direction-alt" style={{ fontSize: 48, color: '#ffffff' }} />, title: 'Thriller& Suspense' },
     { icon: <TheaterIcon size={48} color="#ffffff" />, title: 'Drama' },
-
-    // ⭐ Replaced with Lucide Ghost
-    { icon: <Ghost size={48} color="#ffffff" />, title: 'Horror' },
-
     { icon: <i className="ti-book" style={{ fontSize: 48, color: '#ffffff' }} />, title: 'Literature Fiction' },
-
     // ⭐ Replaced with FontAwesome Mask
     { icon: <Sparkles size={48} color="#ffffff" />, title: 'Young & New Adult' },
 
-    { icon: <i className="ti-heart-broken" style={{ fontSize: 48, color: '#ffffff' }} />, title: 'Romance' },
   ]
 
   return (
