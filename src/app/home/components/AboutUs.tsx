@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import imagesrc from '@/assets/images/banner/homeabout.png';
+import imagesrc from '@/assets/images/banner/aboutushome.png';
 
 const AboutUs = () => {
   return (
@@ -142,7 +142,7 @@ const AboutUs = () => {
                 background: '#364a52',
                 marginRight: '16px'
               }} />
-              <div>
+              {/* <div>
                 <p className="mb-0" style={{ 
                   color: '#0f252f',
                   fontSize: '1.125rem',
@@ -159,7 +159,7 @@ const AboutUs = () => {
                 }}>
                   Founders & CEO
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

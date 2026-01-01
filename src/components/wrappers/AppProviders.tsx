@@ -1,7 +1,7 @@
 'use client'
 import { ChildrenType } from '@/types/other'
 import { Fragment, useEffect } from 'react'
-// import Loader from '../Loader'
+import Loader from '../Loader'
 import Aos from 'aos'
 import BackToTop from '../BackToTop'
 
@@ -31,7 +31,7 @@ const AppProviders = ({ children }: ChildrenType) => {
 
   return (
     <Fragment>
-      {/* <Loader /> */}
+      <Loader />
       {children}
       <BackToTop />
     </Fragment>
