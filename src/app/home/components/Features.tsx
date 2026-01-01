@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { Button, Col, Container, Row } from 'react-bootstrap'
 // import Link from 'next/link'
 import type { CSSProperties } from 'react'
-import { usePopup } from '@/components/wrappers/PopupContext'
 
 const CTA = () => {
     // const showThriller = true;
@@ -22,7 +21,6 @@ const CTA = () => {
       }
     };
 
-      const { openQuote } = usePopup();
 
     return (
         <section
@@ -118,7 +116,8 @@ const CTA = () => {
                                 </Button>
 
                                 <Button
-                                    onClick={openQuote}
+                                    href='/calendly'
+                                    target='_blank'
                                     variant="outline-light"
                                     className="d-inline-flex align-items-center px-4 py-2" 
                                     style={{
@@ -129,7 +128,7 @@ const CTA = () => {
                                         zIndex: 2
                                     }}
                                 >
-                                    Get a Quote
+                                    Book a Free Consultation
                                 </Button>
                             </div>
                         </div>

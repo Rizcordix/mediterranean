@@ -1,17 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 export function middleware(request: NextRequest) {
-  const response = NextResponse.next()
+  const { pathname } = request.nextUrl
 
-  if (request.nextUrl.pathname == '/') {
+  // Redirect "/" → "/home"
+  if (pathname === '/') {
     return NextResponse.redirect(new URL('/home', request.url))
   }
-  return response
+
+  // Redirect "/landing-page" → "/landing-page/global-premium"
+  if (pathname === '/landing-page') {
+    return NextResponse.redirect(
+      new URL('/landing-page/global-premium', request.url)
+    )
+  }
+
+  return NextResponse.next()
 }
 
-// See "Matching Paths" below to learn more
 export const config = {
-  matcher: '/',
+  matcher: ['/', '/landing-page'],
 }
 
 // export { default } from 'next-auth/middleware'

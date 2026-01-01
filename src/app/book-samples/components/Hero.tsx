@@ -21,7 +21,7 @@ const Hero = () => {
               <p className="mb-4 display-8 lh-0 fw-normal">
                 Explore a curated collection of books we&apos;ve brought to life for authors worldwide. From compelling stories to impactful non-fiction, these samples highlight our commitment to quality, creativity, and professional publishing.
               </p>
-              <Button href='/contact' variant="white" className="me-3">
+              <Button href='/calendly' target='_blank' className="me-3" style={{ backgroundColor: '#eeeae7', border: 'none', color: '#364a52' }}>
                 Get free consultation
               </Button>
               <Button onClick={openQuote} variant="outline-white">Get a quote</Button>
