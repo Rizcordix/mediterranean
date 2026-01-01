@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import React from 'react'
-import blog1 from '@/assets/images/portfolio_images/booksamplehero.png'
+import heroimage from '@/assets/images/banner/booksampleshero.png'
 import { Button, Col, Container, Row } from 'react-bootstrap'
 import { usePopup } from '@/components/wrappers/PopupContext'
 
@@ -27,11 +27,65 @@ const Hero = () => {
               <Button onClick={openQuote} variant="outline-white">Get a quote</Button>
             </div>
           </Col>
-          <Col sm={10} md={6} className="d-none d-lg-block mt-4 position-relative">
-            <Image className="rounded shadow" src={blog1} width={600} height={400} alt="Book Samples" />
-          </Col>
+           <Col sm={10} md={6} className="d-none d-lg-block mb-5 position-relative">
+                      <div style={{
+                        position: 'relative',
+                        padding: '20px',
+                        background: 'linear-gradient(145deg, #364a52, #1a2f38)',
+                        borderRadius: '20px',
+                        boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(238, 234, 231, 0.1)',
+                      }}>
+                        <div style={{
+                          position: 'relative',
+                          borderRadius: '12px',
+                          overflow: 'hidden',
+                          boxShadow: 'inset 0 0 0 1px rgba(238, 234, 231, 0.15)',
+                        }}>
+                          <Image 
+                            className="rounded" 
+                            src={heroimage} 
+                            width={600} 
+                            height={400} 
+                            alt="audiobook"
+                            style={{
+                              display: 'block',
+                              width: '100%',
+                              height: 'auto',
+                            }}
+                          />
+                        </div>
+                        {/* Decorative corner accent */}
+                        <div style={{
+                          position: 'absolute',
+                          top: '10px',
+                          left: '10px',
+                          width: '40px',
+                          height: '40px',
+                          borderTop: '3px solid #eeeae7',
+                          borderLeft: '3px solid #eeeae7',
+                          borderRadius: '20px 0 0 0',
+                          opacity: 0.3,
+                        }}></div>
+                        <div style={{
+                          position: 'absolute',
+                          bottom: '10px',
+                          right: '10px',
+                          width: '40px',
+                          height: '40px',
+                          borderBottom: '3px solid #eeeae7',
+                          borderRight: '3px solid #eeeae7',
+                          borderRadius: '0 0 20px 0',
+                          opacity: 0.3,
+                        }}></div>
+                      </div>
+                    </Col>
         </Row>
       </Container>
+      <div className="position-absolute bottom-0 start-0 w-100 d-none d-md-block mb-n3">
+        <svg width="100%" height={150} viewBox="0 0 500 150" preserveAspectRatio="none">
+          <path d="M0,150 L0,40 Q250,150 500,40 L580,150 Z" fill="#eeeae7" />
+        </svg>
+      </div>
     </section>
   )
 }
