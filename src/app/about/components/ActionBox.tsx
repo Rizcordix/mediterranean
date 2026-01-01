@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-import bgImg from '@/assets/images/banner/newsletterbg.png'
+import bgImg from '@/assets/images/bg/newsletterbg.png'
 import { Col, Container, Row } from 'react-bootstrap'
 
 const ActionBox: React.FC = () => {

@@ -324,8 +324,8 @@ const AboutPage = () => {
                 With a dedicated team of publishing professionals, cutting-edge technology, and a proven track record, we provide the support and expertise you need to bring your vision to life.
               </p>
               <Button 
-                href='/contact'
-              
+                href='/calendly'
+                target='_blank'
                 style={{
                   padding: '16px 32px',
                   borderRadius: '50px',

@@ -21,7 +21,7 @@ const AuthorSuccessStories = () => {
   const stories = [
     {
       id: 1,
-      name: "Sarah J.",
+      name: "Naomi J.",
       title: "Life Coach & Author",
       quote: "Book Published. Career Transformed. Speaking Tour Booked.",
       story:
