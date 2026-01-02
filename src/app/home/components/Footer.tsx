@@ -1,120 +1,552 @@
 "use client"
-import { currentYear } from '@/context/constants'
-import Image from 'next/image'
-import Link from 'next/link'
 import React from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
-import logoImg from '@/assets/images/medi_logo_white2.png'
+import Image from 'next/image'
+import logo from '@/assets/images/medi_logo_white2.png'
+// import Link from 'next/link'
+import logo1 from '@/assets/images/icons/payment/logo-american-express-2.svg'
+import logo2 from '@/assets/images/icons/payment/logo-google-pay.svg'
+import logo3 from '@/assets/images/icons/payment/logo-mastercard.svg'
+import logo4 from '@/assets/images/icons/payment/logo-paypal.svg'
+import logo5 from '@/assets/images/icons/payment/logo-visa.svg'
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear()
+
   return (
-    <footer className="footer footer-dark section-footer-pt">
-      <div className="footer-content">
-        <Container>
-          <Row>
-            <Col md={8} className="mx-auto">
-              <div className="widget text-center mt-0">
-                <Link href="/" className="footer-logo mb-4 d-block">
-                  <Image src={logoImg} alt="logo" className="footer-logo-item" />
-                </Link>
+    <footer className="footer-modern">
+      {/* Trust Badges Section */}
+      <div className="trust-section">
+        <div className="container-custom">
+          <div className="trust-grid">
+            <div className="trust-item">
+              <div className="trust-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <path d="M9 12l2 2 4-4" />
+                </svg>
+              </div>
+              <div className="trust-text">
+                <strong>100% Hassle-Free</strong>
+                <p>7-Day Money-Back Guarantee</p>
+              </div>
+            </div>
+            
+            <div className="trust-item">
+              <div className="trust-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                </svg>
+              </div>
+              <div className="trust-text">
+                <strong>SSL Secure Payment</strong>
+                <p>256-bit SSL Encryption Protected</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-                <p className="mt-3">
-                  At Meditarranean Publishing, we are committed to helping authors, businesses, and creators bring their stories to life with professional writing, design, and publishing solutions. Your success is our passion—let&apos;s create something extraordinary together.
-                </p>
+      {/* Main Footer Content */}
+      <div className="footer-main">
+        <div className="container-custom">
+          <div className="footer-grid">
+            
+            {/* Column 1: Logo & Description */}
+            <div className="footer-column brand-column">
+              <div className="footer-logo">
+                <Image src={logo} alt="Mediterranean Publishing Logo" width={180} height={60} />
+              </div>
+              <p className="brand-description">
+                We are committed to helping authors, businesses, and creators bring their stories to life with professional writing, design, and publishing solutions.
+              </p>
+              
+              {/* Payment Methods */}
+                <div className="payment-methods">
+                <h4>We Accept</h4>
+                <div className="payment-icons">
+                  <Image src={logo1} alt="American Express" height={30} />
+                  <Image src={logo2} alt="Google Pay" height={30} />
+                  <Image src={logo3} alt="Mastercard" height={30} />
+                  <Image src={logo4} alt="PayPal" height={30} />
+                  <Image src={logo5} alt="Visa" height={30} />
+                </div>
+                </div>
+            </div>
 
-                <ul className="p-0 list-inline">
-                  <li className="list-inline-item me-4">
-                    <i className="me-1 text-primary ti-map-alt" />
-                    1421 Coburn, Near Center Point, IL 61548.
-                  </li>
-                  <li className="list-inline-item me-4">
-                    <i className="me-1 text-primary ti-headphone-alt" /> (251) 854-6308
-                  </li>
-                  <li className="list-inline-item me-4">
-                    <i className="me-1 text-primary ti-email" />{' '}
-                    <Link href="mailto:info@mediterraneanpublishing.com">info@mediterraneanpublishing.com</Link>
-                  </li>
-                </ul>
+            {/* Column 2: Quick Links */}
+            <div className="footer-column">
+              <h3>Quick Links</h3>
+              <ul className="footer-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/book-samples">Book Samples</a></li>
+                <li><a href="/reviews">Client Reviews</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+              </ul>
+            </div>
 
-                <ul className="social-icons si-colored-bg-on-hover si-medium mt-3 justify-content-center">
-                <li className="social-icons-item social-facebook">
-                  <Link className="social-icons-link" href="https://www.facebook.com/share/17L6o8vpt1/" target='_blank'>
-                    <i className="fab fa-facebook-f" />
-                  </Link>
+            {/* Column 3: Services */}
+            <div className="footer-column">
+              <h3>Services</h3>
+              <ul className="footer-links">
+                <li><a href="/services/bookwriting">Book Writing</a></li>
+                <li><a href="/services/ebook-ghostwriting">Ebook Ghostwriting</a></li>
+                <li><a href="/services/cover-design">Cover Design</a></li>
+                <li><a href="/services/book-publishing">Book Publishing</a></li>
+                <li><a href="/services/book-marketing">Book Marketing</a></li>
+                <li><a href="/services/premium-support">Premium Support</a></li>
+              </ul>
+            </div>
+
+            {/* Column 4: Contact Info */}
+            <div className="footer-column">
+              <h3>Get In Touch</h3>
+              <ul className="contact-info">
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                  <span>Suite C125, 4 - 6, Greatorex Street, London, United Kingdom, E1 5NF</span>
                 </li>
-                <li className="social-icons-item social-instagram">
-                  <Link className="social-icons-link" href="https://www.instagram.com/mediterraneanpublishing/" target='_blank'>
-                    <i className="fab fa-instagram" />
-                  </Link>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                  </svg>
+                  <a href="tel:+18325585865">+1 (832) 558-5865</a>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M22" />
+                  </svg>
+                  <a href="tel:+18884307753">+1 (888) 430-7753</a>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                  <a href="mailto:info@mediterraneanpublishing.com">info@mediterraneanpublishing.com</a>
                 </li>
               </ul>
 
-
-                <div className="divider my-3" />
-
-                <div className="copyright-links my-2">
-                  <ul className="list-inline">
-                    <li className="list-inline-item ps-2">
-                      <Link className="list-group-item-action" href="/about">About Us</Link>
-                    </li>
-                    <li className="list-inline-item ps-2">
-                      <Link className="list-group-item-action" href="/contact">Contact</Link>
-                    </li>
-                    <li className="list-inline-item ps-2">
-                      <Link className="list-group-item-action" href="/reviews">Reviews</Link>
-                    </li>
-                    <li className="list-inline-item ps-2">
-                      <Link className="list-group-item-action" href="/privacy">Privacy Policy</Link>
-                    </li>
-                    <li className="list-inline-item ps-2">
-                      <Link className="list-group-item-action pe-0" href="/terms">terms of service</Link>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="copyright-text">
-                  ©{currentYear} All Rights Reserved by{' '}
-                  <Link href="https://www.mediterraneanpublishing.com"> Mediterranean Publishing.</Link>
+              {/* Social Media */}
+              <div className="social-section">
+                <h4>Follow Us</h4>
+                <div className="social-icons">
+                  <a href="https://www.facebook.com/share/17L6o8vpt1/" target="_blank" rel="noopener noreferrer" className="social-icon facebook">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
+                  </a>
+                  <a href="https://www.instagram.com/mediterraneanpublishing/" target="_blank" rel="noopener noreferrer" className="social-icon instagram">
+                    <i className="fab fa-instagram"/>
+                  </a>
+                  <a href="#" target="_blank" rel="noopener noreferrer" className="social-icon twitter">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                  </a>
+                  <a href="#" target="_blank" rel="noopener noreferrer" className="social-icon tiktok">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                    </svg>
+                  </a>
+                  <a href="#" target="_blank" rel="noopener noreferrer" className="social-icon youtube">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg>
+                  </a>
                 </div>
               </div>
-            </Col>
-          </Row>
-        </Container>
+            </div>
+
+          </div>
+        </div>
       </div>
+
+      {/* Footer Bottom */}
+      <div className="footer-bottom">
+        <div className="container-custom">
+          <div className="footer-bottom-content">
+            <div className="copyright">
+              © {currentYear} All Rights Reserved by <a href="https://www.mediterraneanpublishing.com">Mediterranean Publishing</a>
+            </div>
+            <div className="legal-links">
+              <a href="/privacy">Privacy Policy</a>
+              <span className="separator">•</span>
+              <a href="/terms">Terms of Service</a>
+              <span className="separator">•</span>
+              <a href="/contact">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Styles */}
       <style jsx>{`
-  .social-wrapper {
-    margin-top: 20px;
-  }
+        .footer-modern {
+          background: linear-gradient(135deg, #364a52 0%, #0f252f 100%);
+          color: #eeeae7;
+        }
 
-  .social-square {
-    width: 48px;
-    height: 48px;
-    background: #ffffff;
-    border-radius: 8px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: all 0.25s ease;
-  }
+        .container-custom {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+        }
 
-  .social-square i {
-    font-size: 24px;
-  }
+        /* Trust Section */
+        .trust-section {
+          background: rgba(255, 255, 255, 0.05);
+          padding: 30px 0;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-  .social-square.instagram i {
-    color: #E1306C; /* Instagram pink */
-  }
+        .trust-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 30px;
+          max-width: 800px;
+          margin: 0 auto;
+        }
 
-  .social-square.facebook i {
-    color: #1877F2; /* Facebook blue */
-  }
+        .trust-item {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+        }
 
-  .social-square:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.25);
-  }
-`}</style>
+        .trust-icon {
+          flex-shrink: 0;
+          width: 50px;
+          height: 50px;
+          background: rgba(59, 130, 246, 0.1);
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #60a5fa;
+        }
+
+        .trust-text strong {
+          display: block;
+          font-size: 16px;
+          font-weight: 600;
+          color: #ffffff;
+          margin-bottom: 4px;
+        }
+
+        .trust-text p {
+          margin: 0;
+          font-size: 14px;
+          color: #eeeae7;
+        }
+
+        /* Main Footer */
+        .footer-main {
+          padding: 60px 0 40px;
+        }
+
+        .footer-grid {
+          display: grid;
+          grid-template-columns: 2fr 1fr 1fr 1.2fr;
+          gap: 40px;
+          margin-bottom: 20px;
+        }
+
+        @media (max-width: 992px) {
+          .footer-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        @media (max-width: 576px) {
+          .footer-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        /* Brand Column */
+        .brand-column {
+          padding-right: 20px;
+        }
+
+        .footer-logo {
+          margin-bottom: 20px;
+        }
+
+        .logo-placeholder {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 16px;
+        }
+
+        .logo-placeholder span {
+          font-size: 20px;
+          font-weight: 700;
+          color: #ffffff;
+        }
+
+        .brand-description {
+          font-size: 14px;
+          line-height: 1.6;
+          color: #eeeae7;
+          margin-bottom: 24px;
+        }
+
+        /* Payment Methods */
+        .payment-methods h4 {
+          font-size: 14px;
+          font-weight: 600;
+          color: #ffffff;
+          margin-bottom: 12px;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        .payment-icons {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+
+        .payment-icon {
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          border-radius: 6px;
+          padding: 6px 10px;
+          font-size: 11px;
+          font-weight: 700;
+          color: #ffffff;
+          transition: all 0.3s ease;
+        }
+
+        .payment-icon:hover {
+          background: rgba(255, 255, 255, 0.15);
+          transform: translateY(-2px);
+        }
+
+        /* Footer Columns */
+        .footer-column h3 {
+          font-size: 18px;
+          font-weight: 600;
+          color: #ffffff;
+          margin-bottom: 20px;
+          position: relative;
+          padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 40px;
+          height: 2px;
+          background: #eeeae7;
+        }
+
+        .footer-links {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        .footer-links li {
+          margin-bottom: 12px;
+        }
+
+        .footer-links a {
+          color: #eeeae7;
+          text-decoration: none;
+          font-size: 14px;
+          transition: all 0.3s ease;
+          display: inline-block;
+        }
+
+        .footer-links a:hover {
+          color: #ffffff;
+          padding-left: 5px;
+        }
+        .footer-links Link:hover {
+          color: #ffffff;
+          padding-left: 5px;
+        }
+
+        /* Contact Info */
+        .contact-info {
+          list-style: none;
+          padding: 0;
+          margin: 0 0 30px 0;
+        }
+
+        .contact-info li {
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+          margin-bottom: 16px;
+          font-size: 14px;
+          line-height: 1.6;
+        }
+
+        .contact-info svg {
+          flex-shrink: 0;
+          margin-top: 2px;
+          color: #60a5fa;
+        }
+
+        .contact-info a {
+          color: #eeeae7;
+          text-decoration: none;
+          transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+          color: #ffffff;
+          scale: 1.05;
+        }
+
+        /* Social Section */
+        .social-section h4 {
+          font-size: 14px;
+          font-weight: 600;
+          color: #ffffff;
+          margin-bottom: 12px;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        .social-icons {
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+        }
+
+        .social-icon {
+          width: 40px;
+          height: 40px;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s ease;
+          text-decoration: none;
+        }
+
+        .social-icon.facebook {
+          background: rgba(24, 119, 242, 0.1);
+          color: #1877F2;
+        }
+
+        .social-icon.facebook:hover {
+          background: #1877F2;
+          color: white;
+          transform: translateY(-3px);
+        }
+
+        .social-icon.instagram {
+          background: rgba(225, 48, 108, 0.1);
+          color: #E1306C;
+        }
+
+        .social-icon.instagram:hover {
+          background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+          color: white;
+          transform: translateY(-3px);
+        }
+
+        .social-icon.twitter {
+          background: rgba(0, 0, 0, 0.1);
+          color: #ffffff;
+        }
+
+        .social-icon.twitter:hover {
+          background: #000000;
+          transform: translateY(-3px);
+        }
+
+        .social-icon.tiktok {
+          background: rgba(0, 0, 0, 0.1);
+          color: #ffffff;
+        }
+
+        .social-icon.tiktok:hover {
+          background: #000000;
+          transform: translateY(-3px);
+        }
+
+        .social-icon.youtube {
+          background: rgba(255, 0, 0, 0.1);
+          color: #FF0000;
+        }
+
+        .social-icon.youtube:hover {
+          background: #FF0000;
+          color: white;
+          transform: translateY(-3px);
+        }
+
+        /* Footer Bottom */
+        .footer-bottom {
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          padding: 25px 0;
+        }
+
+        .footer-bottom-content {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 15px;
+        }
+
+        @media (max-width: 576px) {
+          .footer-bottom-content {
+            flex-direction: column;
+            text-align: center;
+          }
+        }
+
+        .copyright {
+          font-size: 14px;
+          color: #eeeae7;
+        }
+
+        .copyright a {
+          color: #ffffff;
+          text-decoration: none;
+          transition: color 0.3s ease;
+        }
+
+        .copyright a:hover {
+          color: #60a5fa;
+        }
+
+        .legal-links {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          font-size: 14px;
+        }
+
+        .legal-links a {
+          color: #eeeae7;
+          text-decoration: none;
+          transition: color 0.3s ease;
+        }
+
+        .legal-links a:hover {
+          color: #ffffff;
+          text-decoration: underline;
+        }
+
+        .separator {
+          color: #52525b;
+        }
+      `}</style>
     </footer>
   )
 }

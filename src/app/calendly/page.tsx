@@ -4,7 +4,7 @@ import TopNavbar from '../home/components/TopNavbar'
 import Footer from '../home/components/Footer'
 
 export const metadata = {
-  title: "About Us | Mediterranean Publishing – Expert eBook Writing & Publishing Services",
+  title: "Book a Meeting | Mediterranean Publishing – Expert eBook Writing & Publishing Services",
   description: "Learn about Mediterranean Publishing, your trusted partner for eBook writing, editing, cover design, book publishing, and marketing. Discover our mission, team, and commitment to helping authors succeed.",
   keywords: [
     "Mediterranean Publishing",
@@ -16,16 +16,16 @@ export const metadata = {
     "book marketing"
   ],
   openGraph: {
-    title: "About Mediterranean Publishing – Expert eBook Writing & Publishing Services",
+    title: "Book a Meeting | Mediterranean Publishing – Expert eBook Writing & Publishing Services",
     description: "Mediterranean Publishing helps authors transform ideas into published books with professional writing, editing, cover design, and marketing services.",
-    url: "https://www.mediterraneanpublishing.com/about",
+    url: "https://www.mediterraneanpublishing.com/calendly",
     siteName: "Mediterranean Publishing",
     images: [
       {
         url: "https://www.mediterraneanpublishing.com/og-about.jpg",
         width: 1200,
         height: 630,
-        alt: "About Mediterranean Publishing"
+        alt: "Calendly Mediterranean Publishing"
       }
     ],
     type: "website"

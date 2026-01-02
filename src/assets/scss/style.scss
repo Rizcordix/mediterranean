@@ -16,8 +16,8 @@
 
 @import "tiny-slider/dist/tiny-slider.css";
 
-// Bootstrap core
-@import "bootstrap/scss/bootstrap";
+// // Bootstrap core
+// @import "bootstrap/scss/bootstrap";
 
 // Extended bootstrap utilities
 @import "custom/utilities";
@@ -70,5 +70,22 @@
 .typist-cursor {
   // font-size: 16px;
   color: #000 !important;
+}
+
+.hero-section {
+  min-height: 700px;
+}
+
+
+.footer-link {
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #ffffff !important;
+  text-decoration: underline;
+  scale: 0.25;
 }
 

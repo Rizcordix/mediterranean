@@ -5,43 +5,38 @@ import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { Container, Button } from 'react-bootstrap'
 
-import banner8 from '@/assets/images/banner/mainbg.webp'
+import banner8 from '@/assets/images/banner/Herobg6.webp'
 import trustedplatforms from '@/assets/images/banner/trusted-platforms.png'
-import bookImage from '@/assets/images/banner/herobook.webp'
+import bookImage from '@/assets/images/banner/bookhero.webp'
 
-// Load Jarallax ONLY after LCP
-const Jarallax = dynamic(() => import('@/components/Jarallax'), {
-  ssr: false
-})
+// Jarallax dynamically loaded, but we render hero image immediately
+const Jarallax = dynamic(() => import('@/components/Jarallax'), { ssr: false })
 
 const Hero = () => {
-  const [enableParallax, setEnableParallax] = useState(false)
+  const [parallaxReady, setParallaxReady] = useState(false)
 
   useEffect(() => {
-    // Allow browser to paint first (critical for Lighthouse)
     if ('requestIdleCallback' in window) {
-      requestIdleCallback(() => setEnableParallax(true))
+      requestIdleCallback(() => setParallaxReady(true))
     } else {
-      setTimeout(() => setEnableParallax(true), 1200)
+      setTimeout(() => setParallaxReady(true), 1200)
     }
   }, [])
 
-  const Wrapper: any = enableParallax ? Jarallax : 'section'
-
   return (
-    <Wrapper
-      tag={enableParallax ? 'section' : undefined}
-      className="position-relative p-0 h-500 h-lg-700 bg-overlay-darkk-1 bg-grad3 bg-parallax overflow-hidden"
+    <Jarallax
+      tag="section"
+      className="hero-section position-relative p-0 h-500 h-lg-700 bg-overlay-darkk-1 bg-grad3 bg-parallax overflow-hidden"
+      disable={!parallaxReady} // Parallax disabled until ready
     >
-      {/* ✅ LCP IMAGE (ONLY priority image) */}
+      {/* LCP IMAGE: Always render immediately */}
       <Image
         src={banner8}
         alt="Hero Background"
-        fill
+        width={1920}        // ✅ specify width/height to avoid layout shift
+        height={700}
         priority
-        fetchPriority="high"
         placeholder="blur"
-        sizes="100vw"
         style={{
           objectFit: 'cover',
           objectPosition: '65% 0%',
@@ -56,12 +51,9 @@ const Hero = () => {
             Transform Your Story Into a Published Masterpiece
           </h1>
 
-          <p className="mt-3 fs-6" style={{ color: '#0f252f'  }}>
-            Whether you&apos;re an aspiring author with a brilliant idea, a business
-            professional wanting to share your expertise, or a creative mind ready
-            to publish your masterpiece, we handle everything from manuscript to
-            marketing. Join thousands of successful authors who trusted
-            Mediterranean Publishing to turn their dreams into reality.
+          <p className="mt-3 fs-7" style={{ color: '#364a52' }}>
+            Whether you&apos;re an aspiring author, a business professional, or a creative mind ready
+            to publish your masterpiece, we handle everything from manuscript to marketing.
           </p>
 
           <div className="mt-4 d-flex gap-3">
@@ -85,7 +77,7 @@ const Hero = () => {
         </div>
       </Container>
 
-      {/* RIGHT BOOK IMAGE (NO priority) */}
+      {/* RIGHT BOOK IMAGE (lazy load only on desktop) */}
       <div
         className="d-none d-lg-block position-absolute end-0 pe-8"
         style={{ zIndex: 1, top: '10%' }}
@@ -94,12 +86,9 @@ const Hero = () => {
           src={bookImage}
           alt="Hero Graphic"
           width={550}
-          height={700}
-          style={{
-            objectFit: 'contain',
-            maxWidth: '100%',
-            height: 'auto'
-          }}
+          height={700}     // ✅ reserve height to prevent CLS
+          style={{ objectFit: 'contain', maxWidth: '100%', height: 'auto' }}
+          loading="lazy"   // ✅ lazy-load non-LCP images
         />
       </div>
 
@@ -119,11 +108,12 @@ const Hero = () => {
               alt="Trusted by leading platforms"
               width={420}
               height={80}
+              loading="lazy" // ✅ lazy-load non-critical images
             />
           </Container>
         </div>
       </div>
-    </Wrapper>
+    </Jarallax>
   )
 }
 
