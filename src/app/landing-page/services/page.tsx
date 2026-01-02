@@ -1,15 +1,17 @@
-import React from 'react'
+// import React from 'react'
 import TopNavbar from './components/TopNavbar'
-import Footer from '../../home/components/Footer'
+// import Footer from '../../home/components/Footer'
 import Hero from './components/Hero';
-import TargetAudience from './components/Target';
-import AuthorsLegacyDifference from './components/legacy';
-import CTA from './components/Features';
-import FeaturesShowcase from './components/FeaturesShowcase';
-import AuthorSuccessStories from './components/SuccessStories';
-import Clients from '../../services/bookwriting/components/Clients';
+import ProblemSolveSection from './components/problem';
+import PublishingFeatures from './components/feature';
+import LaunchOfferSection from './components/launch';
+import Testimonials from './components/testimonial';
+import PricingComponent from './components/Pricing';
 import FAQ from './components/Faq';
-import FinalCTA from './components/FinalCta';
+import PublishingComparison from './components/comparison';
+import FinalCTABanner from './components/final_cta';
+import MidPageCTA from './components/mid_cta';
+import Footer from './components/Footer';
 
 export const metadata = {
   title: "Author's Legacy Program | Mediterranean Publishing | Build Your Author Platform",
@@ -96,17 +98,16 @@ const AgencyStartUpPage = () => {
     <>
       <TopNavbar />
       <Hero />
-      {/* <div className="divider mt-5" /> */}
-      <Clients />
-      {/* <div className="divider mb-5" /> */}
-      <TargetAudience />
-      <CTA />                                                                                 
-      <AuthorsLegacyDifference />
-      <FeaturesShowcase />
-      <AuthorSuccessStories />
-      <FAQ />
-      <FinalCTA />
-      <Footer />
+      <ProblemSolveSection />
+      <PublishingFeatures />
+      <LaunchOfferSection />
+      <Testimonials />
+        <MidPageCTA />
+      <PricingComponent />
+        <FAQ />
+        <PublishingComparison />
+        <FinalCTABanner />
+        <Footer />
     </>
   )
 }
