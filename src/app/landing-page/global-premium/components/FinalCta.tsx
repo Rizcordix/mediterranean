@@ -44,7 +44,7 @@ export default function FinalCTA() {
               <ArrowRight size={16} aria-hidden />
             </button>
 
-            <button className="secondary-cta" aria-label="Schedule VIP consultation">Schedule VIP Consultation</button>
+            <a href="/calendly" target="_blank" className="secondary-cta" aria-label="Schedule VIP consultation">Schedule VIP Consultation</a>
           </div>
         </div>
 

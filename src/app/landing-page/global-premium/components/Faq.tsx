@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { ChevronDown, HelpCircle } from 'lucide-react';
+import { Button } from 'react-bootstrap';
 
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -83,9 +84,9 @@ const FAQ = () => {
         <div className="section-cta">
           <h3>Still have questions?</h3>
           <p>We&apos;re here to help you make the right decision for your author journey.</p>
-          <button className="primary-button">
+          <Button href="/calendly" target="_blank" className="primary-button">
             Schedule a Consultation
-          </button>
+          </Button>
         </div>
       </div>
       
