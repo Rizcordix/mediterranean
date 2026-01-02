@@ -91,12 +91,6 @@ const MidPageCTA = () => {
                                 <p className="mb-3">
                                     Your story deserves to be read.
                                 </p>
-                                <p className="mb-3">
-                                    Stop waiting. Stop procrastinating. Stop letting doubt win.
-                                </p>
-                                <p className="mb-3">
-                                    Mediterranean Publishing handles the complexity. You stay in control. Your book gets published right.
-                                </p>
                                 <p 
                                     className="fw-semibold mb-0"
                                     style={{ color: '#b8ff57' }}
@@ -133,7 +127,7 @@ const MidPageCTA = () => {
                                         zIndex: 2
                                     }}
                                 >
-                                    Schedule Free Consultation
+                                    Request a Quote
                                 </Button>
                             </div>
                         </div>

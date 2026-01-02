@@ -86,7 +86,6 @@ const PublishingComparison: React.FC = () => {
     <div style={{
       backgroundColor: '#fff',
       padding: '60px 20px',
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
     }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         {/* Header */}

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { ArrowDown, Zap, Clock, BookOpen, Mic, Map, CheckCircle } from 'lucide-react';
+import { Button } from 'react-bootstrap';
 
 const AuthorsLegacyDifference = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -146,9 +147,9 @@ const AuthorsLegacyDifference = () => {
         </div>
         
         <div className="section-cta">
-          <button className="primary-button">
+          <Button href="/calendly" target="_blank" className="primary-button">
             Discover Your Transformation Path
-          </button>
+          </Button>
         </div>
       </div>
       
