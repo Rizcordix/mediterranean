@@ -63,7 +63,10 @@ export default function HeroSlider({ books }: Props) {
                   <div className="content-copy">
                     <h2 className="book-title">{book.title}</h2>
                     <p className="book-author">{book.author}</p>
-                    <p className="book-blurb">{book.blurb}</p>
+                    <p className="book-blurb">
+                      {book.blurb.split(" ").slice(0, 70).join(" ")}
+                      {book.blurb.split(" ").length > 70 && "..."}
+                    </p>
                     <div className="action-buttons">
                       <button
                         className="cta-button"
