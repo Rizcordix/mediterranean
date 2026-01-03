@@ -8,8 +8,8 @@ export interface Book {
   previewPages: any[]; // This will hold an array of imported image modules
 }
 
-import quietPreview3 from '../../assets/images/booksamples/pagepre1.png';
-import quietPreview4 from '../../assets/images/booksamples/1700x2550.png';
+// import quietPreview3 from '../../assets/images/booksamples/pagepre1.png';
+// import quietPreview4 from '../../assets/images/booksamples/1700x2550.png';
 
 import marshall1 from '../../assets/images/booksamples/Marshalls_Keep/1.png';
 import marshall2 from '../../assets/images/booksamples/Marshalls_Keep/2.png';
@@ -35,6 +35,14 @@ import librarian1 from '../../assets/images/booksamples/Librarian_of_lost_things
 import librarian2 from '../../assets/images/booksamples/Librarian_of_lost_things/2.png';
 import librarian3 from '../../assets/images/booksamples/Librarian_of_lost_things/3.png';
 
+import sheriff1 from '../../assets/images/booksamples/Sheriffs_Tale/5.png';
+import sheriff2 from '../../assets/images/booksamples/Sheriffs_Tale/6.png';
+import sheriff3 from '../../assets/images/booksamples/Sheriffs_Tale/7.png';
+
+import house1 from '../../assets/images/booksamples/The_House_You_Build_Within/9.png';
+import house2 from '../../assets/images/booksamples/The_House_You_Build_Within/10.png';
+import house3 from '../../assets/images/booksamples/The_House_You_Build_Within/11.png';
+
 
 
 // --- The main data array, using the imported assets ---
@@ -45,7 +53,7 @@ export const bookData: Book[] = [
     author: 'Liam  Green',
     cover: "/sample_cover/The-House-You-Build-Within-Mockup.jpg", 
     blurb: 'An evocative exploration of personal growth and self-discovery. lorem ipsum dolor sit amet, consectetur adipiscing elit. A crisp manual about editing prose for clarity and rhythm. lorem ipsum dolor sit amet, consectetur adipiscing elit. A crisp manual about editing prose for clarity and rhythm. lorem ipsum dolor sit amet, consectetur adipiscing elit. A crisp manual about editing prose for clarity and rhythm. An evocative exploration of personal growth and self-discovery. An evocative exploration of personal growth and self-discovery. lorem ipsum dolor sit amet, consectetur adipiscing elit. A crisp manual about editing prose for clarity and rhythm. lorem ipsum dolor sit amet, consectetur adipiscing elit. A crisp manual about editing prose for clarity and rhythm. lorem ipsum dolor sit amet, consectetur adipiscing elit. A crisp manual about editing prose for clarity and rhythm. An evocative exploration of personal growth and self-discovery.',
-    previewPages: [quietPreview4, quietPreview3, quietPreview3],
+    previewPages: [house1, house2, house3],
   },
   {
     id: 'b2',
@@ -93,7 +101,7 @@ export const bookData: Book[] = [
     author: 'Kira Elington',
     cover: "/sample_cover/Sheriff's_Tale_Book_Cover_Mockup.jpg", 
     blurb: 'A crisp manual about editing prose for clarity and rhythm.',
-    previewPages: [quietPreview4, quietPreview3, quietPreview3],
+    previewPages: [sheriff1, sheriff2, sheriff3],
   },
   {
     id: 'b8',
