@@ -40,14 +40,14 @@ export const metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://lp.mediterraneanpublishing.com"),
+  metadataBase: new URL("https://mediterraneanpublishing.com/landing-page/services"),
   alternates: {
-    canonical: "/global-premium",
+    canonical: "/services",
   },
   openGraph: {
     title: "Author's Legacy Program | Mediterranean Publishing",
     description: "Transform your expertise into a published book and build your authority. Complete publishing, platform building, and marketing for ambitious authors.",
-    url: "https://lp.mediterraneanpublishing.com/global-premium",
+    url: "https://mediterraneanpublishing.com/landing-page/services",
     siteName: "Mediterranean Publishing",
     images: [
       {

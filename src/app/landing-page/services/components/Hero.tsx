@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import { useDiscountPopup } from "@/components/popup/DiscountPopupContext";
+import { Button } from "react-bootstrap";
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -34,14 +35,14 @@ const Hero = () => {
           </p>
 
           <div className={`hero-buttons ${isVisible ? "visible delay-2" : ""}`}>
-            <button onClick={openDiscount} className="primary-cta" type="button">
+            <Button onClick={openDiscount} className="primary-cta" type="button">
               <span>Start Your Publishing Journey FREE</span>
               <ArrowRight size={18} aria-hidden />
-            </button>
+            </Button>
 
-            <button className="secondary-cta" type="button">
+            <Button href="/calendly" target="_blank" className="secondary-cta" type="button">
               Schedule Free Publishing Consultation
-            </button>
+            </Button>
           </div>
         </div>
 
