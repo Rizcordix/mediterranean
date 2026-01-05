@@ -64,8 +64,8 @@ export default function HeroSlider({ books }: Props) {
                     <h2 className="book-title">{book.title}</h2>
                     <p className="book-author">{book.author}</p>
                     <p className="book-blurb">
-                      {book.blurb.split(" ").slice(0, 70).join(" ")}
-                      {book.blurb.split(" ").length > 70 && "..."}
+                      {book.blurb.split(" ").slice(0, 100).join(" ")}
+                      {book.blurb.split(" ").length > 100 && "..."}
                     </p>
                     <div className="action-buttons">
                       <button
