@@ -14,59 +14,72 @@ import MidPageCTA from './components/mid_cta';
 import Footer from './components/Footer';
 
 export const metadata = {
-  title: "Author's Legacy Program | Mediterranean Publishing | Build Your Author Platform",
-  description: "Transform your expertise into a published book and build your authority with Mediterranean Publishing's Author's Legacy program. Complete publishing, platform building, and marketing for coaches, consultants, and thought leaders.",
+  title: "Publish Your Book in 90 Days | Professional Book Publishing Services",
+  description:
+    "All-in-one book publishing in 90 days. Writing, editing, cover design, ISBN, Amazon KDP, global distribution & marketing. No freelancers. No hidden fees. 5,000+ authors published.",
+
   keywords: [
-    "book publishing",
-    "author platform",
-    "thought leadership",
-    "Mediterranean Publishing",
-    "Author's Legacy",
-    "publishing services",
-    "book marketing",
-    "author branding",
-    "expert publishing",
-    "consultant publishing",
-    "coach publishing",
+    "publish a book",
+    "book publishing services",
+    "self publishing company",
+    "Amazon KDP publishing",
+    "professional book writing",
+    "book editing and proofreading",
+    "book cover design",
+    "ISBN registration service",
+    "audiobook production",
+    "ghostwriting services",
+    "book marketing services",
+    "author platform building",
     "business book publishing",
-    "international book distribution",
-    "author authority building"
+    "memoir publishing services",
+    "fiction book publishing",
+    "Mediterranean Publishing"
   ],
+
   authors: [{ name: "Mediterranean Publishing" }],
   creator: "Mediterranean Publishing",
   publisher: "Mediterranean Publishing",
+
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
+
   metadataBase: new URL("https://mediterraneanpublishing.com/landing-page/services"),
+
   alternates: {
     canonical: "/services",
   },
+
   openGraph: {
-    title: "Author's Legacy Program | Mediterranean Publishing",
-    description: "Transform your expertise into a published book and build your authority. Complete publishing, platform building, and marketing for ambitious authors.",
+    title: "Transform Your Story Into a Published Book in 90 Days",
+    description:
+      "Stop juggling freelancers and wasting months. Mediterranean Publishing handles writing, editing, design, ISBN, Amazon KDP, and global marketing—so your book gets published right.",
     url: "https://mediterraneanpublishing.com/landing-page/services",
     siteName: "Mediterranean Publishing",
     images: [
       {
-        url: "/favicon.ico",
-        width: 50,
-        height: 50,
-        alt: "Mediterranean Publishing - Author's Legacy Program",
+        url: "/og-publish-book-90-days.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Mediterranean Publishing – Complete Book Publishing Solution",
       },
     ],
     locale: "en_US",
     type: "website",
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "Author's Legacy Program | Mediterranean Publishing",
-    description: "Transform your expertise into a published book and build your authority. Complete publishing, platform building, and marketing for ambitious authors.",
-    images: ["/twitter-image.jpg"],
+    title: "Publish Your Book in 90 Days | Mediterranean Publishing",
+    description:
+      "One team. One vision. No hidden costs. Publish your book professionally with Mediterranean Publishing—writing, editing, design, ISBN & marketing included.",
+    images: ["/og-publish-book-90-days.jpg"],
     creator: "@MediterraneanPub",
   },
+
   robots: {
     index: true,
     follow: true,
@@ -78,10 +91,12 @@ export const metadata = {
       "max-snippet": -1,
     },
   },
+
   verification: {
     google: "your-google-verification-code",
     yandex: "your-yandex-verification-code",
   },
+
   other: {
     "theme-color": "#364a52",
     "msapplication-TileColor": "#364a52",
