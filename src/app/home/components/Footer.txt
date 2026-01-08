@@ -8,11 +8,6 @@ import logo2 from '@/assets/images/icons/payment/logo-google-pay.svg'
 import logo3 from '@/assets/images/icons/payment/logo-mastercard.svg'
 import logo4 from '@/assets/images/icons/payment/logo-paypal.svg'
 import logo5 from '@/assets/images/icons/payment/logo-visa.svg'
-import logo6 from '@/assets/images/icons/payment/Airwallex.svg'
-import logo7 from '@/assets/images/icons/payment/Zelle2.svg'
-import logo8 from '@/assets/images/icons/payment/Cashapp.svg'
-import logo9 from '@/assets/images/icons/payment/Monzo2.svg'
-
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -70,15 +65,11 @@ const Footer = () => {
                 <div className="payment-methods">
                 <h4>We Accept</h4>
                 <div className="payment-icons">
-                  <a href="https://www.americanexpress.com" target='_blank'><Image src={logo1} alt="American Express" height={30} /></a>
-                  <a href="https://wallet.google.com/" target='_blank'><Image src={logo2} alt="Google Pay" height={30} /></a>
-                  <a href="https://www.mastercard.com/" target='_blank'><Image src={logo3} alt="Mastercard" height={30} /></a>
-                  <a href="https://www.paypal.com/" target='_blank'><Image src={logo4} alt="PayPal" height={30} /></a>
-                  <a href="https://www.visa.com/" target='_blank'><Image src={logo5} alt="Visa" height={30} /></a>
-                  <a href="https://www.zelle.com/" target='_blank'><Image src={logo7} alt="Zelle" height={34} /></a>
-                  <a href="https://monzo.com/" target='_blank'><Image src={logo9} alt="Monzo" height={30} /></a>
-                  <a href="https://www.airwallex.com/" target='_blank'><Image src={logo6} alt="Airwallex" height={30} /></a>
-                  <a href="https://cash.app/" target='_blank'><Image src={logo8} alt="Cashapp" height={30} /></a>
+                  <Image src={logo1} alt="American Express" height={30} />
+                  <Image src={logo2} alt="Google Pay" height={30} />
+                  <Image src={logo3} alt="Mastercard" height={30} />
+                  <Image src={logo4} alt="PayPal" height={30} />
+                  <Image src={logo5} alt="Visa" height={30} />
                 </div>
                 </div>
             </div>
@@ -195,15 +186,35 @@ const Footer = () => {
 
       {/* Styles */}
       <style jsx>{`
+        @keyframes shine {
+          0% {
+            left: -100%;
+          }
+          100% {
+            left: 100%;
+          }
+        }
+        
+        .footer-modern::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+          animation: shine 3s infinite;
+        }
           
         .footer-modern {
-          background: linear-gradient(135deg, 
-            #f5f0eb 0%, 
-            #e8e3dd 25%, 
-            #f2ede8 50%, 
-            #e5e0da 75%, 
-            #f0ebe6 100%
-          );
+          background: 
+            radial-gradient(at 0% 0%, #f5f0eb 0px, transparent 50%),
+            radial-gradient(at 100% 0%, #ebe7e3 0px, transparent 50%),
+            radial-gradient(at 100% 100%, #e8e3dd 0px, transparent 50%),
+            radial-gradient(at 0% 100%, #f0ebe6 0px, transparent 50%),
+            #eeeae7;
+
+          position: relative;
           color: #0f252f;
         }
 
@@ -214,12 +225,10 @@ const Footer = () => {
         }
 
         /* Trust Section */
-          
         .trust-section {
           background: #364a52;
           padding: 30px 0;
           border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-          position: relative;
         }
 
         .trust-grid {
@@ -328,28 +337,9 @@ const Footer = () => {
         .payment-icons {
           display: flex;
           flex-wrap: wrap;
-          gap: 12px;
+          gap: 8px;
         }
 
-        .payment-icons a {
-          display: inline-block;
-          transition: all 0.3s ease;
-        }
-
-        .payment-icons a:hover {
-          transform: translateY(-2px);
-          transition: all 0.3s ease;
-        }
-
-        .payment-icons img {
-          transition: all 0.3s ease;
-        }
-
-        .payment-icons img:hover {
-          filter: brightness(1.2);
-          transform: scale(1.05);
-        }
-          
         .payment-icon {
           background: rgba(255, 255, 255, 0.1);
           border: 1px solid rgba(255, 255, 255, 0.15);
@@ -413,7 +403,7 @@ const Footer = () => {
           padding-left: 5px;
         }
 
-         /* Contact Info */
+        /* Contact Info */
         .contact-info {
           list-style: none;
           padding: 0;
@@ -427,44 +417,23 @@ const Footer = () => {
           margin-bottom: 16px;
           font-size: 14px;
           line-height: 1.6;
-          color: #2d4a54;
         }
 
         .contact-info svg {
           flex-shrink: 0;
           margin-top: 2px;
-          color: #4a7c8f;
-          transition: color 0.25s ease;
-        }
-
-        .contact-info li:hover svg {
-          color: #364a52;
+          color: #60a5fa;
         }
 
         .contact-info a {
-          color: #2d4a54;
+          color: #0f252f;
           text-decoration: none;
-          transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-          position: relative;
-        }
-
-        .contact-info a::after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 0;
-          height: 1px;
-          background: #364a52;
-          transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: color 0.3s ease;
         }
 
         .contact-info a:hover {
-          color: #1a3640;
-        }
-
-        .contact-info a:hover::after {
-          width: 100%;
+          color: #364a52;
+          scale: 1.02;
         }
 
         /* Social Section */
