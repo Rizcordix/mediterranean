@@ -43,6 +43,10 @@ import house1 from '../../assets/images/booksamples/The_House_You_Build_Within/9
 import house2 from '../../assets/images/booksamples/The_House_You_Build_Within/10.png';
 import house3 from '../../assets/images/booksamples/The_House_You_Build_Within/11.png';
 
+import Royal1 from '../../assets/images/booksamples/The_Royal_Ring/1.png';
+import Royal2 from '../../assets/images/booksamples/The_Royal_Ring/2.png';
+import Royal3 from '../../assets/images/booksamples/The_Royal_Ring/3.png';
+
 
 
 // --- The main data array, using the imported assets ---
@@ -110,5 +114,13 @@ export const bookData: Book[] = [
     cover: "/sample_cover/The_Librarian_of_Lost_Things_Book_Cover_Mockup.jpg", 
     blurb: 'For those who have survived love’s wreckage, The Librarian of Lost Things is a raw, haunting testament to rebuilding a self from the ruins. It tells the story of a woman who reads memories in objects and a man haunted by the ghosts of people, who find each other in the dark. More than a novel, it is a map of betrayal and becoming, written in the language of a shattered heart. This is not a gentle book, but a manifesto for the broken—and for the stronger, darker selves that emerge in the aftermath. If you are meant to find it, you will.',
     previewPages: [librarian1, librarian2, librarian3],
+  },
+  {
+    id: 'b9',
+    title: 'The Royal Ring',
+    author: 'Jennifer Delmont',
+    cover: "/sample_cover/RoyalRing.png", 
+    blurb: 'A future queen must find the American girl she gave a promise ring to years ago and propose a marriage of convenience to secure her crown, forcing both women to confront a forgotten connection and choose between their dreams.',
+    previewPages: [Royal1, Royal2, Royal3],
   },
 ];

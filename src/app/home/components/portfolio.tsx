@@ -64,7 +64,63 @@ const PortfolioSection = () => {
       subtitle: "Every object holds a memory. Some are deadly.",
       author: "Jennifer Delmont",
       image: "/portfolio_images/6.png"
-    }
+    },
+    {
+      id: 9,
+      title: "Might as Well Be an Ocean",
+      subtitle: "Fake engagement, real hearts at risk.",
+      author: "Kellian McKnight",
+      image: "/portfolio_images/Might_as_well.png"
+    },
+    {
+      id: 10,
+      title: "I Want to Kiss You in Public",
+      subtitle: "One British student changes every rule.",
+      author: "Zelda French",
+      image: "/portfolio_images/Iwantto.png"
+    },
+    {
+      id: 11,
+      title: "Frantic",
+      subtitle: "Three days to stop a catastrophe.",
+      author: "Brent Bradley",
+      image: "/portfolio_images/Franctic.png"
+    },
+    {
+      id: 12,
+      title: "Falling for Forever",
+      subtitle: "She fell for a wolf's disguise.",
+      author: "Sia Morgan",
+      image: "/portfolio_images/Falling_for_forever.png"
+    },
+    {
+      id: 13,
+      title: "A Deadly Night's End",
+      subtitle: "One detective, fifty million, no escape.",
+      author: "R.A Valetta",
+      image: "/portfolio_images/Deadly.png"
+    },
+    {
+      id: 14,
+      title: "Pucking Virgins",
+      subtitle: "A fake contract ignites forbidden desire.",
+      author: "Amber Heart",
+      image: "/portfolio_images/TrackingVirgins.png"
+    },
+    {
+      id: 15,
+      title: "Crazy Love Crazy Lies",
+      subtitle: "Scandal, secrets, and a dangerous attraction.",
+      author: "Madison Michael",
+      image: "/portfolio_images/CrazyLove.png"
+    },
+    {
+      id: 16,
+      title: "The Royal ring",
+      subtitle: "A crown depends on a promise.",
+      author: "Hannah Willow",
+      image: "/portfolio_images/RoyalRing.png"
+    },
   ];
 
   useEffect(() => {
