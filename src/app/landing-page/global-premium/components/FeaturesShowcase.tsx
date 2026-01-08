@@ -23,7 +23,7 @@ const FeaturesShowcase = () => {
         "ISBN + LCCN registration"
       ],
       advantage: "Authors who publish in multiple formats see 3-5x higher sales than single-format publishers",
-      image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800&h=600&fit=crop" // Replace with your image URL
+      image: "/landing/feature 1.png" // Replace with your image URL
     },
     {
       id: 2,
@@ -39,7 +39,7 @@ const FeaturesShowcase = () => {
         "Foreign market positioning strategy"
       ],
       advantage: "International editions can increase annual royalties by 50-300%",
-      image: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=800&h=600&fit=crop"
+      image: "/landing/feature 2.png"
     },
     {
       id: 3,
@@ -57,7 +57,7 @@ const FeaturesShowcase = () => {
         "Amazon author central optimization"
       ],
       advantage: "Authors with strong platforms sell 10x more books than authors without",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop"
+      image: "/landing/feature 3.png"
     },
     {
       id: 4,
@@ -75,7 +75,7 @@ const FeaturesShowcase = () => {
         "Monthly performance reporting and optimization"
       ],
       advantage: "Strategic marketing generates sustained sales momentum, not just launch day spikes",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
+      image: "/landing/feature 4.png"
     },
     {
       id: 5,
@@ -93,7 +93,7 @@ const FeaturesShowcase = () => {
         "Author bio and bio variations for speaking"
       ],
       advantage: "Authors who appear in media become consulting clients, speaking clients, and course students",
-      image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&h=600&fit=crop"
+      image: "/landing/feature 5.png"
     },
     {
       id: 6,
@@ -111,7 +111,7 @@ const FeaturesShowcase = () => {
         "Quarterly business review meetings"
       ],
       advantage: "Authors with dedicated support see 2-3x higher success rates than those managing alone",
-      image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop"
+      image: "/landing/feature 6.png"
     },
     {
       id: 7,
@@ -129,7 +129,7 @@ const FeaturesShowcase = () => {
         "Post-speaking follow-up strategy"
       ],
       advantage: "Speaking fees ($2K-$20K per engagement) often exceed book royalties—and drive book sales",
-      image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&h=600&fit=crop"
+      image: "/landing/feature 7.png"
     },
     {
       id: 8,
@@ -147,7 +147,7 @@ const FeaturesShowcase = () => {
         "Annual revenue planning and strategy"
       ],
       advantage: "Authors who diversify income earn 5-10x more than book-only authors",
-      image: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&h=600&fit=crop"
+      image: "/landing/feature 8.png"
     },
     {
       id: 9,
@@ -165,7 +165,7 @@ const FeaturesShowcase = () => {
         "Risk mitigation strategy"
       ],
       advantage: "Strategy-first approach prevents costly mistakes and ensures every investment has clear ROI",
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop"
+      image: "/landing/feature 9.png"
     },
     {
       id: 10,
@@ -183,7 +183,7 @@ const FeaturesShowcase = () => {
         "Lifetime access to author resources"
       ],
       advantage: "Your author community becomes your support system and potential collaborators/partners",
-      image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=600&fit=crop"
+      image: "/landing/feature 10.png"
     }
   ];
 
