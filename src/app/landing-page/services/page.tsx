@@ -11,7 +11,7 @@ import FAQ from './components/Faq';
 import PublishingComparison from './components/comparison';
 import FinalCTABanner from './components/final_cta';
 import MidPageCTA from './components/mid_cta';
-import Footer from './components/Footer';
+import Footer from '../../home/components/Footer';
 
 export const metadata = {
   title: "Publish Your Book in 90 Days | Professional Book Publishing Services",

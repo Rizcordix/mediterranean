@@ -50,7 +50,7 @@ const Hero = () => {
         <div className="hero-right">
           <div className="hero-image-container">
             <img
-              src="https://placehold.co/600x700"
+              src="/landing/6.png"
               alt="Author Legacy Program"
               width={500}
               height={600}
