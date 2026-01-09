@@ -47,6 +47,34 @@ import Royal1 from '../../assets/images/booksamples/The_Royal_Ring/1.png';
 import Royal2 from '../../assets/images/booksamples/The_Royal_Ring/2.png';
 import Royal3 from '../../assets/images/booksamples/The_Royal_Ring/3.png';
 
+import Pucking1 from '../../assets/images/booksamples/Pucking/1.jpeg';
+import Pucking2 from '../../assets/images/booksamples/Pucking/2.jpeg';
+import Pucking3 from '../../assets/images/booksamples/Pucking/3.jpeg';
+
+import Deadly1 from '../../assets/images/booksamples/Deadly/1.png';
+import Deadly2 from '../../assets/images/booksamples/Deadly/2.png';
+import Deadly3 from '../../assets/images/booksamples/Deadly/3.png';
+
+import Crazy1 from '../../assets/images/booksamples/Crazy/1.png';
+import Crazy2 from '../../assets/images/booksamples/Crazy/2.png';
+import Crazy3 from '../../assets/images/booksamples/Crazy/3.png';
+
+import Falling1 from '../../assets/images/booksamples/Falling/1.png';
+import Falling2 from '../../assets/images/booksamples/Falling/2.png';
+import Falling3 from '../../assets/images/booksamples/Falling/3.png';
+
+import Franctic1 from '../../assets/images/booksamples/Frantic/1.png';
+import Franctic2 from '../../assets/images/booksamples/Frantic/2.png';
+import Franctic3 from '../../assets/images/booksamples/Frantic/3.png';
+
+import Iwantto1 from '../../assets/images/booksamples/Kiss/1.png';
+import Iwantto2 from '../../assets/images/booksamples/Kiss/2.png';
+import Iwantto3 from '../../assets/images/booksamples/Kiss/3.png';
+
+import Might1 from '../../assets/images/booksamples/Ocean/1.png';
+import Might2 from '../../assets/images/booksamples/Ocean/2.png';
+import Might3 from '../../assets/images/booksamples/Ocean/3.png';
+
 
 
 // --- The main data array, using the imported assets ---
@@ -118,9 +146,65 @@ export const bookData: Book[] = [
   {
     id: 'b9',
     title: 'The Royal Ring',
-    author: 'Jennifer Delmont',
+    author: 'Hannah Willow',
     cover: "/sample_cover/RoyalRing.png", 
     blurb: 'A future queen must find the American girl she gave a promise ring to years ago and propose a marriage of convenience to secure her crown, forcing both women to confront a forgotten connection and choose between their dreams.',
     previewPages: [Royal1, Royal2, Royal3],
+  },
+  {
+    id: 'b10',
+    title: 'Pucking Virgins',
+    author: 'Amber Heart',
+    cover: "/sample_cover/TrackingVirgins.png", // Reusing the same image as in the source data
+    blurb: 'A grumpy billionaire hockey captain hires a broke scholarship student to be his fake girlfriend. Their strictly professional contract shatters when forbidden desire ignites, threatening her future and his controlled, icy world.',
+    previewPages: [Pucking1, Pucking2, Pucking3],
+  },
+  {
+    id: 'b11',
+    title: 'A DEADLY NIGHT\'S END',
+    author: 'R.A Valetta',
+    cover: "/sample_cover/Deadly.png", 
+    blurb: 'Detective Kate Delgado hunts the bank robbers who vanished after a deadly explosion. Her search leads to the Cayman Islands, where a mysterious stranger, a frozen $50 million account, and a vengeful drug cartel force a final, bloody confrontation that targets everything she loves.',
+    previewPages: [Deadly1, Deadly2, Deadly3],
+  },
+  {
+    id: 'b12',
+    title: 'Crazy Loves Crazy Lies',
+    author: 'Madison Michael',
+    cover: "/sample_cover/CrazyLove.png", 
+    blurb: ' Aspiring journalist Ronni lands her dream job working for a charismatic candidate for governor. When her idol, a famous journalist, arrives to expose the candidate, Ronni is caught between loyalty to her boss, a dangerous attraction to her idol, and a scandal that could cost her heart and her career.',
+    previewPages: [Crazy1, Crazy2, Crazy3],
+  },
+  {
+    id: 'b13',
+    title: 'Falling for Forever',
+    author: 'Sia Morgan',
+    cover: "/sample_cover/Falling_for_forever.png", 
+    blurb: 'Grieving corporate raider Daniel meets compassionate Sarah and hides his true nature. As her own life opens up for love, Sarah must discover if she’s falling for the man she sees or the wolf in disguise.',
+    previewPages: [Falling1, Falling2, Falling3],
+  },
+  {
+    id: 'b14',
+    title: 'FRANTIC',
+    author: 'Brent Bradley',
+    cover: "/sample_cover/Franctic.png", 
+    blurb: 'A therapist, his forensic psychologist friend, and a brilliant AI developer have 72 hours to stop a dangerous AI bill fast-tracked in Texas, battling assassins, corrupt politicians, and unseen tech billionaires in a deadly race to expose a catastrophic secret.',
+    previewPages: [Franctic1, Franctic2, Franctic3],
+  },
+  {
+    id: 'b15',
+    title: 'I Want To Kiss You In Public',
+    author: 'Zelda French',
+    cover: "/sample_cover/Iwantto.png", 
+    blurb: 'A snarky, self-assured Parisian student insists he\'s straight—until a new British classmate makes him question everything in this hilarious and endearing LGBTQ+ coming-of-age romance.',
+    previewPages: [Iwantto1, Iwantto2, Iwantto3],
+  },
+  {
+    id: 'b16',
+    title: 'Might as Well Be an Ocean',
+    author: 'Kellan McKnight',
+    cover: "/sample_cover/Might_as_well.png", 
+    blurb: 'Two longtime best friends with unspoken feelings navigate a "friends with benefits" arrangement and a fake engagement, testing whether Mara can finally open her frozen heart to the love she believes she doesn\'t deserve.',
+    previewPages: [Might1, Might2, Might3],
   },
 ];
