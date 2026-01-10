@@ -178,7 +178,7 @@ const PublishingFeatures: React.FC = () => {
             <p className="content-description">{features[activeFeature].description}</p>
 
             <div className="benefits-section">
-              <h4>What's Included:</h4>
+              <h4>What&apos;s Included:</h4>
               <ul className="benefits-list">
                 {features[activeFeature].benefits.map((benefit, idx) => (
                   <li key={idx}>

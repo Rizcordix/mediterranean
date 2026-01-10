@@ -2,7 +2,7 @@
 import React from 'react'
 import Image from 'next/image'
 import logo from '@/assets/images/medi_logo2.png'
-// import Link from 'next/link'
+import Link from 'next/link'
 import logo1 from '@/assets/images/icons/payment/logo-american-express-2.svg'
 import logo2 from '@/assets/images/icons/payment/logo-google-pay.svg'
 import logo3 from '@/assets/images/icons/payment/logo-mastercard.svg'
@@ -87,11 +87,11 @@ const Footer = () => {
             <div className="footer-column">
               <h3>Quick Links</h3>
               <ul className="footer-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/book-samples">Book Samples</a></li>
-                <li><a href="/reviews">Client Reviews</a></li>
-                <li><a href="/contact">Contact Us</a></li>
+                <li><Link href="/">Home</Link></li>
+                <li><Link href="/about">About Us</Link></li>
+                <li><Link href="/book-samples">Book Samples</Link></li>
+                <li><Link href="/reviews">Client Reviews</Link></li>
+                <li><Link href="/contact">Contact Us</Link></li>
               </ul>
             </div>
 

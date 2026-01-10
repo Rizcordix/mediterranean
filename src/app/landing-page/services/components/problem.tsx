@@ -107,7 +107,7 @@ const ProblemSolveSection: React.FC = () => {
         <div className="solution-section">
           <div className="solution-header">
             <Check size={32} />
-            <h3>There's a Better Way</h3>
+            <h3>There&apos;s a Better Way</h3>
           </div>
           <p className="solution-text">
             Say hello to Mediterranean Publishing—where your author legacy comes to life without the nightmare.
