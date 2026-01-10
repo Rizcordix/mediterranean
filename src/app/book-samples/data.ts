@@ -47,9 +47,9 @@ import Royal1 from '../../assets/images/booksamples/The_Royal_Ring/1.png';
 import Royal2 from '../../assets/images/booksamples/The_Royal_Ring/2.png';
 import Royal3 from '../../assets/images/booksamples/The_Royal_Ring/3.png';
 
-import Pucking1 from '../../assets/images/booksamples/Pucking/1.jpeg';
-import Pucking2 from '../../assets/images/booksamples/Pucking/2.jpeg';
-import Pucking3 from '../../assets/images/booksamples/Pucking/3.jpeg';
+import Pucking1 from '../../assets/images/booksamples/Pucking/1.png';
+import Pucking2 from '../../assets/images/booksamples/Pucking/2.png';
+import Pucking3 from '../../assets/images/booksamples/Pucking/3.png';
 
 import Deadly1 from '../../assets/images/booksamples/Deadly/1.png';
 import Deadly2 from '../../assets/images/booksamples/Deadly/2.png';
@@ -147,7 +147,7 @@ export const bookData: Book[] = [
     id: 'b9',
     title: 'The Royal Ring',
     author: 'Hannah Willow',
-    cover: "/sample_cover/RoyalRing.png", 
+    cover: "/sample_cover/Ring.png", 
     blurb: 'A future queen must find the American girl she gave a promise ring to years ago and propose a marriage of convenience to secure her crown, forcing both women to confront a forgotten connection and choose between their dreams.',
     previewPages: [Royal1, Royal2, Royal3],
   },
@@ -155,7 +155,7 @@ export const bookData: Book[] = [
     id: 'b10',
     title: 'Pucking Virgins',
     author: 'Amber Heart',
-    cover: "/sample_cover/TrackingVirgins.png", // Reusing the same image as in the source data
+    cover: "/sample_cover/Pucking.png", // Reusing the same image as in the source data
     blurb: 'A grumpy billionaire hockey captain hires a broke scholarship student to be his fake girlfriend. Their strictly professional contract shatters when forbidden desire ignites, threatening her future and his controlled, icy world.',
     previewPages: [Pucking1, Pucking2, Pucking3],
   },
@@ -203,7 +203,7 @@ export const bookData: Book[] = [
     id: 'b16',
     title: 'Might as Well Be an Ocean',
     author: 'Kellan McKnight',
-    cover: "/sample_cover/Might_as_well.png", 
+    cover: "/sample_cover/Mightaswell.png", 
     blurb: 'Two longtime best friends with unspoken feelings navigate a "friends with benefits" arrangement and a fake engagement, testing whether Mara can finally open her frozen heart to the love she believes she doesn\'t deserve.',
     previewPages: [Might1, Might2, Might3],
   },
