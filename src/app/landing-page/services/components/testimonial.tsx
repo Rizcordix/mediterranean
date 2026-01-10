@@ -8,7 +8,6 @@ import { Col, Container, Row } from 'react-bootstrap'
 import avatar1 from '@/assets/images/flags/fr.svg'
 import avatar2 from '@/assets/images/flags/gr.svg'
 import avatar3 from '@/assets/images/flags/uk.svg'
-import avatar4 from '@/assets/images/flags/sp.svg'
 import avatar5 from '@/assets/images/flag-main/us.svg'
 
 const testimonialsData = [
@@ -37,7 +36,7 @@ const testimonialsData = [
     name: 'David R.',
     category: 'Mystery Author | 1,100+ books sold, 4.8★ average rating',
     description: '"I was worried about hidden costs and low quality. Mediterranean Publishing was transparent about pricing and delivered professional results. My cover looks bookstore ready. My editing was thorough. My book is selling. For the price, I don\'t know how they do it. Highly recommended."',
-    image: avatar4,
+    image: avatar5,
     title: 'Professional Quality. Reasonable Price. Zero Regrets.'
   }
 ]
