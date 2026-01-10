@@ -21,7 +21,11 @@ export const metadata: Metadata = {
   title: 'Mediterranean Publishing',
   description:
     'Discover Mediterranean Publishing - Your gateway to captivating stories, expert insights, and vibrant culture. Explore our diverse collection of books and resources today!',
+  icons: {
+    icon: '/favicon.ico',
+  },
 }
+
 
 export default function RootLayout({
   children,
