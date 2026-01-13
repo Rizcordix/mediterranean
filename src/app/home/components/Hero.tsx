@@ -31,7 +31,7 @@ const Hero = () => {
   return (
     <Wrapper
       tag={enableParallax ? 'section' : undefined}
-      className="position-relative p-0 h-500 h-lg-700 bg-overlay-darkk-1 bg-grad3 bg-parallax overflow-hidden"
+      className="position-relative p-0 h-600 h-lg-700 bg-overlay-darkk-1 bg-grad3 bg-parallax overflow-hidden"
     >
       {/* ✅ LCP IMAGE (ONLY priority image) */}
       <Image
