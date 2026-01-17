@@ -7,7 +7,7 @@ import { Container, Button } from 'react-bootstrap'
 
 import banner8 from '@/assets/images/banner/mainbg.webp'
 import trustedplatforms from '@/assets/images/banner/trusted-platforms.png'
-import bookImage from '@/assets/images/banner/herobook.webp'
+import bookImage from '@/assets/images/banner/herobook1.webp'
 
 // Load Jarallax ONLY after LCP
 const Jarallax = dynamic(() => import('@/components/Jarallax'), {
@@ -87,14 +87,14 @@ const Hero = () => {
 
       {/* RIGHT BOOK IMAGE (NO priority) */}
       <div
-        className="d-none d-lg-block position-absolute end-0 pe-8"
-        style={{ zIndex: 1, top: '10%' }}
+        className="d-none d-lg-block position-absolute end-0 pe-6"
+        style={{ zIndex: 1, top: '0%' }}
       >
         <Image
           src={bookImage}
           alt="Hero Graphic"
-          width={550}
-          height={700}
+          width={660}
+          height={840}
           style={{
             objectFit: 'contain',
             maxWidth: '100%',
