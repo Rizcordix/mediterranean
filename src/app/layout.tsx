@@ -21,7 +21,12 @@ export const metadata: Metadata = {
   description:
     'Discover Mediterranean Publishing - Your gateway to captivating stories, expert insights, and vibrant culture. Explore our diverse collection of books and resources today!',
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/favicon-48.png', sizes: '48x48', type: 'image/png' },
+      { url: '/favicon-96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/favicon.ico', sizes: '96x96', type: 'image/x-icon' },
+    ],
+    apple: '/apple-touch-icon.png',
   },
 }
 

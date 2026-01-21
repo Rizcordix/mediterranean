@@ -4,30 +4,21 @@ module.exports = {
   generateRobotsTxt: true,
   sitemapSize: 7000,
 
-  // Never index error pages
+  // ❌ Never index these paths
   exclude: ['/not-found'],
 
   transform: async (config, path) => {
-    // ✅ Canonical homepage
-    if (path === '/home') {
+    // ✅ Homepage (root) — include ONCE
+    if (path === '/') {
       return {
-        loc: '/', // ROOT ONLY ONCE
+        loc: '/',
         changefreq: 'daily',
         priority: 1.0,
         lastmod: new Date().toISOString(),
       };
     }
 
-    // ❌ Prevent /home itself from appearing
-    if (path === '/home') {
-      return null;
-    }
-
-    // ❌ Prevent accidental duplicate root
-    if (path === '/') {
-      return null;
-    }
-
+    // ✅ All other normal pages
     return {
       loc: path,
       changefreq: 'daily',
