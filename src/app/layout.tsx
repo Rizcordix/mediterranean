@@ -17,16 +17,42 @@ const inter = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'Mediterranean Publishing',
+  metadataBase: new URL('https://www.mediterraneanpublishing.com'),
+
+  title: {
+    default: 'Mediterranean Publishing',
+    template: '%s | Mediterranean Publishing',
+  },
+
   description:
-    'Discover Mediterranean Publishing - Your gateway to captivating stories, expert insights, and vibrant culture. Explore our diverse collection of books and resources today!',
+    'Discover Mediterranean Publishing – professional eBook writing, publishing, editing, and marketing services.',
+
   icons: {
     icon: [
       { url: '/favicon-48.png', sizes: '48x48', type: 'image/png' },
       { url: '/favicon-96.png', sizes: '96x96', type: 'image/png' },
-      { url: '/favicon.ico', sizes: '96x96', type: 'image/x-icon' },
     ],
     apple: '/apple-touch-icon.png',
+    shortcut: '/favicon.ico',
+  },
+
+  openGraph: {
+    type: 'website',
+    siteName: 'Mediterranean Publishing',
+    url: '/',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Mediterranean Publishing',
+      },
+    ],
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/og-image.jpg'],
   },
 }
 
@@ -38,8 +64,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <style suppressHydrationWarning>{}</style>
-
         {/* Meta Pixel Script */}
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
@@ -47,9 +71,12 @@ export default function RootLayout({
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
             n.callMethod.apply(n,arguments):n.queue.push(arguments)};
             if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            n.queue=[];
+            t=b.createElement(e);t.async=!0;
+            t.src=v;
+            s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)
+            }(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '1406590091186942');
             fbq('track', 'PageView');
@@ -58,7 +85,6 @@ export default function RootLayout({
       </head>
 
       <body className={inter.className}>
-        {/* Meta Pixel NoScript */}
         <noscript>
           <img
             height="1"
@@ -68,20 +94,17 @@ export default function RootLayout({
           />
         </noscript>
 
-        <div id="__next_splash">
-          <DiscountPopupProvider>
-            <PopupProvider>
-              <AppProviders>{children}</AppProviders>
+        <DiscountPopupProvider>
+          <PopupProvider>
+            <AppProviders>{children}</AppProviders>
 
-              {/* Tawk.to Chat */}
-              <Script
-                src="https://embed.tawk.to/6954e038d5d3bd197b4d818f/1jdponnti"
-                strategy="afterInteractive"
-                async
-              />
-            </PopupProvider>
-          </DiscountPopupProvider>
-        </div>
+            <Script
+              src="https://embed.tawk.to/6954e038d5d3bd197b4d818f/1jdponnti"
+              strategy="afterInteractive"
+              async
+            />
+          </PopupProvider>
+        </DiscountPopupProvider>
 
         <PopupClientWrapper />
         <WidgetClientWrapper />
