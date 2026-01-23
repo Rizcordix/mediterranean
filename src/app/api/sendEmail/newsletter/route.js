@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { getNewsletterEmail } from "@/lib/emailTemplates";
 
 export async function POST(req) {
   try {
@@ -21,11 +22,24 @@ export async function POST(req) {
     await transporter.verify();
     console.log("SMTP Connection verified ✅");
 
+    // Send email to admin
     await transporter.sendMail({
       from: '"Newsletter Subscribed Mediterranean Publishing" <mediterraneanpublishing@gmail.com>',
       to: "mediterraneanpublishing@gmail.com",
       subject: "Mediterranean Publishing Newsletter Subscribed",
       text: `Mediterranean Publishing\nNewsletter Subscribed\n\nEmail: ${email}`,
+    });
+
+    // Send confirmation email to user
+    const confirmationHtml = getNewsletterEmail({
+      email,
+    });
+
+    await transporter.sendMail({
+      from: '"Mediterranean Publishing" <mediterraneanpublishing@gmail.com>',
+      to: email,
+      subject: "Welcome to Our Newsletter - Mediterranean Publishing",
+      html: confirmationHtml,
     });
 
     return new Response(JSON.stringify({ message: "Email sent successfully" }), {
