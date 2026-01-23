@@ -2,6 +2,7 @@
 import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react'
 import { Accordion, AccordionBody, AccordionHeader, AccordionItem, Col } from 'react-bootstrap'
 import { careersData } from '../data'
+import SuccessPopup from '@/components/SuccessPopup'
 
 const Careers = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ const Careers = () => {
   })
 
   const [submitting, setSubmitting] = useState(false)
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false)
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null)
 
   useEffect(() => {
@@ -61,7 +63,7 @@ const Careers = () => {
       const data = await res.json().catch(() => ({}))
 
       if (res.ok) {
-        showToast('✅ Report request sent — we will email you shortly.', 'success')
+        setShowSuccessPopup(true)
         setFormData({ email: '', bookTitle: '', wordCount: '', description: '' })
       } else {
         console.error('Report API error:', data?.message ?? data)
@@ -77,6 +79,13 @@ const Careers = () => {
 
   return (
     <section className="pb-3">
+      {/* Success Popup */}
+      <SuccessPopup 
+        isOpen={showSuccessPopup} 
+        onClose={() => setShowSuccessPopup(false)} 
+        formType="report" 
+      />
+
       {/* toast */}
       {toast && (
         <div

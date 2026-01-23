@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { getContactFormEmail } from "@/lib/emailTemplates";
 
 export async function POST(req) {
   try {
@@ -21,11 +22,27 @@ export async function POST(req) {
     await transporter.verify();
     console.log("SMTP Connection verified ✅");
 
+    // Send email to admin
     await transporter.sendMail({
       from: '"Contact Page Form Mediterranean Publishing" <mediterraneanpublishing@gmail.com>',
       to: "mediterraneanpublishing@gmail.com",
       subject: "Mediterranean Publishing Contact Page Form Filled",
       text: `Mediterranean Publishing\nContact Page Form Filled\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}\nSubject: ${subject}`,
+    });
+
+    // Send confirmation email to user
+    const confirmationHtml = getContactFormEmail({
+      name,
+      email,
+      subject,
+      message,
+    });
+
+    await transporter.sendMail({
+      from: '"Mediterranean Publishing" <mediterraneanpublishing@gmail.com>',
+      to: email,
+      subject: "We've Received Your Message - Mediterranean Publishing",
+      html: confirmationHtml,
     });
 
     return new Response(JSON.stringify({ message: "Email sent successfully" }), {

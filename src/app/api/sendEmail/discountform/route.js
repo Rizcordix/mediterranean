@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { getDiscountFormEmail } from "@/lib/emailTemplates";
 
 export async function POST(req) {
   try {
@@ -21,11 +22,27 @@ export async function POST(req) {
     await transporter.verify();
     console.log("SMTP Connection verified ✅");
 
+    // Send email to admin
     await transporter.sendMail({
       from: '"50% off Discount Form Mediterranean Publishing" <mediterraneanpublishing@gmail.com>',
       to: "mediterraneanpublishing@gmail.com",
       subject: "Mediterranean Publishing 50% off Discount Form Filled",
       text: `Mediterranean Publishing\n50% off Discount Form Filled\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`,
+    });
+
+    // Send confirmation email to user
+    const confirmationHtml = getDiscountFormEmail({
+      name,
+      email,
+      phone,
+      message,
+    });
+
+    await transporter.sendMail({
+      from: '"Mediterranean Publishing" <mediterraneanpublishing@gmail.com>',
+      to: email,
+      subject: "🎉 Your 50% Discount Confirmed - Mediterranean Publishing",
+      html: confirmationHtml,
     });
 
     return new Response(JSON.stringify({ message: "Email sent successfully" }), {

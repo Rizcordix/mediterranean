@@ -3,6 +3,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import SuccessPopup from "@/components/SuccessPopup";
 
 type Props = {
   isOpen: boolean;
@@ -17,6 +18,8 @@ const DiscountButtonPopup: React.FC<Props> = ({ isOpen, onClose }) => {
   const [phone, setPhone] = useState<string>("");
   const [message, setMessage] = useState<string>("");
   const [toast, setToast] = useState<Toast>(null);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const closeBtnRef = useRef<HTMLButtonElement | null>(null);
 
   // Lock scroll when open
@@ -52,42 +55,53 @@ const DiscountButtonPopup: React.FC<Props> = ({ isOpen, onClose }) => {
   };
 
   const handleSubmit = async () => {
-    if (!name || !email || !email.includes("@") || !phone || !message) {
-      showToast("⚠️ Please fill in all fields with valid information.", "error");
-      return;
-    }
+  if (!name || !email || !email.includes("@") || !phone || !message) {
+    showToast("⚠️ Please fill in all fields with valid information.", "error");
+    return;
+  }
 
-    try {
-      const response = await fetch("/api/sendEmail/discountform", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, phone, message }),
-      });
+  setSubmitting(true); // ✅ START submitting
 
-      const data = await response.json();
+  try {
+    const response = await fetch("/api/sendEmail/discountform", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, phone, message }),
+    });
 
-      if (response.ok) {
-        showToast("✅ Thank you! Your details have been sent.", "success");
-        onClose();
-        setName("");
-        setEmail("");
-        setPhone("");
-        setMessage("");
-      } else {
-        console.error("Email sending failed:", data?.message ?? data);
-        showToast("❌ Unsuccessful — please try again later.", "error");
-      }
-    } catch (err) {
-      console.error("Submit error:", err);
+    const data = await response.json();
+
+    if (response.ok) {
+      setShowSuccessPopup(true);
+      onClose();
+      setName("");
+      setEmail("");
+      setPhone("");
+      setMessage("");
+    } else {
+      console.error("Email sending failed:", data?.message ?? data);
       showToast("❌ Unsuccessful — please try again later.", "error");
     }
-  };
+  } catch (err) {
+    console.error("Submit error:", err);
+    showToast("❌ Unsuccessful — please try again later.", "error");
+  } finally {
+    setSubmitting(false); // ✅ END submitting (always)
+  }
+};
+
 
   // Render nothing on server
   if (typeof document === "undefined") return null;
 
   return createPortal(
     <>
+      <SuccessPopup
+        isOpen={showSuccessPopup}
+        onClose={() => setShowSuccessPopup(false)}
+        formType="discount"
+      />
+
       {toast && (
         <div
           className={`popup-toast ${toast.type === "success" ? "toast-success" : "toast-error"}`}
@@ -199,7 +213,18 @@ const DiscountButtonPopup: React.FC<Props> = ({ isOpen, onClose }) => {
                   <input type="email" className="popup-input" placeholder="Enter Email Address" value={email} onChange={(e) => setEmail(e.target.value)} />
                   <input type="tel" className="popup-input" placeholder="Enter Phone No" value={phone} onChange={(e) => setPhone(e.target.value)} />
                   <textarea className="popup-textarea" placeholder="Brief Discussion about your book*" value={message} onChange={(e) => setMessage(e.target.value)} />
-                  <button className="popup-submit" onClick={handleSubmit}>Submit</button>
+                  <button 
+                    type="button"   // ✅ THIS IS THE FIX
+                    className="popup-submit" 
+                    onClick={handleSubmit}
+                    disabled={submitting}
+                    style={{ 
+                      opacity: submitting ? 0.8 : 1, 
+                      cursor: submitting ? 'wait' : 'pointer' 
+                    }}
+                  >
+                    {submitting ? 'Submitting...' : 'Submit'}
+                  </button>
                 </div>
 
                 <div className="popup-footer">

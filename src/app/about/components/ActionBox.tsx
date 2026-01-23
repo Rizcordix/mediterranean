@@ -2,10 +2,12 @@
 import React, { useState, useEffect } from 'react'
 import bgImg from '@/assets/images/bg/newsletterbg.png'
 import { Col, Container, Row } from 'react-bootstrap'
+import SuccessPopup from '@/components/SuccessPopup'
 
 const ActionBox: React.FC = () => {
   const [email, setEmail] = useState('')
   const [submitting, setSubmitting] = useState(false)
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false)
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
 
   useEffect(() => {
@@ -32,7 +34,7 @@ const ActionBox: React.FC = () => {
       })
 
       if (res.ok) {
-        setMessage({ type: 'success', text: 'Successfully subscribed!' })
+        setShowSuccessPopup(true)
         setEmail('')
       } else {
         setMessage({ type: 'error', text: 'Try again later.' })
@@ -50,6 +52,13 @@ const ActionBox: React.FC = () => {
       className="about-newsletter bg-overlay-dark-8 bg-parallax"
       style={{ background: `url(${bgImg.src}) center center`, backgroundSize: 'cover' }}
     >
+      {/* Success Popup */}
+      <SuccessPopup 
+        isOpen={showSuccessPopup} 
+        onClose={() => setShowSuccessPopup(false)} 
+        formType="newsletter" 
+      />
+
       <Container>
         <Row>
           <Col xs={12} lg={8} className="mx-auto">

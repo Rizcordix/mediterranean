@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import bookCoverImg from "@/assets/images/banner/mainpopup.png";
+import SuccessPopup from "@/components/SuccessPopup";
 
 type Props = {
   showOnEveryVisit?: boolean;
@@ -16,7 +17,9 @@ const PopupCard: React.FC<Props> = ({ showOnEveryVisit = true, delayMs = 600 }) 
   const [email, setEmail] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const [message, setMessage] = useState<string>("");
+  const [submitting, setSubmitting] = useState(false);
   const [toast, setToast] = useState<Toast>(null);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const mountedRef = useRef<boolean>(false);
   const closeBtnRef = useRef<HTMLButtonElement | null>(null);
 
@@ -76,6 +79,8 @@ const PopupCard: React.FC<Props> = ({ showOnEveryVisit = true, delayMs = 600 }) 
       return;
     }
 
+    setSubmitting(true);
+
     try {
       const response = await fetch("/api/sendEmail/discountform", {
         method: "POST",
@@ -86,7 +91,7 @@ const PopupCard: React.FC<Props> = ({ showOnEveryVisit = true, delayMs = 600 }) 
       const data = await response.json();
 
       if (response.ok) {
-        showToast("✅ Thank you! Your details have been sent.", "success");
+        setShowSuccessPopup(true);
         setIsOpen(false);
         setName("");
         setEmail("");
@@ -99,6 +104,8 @@ const PopupCard: React.FC<Props> = ({ showOnEveryVisit = true, delayMs = 600 }) 
     } catch (err) {
       console.error("Submit error:", err);
       showToast("❌ Unsuccessful — please try again later.", "error");
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -106,6 +113,12 @@ const PopupCard: React.FC<Props> = ({ showOnEveryVisit = true, delayMs = 600 }) 
 
   return createPortal(
     <>
+      <SuccessPopup
+        isOpen={showSuccessPopup}
+        onClose={() => setShowSuccessPopup(false)}
+        formType="discount"
+      />
+
       {toast && (
         <div
           className={`popup-toast ${
@@ -558,8 +571,17 @@ const PopupCard: React.FC<Props> = ({ showOnEveryVisit = true, delayMs = 600 }) 
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                   />
-                  <button className="popup-submit" onClick={handleSubmit}>
-                    Submit
+                  <button 
+                    type="button"   // ✅ THIS IS THE FIX
+                    className="popup-submit" 
+                    onClick={handleSubmit}
+                    disabled={submitting}
+                    style={{ 
+                      opacity: submitting ? 0.8 : 1, 
+                      cursor: submitting ? 'wait' : 'pointer' 
+                    }}
+                  >
+                    {submitting ? 'Submitting...' : 'Submit'}
                   </button>
                 </div>
 

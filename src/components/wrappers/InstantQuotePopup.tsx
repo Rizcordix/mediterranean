@@ -4,6 +4,7 @@ import { X, ChevronRight, Clock } from "lucide-react";
 import icon1 from "@/assets/images/icons/confidential.svg";
 import icon2 from "@/assets/images/icons/ssl.svg";
 import Image from "next/image";
+import SuccessPopup from "@/components/SuccessPopup";
 
 export default function InstantQuotePopup({ isOpen, onClose }: any) {
   const [form, setForm] = useState({
@@ -19,6 +20,7 @@ export default function InstantQuotePopup({ isOpen, onClose }: any) {
 
   const [showCustomTime, setShowCustomTime] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
 
   // Category data with icons
@@ -101,7 +103,7 @@ export default function InstantQuotePopup({ isOpen, onClose }: any) {
       const data = await res.json().catch(() => ({}));
 
       if (res.ok) {
-        showToast("✅ Quote request sent — we'll contact you shortly.", "success");
+        setShowSuccessPopup(true);
         // reset form
         setForm({
           name: "",
@@ -114,14 +116,14 @@ export default function InstantQuotePopup({ isOpen, onClose }: any) {
           customTime: "",
         });
         setShowCustomTime(false);
-        // close popup after a short delay so user sees the toast briefly
-       setTimeout(() => {
+        // close popup after a short delay so user sees the popup briefly
+        setTimeout(() => {
           try {
             onClose?.();
           } catch {
             // ignore
           }
-        }, 900);
+        }, 4000);
         
       } else {
         console.error("GetQuote API error:", data?.message ?? data);
@@ -140,22 +142,29 @@ export default function InstantQuotePopup({ isOpen, onClose }: any) {
   const isSubmitDisabled = submitting || !form.category || !form.service || !form.turnaround || !form.email || !form.email.includes("@");
 
   return (
-    <div className="overlay">
-      {/* toast */}
-      {toast && (
-        <div
-          className={`popup-toast ${toast.type === "success" ? "toast-success" : "toast-error"}`}
-          role="status"
-          aria-live="polite"
-        >
-          {toast.message}
-        </div>
-      )}
+    <>
+      <SuccessPopup
+        isOpen={showSuccessPopup}
+        onClose={() => setShowSuccessPopup(false)}
+        formType="quote"
+      />
 
-      <div className="popup" role="dialog" aria-modal="true" aria-label="Instant quote">
-        <button onClick={onClose} className="close-btn" aria-label="Close">
-          <X size={24} />
-        </button>
+      <div className="overlay">
+        {/* toast */}
+        {toast && (
+          <div
+            className={`popup-toast ${toast.type === "success" ? "toast-success" : "toast-error"}`}
+            role="status"
+            aria-live="polite"
+          >
+            {toast.message}
+          </div>
+        )}
+
+        <div className="popup" role="dialog" aria-modal="true" aria-label="Instant quote">
+          <button onClick={onClose} className="close-btn" aria-label="Close">
+            <X size={24} />
+          </button>
 
         <h2 className="title">Get an Instant Quote</h2>
         <p className="subtitle">Fill in your details to receive a customized quote</p>
@@ -701,6 +710,7 @@ export default function InstantQuotePopup({ isOpen, onClose }: any) {
           }
         }
       `}</style>
-    </div>
+      </div>
+    </>
   );
 }
