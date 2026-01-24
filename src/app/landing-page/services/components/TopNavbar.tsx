@@ -22,8 +22,13 @@ const TopNavbar = () => {
           </Link>
           <div className="navbar-nav">
             <div className="nav-item border-0 d-none d-lg-inline-block align-self-center">
+              <Link href="tel:+1-800-979-0191" className="btn btn-sm btn-light mb-0">
+                <i className="fas fa-phone-alt me-2 fa-flip-horizontal"></i>+1-800-979-0191
+              </Link>
+            </div>
+            <div className="nav-item border-0 ms-3 d-none d-lg-inline-block align-self-center">
               <button onClick={openQuote} className=" btn btn-sm btn-grad text-white mb-0">
-                Get Quote!
+                Get a Unique Offer!
               </button>
             </div>
           </div>

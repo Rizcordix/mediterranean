@@ -34,7 +34,7 @@ interface Tab {
 
 const PricingComponent: React.FC = () => {
   // Use a type assertion to specify the possible states for activeTab
-  const [activeTab, setActiveTab] = useState<keyof PricingData>('ebook');
+  const [activeTab, setActiveTab] = useState<keyof PricingData | null>(null);
 
   const pricingData: PricingData = {
     ebook: [
@@ -319,7 +319,7 @@ const PricingComponent: React.FC = () => {
           {tabs.map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => setActiveTab(activeTab === tab.id ? null : tab.id)}
               style={{
                 padding: '12px 24px',
                 fontSize: '16px',
@@ -350,6 +350,7 @@ const PricingComponent: React.FC = () => {
         </div>
 
         {/* Pricing Cards */}
+        {activeTab && (
         <div style={{
           display: 'grid',
           gridTemplateColumns: activeTab === 'cover' 
@@ -546,6 +547,7 @@ const PricingComponent: React.FC = () => {
             </div>
           ))}
         </div>
+        )}
 
         {/* Footer */}
         <div style={{

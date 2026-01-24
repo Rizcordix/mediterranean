@@ -294,7 +294,7 @@ export function getNewsletterEmail(data: { email: string }) {
           <!-- Main Content -->
           <div style="${contentStyle}">
             <p style="margin: 0 0 20px 0; font-size: 16px; color: #333;">Hello there!</p>
-            
+            <p style="margin: 0 0 20px 0; font-size: 16px; color: #333;">${data.email}</p>
             <p style="margin: 0 0 20px 0; font-size: 15px; color: #555;">
               Thank you for subscribing to Mediterranean Publishing's newsletter! You're now part of our community of aspiring authors, publishing professionals, and literary enthusiasts.
             </p>
@@ -391,6 +391,82 @@ export function getReportFormEmail(data: {
 
             <p style="margin: 20px 0 0 0; font-size: 15px; color: #555;">
               Questions? Contact us at <strong>info@mediterraneanpublishing.com</strong> or <strong>+1 (832) 558-5865</strong>
+            </p>
+          </div>
+
+          <!-- Footer -->
+          <div style="${footerStyle}">
+            <p style="margin: 5px 0;">© 2024 Mediterranean Publishing. All rights reserved.</p>
+            <p style="margin: 5px 0;">Suite C125, 4-6 Greatorex Street, London, E1 5NF, UK</p>
+            <p style="margin: 10px 0 0 0;">
+              <a href="https://www.mediterraneanpublishing.com/privacy" style="color: #fff; text-decoration: none;">Privacy Policy</a> | 
+              <a href="https://www.mediterraneanpublishing.com/terms" style="color: #fff; text-decoration: none;">Terms & Conditions</a>
+            </p>
+          </div>
+        </div>
+      </body>
+    </html>
+  `;
+}
+
+export function getLandingPageFormEmail(data: {
+  name: string;
+  email: string;
+  phone: string;
+}) {
+  return `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+          body { ${baseStyles} }
+        </style>
+      </head>
+      <body style="${baseStyles}">
+        <div style="${containerStyle}">
+          <!-- Header -->
+          <div style="${headerStyle}">
+            <h1 style="margin: 0; font-size: 28px; font-weight: 600;">✓ Thank You!</h1>
+            <p style="margin: 10px 0 0 0; font-size: 14px; opacity: 0.95;">Your inquiry has been received</p>
+          </div>
+
+          <!-- Main Content -->
+          <div style="${contentStyle}">
+            <p style="margin: 0 0 20px 0; font-size: 16px; color: #333;">Hi <strong>${data.name}</strong>,</p>
+            
+            <p style="margin: 0 0 20px 0; font-size: 15px; color: #555;">
+              Thank you for your interest in Mediterranean Publishing! We're thrilled to connect with you and hear about your publishing journey. Your inquiry has been received and we're already reviewing your details.
+            </p>
+
+            <div style="background: white; border-left: 4px solid #364a52; padding: 15px; margin: 25px 0; border-radius: 4px;">
+              <p style="margin: 0; font-weight: 600; color: #364a52; font-size: 14px;">WHAT HAPPENS NEXT?</p>
+              <ol style="margin: 10px 0 0 0; padding-left: 20px; color: #333; font-size: 14px;">
+                <li>Our team reviews your information</li>
+                <li>We'll contact you within 24 hours to discuss your project</li>
+                <li>We'll provide a customized offer and timeline</li>
+                <li>Your publishing journey begins!</li>
+              </ol>
+            </div>
+
+            <p style="margin: 25px 0 20px 0; font-size: 15px; color: #555;">
+              Our expert publishing team is excited to help bring your book to life. Whether you're just starting or refining your manuscript, we have the perfect solution for you.
+            </p>
+
+            <div style="background: linear-gradient(135deg, #f0f4f7 0%, #fff 100%); padding: 20px; border-radius: 8px; margin: 25px 0; text-align: center;">
+              <p style="margin: 0 0 10px 0; font-size: 14px; color: #666;">
+                <strong>Quick Links:</strong>
+              </p>
+              <p style="margin: 10px 0; font-size: 14px;">
+                <a href="https://www.mediterraneanpublishing.com" style="color: #364a52; text-decoration: none; font-weight: 500; margin: 0 10px;">Website</a> | 
+                <a href="https://www.mediterraneanpublishing.com/services/bookwriting" style="color: #364a52; text-decoration: none; font-weight: 500; margin: 0 10px;">Services</a> |
+                <a href="https://www.mediterraneanpublishing.com/book-samples" style="color: #364a52; text-decoration: none; font-weight: 500; margin: 0 10px;">Book Samples</a>
+              </p>
+            </div>
+
+            <p style="margin: 20px 0 0 0; font-size: 15px; color: #555;">
+              If you'd like to speak with someone sooner, feel free to reach out to us at <strong>info@mediterraneanpublishing.com</strong> or call <strong>+1 (832) 558-5865</strong>.
             </p>
           </div>
 
