@@ -324,9 +324,9 @@ const HeroSection = () => {
         }
 
         .badge-divider {
-          width: 1px;
+          width: 1.5px;
           height: 50px;
-          background-color: #ccc;
+          background-color: #0f252f;
           flex-shrink: 0;
         }
 
