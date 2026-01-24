@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { createPortal } from "react-dom";
-import Image from "next/image";
-import bookCoverImg from "@/assets/images/banner/mainpopup.png";
 import SuccessPopup from "@/components/SuccessPopup";
+import { User, Mail, Phone, MessageSquare } from "lucide-react";
 
 type Props = {
   showOnEveryVisit?: boolean;
@@ -11,30 +10,29 @@ type Props = {
 
 type Toast = { message: string; type: "success" | "error" } | null;
 
-const PopupCard: React.FC<Props> = ({ showOnEveryVisit = true, delayMs = 600 }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [name, setName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [phone, setPhone] = useState<string>("");
-  const [message, setMessage] = useState<string>("");
+const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+  const [consent, setConsent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [toast, setToast] = useState<Toast>(null);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
-  const mountedRef = useRef<boolean>(false);
+  const mountedRef = useRef(false);
   const closeBtnRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
 
     mountedRef.current = true;
-
-    // Check sessionStorage to see if popup has already been shown
     const alreadyShown = sessionStorage.getItem("popupShown") === "true";
 
     if (showOnEveryVisit && !alreadyShown) {
       const t = window.setTimeout(() => {
         setIsOpen(true);
-        sessionStorage.setItem("popupShown", "true"); // mark as shown
+        sessionStorage.setItem("popupShown", "true");
       }, delayMs);
       return () => clearTimeout(t);
     }
@@ -70,12 +68,17 @@ const PopupCard: React.FC<Props> = ({ showOnEveryVisit = true, delayMs = 600 }) 
 
   const showToast = (message: string, type: "success" | "error" = "success") => {
     setToast({ message, type });
-    window.setTimeout(() => setToast(null), 3500);
+    window.setTimeout(() => setToast(null), 3000);
   };
 
   const handleSubmit = async () => {
     if (!name || !email || !email.includes("@") || !phone || !message) {
-      showToast("⚠️ Please fill in all fields with valid information.", "error");
+      showToast("Please fill all fields correctly.", "error");
+      return;
+    }
+
+    if (!consent) {
+      showToast("Please consent to the text messages agreement.", "error");
       return;
     }
 
@@ -97,13 +100,14 @@ const PopupCard: React.FC<Props> = ({ showOnEveryVisit = true, delayMs = 600 }) 
         setEmail("");
         setPhone("");
         setMessage("");
+        setConsent(false);
       } else {
         console.error("Email sending failed:", data?.message ?? data);
-        showToast("❌ Unsuccessful — please try again later.", "error");
+        showToast("Submission failed. Try again.", "error");
       }
     } catch (err) {
       console.error("Submit error:", err);
-      showToast("❌ Unsuccessful — please try again later.", "error");
+      showToast("Submission failed. Try again.", "error");
     } finally {
       setSubmitting(false);
     }
@@ -120,57 +124,56 @@ const PopupCard: React.FC<Props> = ({ showOnEveryVisit = true, delayMs = 600 }) 
       />
 
       {toast && (
-        <div
-          className={`popup-toast ${
-            toast.type === "success" ? "toast-success" : "toast-error"
-          }`}
-        >
+        <div className={`popup-toast ${toast.type === "success" ? "toast-success" : "toast-error"}`}>
           {toast.message}
         </div>
       )}
 
       <style>{`
+        * {
+          box-sizing: border-box;
+        }
+
         .popup-backdrop {
           position: fixed;
-          inset: 0;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
           background: rgba(15, 37, 47, 0.85);
-          backdrop-filter: blur(6px);
+          backdrop-filter: blur(2px);
           display: flex;
           align-items: center;
           justify-content: center;
           z-index: 9999;
           padding: 20px;
-          animation: fadeIn 0.3s ease-out;
+          overflow-y: auto;
         }
 
-        @keyframes fadeIn {
-          from { opacity: 0; } 
-          to { opacity: 1; }
+        .popup-container {
+          background: white;
+          border-radius: 16px;
+          max-width: 550px;
+          width: 100%;
+          max-height: 80vh;
+          overflow-y: auto;
+          box-shadow: 0 20px 50px rgba(15, 37, 47, 0.4);
+          position: relative;
+          animation: slideUp 0.3s ease;
+          margin: auto;
         }
 
         @keyframes slideUp {
-          from { opacity: 0; transform: translateY(30px) scale(0.95); }
+          from { opacity: 0; transform: translateY(20px) scale(0.96); }
           to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        .popup-card {
-          background: white;
-          border-radius: 8px;
-          max-width: 900px;
-          width: 100%;
-          max-height: 90vh;
-          overflow: visible;
-          box-shadow: 0 25px 70px rgba(15, 37, 47, 0.4);
-          position: relative;
-          animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .popup-close {
           position: absolute;
           top: 16px;
           right: 16px;
-          width: 36px;
-          height: 36px;
+          width: 32px;
+          height: 32px;
           border-radius: 50%;
           border: none;
           background: #364a52;
@@ -181,292 +184,232 @@ const PopupCard: React.FC<Props> = ({ showOnEveryVisit = true, delayMs = 600 }) 
           align-items: center;
           justify-content: center;
           z-index: 10;
-          transition: all 0.25s ease;
-          font-weight: 400;
-          line-height: 1;
+          transition: background 0.2s ease;
         }
 
         .popup-close:hover {
           background: #0f252f;
-          transform: rotate(90deg) scale(1.1);
         }
 
         .popup-content {
-          display: flex;
-          padding: 0;
-          gap: 0;
-          overflow: visible;
-          border-radius: 8px;
+          padding: 32px 28px 28px;
+          display: block;
         }
 
-        .popup-left {
-          flex: 0 0 40%;
-          background: #0f252f;
-          padding: 0;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          position: relative;
-          overflow: visible;
+        .popup-badge-wrapper {
+          text-align: center;
+          margin-bottom: 16px;
         }
 
-        .popup-book-image {
-          width: 120%;
-          max-width: none;
-          height: auto;
-          object-fit: contain;
-          margin-left: -20%;
-          filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.4));
-          transform: scale(1.08);
-        }
-
-        .popup-discount-badge {
-          position: absolute;
-          top: 30px;
-          right: -10px;
+        .popup-badge {
+          display: inline-block;
           background: #ff4444;
           color: white;
-          padding: 10px 18px;
-          border-radius: 25px;
+          padding: 8px 20px;
+          border-radius: 20px;
           font-weight: 700;
-          font-size: 15px;
-          text-transform: uppercase;
-          box-shadow: 0 4px 12px rgba(255, 68, 68, 0.5);
-          z-index: 5;
-        }
-
-        .popup-right {
-          flex: 1;
-          background: #eeeae7;
-          padding: 40px;
-          display: flex;
-          flex-direction: column;
-          overflow-y: auto;
-          border-radius: 0 8px 8px 0;
-        }
-
-        .popup-heading {
-          font-size: 20px;
-          font-weight: 600;
-          color: #0f252f;
-          margin-bottom: 8px;
-          line-height: 1.3;
-          text-transform: uppercase;
-          text-align: center;
-        }
-
-        .popup-subheading {
-          font-size: 28px;
-          font-weight: 700;
-          color: #364a52;
-          margin-bottom: 8px;
-          line-height: 1.2;
-          text-align: center;
-        }
-
-        .popup-description {
-          font-size: 16px;
-          color: #364a52;
-          margin-bottom: 24px;
-          line-height: 1.5;
-          text-align: center;
-          font-weight: 600;
-        }
-
-        .popup-form-section {
-          display: flex;
-          flex-direction: column;
-          gap: 14px;
-        }
-
-        .popup-input,
-        .popup-textarea {
-          width: 100%;
-          padding: 14px 16px;
-          border: 1px solid #364a52;
-          border-radius: 4px;
           font-size: 14px;
-          transition: all 0.2s;
-          font-family: inherit;
-          box-sizing: border-box;
+        }
+
+        .popup-title {
+          font-size: 1.15rem;
           color: #0f252f;
+          margin: 0 0 16px 0;
+          padding: 0;
+          font-weight: 600;
+          line-height: 1.4;
+          text-align: center;
+        }
+
+        .text-accent {
+          color: #135874;
+        }
+
+        .testimonial {
+          background: #f8f9fa;
+          border-radius: 12px;
+          padding: 16px;
+          margin-bottom: 20px;
+        }
+
+        .testimonial-content {
+          display: flex;
+          gap: 12px;
+          align-items: flex-start;
+        }
+
+        .author-image {
+          flex-shrink: 0;
+          width: 50px;
+          height: 50px;
+        }
+
+        .author-image img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          object-fit: cover;
+          background: #364a52;
+          display: block;
+        }
+
+        .testimonial-text {
+          flex: 1;
+          min-width: 0;
+        }
+
+        .quote {
+          font-size: 0.75rem;
+          line-height: 1.5;
+          color: #364a52;
+          margin: 0 0 8px 0;
+          font-style: italic;
+        }
+
+        .author {
+          font-size: 0.65rem;
+          color: #666;
+          margin: 0;
+        }
+
+        .author strong {
+          color: #0f252f;
+          font-weight: 600;
+        }
+
+        .popup-form {
+          display: block;
+        }
+
+        .form-group {
+          margin-bottom: 12px;
+          position: relative;
+        }
+
+        .input-icon {
+          position: absolute;
+          left: 14px;
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 2;
+          pointer-events: none;
+          color: #364a52;
+        }
+
+        .textarea-icon {
+          top: 14px;
+          transform: none;
+        }
+
+        .custom-input,
+        .custom-textarea {
+          padding: 12px 14px 12px 42px;
+          border: 2px solid #e0e0e0;
+          border-radius: 8px;
+          font-size: 0.8rem;
+          transition: all 0.2s ease;
+          width: 100%;
           background: white;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+          display: block;
         }
 
-        .popup-textarea {
+        .custom-textarea {
+          min-height: 80px;
           resize: vertical;
-          min-height: 100px;
-          font-family: inherit;
         }
 
-        .popup-input::placeholder,
-        .popup-textarea::placeholder {
+        .custom-input:focus,
+        .custom-textarea:focus {
+          border-color: #0f252f;
+          box-shadow: 0 0 0 3px rgba(15, 37, 47, 0.1);
+          outline: none;
+        }
+
+        .custom-input::placeholder,
+        .custom-textarea::placeholder {
           color: #999;
         }
 
-        .popup-input:focus,
-        .popup-textarea:focus {
-          outline: none;
-          border-color: #364a52;
-          box-shadow: 0 0 0 2px rgba(54, 74, 82, 0.1);
-        }
-        
-        .popup-input,
-        .popup-input:focus,
-        .popup-input:-webkit-autofill,
-        .popup-input:-webkit-autofill:focus,
-        .popup-input:-webkit-autofill:hover,
-        .popup-textarea,
-        .popup-textarea:focus {
-          color: #0f252f !important;
-          -webkit-text-fill-color: #0f252f !important;
+        .consent-check {
+          margin-bottom: 16px;
+          padding-left: 0;
+          display: flex;
+          align-items: flex-start;
+          gap: 10px;
         }
 
-        .popup-input,
-        .popup-textarea {
-          -webkit-appearance: none;
+        .form-check-input {
+          width: 16px;
+          height: 16px;
+          margin-top: 2px;
+          cursor: pointer;
+          border: 2px solid #0f252f;
+          border-radius: 4px;
+          flex-shrink: 0;
           appearance: none;
+          -webkit-appearance: none;
         }
 
-        .popup-input:-webkit-autofill,
-        .popup-textarea:-webkit-autofill {
-          -webkit-box-shadow: 0 0 0px 1000px white inset !important;
-          box-shadow: 0 0 0px 1000px white inset !important;
-          transition: background-color 5000s ease-in-out 0s;
+        .form-check-input:checked {
+          background-color: #0f252f;
+          border-color: #0f252f;
         }
 
-        .popup-submit {
+        .form-check-input:checked::after {
+          content: '✓';
+          color: white;
+          font-size: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           width: 100%;
-          padding: 16px;
-          background: #364a52;
+          height: 100%;
+        }
+
+        .form-check-label {
+          font-size: 0.75rem;
+          color: #666;
+          cursor: pointer;
+          line-height: 1.5;
+          flex: 1;
+        }
+
+        .text-link {
+          color: #0f252f;
+          text-decoration: underline;
+          cursor: pointer;
+        }
+
+        .text-link:hover {
+          color: #135874;
+        }
+
+        .btn-submit {
+          width: 100%;
+          padding: 14px;
+          background: linear-gradient(135deg, #0f252f 0%, #135874 100%);
           color: white;
           border: none;
-          border-radius: 4px;
-          font-size: 16px;
+          border-radius: 8px;
+          font-size: 0.9rem;
           font-weight: 600;
           cursor: pointer;
-          transition: all 0.3s ease;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-          margin-top: 6px;
+          transition: all 0.2s ease;
+          margin: 0;
+          display: block;
         }
 
-        .popup-submit:hover {
-          background: #0f252f;
+        .btn-submit:hover:not(:disabled) {
+          background: linear-gradient(135deg, #135874 0%, #0f252f 100%);
           transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(54, 74, 82, 0.3);
+          box-shadow: 0 8px 24px rgba(15, 37, 47, 0.3);
         }
 
-        .popup-submit:active {
-          transform: translateY(0);
-        }
-
-        .popup-footer {
-          text-align: center;
-          margin-top: 16px;
-          font-size: 11px;
-          color: #666;
-          line-height: 1.6;
-        }
-
-        .popup-footer a {
-          color: #364a52;
-          text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-          .popup-backdrop {
-            padding: 10px;
-            align-items: flex-start;
-            padding-top: 20px;
-          }
-
-          .popup-card {
-            max-height: 95vh;
-            border-radius: 6px;
-          }
-
-          .popup-content {
-            flex-direction: column;
-          }
-          
-          .popup-left {
-            display: none;
-          }
-
-          .popup-right {
-            padding: 28px 20px 24px;
-            overflow-y: auto;
-            max-height: 95vh;
-          }
-
-          .popup-heading {
-            font-size: 16px;
-            margin-bottom: 6px;
-          }
-
-          .popup-subheading {
-            font-size: 22px;
-            margin-bottom: 6px;
-          }
-
-          .popup-description {
-            font-size: 13px;
-            margin-bottom: 20px;
-          }
-
-          .popup-form-section {
-            gap: 12px;
-          }
-
-          .popup-input,
-          .popup-textarea {
-            padding: 12px 14px;
-            font-size: 13px;
-          }
-
-          .popup-textarea {
-            min-height: 80px;
-          }
-
-          .popup-submit {
-            padding: 14px;
-            font-size: 14px;
-            margin-top: 4px;
-          }
-
-          .popup-footer {
-            margin-top: 14px;
-            font-size: 10px;
-          }
-
-          .popup-close { 
-            top: 12px; 
-            right: 12px; 
-            width: 32px; 
-            height: 32px; 
-            font-size: 18px;
-          }
-        }
-
-        @media (max-width: 640px) {
-          .popup-backdrop { 
-            padding: 8px; 
-            padding-top: 15px;
-          }
-          
-          .popup-right {
-            padding: 24px 16px 20px;
-          }
-
-          .popup-heading {
-            font-size: 15px;
-          }
-
-          .popup-subheading {
-            font-size: 20px;
-          }
+        .btn-submit:disabled {
+          opacity: 0.7;
+          cursor: not-allowed;
+          transform: none;
         }
 
         .popup-toast {
@@ -474,37 +417,67 @@ const PopupCard: React.FC<Props> = ({ showOnEveryVisit = true, delayMs = 600 }) 
           top: 20px;
           left: 50%;
           transform: translateX(-50%);
-          padding: 14px 24px;
+          padding: 12px 24px;
           border-radius: 8px;
-          color: #000;
           font-weight: 600;
           font-size: 14px;
-          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-          z-index: 10000;
-          animation: slideDown 0.4s ease, fadeOut 0.4s ease 3s forwards;
-          font-family: system-ui, sans-serif;
-          max-width: 90%;
+          z-index: 10001;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .toast-success { 
           background: #d9fdd3; 
-          border: 1px solid #b7e6b2; 
           color: #0f5132; 
         }
         
         .toast-error { 
           background: #f8d7da; 
-          border: 1px solid #f5c2c7; 
           color: #842029; 
         }
 
-        @keyframes slideDown {
-          from { opacity: 0; transform: translate(-50%, -20px); }
-          to { opacity: 1; transform: translate(-50%, 0); }
-        }
+        @media (max-width: 576px) {
+          .popup-container {
+            max-width: calc(100% - 24px);
+            border-radius: 12px;
+            max-height: 95vh;
+          }
 
-        @keyframes fadeOut {
-          to { opacity: 0; transform: translate(-50%, -10px); }
+          .popup-content {
+            padding: 28px 20px 20px;
+          }
+
+          .popup-title {
+            font-size: 1rem;
+          }
+
+          .testimonial-content {
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+          }
+
+          .author-image {
+            margin: 0 auto;
+          }
+
+          .form-group {
+            margin-bottom: 10px;
+          }
+
+          .custom-input,
+          .custom-textarea {
+            padding: 11px 12px 11px 40px;
+            font-size: 0.75rem;
+          }
+
+          .custom-textarea {
+            min-height: 70px;
+          }
+
+          .btn-submit {
+            padding: 13px;
+            font-size: 0.85rem;
+          }
         }
       `}</style>
 
@@ -513,12 +486,12 @@ const PopupCard: React.FC<Props> = ({ showOnEveryVisit = true, delayMs = 600 }) 
           className="popup-backdrop"
           role="dialog"
           aria-modal="true"
-          aria-labelledby="popup-heading"
+          aria-labelledby="popup-title"
           onClick={(e) => {
             if (e.target === e.currentTarget) setIsOpen(false);
           }}
         >
-          <div className="popup-card" role="document">
+          <div className="popup-container" role="document">
             <button
               aria-label="Close"
               className="popup-close"
@@ -529,66 +502,94 @@ const PopupCard: React.FC<Props> = ({ showOnEveryVisit = true, delayMs = 600 }) 
             </button>
 
             <div className="popup-content">
-              <div className="popup-left">
-                <div className="popup-discount-badge">50% OFF</div>
-                <Image 
-                  src={bookCoverImg} 
-                  alt="Book Cover" 
-                  className="popup-book-image"
-                />
+              <h3 id="popup-title" className="popup-title">
+                Your story matters. Let&apos;s talk about how <span className="text-accent">to publish it.</span>
+              </h3>
+
+              <div className="testimonial">
+                <div className="testimonial-content">
+                  <div className="author-image">
+                    <img 
+                      src="https://placehold.co/80x80/364a52/FFF?text=Author" 
+                      alt="Tom Gilroy"
+                    />
+                  </div>
+                  <div className="testimonial-text">
+                    <p className="quote">
+                      <em>I was impressed with their innovation, they did everything quickly, effectively, pro-actively— they&apos;re good.</em>
+                    </p>
+                    <p className="author">
+                      <strong>Tom Gilroy</strong> author of Season
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <div className="popup-right">
-                <h2 id="popup-heading" className="popup-heading">Signup Now To Avail</h2>
-                <p className="popup-subheading">THE 50% DISCOUNT OFFER</p>
-                <p className="popup-description">GET A FREE CONSULTATION CALL</p>
-
-                <div className="popup-form-section">
+              <form className="popup-form" onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
+                <div className="form-group">
+                  <User size={16} className="input-icon" />
                   <input
                     type="text"
-                    className="popup-input"
-                    placeholder="Enter Full Name"
+                    className="custom-input"
+                    placeholder="Full Name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
+                </div>
+
+                <div className="form-group">
+                  <Mail size={16} className="input-icon" />
                   <input
                     type="email"
-                    className="popup-input"
-                    placeholder="Enter Email Address"
+                    className="custom-input"
+                    placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
+                </div>
+
+                <div className="form-group">
+                  <Phone size={16} className="input-icon" />
                   <input
                     type="tel"
-                    className="popup-input"
-                    placeholder="Enter Phone No"
+                    className="custom-input"
+                    placeholder="Phone"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                   />
+                </div>
+
+                <div className="form-group">
+                  <MessageSquare size={16} className="input-icon textarea-icon" />
                   <textarea
-                    className="popup-textarea"
-                    placeholder="Brief Discussion about your book*"
+                    className="custom-textarea"
+                    placeholder="Your Message"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                   />
-                  <button 
-                    type="button"   // ✅ THIS IS THE FIX
-                    className="popup-submit" 
-                    onClick={handleSubmit}
-                    disabled={submitting}
-                    style={{ 
-                      opacity: submitting ? 0.8 : 1, 
-                      cursor: submitting ? 'wait' : 'pointer' 
-                    }}
-                  >
-                    {submitting ? 'Submitting...' : 'Submit'}
-                  </button>
                 </div>
 
-                <div className="popup-footer">
-                  I agree to receive communications by text message about my Customer Care from Mediterranean Publishing. You may opt-out by replying STOP or ask for more information by replying HELP. Message frequency varies. Message and data rates may apply. <a href="/privacy">Privacy Policy</a> & <a href="/terms">Terms</a>.
+                <div className="consent-check">
+                  <input
+                    type="checkbox"
+                    className="form-check-input"
+                    id="consent-popup"
+                    checked={consent}
+                    onChange={(e) => setConsent(e.target.checked)}
+                  />
+                  <label className="form-check-label" htmlFor="consent-popup">
+                    I consent to the <a href='/text-message-consent-agreement' target='_blank' className="text-link">text messages agreement</a>
+                  </label>
                 </div>
-              </div>
+
+                <button 
+                  type="submit"
+                  className="btn-submit"
+                  disabled={submitting}
+                >
+                  {submitting ? "Sending..." : "Get a Unique Offer →"}
+                </button>
+              </form>
             </div>
           </div>
         </div>

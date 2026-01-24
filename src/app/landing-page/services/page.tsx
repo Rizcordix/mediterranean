@@ -1,17 +1,15 @@
 // import React from 'react'
 import TopNavbar from './components/TopNavbar'
-// import Footer from '../../home/components/Footer'
-import Hero from './components/Hero';
-import ProblemSolveSection from './components/problem';
+import HeroSection from './components/Hero2';
 import PublishingFeatures from './components/feature';
 import LaunchOfferSection from './components/launch';
 import Testimonials from './components/testimonial';
 import PricingComponent from './components/Pricing';
-import FAQ from './components/Faq';
-import PublishingComparison from './components/comparison';
-import FinalCTABanner from './components/final_cta';
 import MidPageCTA from './components/mid_cta';
 import Footer from '../../home/components/Footer';
+import CTASection from './components/cta';
+import PublishingPackages from './components/Packages';
+import HowItWorksSection from './components/Howitworks';
 
 export const metadata = {
   title: "Publish Your Book in 90 Days | Professional Book Publishing Services",
@@ -112,16 +110,15 @@ const AgencyStartUpPage = () => {
   return (
     <>
       <TopNavbar />
-      <Hero />
-      <ProblemSolveSection />
+      <HeroSection />
+      <HowItWorksSection />
       <PublishingFeatures />
       <LaunchOfferSection />
       <Testimonials />
         <MidPageCTA />
       <PricingComponent />
-        <FAQ />
-        <PublishingComparison />
-        <FinalCTABanner />
+        <PublishingPackages />
+        <CTASection />
         <Footer />
     </>
   )
