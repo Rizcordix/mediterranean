@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from 'react';
 // Make sure these paths are correct for your project structure
-import image1 from "@/assets/images/Landingpage/Steps/1.png";
-import image2 from "@/assets/images/Landingpage/Steps/2.png";
-import image3 from "@/assets/images/Landingpage/Steps/3.png";
-import image4 from "@/assets/images/Landingpage/Steps/4.png";
+import image1 from '@/assets/images/landingpage/Steps/1.png';
+import image2 from '@/assets/images/landingpage/Steps/2.png';
+import image3 from '@/assets/images/landingpage/Steps/3.png';
+import image4 from '@/assets/images/landingpage/Steps/4.png';
 
 const HowItWorksSection = () => {
   const [activeStep, setActiveStep] = useState(0);
