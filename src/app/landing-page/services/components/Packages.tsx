@@ -1,22 +1,16 @@
 "use client";
 import React, { useState } from 'react';
-import { useDiscountPopup } from "@/components/popup/DiscountPopupContext";
 
-// --- Type Definitions ---
-
-/** Defines the structure for a package feature item. */
 interface PackageFeature {
   text: string;
   highlighted?: boolean;
 }
 
-/** Defines the structure for a package section with features. */
 interface PackageSection {
   title: string;
   features: PackageFeature[];
 }
 
-/** Defines the structure for a publishing package. */
 interface PublishingPackage {
   name: string;
   badge?: string;
@@ -26,11 +20,13 @@ interface PublishingPackage {
   isPopular?: boolean;
 }
 
-// --- Component ---
-
 const PublishingPackages: React.FC = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-  const { openDiscount } = useDiscountPopup?.() ?? { openDiscount: () => {} };
+  const openDiscount = () => {
+    console.log('Opening discount popup...');
+    // Replace with your actual discount popup logic
+  };
+
   const packagesData: PublishingPackage[] = [
     {
       name: 'Start Up Package',
@@ -170,280 +166,76 @@ const PublishingPackages: React.FC = () => {
   ];
 
   return (
-    <div style={{
-      background: '#eeeae7',
-      padding: '80px 20px',
-      position: 'relative',
-      overflow: 'hidden'
-    }}>
-      {/* Subtle Background Pattern */}
-      <div style={{
-        position: 'absolute',
-        top: '0',
-        left: '0',
-        right: '0',
-        bottom: '0',
-        opacity: '0.03',
-        backgroundImage: `
-          linear-gradient(30deg, #0f252f 12%, transparent 12.5%, transparent 87%, #0f252f 87.5%, #0f252f),
-          linear-gradient(150deg, #0f252f 12%, transparent 12.5%, transparent 87%, #0f252f 87.5%, #0f252f),
-          linear-gradient(30deg, #0f252f 12%, transparent 12.5%, transparent 87%, #0f252f 87.5%, #0f252f),
-          linear-gradient(150deg, #0f252f 12%, transparent 12.5%, transparent 87%, #0f252f 87.5%, #0f252f)
-        `,
-        backgroundSize: '80px 140px',
-        backgroundPosition: '0 0, 0 0, 40px 70px, 40px 70px',
-        pointerEvents: 'none'
-      }} />
+    <div className="packages-wrapper">
+      <div className="background-pattern" />
 
-      <div className="packages-container" style={{ 
-        maxWidth: '1400px', 
-        margin: '0 auto', 
-        position: 'relative', 
-        zIndex: 1 
-      }}>
+      <div className="packages-container">
         {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-          <h1 className="fw-bold mb-3" style={{ color: '#0f252f', letterSpacing: '-0.5px' }}>
-            PUBLISHING PACKAGES
-          </h1>
-          <p style={{
-            fontSize: '20px',
-            color: '#364a52',
-            maxWidth: '700px',
-            margin: '0 auto',
-            lineHeight: '1.6'
-          }}>
+        <div className="header">
+          <h1 className="header-title">PUBLISHING PACKAGES</h1>
+          <p className="header-subtitle">
             Join us today and be a part of our{' '}
-            <span style={{ 
-              color: '#0f252f', 
-              fontWeight: '700',
-              fontSize: '22px'
-            }}>1000+</span>{' '}
+            <span className="bestsellers-count">1000+</span>{' '}
             Bestsellers list
           </p>
         </div>
 
         {/* Packages Grid */}
-        <div className="packages-grid" style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))',
-          gap: '32px',
-          marginBottom: '20px'
-        }}>
+        <div className="packages-grid">
           {packagesData.map((pkg, idx) => (
             <div
               key={idx}
-              className="package-card"
-              style={{
-                background: '#ffffff',
-                borderRadius: '20px',
-                border: pkg.isPopular ? '3px solid #0f252f' : '2px solid #d4d0cd',
-                padding: '0',
-                boxShadow: hoveredCard === idx 
-                  ? '0 20px 60px rgba(15, 37, 47, 0.2)' 
-                  : '0 8px 30px rgba(15, 37, 47, 0.08)',
-                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                transform: hoveredCard === idx ? 'translateY(-8px) scale(1.02)' : 'translateY(0) scale(1)',
-                position: 'relative',
-                overflow: 'hidden',
-                display: 'flex',
-                flexDirection: 'column',
-                height: '750px'
-              }}
+              className={`package-card ${pkg.isPopular ? 'popular' : ''} ${hoveredCard === idx ? 'hovered' : ''}`}
               onMouseEnter={() => setHoveredCard(idx)}
               onMouseLeave={() => setHoveredCard(null)}
             >
-              {/* Top Accent Line */}
-              <div style={{
-                position: 'absolute',
-                top: '0',
-                left: '0',
-                right: '0',
-                height: '6px',
-                background: pkg.isPopular 
-                  ? 'linear-gradient(90deg, #0f252f 0%, #364a52 100%)' 
-                  : '#364a52'
-              }} />
+              <div className="top-accent" />
 
-              {/* Popular Badge */}
               {pkg.badge && (
-                <div style={{
-                  position: 'absolute',
-                  top: '24px',
-                  right: '-32px',
-                  background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
-                  color: '#0f252f',
-                  padding: '6px 45px',
-                  transform: 'rotate(45deg)',
-                  fontSize: '11px',
-                  fontWeight: '800',
-                  letterSpacing: '1.5px',
-                  textTransform: 'uppercase',
-                  boxShadow: '0 4px 15px rgba(255, 165, 0, 0.4)',
-                  zIndex: 10
-                }}>
-                  {pkg.badge}
-                </div>
+                <div className="badge">{pkg.badge}</div>
               )}
 
-              {/* Header Section - Fixed */}
-              <div style={{ 
-                padding: '36px 32px 28px',
-                borderBottom: '2px solid #eeeae7',
-                background: pkg.isPopular ? '#f8f6f4' : '#fafafa'
-              }}>
-                <h3 style={{
-                  fontSize: '26px',
-                  fontWeight: '700',
-                  color: '#0f252f',
-                  marginBottom: '24px',
-                  textAlign: 'center',
-                  letterSpacing: '0.5px'
-                }}>
-                  {pkg.name}
-                </h3>
+              {/* Header Section */}
+              <div className={`card-header ${pkg.isPopular ? 'popular-header' : ''}`}>
+                <h3 className="package-name">{pkg.name}</h3>
 
                 {/* Pricing */}
-                <div style={{ textAlign: 'center' }}>
-                  <div style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    gap: '12px',
-                    marginBottom: '16px'
-                  }}>
-                    <div>
-                      <div style={{
-                        fontSize: '11px',
-                        color: '#364a52',
-                        textTransform: 'uppercase',
-                        letterSpacing: '1px',
-                        marginBottom: '4px',
-                        fontWeight: '600'
-                      }}>
-                        Regular Price
-                      </div>
-                      <div style={{
-                        fontSize: '20px',
-                        color: '#999',
-                        textDecoration: 'line-through',
-                        fontWeight: '600'
-                      }}>
-                        ${pkg.regularPrice}
-                      </div>
+                <div className="pricing-container">
+                  <div className="pricing-row">
+                    <div className="price-box">
+                      <div className="price-label">Regular Price</div>
+                      <div className="regular-price">${pkg.regularPrice}</div>
                     </div>
-                    <div style={{
-                      fontSize: '32px',
-                      color: '#364a52',
-                      fontWeight: '300'
-                    }}>
-                      →
-                    </div>
-                    <div>
-                      <div style={{
-                        fontSize: '11px',
-                        color: '#0f252f',
-                        textTransform: 'uppercase',
-                        letterSpacing: '1px',
-                        marginBottom: '4px',
-                        fontWeight: '700'
-                      }}>
-                        Discounted Price
-                      </div>
-                      <div style={{
-                        fontSize: '42px',
-                        color: '#0f252f',
-                        fontWeight: '800',
-                        lineHeight: '1',
-                        letterSpacing: '-1px'
-                      }}>
-                        ${pkg.discountedPrice}
-                      </div>
+                    <div className="arrow">→</div>
+                    <div className="price-box">
+                      <div className="price-label discount-label">Discounted Price</div>
+                      <div className="discounted-price">${pkg.discountedPrice}</div>
                     </div>
                   </div>
-                  <div style={{
-                    display: 'inline-block',
-                    background: 'linear-gradient(135deg, #0f252f 0%, #364a52 100%)',
-                    color: '#fff',
-                    padding: '6px 20px',
-                    borderRadius: '20px',
-                    fontSize: '12px',
-                    fontWeight: '700',
-                    letterSpacing: '0.5px'
-                  }}>
+                  <div className="savings-badge">
                     Save ${pkg.regularPrice - pkg.discountedPrice}
                   </div>
                 </div>
               </div>
 
-              {/* Scrollable Content Section */}
-              <div className="scrollable-content" style={{
-                flex: 1,
-                overflowY: 'auto',
-                padding: '28px 32px',
-                scrollbarWidth: 'thin',
-                scrollbarColor: '#364a52 #eeeae7'
-              }}>
+              {/* Scrollable Content */}
+              <div className="scrollable-content">
                 {pkg.sections.map((section, sIdx) => (
-                  <div key={sIdx} style={{ marginBottom: '28px' }}>
-                    <h4 style={{
-                      fontSize: '15px',
-                      fontWeight: '700',
-                      color: '#0f252f',
-                      marginBottom: '14px',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.8px',
-                      paddingBottom: '8px',
-                      borderBottom: '2px solid #eeeae7',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px'
-                    }}>
-                      <span style={{
-                        width: '4px',
-                        height: '16px',
-                        background: 'linear-gradient(180deg, #0f252f 0%, #364a52 100%)',
-                        borderRadius: '2px'
-                      }} />
+                  <div key={sIdx} className="section">
+                    <h4 className="section-title">
+                      <span className="title-accent" />
                       {section.title}
                     </h4>
-                    <div>
+                    <div className="features-list">
                       {section.features.map((feature, fIdx) => (
                         <div
                           key={fIdx}
-                          style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '12px',
-                            padding: '10px 0',
-                            color: feature.highlighted ? '#0f252f' : '#364a52',
-                            fontSize: '14.5px',
-                            lineHeight: '1.5',
-                            borderBottom: fIdx === section.features.length - 1 ? 'none' : '1px solid #f5f5f5'
-                          }}
+                          className={`feature-item ${feature.highlighted ? 'highlighted' : ''} ${fIdx === section.features.length - 1 ? 'last' : ''}`}
                         >
-                          <span style={{
-                            width: '18px',
-                            height: '18px',
-                            borderRadius: '50%',
-                            background: feature.highlighted 
-                              ? 'linear-gradient(135deg, #0f252f 0%, #364a52 100%)' 
-                              : '#eeeae7',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            flexShrink: 0,
-                            fontSize: '10px',
-                            color: '#fff',
-                            fontWeight: '700'
-                          }}>
+                          <span className="feature-icon">
                             {feature.highlighted ? '✓' : '•'}
                           </span>
-                          <span style={{
-                            fontWeight: feature.highlighted ? '600' : '400'
-                          }}>
-                            {feature.text}
-                          </span>
+                          <span className="feature-text">{feature.text}</span>
                         </div>
                       ))}
                     </div>
@@ -451,132 +243,26 @@ const PublishingPackages: React.FC = () => {
                 ))}
               </div>
 
-              {/* Footer - Fixed */}
-              <div style={{
-                padding: '24px 32px',
-                borderTop: '2px solid #eeeae7',
-                background: '#fafafa'
-              }}>
-                <button onClick={openDiscount} style={{
-                  width: '100%',
-                  padding: '16px',
-                  background: 'linear-gradient(135deg, #0f252f 0%, #364a52 100%)',
-                  color: '#fff',
-                  border: 'none',
-                  borderRadius: '12px',
-                  fontSize: '15px',
-                  fontWeight: '700',
-                  cursor: 'pointer',
-                  textTransform: 'uppercase',
-                  letterSpacing: '1.5px',
-                  transition: 'all 0.3s ease',
-                  boxShadow: '0 4px 15px rgba(15, 37, 47, 0.2)',
-                  position: 'relative',
-                  overflow: 'hidden'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'linear-gradient(135deg, #364a52 0%, #0f252f 100%)';
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(15, 37, 47, 0.3)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'linear-gradient(135deg, #0f252f 0%, #364a52 100%)';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(15, 37, 47, 0.2)';
-                }}
-                >
+              {/* Footer */}
+              <div className="card-footer">
+                <button onClick={openDiscount} className="order-button">
                   Order Now →
                 </button>
 
-                <div style={{
-                  marginTop: '20px',
-                  paddingTop: '20px',
-                  borderTop: '1px solid #eeeae7'
-                }}>
-                  <div style={{
-                    fontSize: '11px',
-                    color: '#364a52',
-                    textTransform: 'uppercase',
-                    letterSpacing: '1px',
-                    marginBottom: '12px',
-                    fontWeight: '700',
-                    textAlign: 'center'
-                  }}>
-                    Need More Info?
-                  </div>
-                  <div style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    gap: '16px'
-                  }}>
-                    <div style={{ 
-                      flex: 1,
-                      textAlign: 'center',
-                      padding: '10px',
-                      background: '#fff',
-                      borderRadius: '8px',
-                      border: '1px solid #eeeae7'
-                    }}>
-                      <div style={{
-                        fontSize: '10px',
-                        color: '#364a52',
-                        marginBottom: '4px',
-                        fontWeight: '600'
-                      }}>
-                        📞 TALK TO US
-                      </div>
-                      <div style={{
-                        fontSize: '12px',
-                        color: '#0f252f',
-                        fontWeight: '700'
-                      }}>
-                        <a href="tel:+18325585865" style={{ color: '#0f252f', textDecoration: 'none' }}>
-                        +1 (832) 558-5865
-                        </a>
+                <div className="contact-section">
+                  <div className="contact-title">Need More Info?</div>
+                  <div className="contact-options">
+                    <div className="contact-box">
+                      <div className="contact-label">📞 TALK TO US</div>
+                      <div className="contact-value">
+                        <a href="tel:+12812470786">+1 281-247-0786</a>
                       </div>
                     </div>
-                    <div style={{ 
-                      flex: 1,
-                      textAlign: 'center',
-                      padding: '10px',
-                      background: '#fff',
-                      borderRadius: '8px',
-                      border: '1px solid #eeeae7',
-                      cursor: 'pointer',
-                      transition: 'all 0.2s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = '#fff';
-                      e.currentTarget.style.borderColor = '#0f252f';
-                      const text = e.currentTarget.querySelector('div:last-child') as HTMLElement;
-                      if (text) text.style.color = '#364a52';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = '#fff';
-                      e.currentTarget.style.borderColor = '#eeeae7';
-                      const text = e.currentTarget.querySelector('div:last-child') as HTMLElement;
-                      if (text) text.style.color = '#0f252f';
-                    }}
-                    >
-                        <a href="/contact" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                      <div style={{
-                        fontSize: '10px',
-                        color: '#364a52',
-                        marginBottom: '4px',
-                        fontWeight: '600'
-                      }}>
-                        💬 FOR MORE DETAIL
-                      </div>
-                      <div style={{
-                        fontSize: '12px',
-                        color: '#0f252f',
-                        fontWeight: '700',
-                        transition: 'color 0.2s ease'
-                      }}>
-                        Chat With Us
-                      </div>
-                        </a>
+                    <div className="contact-box clickable">
+                      <a href="/contact" target="_blank" rel="noopener noreferrer">
+                        <div className="contact-label">💬 FOR MORE DETAIL</div>
+                        <div className="contact-value">Chat With Us</div>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -586,109 +272,550 @@ const PublishingPackages: React.FC = () => {
         </div>
       </div>
 
-      {/* Custom Scrollbar and Responsive Styles */}
       <style jsx>{`
-        /* Webkit browsers (Chrome, Safari, Edge) */
+        .packages-wrapper {
+          background: #eeeae7;
+          padding: 80px 20px;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .background-pattern {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          opacity: 0.03;
+          background-image: 
+            linear-gradient(30deg, #0f252f 12%, transparent 12.5%, transparent 87%, #0f252f 87.5%, #0f252f),
+            linear-gradient(150deg, #0f252f 12%, transparent 12.5%, transparent 87%, #0f252f 87.5%, #0f252f),
+            linear-gradient(30deg, #0f252f 12%, transparent 12.5%, transparent 87%, #0f252f 87.5%, #0f252f),
+            linear-gradient(150deg, #0f252f 12%, transparent 12.5%, transparent 87%, #0f252f 87.5%, #0f252f);
+          background-size: 80px 140px;
+          background-position: 0 0, 0 0, 40px 70px, 40px 70px;
+          pointer-events: none;
+        }
+
+        .packages-container {
+          max-width: 1400px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 1;
+        }
+
+        /* Header */
+        .header {
+          text-align: center;
+          margin-bottom: 60px;
+        }
+
+        .header-title {
+          color: #0f252f;
+          letter-spacing: -0.5px;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          font-size: 2.5rem;
+        }
+
+        .header-subtitle {
+          font-size: 20px;
+          color: #364a52;
+          max-width: 700px;
+          margin: 0 auto;
+          line-height: 1.6;
+        }
+
+        .bestsellers-count {
+          color: #0f252f;
+          font-weight: 700;
+          font-size: 22px;
+        }
+
+        /* Grid */
+        .packages-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+          gap: 32px;
+          margin-bottom: 20px;
+        }
+
+        /* Card */
+        .package-card {
+          background: #ffffff;
+          border-radius: 20px;
+          border: 2px solid #d4d0cd;
+          padding: 0;
+          box-shadow: 0 8px 30px rgba(15, 37, 47, 0.08);
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          transform: translateY(0) scale(1);
+          position: relative;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          height: 750px;
+        }
+
+        .package-card.popular {
+          border: 3px solid #0f252f;
+        }
+
+        .package-card.hovered {
+          box-shadow: 0 20px 60px rgba(15, 37, 47, 0.2);
+          transform: translateY(-8px) scale(1.02);
+        }
+
+        .top-accent {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 6px;
+          background: #364a52;
+        }
+
+        .package-card.popular .top-accent {
+          background: linear-gradient(90deg, #0f252f 0%, #364a52 100%);
+        }
+
+        .badge {
+          position: absolute;
+          top: 24px;
+          right: -32px;
+          background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+          color: #0f252f;
+          padding: 6px 45px;
+          transform: rotate(45deg);
+          font-size: 11px;
+          font-weight: 800;
+          letter-spacing: 1.5px;
+          text-transform: uppercase;
+          box-shadow: 0 4px 15px rgba(255, 165, 0, 0.4);
+          z-index: 10;
+        }
+
+        /* Card Header */
+        .card-header {
+          padding: 36px 32px 28px;
+          border-bottom: 2px solid #eeeae7;
+          background: #fafafa;
+        }
+
+        .card-header.popular-header {
+          background: #f8f6f4;
+        }
+
+        .package-name {
+          font-size: 26px;
+          font-weight: 700;
+          color: #0f252f;
+          margin-bottom: 24px;
+          text-align: center;
+          letter-spacing: 0.5px;
+        }
+
+        .pricing-container {
+          text-align: center;
+        }
+
+        .pricing-row {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 16px;
+        }
+
+        .price-box {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .price-label {
+          font-size: 11px;
+          color: #364a52;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          margin-bottom: 4px;
+          font-weight: 600;
+        }
+
+        .discount-label {
+          color: #0f252f;
+          font-weight: 700;
+        }
+
+        .regular-price {
+          font-size: 20px;
+          color: #999;
+          text-decoration: line-through;
+          font-weight: 600;
+        }
+
+        .arrow {
+          font-size: 32px;
+          color: #364a52;
+          font-weight: 300;
+        }
+
+        .discounted-price {
+          font-size: 42px;
+          color: #0f252f;
+          font-weight: 800;
+          line-height: 1;
+          letter-spacing: -1px;
+        }
+
+        .savings-badge {
+          display: inline-block;
+          background: linear-gradient(135deg, #0f252f 0%, #364a52 100%);
+          color: #fff;
+          padding: 6px 20px;
+          border-radius: 20px;
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 0.5px;
+        }
+
+        /* Scrollable Content */
+        .scrollable-content {
+          flex: 1;
+          overflow-y: auto;
+          padding: 28px 32px;
+          scrollbar-width: thin;
+          scrollbar-color: #364a52 #eeeae7;
+        }
+
         .scrollable-content::-webkit-scrollbar {
           width: 6px;
         }
-        
+
         .scrollable-content::-webkit-scrollbar-track {
           background: #eeeae7;
           border-radius: 10px;
         }
-        
+
         .scrollable-content::-webkit-scrollbar-thumb {
           background: #364a52;
           border-radius: 10px;
           transition: background 0.2s ease;
         }
-        
+
         .scrollable-content::-webkit-scrollbar-thumb:hover {
           background: #0f252f;
         }
 
-        /* Tablet and below */
+        .section {
+          margin-bottom: 28px;
+        }
+
+        .section-title {
+          font-size: 15px;
+          font-weight: 700;
+          color: #0f252f;
+          margin-bottom: 14px;
+          text-transform: uppercase;
+          letter-spacing: 0.8px;
+          padding-bottom: 8px;
+          border-bottom: 2px solid #eeeae7;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .title-accent {
+          width: 4px;
+          height: 16px;
+          background: linear-gradient(180deg, #0f252f 0%, #364a52 100%);
+          border-radius: 2px;
+        }
+
+        .features-list {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .feature-item {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 10px 0;
+          color: #364a52;
+          font-size: 14.5px;
+          line-height: 1.5;
+          border-bottom: 1px solid #f5f5f5;
+        }
+
+        .feature-item.last {
+          border-bottom: none;
+        }
+
+        .feature-item.highlighted {
+          color: #0f252f;
+        }
+
+        .feature-icon {
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          background: #eeeae7;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          font-size: 10px;
+          color: #fff;
+          font-weight: 700;
+        }
+
+        .feature-item.highlighted .feature-icon {
+          background: linear-gradient(135deg, #0f252f 0%, #364a52 100%);
+        }
+
+        .feature-text {
+          font-weight: 400;
+        }
+
+        .feature-item.highlighted .feature-text {
+          font-weight: 600;
+        }
+
+        /* Card Footer */
+        .card-footer {
+          padding: 24px 32px;
+          border-top: 2px solid #eeeae7;
+          background: #fafafa;
+        }
+
+        .order-button {
+          width: 100%;
+          padding: 16px;
+          background: linear-gradient(135deg, #0f252f 0%, #364a52 100%);
+          color: #fff;
+          border: none;
+          border-radius: 12px;
+          font-size: 15px;
+          font-weight: 700;
+          cursor: pointer;
+          text-transform: uppercase;
+          letter-spacing: 1.5px;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(15, 37, 47, 0.2);
+        }
+
+        .order-button:hover {
+          background: linear-gradient(135deg, #364a52 0%, #0f252f 100%);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(15, 37, 47, 0.3);
+        }
+
+        .contact-section {
+          margin-top: 20px;
+          padding-top: 20px;
+          border-top: 1px solid #eeeae7;
+        }
+
+        .contact-title {
+          font-size: 11px;
+          color: #364a52;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          margin-bottom: 12px;
+          font-weight: 700;
+          text-align: center;
+        }
+
+        .contact-options {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 16px;
+        }
+
+        .contact-box {
+          flex: 1;
+          text-align: center;
+          padding: 10px;
+          background: #fff;
+          border-radius: 8px;
+          border: 1px solid #eeeae7;
+          transition: all 0.2s ease;
+        }
+
+        .contact-box.clickable {
+          cursor: pointer;
+        }
+
+        .contact-box.clickable:hover {
+          background: #fff;
+          border-color: #0f252f;
+        }
+
+        .contact-box a {
+          color: inherit;
+          text-decoration: none;
+          display: block;
+        }
+
+        .contact-label {
+          font-size: 10px;
+          color: #364a52;
+          margin-bottom: 4px;
+          font-weight: 600;
+        }
+
+        .contact-value {
+          font-size: 12px;
+          color: #0f252f;
+          font-weight: 700;
+          transition: color 0.2s ease;
+        }
+
+        .contact-box.clickable:hover .contact-value {
+          color: #364a52;
+        }
+
+        /* Responsive Styles */
         @media (max-width: 1200px) {
           .packages-grid {
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)) !important;
-            gap: 28px !important;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 28px;
           }
-          
+
           .package-card {
-            height: 700px !important;
+            height: 700px;
           }
         }
 
-        /* Mobile landscape and below */
         @media (max-width: 968px) {
+          .packages-wrapper {
+            padding: 60px 20px;
+          }
+
           .packages-grid {
-            grid-template-columns: 1fr !important;
-            gap: 32px !important;
+            grid-template-columns: 1fr;
+            gap: 32px;
           }
-          
-          h2 {
-            font-size: 40px !important;
+
+          .header-title {
+            font-size: 2rem;
           }
-          
-          h2 span {
-            font-size: 34px !important;
+
+          .bestsellers-count {
+            font-size: 1.75rem;
           }
         }
 
-        /* Mobile portrait */
         @media (max-width: 576px) {
+          .packages-wrapper {
+            padding: 50px 15px;
+          }
+
           .packages-container {
             padding: 0 10px;
           }
-          
-          h2 {
-            font-size: 32px !important;
-            letter-spacing: 1.5px !important;
+
+          .header {
+            margin-bottom: 40px;
           }
-          
-          h2 span {
-            font-size: 28px !important;
+
+          .header-title {
+            font-size: 1.75rem;
+            letter-spacing: 1.5px;
           }
-          
+
+          .header-subtitle {
+            font-size: 18px;
+          }
+
+          .bestsellers-count {
+            font-size: 1.5rem;
+          }
+
           .packages-grid {
-            gap: 24px !important;
+            grid-template-columns: 1fr;
+            gap: 24px;
           }
-          
+
           .package-card {
-            height: 650px !important;
-            border-radius: 16px !important;
+            height: 650px;
+            border-radius: 16px;
           }
-          
-          .package-card > div:first-of-type {
-            padding: 28px 24px 20px !important;
+
+          .card-header {
+            padding: 28px 24px 20px;
           }
-          
-          .package-card h3 {
-            font-size: 22px !important;
+
+          .package-name {
+            font-size: 22px;
           }
-          
+
+          .pricing-row {
+            flex-wrap: wrap;
+            gap: 8px;
+          }
+
+          .arrow {
+            font-size: 24px;
+          }
+
+          .discounted-price {
+            font-size: 36px;
+          }
+
           .scrollable-content {
-            padding: 20px 24px !important;
+            padding: 20px 24px;
           }
-          
-          .package-card > div:last-of-type {
-            padding: 20px 24px !important;
+
+          .card-footer {
+            padding: 20px 24px;
+          }
+
+          .contact-options {
+            flex-direction: column;
+            gap: 12px;
+          }
+
+          .contact-box {
+            width: 100%;
           }
         }
 
-        /* Extra small devices */
         @media (max-width: 400px) {
+          .packages-grid {
+            grid-template-columns: 1fr;
+          }
+
           .package-card {
-            height: 600px !important;
+            height: 600px;
           }
-          
-          h2 {
-            font-size: 28px !important;
+
+          .header-title {
+            font-size: 1.5rem;
           }
-          
-          h2 span {
-            font-size: 24px !important;
+
+          .bestsellers-count {
+            font-size: 1.25rem;
+          }
+
+          .card-header {
+            padding: 24px 20px 16px;
+          }
+
+          .package-name {
+            font-size: 20px;
+          }
+
+          .discounted-price {
+            font-size: 32px;
+          }
+
+          .scrollable-content {
+            padding: 16px 20px;
+          }
+
+          .card-footer {
+            padding: 16px 20px;
           }
         }
       `}</style>

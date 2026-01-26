@@ -45,7 +45,7 @@ const TextMessageConsentAgreement: React.FC = () => {
     {
       title: 'Contact Customer Support',
       description:
-        'Reach out to our customer support team at info@mediterraneanpublishing.com or +1 (832) 558-5865 and request to be unsubscribed from text messages.',
+        'Reach out to our customer support team at info@mediterraneanpublishing.com or +1 281-247-0786 and request to be unsubscribed from text messages.',
     },
     {
       title: 'Update Preferences',
@@ -415,7 +415,7 @@ const TextMessageConsentAgreement: React.FC = () => {
             </a>
 
             <a
-              href="tel:+18325585865"
+              href="tel:+12812470786"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -442,7 +442,7 @@ const TextMessageConsentAgreement: React.FC = () => {
               }}
             >
               <span>📞</span>
-              +1 (832) 558-5865
+              +1 281-247-0786
             </a>
           </div>
         </div>

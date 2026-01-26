@@ -132,7 +132,7 @@ const Contact = () => {
                     <i className="ti-map-alt" />
                   </div>
                   <h5 className="mb-2">Our Location</h5>
-                  <p>Suite C125, 4 - 6, Greatorex Street, London, United Kingdom, E1 5NF</p>
+                  <p>6340 N Eldridge Pkwy suite N, Houston, Texas 77041, United States</p>
                 </div>
                 <div className="all-text-white mb-4">
                   <div className="fs-4">
@@ -147,9 +147,9 @@ const Contact = () => {
                   </div>
                   <h5 className="mb-2">Call Us</h5>
                   <p className="mb-0">
-                    +1 (832) 558-5865
+                    +44 20 3878 7938
                     <br />
-                    +1 (888) 430-7753
+                    +1 281-247-0786
                   </p>
                 </div>
               </div>
