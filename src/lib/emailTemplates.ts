@@ -83,14 +83,14 @@ export function getContactFormEmail(data: {
             </div>
 
             <p style="margin: 20px 0 0 0; font-size: 15px; color: #555;">
-              If you have any questions in the meantime, feel free to reach out to us at <strong>info@mediterraneanpublishing.com</strong> or call <strong>+1 (832) 558-5865</strong>.
+              If you have any questions in the meantime, feel free to reach out to us at <strong>info@mediterraneanpublishing.com</strong> or call <strong>++44 20 3878 7938</strong>.
             </p>
           </div>
 
           <!-- Footer -->
           <div style="${footerStyle}">
             <p style="margin: 5px 0;">© 2024 Mediterranean Publishing. All rights reserved.</p>
-            <p style="margin: 5px 0;">Suite C125, 4-6 Greatorex Street, London, E1 5NF, UK</p>
+            <p style="margin: 5px 0;">6340 N Eldridge Pkwy suite N, Houston, Texas 77041, United States</p>
             <p style="margin: 10px 0 0 0;">
               <a href="https://www.mediterraneanpublishing.com/privacy" style="color: #fff; text-decoration: none;">Privacy Policy</a> | 
               <a href="https://www.mediterraneanpublishing.com/terms" style="color: #fff; text-decoration: none;">Terms & Conditions</a>
@@ -155,14 +155,14 @@ export function getDiscountFormEmail(data: {
             </div>
 
             <p style="margin: 20px 0 0 0; font-size: 15px; color: #555;">
-              If these details need updating or you have any questions, reply directly to this email or call us at <strong>+1 (832) 558-5865</strong>.
+              If these details need updating or you have any questions, reply directly to this email or call us at <strong>++44 20 3878 7938</strong>.
             </p>
           </div>
 
           <!-- Footer -->
           <div style="${footerStyle}">
             <p style="margin: 5px 0;">© 2024 Mediterranean Publishing. All rights reserved.</p>
-            <p style="margin: 5px 0;">Suite C125, 4-6 Greatorex Street, London, E1 5NF, UK</p>
+            <p style="margin: 5px 0;">6340 N Eldridge Pkwy suite N, Houston, Texas 77041, United States</p>
             <p style="margin: 10px 0 0 0;">
               <a href="https://www.mediterraneanpublishing.com/privacy" style="color: #fff; text-decoration: none;">Privacy Policy</a> | 
               <a href="https://www.mediterraneanpublishing.com/terms" style="color: #fff; text-decoration: none;">Terms & Conditions</a>
@@ -253,14 +253,14 @@ export function getQuoteFormEmail(data: {
             </div>
 
             <p style="margin: 20px 0 0 0; font-size: 15px; color: #555;">
-              Have questions? Reach out to us at <strong>info@mediterraneanpublishing.com</strong> or <strong>+1 (832) 558-5865</strong>
+              Have questions? Reach out to us at <strong>info@mediterraneanpublishing.com</strong> or <strong>++44 20 3878 7938</strong>
             </p>
           </div>
 
           <!-- Footer -->
           <div style="${footerStyle}">
             <p style="margin: 5px 0;">© 2024 Mediterranean Publishing. All rights reserved.</p>
-            <p style="margin: 5px 0;">Suite C125, 4-6 Greatorex Street, London, E1 5NF, UK</p>
+            <p style="margin: 5px 0;">6340 N Eldridge Pkwy suite N, Houston, Texas 77041, United States</p>
             <p style="margin: 10px 0 0 0;">
               <a href="https://www.mediterraneanpublishing.com/privacy" style="color: #fff; text-decoration: none;">Privacy Policy</a> | 
               <a href="https://www.mediterraneanpublishing.com/terms" style="color: #fff; text-decoration: none;">Terms & Conditions</a>
@@ -321,7 +321,7 @@ export function getNewsletterEmail(data: { email: string }) {
           <!-- Footer -->
           <div style="${footerStyle}">
             <p style="margin: 5px 0;">© 2024 Mediterranean Publishing. All rights reserved.</p>
-            <p style="margin: 5px 0;">Suite C125, 4-6 Greatorex Street, London, E1 5NF, UK</p>
+            <p style="margin: 5px 0;">6340 N Eldridge Pkwy suite N, Houston, Texas 77041, United States</p>
             <p style="margin: 10px 0 0 0;">
               <a href="https://www.mediterraneanpublishing.com/privacy" style="color: #fff; text-decoration: none;">Privacy Policy</a> | 
               <a href="https://www.mediterraneanpublishing.com/terms" style="color: #fff; text-decoration: none;">Terms & Conditions</a>
@@ -390,14 +390,14 @@ export function getReportFormEmail(data: {
             </div>
 
             <p style="margin: 20px 0 0 0; font-size: 15px; color: #555;">
-              Questions? Contact us at <strong>info@mediterraneanpublishing.com</strong> or <strong>+1 (832) 558-5865</strong>
+              Questions? Contact us at <strong>info@mediterraneanpublishing.com</strong> or <strong>++44 20 3878 7938</strong>
             </p>
           </div>
 
           <!-- Footer -->
           <div style="${footerStyle}">
             <p style="margin: 5px 0;">© 2024 Mediterranean Publishing. All rights reserved.</p>
-            <p style="margin: 5px 0;">Suite C125, 4-6 Greatorex Street, London, E1 5NF, UK</p>
+            <p style="margin: 5px 0;">6340 N Eldridge Pkwy suite N, Houston, Texas 77041, United States</p>
             <p style="margin: 10px 0 0 0;">
               <a href="https://www.mediterraneanpublishing.com/privacy" style="color: #fff; text-decoration: none;">Privacy Policy</a> | 
               <a href="https://www.mediterraneanpublishing.com/terms" style="color: #fff; text-decoration: none;">Terms & Conditions</a>
@@ -466,14 +466,14 @@ export function getLandingPageFormEmail(data: {
             </div>
 
             <p style="margin: 20px 0 0 0; font-size: 15px; color: #555;">
-              If you'd like to speak with someone sooner, feel free to reach out to us at <strong>info@mediterraneanpublishing.com</strong> or call <strong>+1 (832) 558-5865</strong>.
+              If you'd like to speak with someone sooner, feel free to reach out to us at <strong>info@mediterraneanpublishing.com</strong> or call <strong>++44 20 3878 7938</strong>.
             </p>
           </div>
 
           <!-- Footer -->
           <div style="${footerStyle}">
             <p style="margin: 5px 0;">© 2024 Mediterranean Publishing. All rights reserved.</p>
-            <p style="margin: 5px 0;">Suite C125, 4-6 Greatorex Street, London, E1 5NF, UK</p>
+            <p style="margin: 5px 0;">6340 N Eldridge Pkwy suite N, Houston, Texas 77041, United States</p>
             <p style="margin: 10px 0 0 0;">
               <a href="https://www.mediterraneanpublishing.com/privacy" style="color: #fff; text-decoration: none;">Privacy Policy</a> | 
               <a href="https://www.mediterraneanpublishing.com/terms" style="color: #fff; text-decoration: none;">Terms & Conditions</a>
