@@ -3,9 +3,9 @@ import { getDiscountFormEmail } from "@/lib/emailTemplates";
 
 export async function POST(req) {
   try {
-    const { name, email, phone, message } = await req.json();
+    const { name, email, phone, message, countryCode } = await req.json();
 
-    console.log("Received:", { email, phone });
+    console.log("Received:", { email, phone, countryCode });
     console.log("Password loaded:", !!process.env.EMAIL_PASSWORD);
 
     const transporter = nodemailer.createTransport({
@@ -36,6 +36,7 @@ export async function POST(req) {
       email,
       phone,
       message,
+      countryCode,
     });
 
     await transporter.sendMail({

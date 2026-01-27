@@ -38,6 +38,8 @@ export function getContactFormEmail(data: {
   email: string;
   subject: string;
   message: string;
+  phone?: string;
+  countryCode?: string;
 }) {
   return `
     <!DOCTYPE html>
@@ -69,6 +71,11 @@ export function getContactFormEmail(data: {
               <p style="margin: 0; font-weight: 600; color: #364a52; font-size: 14px;">SUBJECT</p>
               <p style="margin: 5px 0 0 0; color: #333; font-size: 14px;">${data.subject}</p>
             </div>
+
+            ${data.phone ? `<div style="background: white; border-left: 4px solid #364a52; padding: 15px; margin: 25px 0; border-radius: 4px;">
+              <p style="margin: 0; font-weight: 600; color: #364a52; font-size: 14px;">PHONE</p>
+              <p style="margin: 5px 0 0 0; color: #333; font-size: 14px;">${data.phone}</p>
+            </div>` : ''}
 
             <p style="margin: 25px 0 20px 0; font-size: 15px; color: #555;">
               Our dedicated team is reviewing your inquiry and will get back to you shortly. We aim to respond to all messages within 24-48 hours.
@@ -107,6 +114,7 @@ export function getDiscountFormEmail(data: {
   email: string;
   phone: string;
   message: string;
+  countryCode?: string;
 }) {
   return `
     <!DOCTYPE html>
@@ -413,6 +421,7 @@ export function getLandingPageFormEmail(data: {
   name: string;
   email: string;
   phone: string;
+  countryCode?: string;
 }) {
   return `
     <!DOCTYPE html>
