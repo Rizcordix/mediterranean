@@ -31,7 +31,7 @@ const ThankYou = () => {
 
         {/* Subtitle */}
         <p className={`thank-you-subtitle ${isVisible ? "visible delay-1" : ""}`}>
-          For filling up the form. We've Received you request and will respond quickly within 1 business day. Please Check your inbox for a 
+          For filling up the form. We&apos;ve Received you request and will respond quickly within 1 business day. Please Check your inbox for a 
           confirmation email. You can find more information on our website and social pages.
         </p>
 
