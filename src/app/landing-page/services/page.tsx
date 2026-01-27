@@ -10,6 +10,7 @@ import Footer from '../../home/components/Footer';
 import CTASection from './components/cta';
 import PublishingPackages from './components/Packages';
 import HowItWorksSection from './components/Howitworks';
+import Clients from './components/Clients';
 
 export const metadata = {
   title: "Publish Your Book in 90 Days | Professional Book Publishing Services",
@@ -111,13 +112,16 @@ const AgencyStartUpPage = () => {
     <>
       <TopNavbar />
       <HeroSection />
+      <Clients />
       <HowItWorksSection />
+      <MidPageCTA />
+      <PublishingPackages />
       <PublishingFeatures />
       <LaunchOfferSection />
       <Testimonials />
-        <MidPageCTA />
+        
       <PricingComponent />
-        <PublishingPackages />
+        
         <CTASection />
         <Footer />
     </>
