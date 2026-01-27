@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import trustpilot from '@/assets/images/icons/trustpilot.svg';
 import googlereviews from '@/assets/images/icons/google-reviews.svg';
@@ -9,6 +10,7 @@ import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 
 const HeroSection = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -73,8 +75,8 @@ const HeroSection = () => {
       // const data = await response.json();
 
       if (response.ok) {
-        setShowSuccessPopup(true);
         setFormData({ fullName: '', email: '', phone: '', consent: false });
+        router.push('/landing-page/thanks');
       } else {
         showToast('❌ Failed to submit form. Please try again.', 'error');
       }
