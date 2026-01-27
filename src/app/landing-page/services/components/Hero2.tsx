@@ -3,9 +3,10 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import trustpilot from '@/assets/images/icons/trustpilot.svg';
 import googlereviews from '@/assets/images/icons/google-reviews.svg';
-import { PhoneCallIcon } from 'lucide-react';
 import BackgroungImage from '@/assets/images/banner/lp_bg.png';
 import SuccessPopup from '@/components/SuccessPopup';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
 
 const HeroSection = () => {
   const [formData, setFormData] = useState({
@@ -34,6 +35,13 @@ const HeroSection = () => {
     setFormData(prev => ({
       ...prev,
       [name]: type === 'checkbox' ? checked : value
+    }));
+  };
+
+  const handlePhoneChange = (phone: string) => {
+    setFormData(prev => ({
+      ...prev,
+      phone
     }));
   };
 
@@ -165,7 +173,7 @@ const HeroSection = () => {
                 {/* Horizontal sliding books background - Replace this image with your GIF */}
                 <div className="books-background">
                   <img 
-                    src="https://placehold.co/2000x500/ffffff/666666?text=Replace+with+your+book+covers+GIF" 
+                    src="/landing/animation.gif" 
                     alt="Book covers slider"
                     className="books-slider-image"
                   />
@@ -211,19 +219,18 @@ const HeroSection = () => {
                       />
                     </div>
 
-                    <div className="form-group">
-                      <div className="input-icon">
-                        <PhoneCallIcon size={16} color="#364a52" />
-                      </div>
-                      <input
-                        type="tel"
-                        name="phone"
-                        className="form-control custom-input"
-                        placeholder="Phone"
+                    <div className="form-group phone-group">
+                      <PhoneInput
+                        country={'us'}
                         value={formData.phone}
-                        onChange={handleInputChange}
+                        onChange={handlePhoneChange}
+                        placeholder="Phone Number"
+                        containerClass="phone-input-container"
+                        inputClass="form-control custom-input phone-input"
+                        buttonClass="phone-flag-btn"
                       />
                     </div>
+
 
                     <div className="consent-check">
                       <input
@@ -353,6 +360,9 @@ const HeroSection = () => {
           position: relative;
           max-width: 480px;
           margin-left: auto;
+
+          display: flex;
+          justify-content: center;
         }
 
         .books-background {
@@ -378,7 +388,7 @@ const HeroSection = () => {
           width: 100%;
           height: 100%;
           object-fit: contain;
-          opacity: 0.5;
+          opacity: 1;
         }
 
         .form-card {
@@ -389,6 +399,8 @@ const HeroSection = () => {
           position: relative;
           z-index: 1;
           max-width: 380px;
+          margin-left: auto;
+          margin-right: auto;
         }
 
         .form-title {
@@ -556,6 +568,73 @@ const HeroSection = () => {
             font-size: 1.8rem;
           }
         }
+
+        /* === PHONE INPUT: FIXED TO MATCH OTHER INPUTS === */
+
+        .phone-group {
+          position: relative;
+        }
+
+        /* Force full width like other inputs */
+        :global(.phone-input-container) {
+          width: 100% !important;
+        }
+
+        /* Phone input field - match other inputs exactly */
+        :global(.phone-input) {
+          width: 100% !important;
+          height: auto !important;
+          padding: 11px 12px 8px 50px !important;
+          border: 1px solid #ddd !important;
+          border-radius: 5px !important;
+          font-size: 0.9rem !important;
+          background: white !important;
+        }
+
+        /* Focus effect (same as others) */
+        :global(.phone-input:focus) {
+          border-color: #364a52 !important;
+          box-shadow: 0 0 0 3px rgba(54, 74, 82, 0.08) !important;
+          outline: none !important;
+        }
+
+        /* Country flag dropdown button */
+        :global(.phone-flag-btn) {
+          border: none !important;
+          background: transparent !important;
+          position: absolute !important;
+          left: 0 !important;
+          top: 0 !important;
+          bottom: 0 !important;
+          width: 50px !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+
+        /* Flag dropdown container */
+        :global(.flag-dropdown) {
+          border: none !important;
+          background: transparent !important;
+        }
+
+        /* Selected flag styling */
+        :global(.selected-flag) {
+          padding: 14px !important;
+          background: transparent !important;
+          width: 100% !important;
+        }
+
+        /* Remove arrow from flag button */
+        :global(.selected-flag .arrow) {
+          display: none !important;
+        }
+
+        /* Country list dropdown positioning */
+        :global(.country-list) {
+          max-height: 200px !important;
+        }
+
       `}</style>
     </>
   );

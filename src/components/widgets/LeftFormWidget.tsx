@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "react-bootstrap";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 type FormData = {
   name: string;
@@ -85,6 +87,77 @@ const FloatingWidgets: React.FC = () => {
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       />
+
+      <style>{`
+        /* Phone input styling for floating widget */
+        .floating-phone-container {
+          width: 100% !important;
+          position: relative !important;
+        }
+
+        .floating-phone-input {
+          width: 100% !important;
+          height: auto !important;
+          padding: 12px 16px 12px 50px !important;
+          border: 1.5px solid #e2e8f0 !important;
+          borderRadius: 10px !important;
+          fontSize: 14px !important;
+          fontFamily: inherit !important;
+          outline: none !important;
+          transition: all 0.2s ease !important;
+          background: white !important;
+        }
+
+        .floating-phone-input:focus {
+          border-color: #304c55 !important;
+          box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+        }
+
+        .floating-phone-flag {
+          border: none !important;
+          background: transparent !important;
+          position: absolute !important;
+          left: 0 !important;
+          top: 0 !important;
+          bottom: 0 !important;
+          width: 50px !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          z-index: 2 !important;
+        }
+
+        .floating-phone-container .flag-dropdown {
+          border: none !important;
+          background: transparent !important;
+          position: absolute !important;
+        }
+
+        .floating-phone-container .selected-flag {
+          padding: 14px !important;
+          background: transparent !important;
+          width: 100% !important;
+        }
+
+        .floating-phone-container .selected-flag .arrow {
+          color: #666 !important;
+        }
+
+        .floating-phone-container .country-list {
+          position: absolute !important;
+          z-index: 10000 !important;
+          background: white !important;
+          border: 1px solid #e2e8f0 !important;
+          border-radius: 10px !important;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+          max-height: 200px !important;
+          overflow-y: auto !important;
+          width: 300% !important;
+          left: 20% !important;
+          top: 100% !important;
+          margin-top: 4px !important;
+        }
+      `}</style>
 
       {/* toast */}
       {toast && (
@@ -251,34 +324,17 @@ const FloatingWidgets: React.FC = () => {
                 (e.target as HTMLInputElement).style.boxShadow = "none";
               }}
             />
-            <input
-              type="tel"
-              placeholder="Phone Number"
-              value={formData.phone}
-              onChange={(e) =>
-                setFormData({ ...formData, phone: e.target.value })
-              }
-              style={{
-                width: "100%",
-                marginBottom: "14px",
-                padding: "12px 16px",
-                border: "1.5px solid #e2e8f0",
-                borderRadius: "10px",
-                fontSize: "14px",
-                fontFamily: "inherit",
-                transition: "all 0.2s ease",
-                outline: "none"
-              }}
-              onFocus={(e) => {
-                (e.target as HTMLInputElement).style.borderColor = "#304c55";
-                (e.target as HTMLInputElement).style.boxShadow =
-                  "0 0 0 3px rgba(102, 126, 234, 0.1)";
-              }}
-              onBlur={(e) => {
-                (e.target as HTMLInputElement).style.borderColor = "#e2e8f0";
-                (e.target as HTMLInputElement).style.boxShadow = "none";
-              }}
-            />
+            <div style={{ marginBottom: '14px', position: 'relative', zIndex: 1 }}>
+              <PhoneInput
+                country={'us'}
+                value={formData.phone}
+                onChange={(phone) => setFormData(prev => ({ ...prev, phone }))}
+                placeholder="Phone Number"
+                containerClass="floating-phone-container"
+                inputClass="floating-phone-input"
+                buttonClass="floating-phone-flag"
+              />
+            </div>
             <textarea
               placeholder="Tell us about your project..."
               rows={4}

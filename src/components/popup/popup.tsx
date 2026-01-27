@@ -1,7 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import { createPortal } from "react-dom";
 import SuccessPopup from "@/components/SuccessPopup";
-import { User, Mail, Phone, MessageSquare } from "lucide-react";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+import { User, Mail, MessageSquare } from "lucide-react";
 
 type Props = {
   showOnEveryVisit?: boolean;
@@ -435,6 +437,88 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
           color: #842029; 
         }
 
+        /* === PHONE INPUT STYLING === */
+        .phone-group {
+          position: relative;
+          margin-bottom: 12px;
+          z-index: 1;
+        }
+
+        /* Phone input container */
+        .popup-phone-container {
+          width: 100% !important;
+          position: relative !important;
+        }
+
+        /* Phone input field - match other inputs */
+        .popup-phone-input {
+          width: 100% !important;
+          height: auto !important;
+          padding: 12px 14px 12px 52px !important;
+          border: 2px solid #e0e0e0 !important;
+          border-radius: 8px !important;
+          font-size: 0.8rem !important;
+          background: white !important;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+          transition: all 0.2s ease !important;
+        }
+
+        /* Focus effect */
+        .popup-phone-input:focus {
+          border-color: #0f252f !important;
+          box-shadow: 0 0 0 3px rgba(15, 37, 47, 0.1) !important;
+          outline: none !important;
+        }
+
+        /* Flag button */
+        .popup-phone-flag {
+          border: none !important;
+          background: transparent !important;
+          position: absolute !important;
+          left: 0 !important;
+          top: 0 !important;
+          bottom: 0 !important;
+          width: 52px !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          z-index: 2 !important;
+        }
+
+        /* Flag dropdown */
+        .popup-phone-container .flag-dropdown {
+          border: none !important;
+          background: transparent !important;
+          position: absolute !important;
+        }
+
+        /* Selected flag */
+        .popup-phone-container .selected-flag {
+          padding: 14px !important;
+          background: transparent !important;
+          width: 100% !important;
+        }
+
+        /* Remove arrow */
+        .popup-phone-container .selected-flag .arrow {
+          // display: none !important;
+        }
+
+        /* Country list dropdown - ensure it's visible */
+        .popup-phone-container .country-list {
+          position: absolute !important;
+          z-index: 9999 !important;
+          background: white !important;
+          border: 1px solid #e0e0e0 !important;
+          border-radius: 8px !important;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+          overflow-y: auto !important;
+          width: 300% !important;
+          left: 30% !important;
+          top: 100% !important;
+          margin-top: 4px !important;
+        }
+
         @media (max-width: 576px) {
           .popup-container {
             max-width: calc(100% - 24px);
@@ -477,6 +561,11 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
           .btn-submit {
             padding: 13px;
             font-size: 0.85rem;
+          }
+
+          .popup-phone-input {
+            padding: 11px 12px 11px 50px !important;
+            font-size: 0.75rem !important;
           }
         }
       `}</style>
@@ -548,14 +637,15 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
                   />
                 </div>
 
-                <div className="form-group">
-                  <Phone size={16} className="input-icon" />
-                  <input
-                    type="tel"
-                    className="custom-input"
-                    placeholder="Phone"
+                <div className="phone-group">
+                  <PhoneInput
+                    country={'us'}
                     value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={setPhone}
+                    placeholder="Phone"
+                    containerClass="popup-phone-container"
+                    inputClass="popup-phone-input"
+                    buttonClass="popup-phone-flag"
                   />
                 </div>
 

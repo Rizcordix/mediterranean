@@ -3,9 +3,9 @@ import { getLandingPageFormEmail } from "@/lib/emailTemplates";
 
 export async function POST(req) {
   try {
-    const { name, email, phone } = await req.json();
+    const { name, email, phone, countryCode } = await req.json();
 
-    console.log("Landing Page Form Received:", { email, phone });
+    console.log("Landing Page Form Received:", { email, phone, countryCode });
     console.log("Password loaded:", !!process.env.EMAIL_PASSWORD);
 
     const transporter = nodemailer.createTransport({
@@ -27,7 +27,7 @@ export async function POST(req) {
       from: '"Landing Page Form Mediterranean Publishing" <mediterraneanpublishing@gmail.com>',
       to: "mediterraneanpublishing@gmail.com",
       subject: "Mediterranean Publishing Landing Page Form Filled",
-      text: `Mediterranean Publishing\nLanding Page Form Filled\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}`,
+      text: `Mediterranean Publishing\nLanding Page Form Filled\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nCountry Code: ${countryCode}`,
     });
 
     // Send confirmation email to user
@@ -35,6 +35,7 @@ export async function POST(req) {
       name,
       email,
       phone,
+      countryCode,
     });
 
     await transporter.sendMail({
