@@ -6,6 +6,8 @@ import { PopupProvider } from '@/components/wrappers/PopupContext'
 import PopupClientWrapper from "@/components/popup/popupclient"
 import Script from 'next/script'
 import { DiscountPopupProvider } from '@/components/popup/DiscountPopupContext'
+import { GoogleTagManager } from '@next/third-parties/google'
+import GTMNoScript from '@/components/GTMNoScript'
 
 import 'aos/dist/aos.css'
 import '@/assets/scss/style.scss'
@@ -64,6 +66,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <GoogleTagManager gtmId="GTM-M6CFLD2Z" />
         {/* Meta Pixel Script */}
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
@@ -85,6 +88,7 @@ export default function RootLayout({
       </head>
 
       <body className={inter.className}>
+        <GTMNoScript />
         <noscript>
           <img
             height="1"
