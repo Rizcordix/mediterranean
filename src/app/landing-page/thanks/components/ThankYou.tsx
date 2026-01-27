@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Check, ArrowRight } from "lucide-react";
 import Link from "next/link";
+// import 
 
 const ThankYou = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -42,48 +43,44 @@ const ThankYou = () => {
             <h2 className="card-title">Connect With Us</h2>
             <div className="social-links">
               <a
-                href="https://www.facebook.com/MediterraneanPublishing"
+                href="https://www.facebook.com/share/17L6o8vpt1/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
                 className="social-btn facebook"
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.7 10h-2.2v7h-3v-7h-2v-2.5h2V9.1c0-1.6.5-4 3.9-4h3v2.6h-2.2c-.4 0-.5.2-.5.6v1.2h2.8l-.3 2.5z" />
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
                 </svg>
               </a>
               <a
-                href="https://www.linkedin.com/company/mediterranean-publishing"
+                href="https://www.instagram.com/mediterraneanpublishing/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="social-btn linkedin"
+                aria-label="instagram"
+                className="social-btn instagram"
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15h-2v-6h2v6zm-1-6.9c-.6 0-1.1-.5-1.1-1.1s.5-1.1 1.1-1.1 1.1.5 1.1 1.1-.5 1.1-1.1 1.1zM16 17h-2v-3c0-.8-.3-1.3-1-1.3-.5 0-.9.3-1 .7-.1.1-.1.3-.1.5V17h-2v-6h2v.8c.3-.4.8-1.1 2-1.1 1.5 0 2.6 1 2.6 3.1V17z" />
-                </svg>
+                <i className="fab fa-instagram" style={{fontSize: 26}}/>
               </a>
               <a
-                href="https://www.pinterest.com/MediterraneanPub"
+                href="https://www.tiktok.com/@mediterranean.pub"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Pinterest"
-                className="social-btn pinterest"
+                aria-label="TikTok"
+                className="social-btn tiktok"
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm3.5-9.5c-.8 0-1.5.7-1.5 1.5s.7 1.5 1.5 1.5 1.5-.7 1.5-1.5-.7-1.5-1.5-1.5z" />
-                </svg>
+                <i className="fab fa-tiktok" style={{fontSize: 26}}/>
               </a>
               <a
-                href="https://twitter.com/MediterraneanPub"
+                href="https://x.com/Med_publisher"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Twitter"
                 className="social-btn twitter"
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5-3.5v3h-2c-1.1 0-2 .9-2 2v2h4v3h-4v8h-3v-8H8v-3h2v-2c0-2.2 1.8-4 4-4h2.5z" />
-                </svg>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
               </a>
             </div>
           </div>
@@ -310,6 +307,28 @@ const ThankYou = () => {
           color: white;
         }
 
+        .social-btn.tiktok {
+          color: #000;
+          background: #fff;
+          border-color: #ccc;
+        }
+
+        .social-btn.tiktok:hover {
+          background: #000;
+          color: white;
+        }
+
+        .social-btn.instagram {
+          color: #e1306c;
+          background: #fff;
+          border-color: #e0e0e0;
+        }
+
+        .social-btn.instagram:hover {
+          background: #e1306c;
+          color: white;
+        }
+
         .website-button {
           display: inline-flex;
           align-items: center;
@@ -340,7 +359,7 @@ const ThankYou = () => {
         /* Responsive */
         @media (max-width: 768px) {
           .thank-you-section {
-            padding: 40px 20px;
+            padding: 90px 20px;
             min-height: auto;
           }
 
@@ -400,7 +419,7 @@ const ThankYou = () => {
 
         @media (max-width: 480px) {
           .thank-you-section {
-            padding: 30px 15px;
+            padding: 70px 15px;
           }
 
           .thank-you-title {

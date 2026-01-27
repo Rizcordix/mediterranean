@@ -1,5 +1,5 @@
 import React from 'react'
-import TopNavbar from '../global-premium/components/TopNavbar'
+import TopNavbar from '../services/components/TopNavbar'
 import Footer from '../../home/components/Footer'
 import ThankYou from './components/ThankYou'
 
