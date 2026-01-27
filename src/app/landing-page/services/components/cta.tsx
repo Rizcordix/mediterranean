@@ -1,14 +1,15 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 // import Image from 'next/image';
 import bookLeftImg from '@/assets/images/landingpage/left.png';
 import bookRightImg from '@/assets/images/landingpage/right.png';
 // import { PhoneCall } from 'lucide-react';
-import SuccessPopup from '@/components/SuccessPopup';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 
 const CTASection = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -17,7 +18,6 @@ const CTASection = () => {
   });
 
   const [submitting, setSubmitting] = useState(false);
-  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
 
   useEffect(() => {
@@ -74,8 +74,9 @@ const CTASection = () => {
       // const data = await response.json();
 
       if (response.ok) {
-        setShowSuccessPopup(true);
         setFormData({ fullName: '', email: '', phone: '', consent: false });
+        // Redirect to thanks page instead of showing popup
+        router.push('/landing-page/thanks');
       } else {
         showToast('❌ Failed to submit form. Please try again.', 'error');
       }
@@ -89,13 +90,6 @@ const CTASection = () => {
 
   return (
     <>
-      {/* Success Popup */}
-      <SuccessPopup 
-        isOpen={showSuccessPopup} 
-        onClose={() => setShowSuccessPopup(false)} 
-        formType="contact" 
-      />
-
       {/* Toast */}
       {toast && (
         <div

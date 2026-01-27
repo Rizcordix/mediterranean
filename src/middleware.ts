@@ -11,7 +11,7 @@ export function middleware(request: NextRequest) {
   // Redirect "/landing-page" → "/landing-page/global-premium"
   if (pathname === '/landing-page') {
     return NextResponse.redirect(
-      new URL('/landing-page/global-premium', request.url)
+      new URL('/landing-page/services', request.url)
     )
   }
 
