@@ -59,33 +59,54 @@ const HeroSection = () => {
       return;
     }
 
-    setSubmitting(true);
+        setSubmitting(true);
 
-    try {
-      const response = await fetch('/api/sendEmail/landingpageform', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.fullName,
-          email: formData.email,
-          phone: formData.phone,
-        }),
-      });
+try {
+  const hubspotRes = await fetch('/api/hubspot/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      fullName: formData.fullName,
+      email: formData.email,
+      phone: formData.phone,
+      consent: formData.consent,
+    }),
+  });
 
-      // const data = await response.json();
+  const hubspotData = await hubspotRes.json();
 
-      if (response.ok) {
-        setFormData({ fullName: '', email: '', phone: '', consent: false });
-        router.push('/landing-page/thanks');
-      } else {
-        showToast('❌ Failed to submit form. Please try again.', 'error');
-      }
-    } catch (err) {
-      console.error('Submit error:', err);
-      showToast('❌ An error occurred. Please try again.', 'error');
-    } finally {
-      setSubmitting(false);
-    }
+  console.log('HubSpot response:', hubspotData);
+
+  if (!hubspotRes.ok) {
+    throw new Error(
+      hubspotData?.message || 'HubSpot submission failed'
+    );
+  }
+
+  // ONLY send email if HubSpot succeeded
+  const emailRes = await fetch('/api/sendEmail/landingpageform', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: formData.fullName,
+      email: formData.email,
+      phone: formData.phone,
+    }),
+  });
+
+  if (!emailRes.ok) {
+    throw new Error('Email sending failed');
+  }
+
+  setFormData({ fullName: '', email: '', phone: '', consent: false });
+  router.push('/landing-page/thanks');
+
+} catch (error: any) {
+  console.error('Submission error:', error);
+  showToast(`❌ ${error.message}`, 'error');
+} finally {
+  setSubmitting(false);
+}
   };
 
   return (
@@ -178,7 +199,7 @@ const HeroSection = () => {
                 {/* Horizontal sliding books background - Replace this image with your GIF */}
                 <div className="books-background">
                   <img 
-                    src="/landing/animation.gif" 
+                    src="/landing/bookbg.png" 
                     alt="Book covers slider"
                     className="books-slider-image"
                   />

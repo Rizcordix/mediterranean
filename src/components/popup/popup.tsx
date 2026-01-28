@@ -87,32 +87,57 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
     setSubmitting(true);
 
     try {
-      const response = await fetch("/api/sendEmail/discountform", {
+      // 1️⃣ Send data to HubSpot
+      const hubspotRes = await fetch("/api/hubspot/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: name,
+          email,
+          phone,
+          message,
+          consent,
+        }),
+      });
+
+      const hubspotData = await hubspotRes.json();
+
+      if (!hubspotRes.ok) {
+        console.error("HubSpot error:", hubspotData);
+        showToast("HubSpot submission failed.", "error");
+        return;
+      }
+
+      // 2️⃣ Send email AFTER HubSpot succeeds
+      const emailRes = await fetch("/api/sendEmail/discountform", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, phone, message }),
       });
 
-      const data = await response.json();
+      const emailData = await emailRes.json();
 
-      if (response.ok) {
-        setShowSuccessPopup(true);
-        setIsOpen(false);
-        setName("");
-        setEmail("");
-        setPhone("");
-        setMessage("");
-        setConsent(false);
-      } else {
-        console.error("Email sending failed:", data?.message ?? data);
-        showToast("Submission failed. Try again.", "error");
+      if (!emailRes.ok) {
+        console.error("Email error:", emailData);
+        showToast("Email sending failed.", "error");
+        return;
       }
+
+      // 3️⃣ Success UI
+      setShowSuccessPopup(true);
+      setIsOpen(false);
+      setName("");
+      setEmail("");
+      setPhone("");
+      setMessage("");
+      setConsent(false);
     } catch (err) {
       console.error("Submit error:", err);
       showToast("Submission failed. Try again.", "error");
     } finally {
       setSubmitting(false);
     }
+
   };
 
   if (typeof document === "undefined") return null;
@@ -301,6 +326,7 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
         .textarea-icon {
           top: 14px;
           transform: none;
+          z-index: 2;
         }
 
         .custom-input,
@@ -441,7 +467,7 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
         .phone-group {
           position: relative;
           margin-bottom: 12px;
-          z-index: 1;
+          z-index: 10;
         }
 
         /* Phone input container */
@@ -507,14 +533,14 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
         /* Country list dropdown - ensure it's visible */
         .popup-phone-container .country-list {
           position: absolute !important;
-          z-index: 9999 !important;
+          z-index: 4 !important;
           background: white !important;
           border: 1px solid #e0e0e0 !important;
           border-radius: 8px !important;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
           overflow-y: auto !important;
           width: 300% !important;
-          left: 30% !important;
+          left: 0% !important;
           top: 100% !important;
           margin-top: 4px !important;
         }

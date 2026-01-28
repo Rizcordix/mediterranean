@@ -70,33 +70,58 @@ const DiscountButtonPopup: React.FC<Props> = ({ isOpen, onClose }) => {
 
     setSubmitting(true);
 
-    try {
-      const response = await fetch("/api/sendEmail/discountform", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, phone, message }),
-      });
+try {
+  // 1️⃣ Send data to HubSpot
+  const hubspotRes = await fetch("/api/hubspot/submit", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      fullName: name,
+      email,
+      phone,
+      message,
+      consent,
+    }),
+  });
 
-      const data = await response.json();
+  const hubspotData = await hubspotRes.json();
 
-      if (response.ok) {
-        setShowSuccessPopup(true);
+  if (!hubspotRes.ok) {
+    console.error("HubSpot error:", hubspotData);
+    showToast("HubSpot submission failed.", "error");
+    return;
+  }
+
+  // 2️⃣ Send email AFTER HubSpot succeeds
+  const emailRes = await fetch("/api/sendEmail/discountform", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email, phone, message }),
+  });
+
+  const emailData = await emailRes.json();
+
+  if (!emailRes.ok) {
+    console.error("Email error:", emailData);
+    showToast("Email sending failed.", "error");
+    return;
+  }
+
+  // 3️⃣ Success UI
+  setShowSuccessPopup(true);
         onClose();
         setName("");
         setEmail("");
         setPhone("");
         setMessage("");
         setConsent(false);
-      } else {
-        console.error("Email sending failed:", data?.message ?? data);
-        showToast("Submission failed. Try again.", "error");
-      }
-    } catch (err) {
-      console.error("Submit error:", err);
-      showToast("Submission failed. Try again.", "error");
-    } finally {
-      setSubmitting(false);
-    }
+} catch (err) {
+  console.error("Submit error:", err);
+  showToast("Submission failed. Try again.", "error");
+} finally {
+  setSubmitting(false);
+}
+
   };
 
   if (typeof document === "undefined") return null;
@@ -425,7 +450,7 @@ const DiscountButtonPopup: React.FC<Props> = ({ isOpen, onClose }) => {
         .phone-group {
           position: relative;
           margin-bottom: 12px;
-          z-index: 1;
+          z-index: 10;
         }
 
         /* Phone input container */
@@ -499,7 +524,7 @@ const DiscountButtonPopup: React.FC<Props> = ({ isOpen, onClose }) => {
           max-height: 200px !important;
           overflow-y: auto !important;
           width: 300% !important;
-          left: 30% !important;
+          left: 0% !important;
           top: 100% !important;
           margin-top: 4px !important;
         }
