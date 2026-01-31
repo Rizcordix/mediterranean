@@ -104,7 +104,7 @@ export default function RootLayout({
 
             <Script
               src="https://embed.tawk.to/6954e038d5d3bd197b4d818f/1jdponnti"
-              strategy="afterInteractive"
+              strategy="lazyOnload"
               async
             />
           </PopupProvider>

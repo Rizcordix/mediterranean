@@ -74,8 +74,6 @@ try {
 
   const hubspotData = await hubspotRes.json();
 
-  console.log('HubSpot response:', hubspotData);
-
   if (!hubspotRes.ok) {
     throw new Error(
       hubspotData?.message || 'HubSpot submission failed'

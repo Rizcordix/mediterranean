@@ -23,7 +23,6 @@ interface PublishingPackage {
 const PublishingPackages: React.FC = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const openDiscount = () => {
-    console.log('Opening discount popup...');
     // Replace with your actual discount popup logic
   };
 
