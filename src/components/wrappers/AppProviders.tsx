@@ -31,7 +31,7 @@ const AppProviders = ({ children }: ChildrenType) => {
 
   return (
     <Fragment>
-      <Loader />
+      {/* <Loader /> */}
       {children}
       <BackToTop />
     </Fragment>

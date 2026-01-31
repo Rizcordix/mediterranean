@@ -1,23 +1,20 @@
-import React from 'react'
-import TopNavbar from './home/components/TopNavbar'
+import React, { lazy, Suspense } from 'react'
 import Hero from './home/components/Hero'
-// import About from './home/components/About'
-import Service from './home/components/Service'
-// import Testimonial from './home/components/Testimonial'
-import CTA from './home/components/Features'
-import Info from './home/components/Info'
-// import Newsletter from './components/Newsletter'
-import Footer from './home/components/Footer'
-import AboutUs from './home/components/AboutUs'
-import PricingComponent from './home/components/Pricing'
-// import Services from '../demos/corporate-startUp/components/Services'
-import Testimonials from './home/components/Testimonial'
-import ActionBox from './about/components/ActionBox'
-import Clients from './services/bookwriting/components/Clients'
-import Categories from './home/components/Categories'
-import FeaturedBooksSection from './home/components/portfolio'
-import ProcedureSection from './home/components/procedure'
-import EditingSamples from './home/components/editing'
+
+const TopNavbar = lazy(() => import('./home/components/TopNavbar'))
+const AboutUs = lazy(() => import('./home/components/AboutUs'))
+const Clients = lazy(() => import('./services/bookwriting/components/Clients'))
+const Service = lazy(() => import('./home/components/Service'))
+const FeaturedBooksSection = lazy(() => import('./home/components/portfolio'))
+const EditingSamples = lazy(() => import('./home/components/editing'))
+const CTA = lazy(() => import('./home/components/Features'))
+const PricingComponent = lazy(() => import('./home/components/Pricing'))
+const ProcedureSection = lazy(() => import('./home/components/procedure'))
+const Info = lazy(() => import('./home/components/Info'))
+const Categories = lazy(() => import('./home/components/Categories'))
+const Testimonials = lazy(() => import('./home/components/Testimonial'))
+const ActionBox = lazy(() => import('./about/components/ActionBox'))
+const Footer = lazy(() => import('./home/components/Footer'))
 
 export const metadata = {
   title: "Mediterranean Publishing | Professional eBook Writing, Publishing & Marketing Services",
@@ -56,30 +53,28 @@ export const metadata = {
   }
 };
 
-
 const CreativeAgencyPage = () => {
-
   return (
     <>
-
-      <TopNavbar />
       <Hero />
-      <AboutUs />
-      <div className="divider mb-3" />
-      <Clients />
-      <div className="divider mt-2" />
-      <Service />
-      {/* <EditingSamples /> */}
-      <FeaturedBooksSection />
-      <EditingSamples />
-      <CTA />
-      <PricingComponent />
-      <ProcedureSection />
-      <Info />
-      <Categories />
-      <Testimonials />
-      <ActionBox />
-      <Footer />
+      <Suspense fallback={<div>Loading...</div>}>
+        <TopNavbar />
+        <AboutUs />
+        <div className="divider mb-3" />
+        <Clients />
+        <div className="divider mt-2" />
+        <Service />
+        <FeaturedBooksSection />
+        <EditingSamples />
+        <CTA />
+        <PricingComponent />
+        <ProcedureSection />
+        <Info />
+        <Categories />
+        <Testimonials />
+        <ActionBox />
+        <Footer />
+      </Suspense>
     </>
   )
 }
