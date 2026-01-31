@@ -1,5 +1,5 @@
 "use client"
-import background from '@/assets/images/cta/bgCTA.jpg'
+import background from '@/assets/images/cta/bgCTA_converted.avif'
 import booksimage from '@/assets/images/cta/ctabooks.png'
 import Image from 'next/image'
 import { Button, Col, Container, Row } from 'react-bootstrap'

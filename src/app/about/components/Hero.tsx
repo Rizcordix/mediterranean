@@ -1,5 +1,5 @@
 import React from 'react'
-import bgImg from '@/assets/images/banner/aboutusbg.png'
+import bgImg from '@/assets/images/banner/aboutusbg.avif'
 import { Col, Container, Row } from 'react-bootstrap'
 
 const Hero = () => {
