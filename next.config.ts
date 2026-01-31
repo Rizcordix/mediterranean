@@ -13,6 +13,10 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  swcMinify: true,
+  experimental: {
+    optimizeCss: true,
+  },
 };
 
 export default nextConfig;

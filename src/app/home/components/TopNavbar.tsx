@@ -12,7 +12,6 @@ const TopNavbar = () => {
   const { scrollY } = useScrollEvent()
   const { isOpen, toggle } = useToggle()
   const { openQuote } = usePopup()
-  console.log("Popup context:", usePopup());
   return (
     <header className={`navbar-floating navbar-sticky navbar-light ${scrollY > 80 && 'navbar-sticky-on'}`}>
       <nav className="navbar navbar-expand-lg">
