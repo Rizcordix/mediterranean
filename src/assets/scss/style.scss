@@ -89,3 +89,89 @@
   scale: 0.25;
 }
 
+/* Hero Section */
+// Hero Component Styles - Add to your styles.scss or create hero.module.scss
+
+/* Text styling - moved from inline styles */
+.text-hero {
+  color: #0f252f;
+}
+
+/* Button styling - moved from inline styles */
+.btn-hero-primary {
+  color: #eeeae7;
+}
+
+.btn-hero-secondary {
+  border-color: #ffffff;
+  color: #0f252f;
+}
+
+/* Trusted platforms bar styling */
+.trusted-bar {
+  background-color: #0f252f;
+  border-bottom-right-radius: 60px;
+  border-top-right-radius: 60px;
+}
+
+/* CRITICAL: Prevent flash of content */
+.hero-container {
+  min-height: 600px;
+  background-color: #0f252f; /* Match your hero background */
+
+  @media (min-width: 992px) {
+    min-height: 700px;
+  }
+}
+
+/* Optional: Add will-change for smoother rendering on capable devices */
+@media (prefers-reduced-motion: no-preference) {
+  .bg-parallax {
+    will-change: transform;
+  }
+}
+
+// OR if you prefer a more organized SCSS structure:
+
+// Hero Section Styles
+.hero {
+  &-container {
+    min-height: 600px;
+    background-color: #0f252f;
+
+    @media (min-width: 992px) {
+      min-height: 700px;
+    }
+  }
+
+  &-text {
+    color: #0f252f;
+  }
+}
+
+// Button Variants
+.btn {
+  &-hero-primary {
+    color: #eeeae7;
+  }
+
+  &-hero-secondary {
+    border-color: #ffffff;
+    color: #0f252f;
+  }
+}
+
+// Trusted Platforms Bar
+.trusted-bar {
+  background-color: #0f252f;
+  border-bottom-right-radius: 60px;
+  border-top-right-radius: 60px;
+}
+
+// Parallax Optimization
+@media (prefers-reduced-motion: no-preference) {
+  .bg-parallax {
+    will-change: transform;
+  }
+}
+

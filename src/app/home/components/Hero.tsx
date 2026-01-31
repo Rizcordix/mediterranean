@@ -1,45 +1,30 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
-import dynamic from 'next/dynamic'
+import React from 'react'
 import Image from 'next/image'
 import { Container, Button } from 'react-bootstrap'
 
-import banner8 from '@/assets/images/banner/mainbg.webp'
+import banner8 from '@/assets/images/banner/mainbg.avif'
 import trustedplatforms from '@/assets/images/banner/trusted-platforms.png'
 import bookImage from '@/assets/images/banner/herobook1.webp'
 
-// Load Jarallax ONLY after LCP
-const Jarallax = dynamic(() => import('@/components/Jarallax'), {
-  ssr: false
-})
-
 const Hero = () => {
-  const [enableParallax, setEnableParallax] = useState(false)
-
-  useEffect(() => {
-    // Allow browser to paint first (critical for Lighthouse)
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(() => setEnableParallax(true))
-    } else {
-      setTimeout(() => setEnableParallax(true), 1200)
-    }
-  }, [])
-
-  const Wrapper: any = enableParallax ? Jarallax : 'section'
-
   return (
-    <Wrapper
-      tag={enableParallax ? 'section' : undefined}
-      className="position-relative p-0 h-600 h-lg-700 bg-overlay-darkk-1 bg-grad3 bg-parallax overflow-hidden"
+    <section
+      className="position-relative p-0 h-600 h-lg-700 bg-overlay-darkk-1 bg-grad3 overflow-hidden"
+      style={{
+        minHeight: '600px',
+        backgroundColor: '#0f252f'
+      }}
     >
-      {/* ✅ LCP IMAGE (ONLY priority image) */}
+      {/* ✅ CRITICAL LCP OPTIMIZATION - Background Image */}
       <Image
         src={banner8}
         alt="Hero Background"
         fill
         priority
         fetchPriority="high"
+        quality={85}
         placeholder="blur"
         sizes="100vw"
         style={{
@@ -47,16 +32,18 @@ const Hero = () => {
           objectPosition: '65% 0%',
           zIndex: 0
         }}
+        loading="eager"
+        decoding="sync"
       />
 
       {/* LEFT CONTENT */}
       <Container className="position-relative z-2 py-6" style={{ maxWidth: '1200px' }}>
         <div className="col-12 col-lg-6 text-start mt-5 pt-4">
-          <h1 className="fw-bold display-5" style={{ color: '#0f252f' }}>
+          <h1 className="fw-bold display-5 text-hero">
             Transform Your Story Into a Published Masterpiece
           </h1>
 
-          <p className="mt-3 fs-6" style={{ color: '#0f252f'  }}>
+          <p className="mt-3 fs-6 text-hero">
             Whether you&apos;re an aspiring author with a brilliant idea, a business
             professional wanting to share your expertise, or a creative mind ready
             to publish your masterpiece, we handle everything from manuscript to
@@ -68,16 +55,14 @@ const Hero = () => {
             <Button
               href="/calendly"
               target="_blank"
-              className="btn btn-primary px-4 py-2 rounded-pill"
-              style={{ color: '#eeeae7' }}
+              className="btn btn-primary px-4 py-2 rounded-pill btn-hero-primary"
             >
               Get Started
             </Button>
 
             <Button
               href="/contact"
-              className="btn btn-outline-light px-4 py-2 rounded-pill"
-              style={{ borderColor: '#ffffff', color: '#0f252f' }}
+              className="btn btn-outline-light px-4 py-2 rounded-pill btn-hero-secondary"
             >
               Learn More
             </Button>
@@ -85,7 +70,7 @@ const Hero = () => {
         </div>
       </Container>
 
-      {/* RIGHT BOOK IMAGE (NO priority) */}
+      {/* RIGHT BOOK IMAGE - Lazy load */}
       <div
         className="d-none d-lg-block position-absolute end-0 pe-6"
         style={{ zIndex: 1, top: '0%' }}
@@ -95,6 +80,8 @@ const Hero = () => {
           alt="Hero Graphic"
           width={660}
           height={840}
+          loading="lazy"
+          quality={85}
           style={{
             objectFit: 'contain',
             maxWidth: '100%',
@@ -105,25 +92,20 @@ const Hero = () => {
 
       {/* TRUSTED PLATFORMS BAR */}
       <div className="position-absolute bottom-0 all-text-white w-45 z-2">
-        <div
-          className="py-4 px-6 d-inline-block d-none d-lg-block"
-          style={{
-            backgroundColor: '#0f252f',
-            borderBottomRightRadius: '60px',
-            borderTopRightRadius: '60px'
-          }}
-        >
+        <div className="py-4 px-6 d-inline-block d-none d-lg-block trusted-bar">
           <Container className="d-inline-block justify-content-left align-items-center py-2">
             <Image
               src={trustedplatforms}
               alt="Trusted by leading platforms"
               width={420}
               height={80}
+              loading="lazy"
+              quality={90}
             />
           </Container>
         </div>
       </div>
-    </Wrapper>
+    </section>
   )
 }
 
