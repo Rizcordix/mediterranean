@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
-import service1 from '@/assets/images/banner/whychooseus1.png'
-import service2 from '@/assets/images/banner/whyus1.png'
+import service1 from '@/assets/images/banner/whychooseus1.avif'
+import service2 from '@/assets/images/banner/whyus1.avif'
 import { Col, Container, Row } from 'react-bootstrap'
 import Link from 'next/link'
 
@@ -28,11 +28,24 @@ const Info = () => {
                 </div>
               </div>
             </div>
-            <Image className="rounded mt-4 shadow-hover up-on-hover" src={service1} alt="service" />
+            <Image
+              src={service1}
+              alt="service"
+              width={600}
+              height={420}
+              className="rounded mt-4 shadow-hover up-on-hover w-100"
+            />
+
           </Col>
 
           <Col md={6} className="ps-lg-5 mt-5 mt-md-0">
-            <Image className="rounded mb-4 shadow-hover up-on-hover" src={service2} alt="service" />
+            <Image
+              src={service2}
+              alt="service"
+              width={600}
+              height={420}
+              className="rounded mt-4 shadow-hover up-on-hover w-100"
+            />
             <div>
               <p className="bg-dark small text-white rounded px-2 py-0 mb-2 d-inline-block">Why Choose Us</p>
               <h2 className="h1 fw-bold">A Team Committed to Your Success.</h2>

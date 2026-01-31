@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import React from 'react'
-import heroimage from '@/assets/images/banner/booksampleshero.png'
+import heroimage from '@/assets/images/banner/booksampleshero_converted.avif'
 import { Button, Col, Container, Row } from 'react-bootstrap'
 import { usePopup } from '@/components/wrappers/PopupContext'
 

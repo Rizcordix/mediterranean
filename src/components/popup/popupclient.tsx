@@ -1,5 +1,5 @@
 "use client";
 import PopupCard from "./popup";
 export default function PopupClientWrapper() {
-  return <PopupCard showOnEveryVisit={true} delayMs={6000} />;
+  return <PopupCard showOnEveryVisit={false} delayMs={10000} />;
 }

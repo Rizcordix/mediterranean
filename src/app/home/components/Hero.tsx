@@ -6,7 +6,7 @@ import { Container, Button } from 'react-bootstrap'
 
 import banner8 from '@/assets/images/banner/mainbg.avif'
 import trustedplatforms from '@/assets/images/banner/trusted-platforms.png'
-import bookImage from '@/assets/images/banner/herobook1.webp'
+import bookImage from '@/assets/images/banner/herobook1.avif'
 
 const Hero = () => {
   return (

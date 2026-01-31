@@ -14,112 +14,112 @@ const PortfolioSection = () => {
       title: "The House You Build Within",
       subtitle: "A Guide to Building Your Inner Self",
       author: "Liam Green",
-      image: "/portfolio_images/1.png"
+      image: "/portfolio_images/1_converted.avif"
     },
     {
       id: 2,
       title: "Marshall's Keep",
       subtitle: "Love is a Fortess.",
       author: "Ryan Marshall",
-      image: "/portfolio_images/2.png"
+      image: "/portfolio_images/2_converted.avif"
     },
     {
       id: 3,
       title: "BILLI",
       subtitle: "One Woman's Fight for Survival.",
       author: "Robert K Bateman",
-      image: "/portfolio_images/3.png"
+      image: "/portfolio_images/3_converted.avif"
     },
     {
       id: 4,
       title: "Beyong The Resume:",
       subtitle: "A 40-Year Framework for the Modern Professional.",
       author: "Joshua Sciascia",
-      image: "/portfolio_images/4.png"
+      image: "/portfolio_images/4_converted.avif"
     },
     {
       id: 5,
       title: "The Last Good Liar",
       subtitle: "Followed by Millions. Hunted by One.",
       author: "Clara Monet",
-      image: "/portfolio_images/thelastgoodliar.jpg"
+      image: "/portfolio_images/thelastgoodliar_converted.avif"
     },
     {
       id: 6,
       title: "The Magical Moon",
       subtitle: "A Celestial Story for Earthly Hearts.",
       author: "Melissa Jacob",
-      image: "/portfolio_images/5.png"
+      image: "/portfolio_images/5_converted.avif"
     },
     {
       id: 7,
       title: "The Sheriff's Tale",
       subtitle: "A Ballad of Duty and a Silent Heart.",
       author: "Kira Elington",
-      image: "/portfolio_images/Sheriff_Tale_Book_Cover.png"
+      image: "/portfolio_images/Sheriff_Tale_Book_Cover_converted.avif"
     },
     {
       id: 8,
       title: "The Librarian of Lost Things",
       subtitle: "Every object holds a memory. Some are deadly.",
       author: "Jennifer Delmont",
-      image: "/portfolio_images/6.png"
+      image: "/portfolio_images/6_converted.avif"
     },
     {
       id: 9,
       title: "Might as Well Be an Ocean",
       subtitle: "Fake engagement, real hearts at risk.",
       author: "Kellian McKnight",
-      image: "/portfolio_images/Might_as_well.png"
+      image: "/portfolio_images/Might_as_well_converted.avif"
     },
     {
       id: 10,
       title: "I Want to Kiss You in Public",
       subtitle: "One British student changes every rule.",
       author: "Zelda French",
-      image: "/portfolio_images/Iwantto.png"
+      image: "/portfolio_images/Iwantto_converted.avif"
     },
     {
       id: 11,
       title: "Frantic",
       subtitle: "Three days to stop a catastrophe.",
       author: "Brent Bradley",
-      image: "/portfolio_images/Franctic.png"
+      image: "/portfolio_images/Franctic_converted.avif"
     },
     {
       id: 12,
       title: "Falling for Forever",
       subtitle: "She fell for a wolf's disguise.",
       author: "Sia Morgan",
-      image: "/portfolio_images/Falling_for_forever.png"
+      image: "/portfolio_images/Falling_for_forever_converted.avif"
     },
     {
       id: 13,
       title: "A Deadly Night's End",
       subtitle: "One detective, fifty million, no escape.",
       author: "R.A Valetta",
-      image: "/portfolio_images/Deadly.png"
+      image: "/portfolio_images/Deadly_converted.avif"
     },
     {
       id: 14,
       title: "Pucking Virgins",
       subtitle: "A fake contract ignites forbidden desire.",
       author: "Amber Heart",
-      image: "/portfolio_images/TrackingVirgins.png"
+      image: "/portfolio_images/TrackingVirgins_converted.avif"
     },
     {
       id: 15,
       title: "Crazy Love Crazy Lies",
       subtitle: "Scandal, secrets, and a dangerous attraction.",
       author: "Madison Michael",
-      image: "/portfolio_images/CrazyLove.png"
+      image: "/portfolio_images/CrazyLove_converted.avif"
     },
     {
       id: 16,
       title: "The Royal ring",
       subtitle: "A crown depends on a promise.",
       author: "Hannah Willow",
-      image: "/portfolio_images/RoyalRing.png"
+      image: "/portfolio_images/RoyalRing_converted.avif"
     },
   ];
 
@@ -201,7 +201,7 @@ const PortfolioSection = () => {
             <div className="books-grid">
               {getCurrentBooks().map((book, index) => (
                 <div 
-                  key={`${book.id}-${currentSlide}-${index}`} 
+                  key={book.id}
                   className={`book-card ${isAnimating ? 'animating' : ''}`}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
@@ -355,13 +355,9 @@ const PortfolioSection = () => {
           min-height: 400px;
         }
 
-        .book-card {
-          opacity: 0;
-          animation: fadeInUp 0.4s ease forwards;
-        }
-
         .book-card.animating {
-          animation: fadeOut 0.4s ease forwards;
+          opacity: 0;
+          transform: translateY(-20px);
         }
 
         @keyframes fadeInUp {
