@@ -6,8 +6,7 @@ import { PopupProvider } from '@/components/wrappers/PopupContext'
 import PopupClientWrapper from "@/components/popup/popupclient"
 import Script from 'next/script'
 import { DiscountPopupProvider } from '@/components/popup/DiscountPopupContext'
-import { GoogleTagManager } from '@next/third-parties/google'
-import GTMNoScript from '@/components/GTMNoScript'
+import GTMPageView from '@/components/GTMPageView'
 
 import 'aos/dist/aos.css'
 import '@/assets/scss/style.scss'
@@ -66,7 +65,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <GoogleTagManager gtmId="GTM-M6CFLD2Z" />
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-M6CFLD2Z');
+            `,
+          }}
+        />
         {/* Meta Pixel Script */}
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
@@ -88,7 +99,14 @@ export default function RootLayout({
       </head>
 
       <body className={inter.className}>
-        <GTMNoScript />
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-M6CFLD2Z"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
         <noscript>
           <img
             height="1"
@@ -100,7 +118,10 @@ export default function RootLayout({
 
         <DiscountPopupProvider>
           <PopupProvider>
-            <AppProviders>{children}</AppProviders>
+            <AppProviders>
+              <GTMPageView />
+              {children}
+              </AppProviders>
 
             <Script
               src="https://embed.tawk.to/6954e038d5d3bd197b4d818f/1jdponnti"
