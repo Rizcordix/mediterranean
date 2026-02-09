@@ -8,6 +8,8 @@ import {
   TrendingUp,
   AlertCircle,
 } from "lucide-react";
+import { useDiscountPopup } from '@/components/popup/DiscountPopupContext';
+import { Button } from "react-bootstrap";
 
 const LaunchOfferSection: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -16,6 +18,7 @@ const LaunchOfferSection: React.FC = () => {
     minutes: 0,
     seconds: 0,
   });
+  const { openDiscount } = useDiscountPopup();
 
   useEffect(() => {
     const targetDate = new Date();
@@ -121,7 +124,7 @@ const LaunchOfferSection: React.FC = () => {
               <span className="price-strike">$550</span>
               <span className="price-final">FREE</span>
             </div>
-            <button className="cta-button">
+            <button onClick={openDiscount} className="cta-button">
               <Gift size={18} />
               Claim Now
             </button>
