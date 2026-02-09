@@ -30,7 +30,7 @@ const PublishingPackages: React.FC = () => {
     {
       name: 'Start Up Package',
       regularPrice: 600,
-      discountedPrice: 130,
+      discountedPrice: 149,
       sections: [
         {
           title: 'Manuscript Preparation',
@@ -70,7 +70,7 @@ const PublishingPackages: React.FC = () => {
     {
       name: 'Standard Package',
       regularPrice: 900,
-      discountedPrice: 250,
+      discountedPrice: 299,
       isPopular: true,
       badge: 'MOST SOLD',
       sections: [
@@ -116,7 +116,7 @@ const PublishingPackages: React.FC = () => {
     {
       name: 'Authors Elite',
       regularPrice: 3500,
-      discountedPrice: 1749,
+      discountedPrice: 1299,
       sections: [
         {
           title: 'Manuscript Preparation',
