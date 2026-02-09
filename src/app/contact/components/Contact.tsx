@@ -147,8 +147,6 @@ const Contact = () => {
                   </div>
                   <h5 className="mb-2">Call Us</h5>
                   <p className="mb-0">
-                    +44 20 3878 7938
-                    <br />
                     +1 281-247-0786
                   </p>
                 </div>

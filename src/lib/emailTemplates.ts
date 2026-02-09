@@ -90,7 +90,7 @@ export function getContactFormEmail(data: {
             </div>
 
             <p style="margin: 20px 0 0 0; font-size: 15px; color: #555;">
-              If you have any questions in the meantime, feel free to reach out to us at <strong>info@mediterraneanpublishing.com</strong> or call <strong>++44 20 3878 7938</strong>.
+              If you have any questions in the meantime, feel free to reach out to us at <strong>info@mediterraneanpublishing.com</strong> or call <strong>+1 281-247-0786</strong>.
             </p>
           </div>
 
@@ -163,7 +163,7 @@ export function getDiscountFormEmail(data: {
             </div>
 
             <p style="margin: 20px 0 0 0; font-size: 15px; color: #555;">
-              If these details need updating or you have any questions, reply directly to this email or call us at <strong>++44 20 3878 7938</strong>.
+              If these details need updating or you have any questions, reply directly to this email or call us at <strong>+1 281-247-0786</strong>.
             </p>
           </div>
 
@@ -261,7 +261,7 @@ export function getQuoteFormEmail(data: {
             </div>
 
             <p style="margin: 20px 0 0 0; font-size: 15px; color: #555;">
-              Have questions? Reach out to us at <strong>info@mediterraneanpublishing.com</strong> or <strong>++44 20 3878 7938</strong>
+              Have questions? Reach out to us at <strong>info@mediterraneanpublishing.com</strong> or <strong>+1 281-247-0786</strong>
             </p>
           </div>
 
@@ -398,7 +398,7 @@ export function getReportFormEmail(data: {
             </div>
 
             <p style="margin: 20px 0 0 0; font-size: 15px; color: #555;">
-              Questions? Contact us at <strong>info@mediterraneanpublishing.com</strong> or <strong>++44 20 3878 7938</strong>
+              Questions? Contact us at <strong>info@mediterraneanpublishing.com</strong> or <strong>+1 281-247-0786</strong>
             </p>
           </div>
 
@@ -475,7 +475,7 @@ export function getLandingPageFormEmail(data: {
             </div>
 
             <p style="margin: 20px 0 0 0; font-size: 15px; color: #555;">
-              If you'd like to speak with someone sooner, feel free to reach out to us at <strong>info@mediterraneanpublishing.com</strong> or call <strong>++44 20 3878 7938</strong>.
+              If you'd like to speak with someone sooner, feel free to reach out to us at <strong>info@mediterraneanpublishing.com</strong> or call <strong>+1 281-247-0786</strong>.
             </p>
           </div>
 

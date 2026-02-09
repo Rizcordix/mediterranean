@@ -228,7 +228,7 @@ What happens next:
 
 Questions? Contact us at:
 📧 info@mediterraneanpublishing.com
-📞 ++44 20 3878 7938
+📞 +1 281-247-0786
 ```
 
 ### Footer
