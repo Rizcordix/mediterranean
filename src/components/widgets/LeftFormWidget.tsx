@@ -491,7 +491,7 @@ const FloatingWidgets: React.FC = () => {
               Speak directly with our experts
             </p>
             <Link
-              href="tel:+12403019114"
+              href="tel:+12812470786"
               style={{
                 display: "block",
                 fontSize: "20px",
@@ -508,10 +508,10 @@ const FloatingWidgets: React.FC = () => {
                 (e.currentTarget as HTMLElement).style.color = "#38a169";
               }}
             >
-              +1 (240) 301-9114
+              +1 281-247-0786
             </Link>
             <Button
-              onClick={() => (window.location.href = "tel:+12403019114")}
+              onClick={() => (window.location.href = "tel:+12812470786")}
               style={{
                 width: "100%",
                 padding: "12px",
