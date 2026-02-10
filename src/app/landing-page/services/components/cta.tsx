@@ -7,6 +7,7 @@ import bookRightImg from '@/assets/images/landingpage/right.png';
 // import { PhoneCall } from 'lucide-react';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
+import author from '@/assets/images/thumbnails/John_Doe.jpg';
 
 const CTASection = () => {
   const router = useRouter();
@@ -140,7 +141,7 @@ try {
               <div className="cta-content">
                 <h2 className="cta-title">We&apos;re here to help</h2>
                 <p className="cta-subtitle">
-                  Ready to share your story? Tell us what you need — we&spos;ll help bring your book to life
+                  Ready to share your story? Tell us what you need — we&apos;ll help bring your book to life
                 </p>
               </div>
             </div>
@@ -176,8 +177,8 @@ try {
                     <div className="testimonial-content">
                       <div className="author-image">
                         <img 
-                          src="https://placehold.co/80x80/364a52/FFF?text=Author" 
-                          alt="Tom Gilroy"
+                          src={author.src}
+                          alt="James H."
                         />
                       </div>
                       <div className="testimonial-text">
@@ -185,7 +186,7 @@ try {
                           <em>I was impressed with their innovation, they did everything quickly, effectively, pro-actively— they&apos;re good.</em>
                         </p>
                         <p className="author">
-                          <strong>Tom Gilroy</strong> author of Season
+                          <strong>James H.</strong> author of Season
                         </p>
                       </div>
                     </div>

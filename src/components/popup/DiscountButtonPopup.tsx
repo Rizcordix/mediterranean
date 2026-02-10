@@ -3,7 +3,8 @@ import { createPortal } from "react-dom";
 import SuccessPopup from "@/components/SuccessPopup";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import { User, Mail, MessageSquare } from "lucide-react";
+import { User, Mail } from "lucide-react";
+import author from "@/assets/images/thumbnails/John_Doe.jpg"
 
 type Props = {
   isOpen: boolean;
@@ -16,7 +17,6 @@ const DiscountButtonPopup: React.FC<Props> = ({ isOpen, onClose }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [message, setMessage] = useState("");
   const [consent, setConsent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [toast, setToast] = useState<Toast>(null);
@@ -58,7 +58,7 @@ const DiscountButtonPopup: React.FC<Props> = ({ isOpen, onClose }) => {
   };
 
   const handleSubmit = async () => {
-    if (!name || !email || !email.includes("@") || !phone || !message) {
+    if (!name || !email || !email.includes("@") || !phone) {
       showToast("Please fill all fields correctly.", "error");
       return;
     }
@@ -70,58 +70,56 @@ const DiscountButtonPopup: React.FC<Props> = ({ isOpen, onClose }) => {
 
     setSubmitting(true);
 
-try {
-  // 1️⃣ Send data to HubSpot
-  const hubspotRes = await fetch("/api/hubspot/submit", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      fullName: name,
-      email,
-      phone,
-      message,
-      consent,
-    }),
-  });
+    try {
+      // 1️⃣ Send data to HubSpot
+      const hubspotRes = await fetch("/api/hubspot/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: name,
+          email,
+          phone,
+          message: "",
+          consent,
+        }),
+      });
 
-  const hubspotData = await hubspotRes.json();
+      const hubspotData = await hubspotRes.json();
 
-  if (!hubspotRes.ok) {
-    console.error("HubSpot error:", hubspotData);
-    showToast("HubSpot submission failed.", "error");
-    return;
-  }
+      if (!hubspotRes.ok) {
+        console.error("HubSpot error:", hubspotData);
+        showToast("HubSpot submission failed.", "error");
+        return;
+      }
 
-  // 2️⃣ Send email AFTER HubSpot succeeds
-  const emailRes = await fetch("/api/sendEmail/discountform", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, email, phone, message }),
-  });
+      // 2️⃣ Send email AFTER HubSpot succeeds
+      const emailRes = await fetch("/api/sendEmail/discountform", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, phone, message: "" }),
+      });
 
-  const emailData = await emailRes.json();
+      const emailData = await emailRes.json();
 
-  if (!emailRes.ok) {
-    console.error("Email error:", emailData);
-    showToast("Email sending failed.", "error");
-    return;
-  }
+      if (!emailRes.ok) {
+        console.error("Email error:", emailData);
+        showToast("Email sending failed.", "error");
+        return;
+      }
 
-  // 3️⃣ Success UI
-  setShowSuccessPopup(true);
-        onClose();
-        setName("");
-        setEmail("");
-        setPhone("");
-        setMessage("");
-        setConsent(false);
-} catch (err) {
-  console.error("Submit error:", err);
-  showToast("Submission failed. Try again.", "error");
-} finally {
-  setSubmitting(false);
-}
-
+      // 3️⃣ Success UI
+      setShowSuccessPopup(true);
+      onClose();
+      setName("");
+      setEmail("");
+      setPhone("");
+      setConsent(false);
+    } catch (err) {
+      console.error("Submit error:", err);
+      showToast("Submission failed. Try again.", "error");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (typeof document === "undefined") return null;
@@ -207,25 +205,10 @@ try {
           display: block;
         }
 
-        .popup-badge-wrapper {
-          text-align: center;
-          margin-bottom: 16px;
-        }
-
-        .popup-badge {
-          display: inline-block;
-          background: #ff4444;
-          color: white;
-          padding: 8px 20px;
-          border-radius: 20px;
-          font-weight: 700;
-          font-size: 14px;
-        }
-
         .popup-title {
           font-size: 1.15rem;
           color: #0f252f;
-          margin: 0 0 16px 0;
+          margin: 0 0 20px 0;
           padding: 0;
           font-weight: 600;
           line-height: 1.4;
@@ -237,31 +220,48 @@ try {
         }
 
         .testimonial {
-          background: #f8f9fa;
+          background: #eeeae7;
           border-radius: 12px;
-          padding: 16px;
-          margin-bottom: 20px;
+          padding: 0;
+          margin-bottom: 24px;
         }
 
         .testimonial-content {
           display: flex;
-          gap: 12px;
+          gap: 16px;
           align-items: flex-start;
         }
 
         .author-image {
           flex-shrink: 0;
-          width: 50px;
-          height: 50px;
+          width: 64px;
+          height: 64px;
+          background: transparent;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
         }
 
         .author-image img {
-          width: 50px;
-          height: 50px;
-          border-radius: 50%;
+          width: 100%;
+          height: 100%;
           object-fit: cover;
-          background: #364a52;
           display: block;
+        }
+
+        .author-badge {
+          position: absolute;
+          bottom: -4px;
+          right: -4px;
+          background: #364a52;
+          color: white;
+          font-size: 0.6rem;
+          font-weight: 600;
+          padding: 4px 8px;
+          border-radius: 12px;
+          border: 2px solid white;
         }
 
         .testimonial-text {
@@ -270,7 +270,7 @@ try {
         }
 
         .quote {
-          font-size: 0.75rem;
+          font-size: 0.85rem;
           line-height: 1.5;
           color: #364a52;
           margin: 0 0 8px 0;
@@ -278,7 +278,7 @@ try {
         }
 
         .author {
-          font-size: 0.65rem;
+          font-size: 0.75rem;
           color: #666;
           margin: 0;
         }
@@ -307,13 +307,7 @@ try {
           color: #364a52;
         }
 
-        .textarea-icon {
-          top: 14px;
-          transform: none;
-        }
-
-        .custom-input,
-        .custom-textarea {
+        .custom-input {
           padding: 12px 14px 12px 42px;
           border: 2px solid #e0e0e0;
           border-radius: 8px;
@@ -325,20 +319,13 @@ try {
           display: block;
         }
 
-        .custom-textarea {
-          min-height: 80px;
-          resize: vertical;
-        }
-
-        .custom-input:focus,
-        .custom-textarea:focus {
+        .custom-input:focus {
           border-color: #0f252f;
           box-shadow: 0 0 0 3px rgba(15, 37, 47, 0.1);
           outline: none;
         }
 
-        .custom-input::placeholder,
-        .custom-textarea::placeholder {
+        .custom-input::placeholder {
           color: #999;
         }
 
@@ -407,7 +394,7 @@ try {
           font-weight: 600;
           cursor: pointer;
           transition: all 0.2s ease;
-          margin: 0;
+          margin: 0 0 24px 0;
           display: block;
         }
 
@@ -421,6 +408,60 @@ try {
           opacity: 0.7;
           cursor: not-allowed;
           transform: none;
+        }
+
+        .partners-section {
+          text-align: center;
+          padding-top: 16px;
+          border-top: 1px solid #e0e0e0;
+        }
+
+        .partners-title {
+          font-size: 0.75rem;
+          color: #666;
+          font-weight: 600;
+          margin: 0 0 16px 0;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        .partners-logos {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 24px;
+          flex-wrap: wrap;
+        }
+
+        .partner-logo {
+          width: 80px;
+          height: 80px;
+          background: #f8f9fa;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.2s ease;
+          border: 1px solid #e0e0e0;
+        }
+
+        .partner-logo:hover {
+          background: #ffffff;
+          border-color: #0f252f;
+          transform: translateY(-2px);
+        }
+
+        .partner-logo img {
+          max-width: 90%;
+          max-height: 90%;
+          object-fit: contain;
+          opacity: 1;
+          transition: all 0.2s ease;
+        }
+
+        .partner-logo:hover img {
+          filter: grayscale(0%);
+          opacity: 1.4;
         }
 
         .popup-toast {
@@ -508,11 +549,6 @@ try {
           width: 100% !important;
         }
 
-        /* Remove arrow */
-        .discount-phone-container .selected-flag .arrow {
-          // display:  !important;
-        }
-
         /* Country list dropdown - ensure it's visible */
         .discount-phone-container .country-list {
           position: absolute !important;
@@ -545,37 +581,45 @@ try {
           }
 
           .testimonial-content {
-            flex-direction: column;
-            text-align: center;
-            align-items: center;
+            gap: 12px;
           }
 
           .author-image {
-            margin: 0 auto;
+            width: 56px;
+            height: 56px;
+          }
+
+          .quote {
+            font-size: 0.8rem;
           }
 
           .form-group {
             margin-bottom: 10px;
           }
 
-          .custom-input,
-          .custom-textarea {
+          .custom-input {
             padding: 11px 12px 11px 40px;
             font-size: 0.75rem;
-          }
-
-          .custom-textarea {
-            min-height: 70px;
           }
 
           .btn-submit {
             padding: 13px;
             font-size: 0.85rem;
+            margin-bottom: 20px;
           }
 
           .discount-phone-input {
             padding: 11px 12px 11px 50px !important;
             font-size: 0.75rem !important;
+          }
+
+          .partners-logos {
+            gap: 16px;
+          }
+
+          .partner-logo {
+            width: 70px;
+            height: 35px;
           }
         }
       `}</style>
@@ -609,16 +653,16 @@ try {
                 <div className="testimonial-content">
                   <div className="author-image">
                     <img 
-                      src="https://placehold.co/80x80/364a52/FFF?text=Author" 
+                      src={author.src}
                       alt="Tom Gilroy"
                     />
                   </div>
                   <div className="testimonial-text">
                     <p className="quote">
-                      <em>I was impressed with their innovation, they did everything quickly, effectively, pro-actively— they&apos;re good.</em>
+                      I was impressed with their innovation, they did everything quickly, effectively, pro-actively— they&apos;re good.
                     </p>
                     <p className="author">
-                      <strong>Tom Gilroy</strong> author of Season
+                      <strong>James H.</strong> author of Season
                     </p>
                   </div>
                 </div>
@@ -659,16 +703,6 @@ try {
                   />
                 </div>
 
-                <div className="form-group">
-                  <MessageSquare size={16} className="input-icon textarea-icon" />
-                  <textarea
-                    className="custom-textarea"
-                    placeholder="Your Message"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                  />
-                </div>
-
                 <div className="consent-check">
                   <input
                     type="checkbox"
@@ -690,6 +724,30 @@ try {
                 >
                   {submitting ? "Sending..." : "Get a Unique Offer →"}
                 </button>
+
+                <div className="partners-section">
+                  <p className="partners-title">Our Trusted Publishing Partners</p>
+                  <div className="partners-logos">
+                    <div className="partner-logo">
+                      <img 
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9GD7-_GsKHGsZGS11a67g9v49TxoL7agYpg&s" 
+                        alt="Amazon Publishing"
+                      />
+                    </div>
+                    <div className="partner-logo">
+                      <img 
+                        src="https://cdn.prod.website-files.com/64ea57571d50b02423c4505d/64fa2b142af6b7c046a3a9e9_barnes%20and%20noble%20logo.png" 
+                        alt="Barnes & Noble Press"
+                      />
+                    </div>
+                    <div className="partner-logo">
+                      <img 
+                        src="https://e7.pngegg.com/pngimages/828/926/png-clipart-white-and-orange-book-logo-heart-symbol-yellow-orange-apple-books-orange-heart.png" 
+                        alt="Apple Books"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
