@@ -28,7 +28,7 @@ const PortfolioSection = () => {
       title: "BILLI",
       subtitle: "One Woman's Fight for Survival.",
       author: "Robert K Bateman",
-      image: "/portfolio_images/3_converted.avif"
+      image: "/portfolio_images/Billi_cover.jpg.jpeg"
     },
     {
       id: 4,
