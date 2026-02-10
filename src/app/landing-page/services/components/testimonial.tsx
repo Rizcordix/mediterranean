@@ -5,24 +5,24 @@ import dynamic from 'next/dynamic'
 const TinySlider = dynamic(() => import('@/components/TinySlider'), { ssr: false })
 import { TinySliderSettings } from 'tiny-slider'
 import { Col, Container, Row } from 'react-bootstrap'
-import avatar1 from '@/assets/images/flags/fr.svg'
-import avatar2 from '@/assets/images/flags/gr.svg'
-import avatar3 from '@/assets/images/flags/uk.svg'
-import avatar5 from '@/assets/images/flag-main/us.svg'
+import avatar1 from '@/assets/images/thumbnails/John_Doe.jpg'
+import avatar2 from '@/assets/images/thumbnails/Emma_Johnson.jpg'
+import avatar3 from '@/assets/images/thumbnails/Sophia_Miller.jpg'
+import avatar5 from '@/assets/images/thumbnails/Liam_Green.jpg'
 
 const testimonialsData = [
   {
     name: 'Michelle T.',
     category: 'Fantasy Author | 2,400+ copies sold',
     description: '"I had a manuscript I\'d been working on for three years. I didn\'t know where to start with publishing. Mediterranean Publishing handled everything—editing, cover design, publishing setup. 90 days later, my book was on Amazon. Within six months, I had 300+ reviews and made back my investment. The support team was incredible. I\'m already working on book two with them."',
-    image: avatar1,
+    image: avatar2,
     title: 'Published in 90 Days. Now Working on Book Two.'
   },
   {
     name: 'James H.',
     category: 'Business Author/Coach | 1,800+ books sold',
     description: '"As a business coach, I needed credibility. A published book was the answer. Mediterranean Publishing didn\'t just publish my book—they helped me build my author platform through their blog writing and marketing services. Now my book is a lead generation tool. I\'ve signed 50+ new coaching clients directly from book visibility. Best investment I\'ve made."',
-    image: avatar2,
+    image: avatar1,
     title: 'Built My Platform. Became an Authority.'
   },
   {
@@ -74,7 +74,7 @@ const Testimonials = () => {
   }
   return (
     <>
-      <section className="bg-light triangle-down py-4">
+      {/* <section className="bg-light triangle-down py-4">
         <Container>
           <Row className="justify-content-center">
             <Col md={10} className="text-center">
@@ -104,7 +104,7 @@ const Testimonials = () => {
             </Col>
           </Row>
         </Container>
-      </section>
+      </section> */}
       <section className="testimonials testimonials-border pb-4">
         <Container>
           <Row>

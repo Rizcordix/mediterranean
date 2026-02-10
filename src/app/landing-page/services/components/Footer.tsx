@@ -8,6 +8,10 @@ import logo2 from '@/assets/images/icons/payment/logo-google-pay.svg'
 import logo3 from '@/assets/images/icons/payment/logo-mastercard.svg'
 import logo4 from '@/assets/images/icons/payment/logo-paypal.svg'
 import logo5 from '@/assets/images/icons/payment/logo-visa.svg'
+import logo6 from '@/assets/images/icons/payment/Airwallex.svg'
+import logo7 from '@/assets/images/icons/payment/Zelle2.svg'
+import logo8 from '@/assets/images/icons/payment/Cashapp.svg'
+import logo9 from '@/assets/images/icons/payment/Monzo2.svg'
 import Link from 'next/link'
 
 const Footer = () => {
@@ -71,6 +75,10 @@ const Footer = () => {
                   <Image src={logo3} alt="Mastercard" height={30} />
                   <Image src={logo4} alt="PayPal" height={30} />
                   <Image src={logo5} alt="Visa" height={30} />
+                  <a href="https://www.zelle.com/" target='_blank'><Image src={logo7} alt="Zelle" height={34} /></a>
+                  <a href="https://monzo.com/" target='_blank'><Image src={logo9} alt="Monzo" height={30} /></a>
+                  <a href="https://www.airwallex.com/" target='_blank'><Image src={logo6} alt="Airwallex" height={30} /></a>
+                  <a href="https://cash.app/" target='_blank'><Image src={logo8} alt="Cashapp" height={30} /></a>
                 </div>
                 </div>
             </div>

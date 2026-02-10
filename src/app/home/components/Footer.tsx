@@ -3,15 +3,12 @@ import React from 'react'
 import Image from 'next/image'
 import logo from '@/assets/images/medi_logo2.png'
 import Link from 'next/link'
-import logo1 from '@/assets/images/icons/payment/logo-american-express-2.svg'
-import logo2 from '@/assets/images/icons/payment/logo-google-pay.svg'
-import logo3 from '@/assets/images/icons/payment/logo-mastercard.svg'
-import logo4 from '@/assets/images/icons/payment/logo-paypal.svg'
-import logo5 from '@/assets/images/icons/payment/logo-visa.svg'
-import logo6 from '@/assets/images/icons/payment/Airwallex.svg'
-import logo7 from '@/assets/images/icons/payment/Zelle2.svg'
-import logo8 from '@/assets/images/icons/payment/Cashapp.svg'
-import logo9 from '@/assets/images/icons/payment/Monzo2.svg'
+import logo1 from '@/assets/images/icons/payment/americanexpress2.svg'
+import logo3 from '@/assets/images/icons/payment/mastercard2.svg'
+import logo4 from '@/assets/images/icons/payment/paypal2.svg'
+import logo5 from '@/assets/images/icons/payment/visa2.svg'
+import logo6 from '@/assets/images/icons/payment/stripe.svg'
+
 
 
 const Footer = () => {
@@ -66,21 +63,39 @@ const Footer = () => {
                 We are committed to helping authors, businesses, and creators bring their stories to life with professional writing, design, and publishing solutions.
               </p>
               
-              {/* Payment Methods */}
-                <div className="payment-methods">
-                <h4>We Accept</h4>
-                <div className="payment-icons">
-                  <a href="https://www.americanexpress.com" target='_blank'><Image src={logo1} alt="American Express" height={30} /></a>
-                  <a href="https://wallet.google.com/" target='_blank'><Image src={logo2} alt="Google Pay" height={30} /></a>
-                  <a href="https://www.mastercard.com/" target='_blank'><Image src={logo3} alt="Mastercard" height={30} /></a>
-                  <a href="https://www.paypal.com/" target='_blank'><Image src={logo4} alt="PayPal" height={30} /></a>
-                  <a href="https://www.visa.com/" target='_blank'><Image src={logo5} alt="Visa" height={30} /></a>
-                  <a href="https://www.zelle.com/" target='_blank'><Image src={logo7} alt="Zelle" height={34} /></a>
-                  <a href="https://monzo.com/" target='_blank'><Image src={logo9} alt="Monzo" height={30} /></a>
-                  <a href="https://www.airwallex.com/" target='_blank'><Image src={logo6} alt="Airwallex" height={30} /></a>
-                  <a href="https://cash.app/" target='_blank'><Image src={logo8} alt="Cashapp" height={30} /></a>
+              {/* Payment Methods - New Professional Design */}
+              <div className="payment-security-section">
+                <div className="security-badge">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                  </svg>
+                  <div>
+                    <strong>Guaranteed safe & secure checkout</strong>
+                    <div className="powered-by">
+                      <span>Powered by</span>
+                      <a href="https://stripe.com" target="_blank" rel="noopener noreferrer">
+                      <Image src={logo6} alt="Stripe" height={18} />
+                      </a>
+                    </div>
+                  </div>
                 </div>
+                
+                <div className="payment-cards-grid">
+                  <a href="https://www.visa.com/" target="_blank" rel="noopener noreferrer" className="payment-card-item">
+                    <Image src={logo5} alt="Visa" height={24} />
+                  </a>
+                  <a href="https://www.mastercard.com/" target="_blank" rel="noopener noreferrer" className="payment-card-item">
+                    <Image src={logo3} alt="Mastercard" height={24} />
+                  </a>
+                  <a href="https://www.americanexpress.com" target="_blank" rel="noopener noreferrer" className="payment-card-item">
+                    <Image src={logo1} alt="American Express" height={24} />
+                  </a>
+                  <a href="https://www.paypal.com/" target="_blank" rel="noopener noreferrer" className="payment-card-item">
+                    <Image src={logo4} alt="PayPal" height={24} />
+                  </a>
                 </div>
+              </div>
             </div>
 
             {/* Column 2: Quick Links */}
@@ -125,12 +140,6 @@ const Footer = () => {
                   </svg>
                   <a href="tel:+12812470786">+1 281-247-0786</a>
                 </li>
-                {/* <li>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M22" />
-                  </svg>
-                  <a href="tel:+12812470786">+1 281-247-0786</a>
-                </li> */}
                 <li>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
@@ -294,19 +303,6 @@ const Footer = () => {
           margin-bottom: 20px;
         }
 
-        .logo-placeholder {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          margin-bottom: 16px;
-        }
-
-        .logo-placeholder span {
-          font-size: 20px;
-          font-weight: 700;
-          color: #ffffff;
-        }
-
         .brand-description {
           font-size: 14px;
           line-height: 1.6;
@@ -314,55 +310,82 @@ const Footer = () => {
           margin-bottom: 24px;
         }
 
-        /* Payment Methods */
-        .payment-methods h4 {
-          font-size: 14px;
-          font-weight: 600;
-          color: #0f252f;
-          margin-bottom: 12px;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
+        /* New Payment Security Section */
+        .payment-security-section {
+          background: rgba(255, 255, 255, 0.6);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(54, 74, 82, 0.15);
+          border-radius: 12px;
+          padding: 20px;
+          margin-top: 20px;
+          box-shadow: 0 2px 8px rgba(15, 37, 47, 0.08);
         }
 
-        .payment-icons {
+        .security-badge {
           display: flex;
-          flex-wrap: wrap;
+          align-items: flex-start;
           gap: 12px;
+          margin-bottom: 16px;
+          padding-bottom: 16px;
+          border-bottom: 1px solid rgba(54, 74, 82, 0.1);
         }
 
-        .payment-icons a {
-          display: inline-block;
-          transition: all 0.3s ease;
+        .security-badge svg {
+          flex-shrink: 0;
+          color: #10b981;
+          margin-top: 2px;
         }
 
-        .payment-icons a:hover {
-          transform: translateY(-2px);
-          transition: all 0.3s ease;
+        .security-badge strong {
+          display: block;
+          font-size: 13px;
+          font-weight: 600;
+          color: #1f2937;
+          margin-bottom: 4px;
         }
 
-        .payment-icons img {
-          transition: all 0.3s ease;
+        .powered-by {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          margin-top: 4px;
         }
 
-        .payment-icons img:hover {
-          filter: brightness(1.2);
-          transform: scale(1.05);
-        }
-          
-        .payment-icon {
-          background: rgba(255, 255, 255, 0.1);
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          border-radius: 6px;
-          padding: 6px 10px;
+        .powered-by span {
           font-size: 11px;
-          font-weight: 700;
-          color: #ffffff;
-          transition: all 0.3s ease;
+          color: #6b7280;
         }
 
-        .payment-icon:hover {
-          background: rgba(255, 255, 255, 0.15);
-          transform: translateY(-2px);
+        .payment-cards-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 10px;
+        }
+
+        .payment-card-item {
+          background: rgba(255, 255, 255, 0.8);
+          border: 1px solid rgba(54, 74, 82, 0.12);
+          border-radius: 6px;
+          padding: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.2s ease;
+          min-height: 44px;
+          text-decoration: none;
+        }
+
+        .payment-card-item:hover {
+          background: rgba(255, 255, 255, 0.95);
+          border-color: rgba(54, 74, 82, 0.25);
+          transform: translateY(-1px);
+          box-shadow: 0 4px 8px rgba(15, 37, 47, 0.12);
+        }
+
+        @media (max-width: 576px) {
+          .payment-cards-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
         }
 
         /* Footer Columns */
@@ -404,10 +427,6 @@ const Footer = () => {
         }
 
         .footer-links a:hover {
-          color: #364a52;
-          padding-left: 5px;
-        }
-        .footer-links Link:hover {
           color: #364a52;
           padding-left: 5px;
         }

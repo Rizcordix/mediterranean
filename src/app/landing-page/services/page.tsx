@@ -120,7 +120,7 @@ const AgencyStartUpPage = () => {
       <LaunchOfferSection />
       <Testimonials />
         
-      <PricingComponent />
+      {/* <PricingComponent /> */}
         
         <CTASection />
         <Footer />

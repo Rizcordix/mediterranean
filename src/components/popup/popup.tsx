@@ -3,7 +3,8 @@ import { createPortal } from "react-dom";
 import SuccessPopup from "@/components/SuccessPopup";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import { User, Mail, MessageSquare } from "lucide-react";
+import { User, Mail } from "lucide-react";
+import author from "@/assets/images/thumbnails/John_Doe.jpg"
 
 type Props = {
   showOnEveryVisit?: boolean;
@@ -17,7 +18,6 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [message, setMessage] = useState("");
   const [consent, setConsent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [toast, setToast] = useState<Toast>(null);
@@ -74,7 +74,7 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
   };
 
   const handleSubmit = async () => {
-    if (!name || !email || !email.includes("@") || !phone || !message) {
+    if (!name || !email || !email.includes("@") || !phone) {
       showToast("Please fill all fields correctly.", "error");
       return;
     }
@@ -95,7 +95,7 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
           fullName: name,
           email,
           phone,
-          message,
+          message: "",
           consent,
         }),
       });
@@ -112,7 +112,7 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
       const emailRes = await fetch("/api/sendEmail/discountform", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, phone, message }),
+        body: JSON.stringify({ name, email, phone, message: "" }),
       });
 
       const emailData = await emailRes.json();
@@ -129,7 +129,6 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
       setName("");
       setEmail("");
       setPhone("");
-      setMessage("");
       setConsent(false);
     } catch (err) {
       console.error("Submit error:", err);
@@ -137,7 +136,6 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
     } finally {
       setSubmitting(false);
     }
-
   };
 
   if (typeof document === "undefined") return null;
@@ -223,25 +221,10 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
           display: block;
         }
 
-        .popup-badge-wrapper {
-          text-align: center;
-          margin-bottom: 16px;
-        }
-
-        .popup-badge {
-          display: inline-block;
-          background: #ff4444;
-          color: white;
-          padding: 8px 20px;
-          border-radius: 20px;
-          font-weight: 700;
-          font-size: 14px;
-        }
-
         .popup-title {
           font-size: 1.15rem;
           color: #0f252f;
-          margin: 0 0 16px 0;
+          margin: 0 0 20px 0;
           padding: 0;
           font-weight: 600;
           line-height: 1.4;
@@ -252,8 +235,8 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
           color: #135874;
         }
 
-        .testimonial {
-          background: #f8f9fa;
+       .testimonial {
+          background: #eeeae7;
           border-radius: 12px;
           padding: 16px;
           margin-bottom: 20px;
@@ -267,17 +250,34 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
 
         .author-image {
           flex-shrink: 0;
-          width: 50px;
-          height: 50px;
+          width: 64px;
+          height: 64px;
+          background: #transparent;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
         }
 
         .author-image img {
-          width: 50px;
-          height: 50px;
-          border-radius: 50%;
+          width: 100%;
+          height: 100%;
           object-fit: cover;
-          background: #364a52;
           display: block;
+        }
+
+        .author-badge {
+          position: absolute;
+          bottom: -4px;
+          right: -4px;
+          background: #364a52;
+          color: white;
+          font-size: 0.6rem;
+          font-weight: 600;
+          padding: 4px 8px;
+          border-radius: 12px;
+          border: 2px solid white;
         }
 
         .testimonial-text {
@@ -286,7 +286,7 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
         }
 
         .quote {
-          font-size: 0.75rem;
+          font-size: 0.85rem;
           line-height: 1.5;
           color: #364a52;
           margin: 0 0 8px 0;
@@ -294,7 +294,7 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
         }
 
         .author {
-          font-size: 0.65rem;
+          font-size: 0.75rem;
           color: #666;
           margin: 0;
         }
@@ -323,14 +323,7 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
           color: #364a52;
         }
 
-        .textarea-icon {
-          top: 14px;
-          transform: none;
-          z-index: 2;
-        }
-
-        .custom-input,
-        .custom-textarea {
+        .custom-input {
           padding: 12px 14px 12px 42px;
           border: 2px solid #e0e0e0;
           border-radius: 8px;
@@ -342,20 +335,13 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
           display: block;
         }
 
-        .custom-textarea {
-          min-height: 80px;
-          resize: vertical;
-        }
-
-        .custom-input:focus,
-        .custom-textarea:focus {
+        .custom-input:focus {
           border-color: #0f252f;
           box-shadow: 0 0 0 3px rgba(15, 37, 47, 0.1);
           outline: none;
         }
 
-        .custom-input::placeholder,
-        .custom-textarea::placeholder {
+        .custom-input::placeholder {
           color: #999;
         }
 
@@ -424,7 +410,7 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
           font-weight: 600;
           cursor: pointer;
           transition: all 0.2s ease;
-          margin: 0;
+          margin: 0 0 24px 0;
           display: block;
         }
 
@@ -438,6 +424,60 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
           opacity: 0.7;
           cursor: not-allowed;
           transform: none;
+        }
+
+        .partners-section {
+          text-align: center;
+          padding-top: 16px;
+          border-top: 1px solid #e0e0e0;
+        }
+
+        .partners-title {
+          font-size: 0.75rem;
+          color: #666;
+          font-weight: 600;
+          margin: 0 0 16px 0;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        .partners-logos {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 24px;
+          flex-wrap: wrap;
+        }
+
+        .partner-logo {
+          width: 80px;
+          height: 80px;
+          background: #f8f9fa;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.2s ease;
+          border: 1px solid #e0e0e0;
+        }
+
+        .partner-logo:hover {
+          background: #ffffff;
+          border-color: #0f252f;
+          transform: translateY(-2px);
+        }
+
+        .partner-logo img {
+          max-width: 90%;
+          max-height: 90%;
+          object-fit: contain;
+          opacity: 1;
+          transition: all 0.2s ease;
+        }
+
+        .partner-logo:hover img {
+          filter: grayscale(0%);
+          opacity: 1.4;
         }
 
         .popup-toast {
@@ -525,19 +565,15 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
           width: 100% !important;
         }
 
-        /* Remove arrow */
-        .popup-phone-container .selected-flag .arrow {
-          // display: none !important;
-        }
-
         /* Country list dropdown - ensure it's visible */
         .popup-phone-container .country-list {
           position: absolute !important;
-          z-index: 4 !important;
+          z-index: 9999 !important;
           background: white !important;
           border: 1px solid #e0e0e0 !important;
           border-radius: 8px !important;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+          max-height: 200px !important;
           overflow-y: auto !important;
           width: 300% !important;
           left: 0% !important;
@@ -561,37 +597,45 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
           }
 
           .testimonial-content {
-            flex-direction: column;
-            text-align: center;
-            align-items: center;
+            gap: 12px;
           }
 
           .author-image {
-            margin: 0 auto;
+            width: 56px;
+            height: 56px;
+          }
+
+          .quote {
+            font-size: 0.8rem;
           }
 
           .form-group {
             margin-bottom: 10px;
           }
 
-          .custom-input,
-          .custom-textarea {
+          .custom-input {
             padding: 11px 12px 11px 40px;
             font-size: 0.75rem;
-          }
-
-          .custom-textarea {
-            min-height: 70px;
           }
 
           .btn-submit {
             padding: 13px;
             font-size: 0.85rem;
+            margin-bottom: 20px;
           }
 
           .popup-phone-input {
             padding: 11px 12px 11px 50px !important;
             font-size: 0.75rem !important;
+          }
+
+          .partners-logos {
+            gap: 16px;
+          }
+
+          .partner-logo {
+            width: 70px;
+            height: 35px;
           }
         }
       `}</style>
@@ -625,16 +669,16 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
                 <div className="testimonial-content">
                   <div className="author-image">
                     <img 
-                      src="https://placehold.co/80x80/364a52/FFF?text=Author" 
-                      alt="Tom Gilroy"
+                      src={author.src}
+                      alt="James H."
                     />
                   </div>
                   <div className="testimonial-text">
                     <p className="quote">
-                      <em>I was impressed with their innovation, they did everything quickly, effectively, pro-actively— they&apos;re good.</em>
+                      I was impressed with their innovation, they did everything quickly, effectively, pro-actively— they&apos;re good.
                     </p>
                     <p className="author">
-                      <strong>Tom Gilroy</strong> author of Season
+                      <strong>James H.</strong> author of Season
                     </p>
                   </div>
                 </div>
@@ -668,20 +712,10 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
                     country={'us'}
                     value={phone}
                     onChange={setPhone}
-                    placeholder="Phone"
+                    placeholder="Phone Number"
                     containerClass="popup-phone-container"
                     inputClass="popup-phone-input"
                     buttonClass="popup-phone-flag"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <MessageSquare size={16} className="input-icon textarea-icon" />
-                  <textarea
-                    className="custom-textarea"
-                    placeholder="Your Message"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
                   />
                 </div>
 
@@ -705,6 +739,30 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
                 >
                   {submitting ? "Sending..." : "Get a Unique Offer →"}
                 </button>
+
+                <div className="partners-section">
+                  <p className="partners-title">Our Trusted Publishing Partners</p>
+                  <div className="partners-logos">
+                    <div className="partner-logo">
+                      <img 
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9GD7-_GsKHGsZGS11a67g9v49TxoL7agYpg&s" 
+                        alt="Amazon Publishing"
+                      />
+                    </div>
+                    <div className="partner-logo">
+                      <img 
+                        src="https://cdn.prod.website-files.com/64ea57571d50b02423c4505d/64fa2b142af6b7c046a3a9e9_barnes%20and%20noble%20logo.png" 
+                        alt="Barnes & Noble Press"
+                      />
+                    </div>
+                    <div className="partner-logo">
+                      <img 
+                        src="https://e7.pngegg.com/pngimages/828/926/png-clipart-white-and-orange-book-logo-heart-symbol-yellow-orange-apple-books-orange-heart.png" 
+                        alt="Apple Books"
+                      />
+                    </div>
+                  </div>
+                </div>
               </form>
             </div>
           </div>

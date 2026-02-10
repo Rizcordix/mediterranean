@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 import { X, ChevronRight, Clock } from "lucide-react";
 import icon1 from "@/assets/images/icons/confidential.svg";
 import icon2 from "@/assets/images/icons/ssl.svg";
+import icon3 from "@/assets/images/icons/bbb-2.svg";
+import icon4 from "@/assets/images/icons/iso-2.svg";
+import icon5 from "@/assets/images/icons/privacy-2.svg";
 import Image from "next/image";
 import SuccessPopup from "@/components/SuccessPopup";
 
@@ -283,6 +286,15 @@ export default function InstantQuotePopup({ isOpen, onClose }: any) {
               </div>
               <div className="badge">
                 <Image src={icon2} alt="SSL Encrypted" width={114} />
+              </div>
+              <div className="badge">
+                <Image src={icon3} alt="BBB Accredited" width={120} />
+              </div>
+              <div className="badge">
+                <Image src={icon4} alt="ISO Certified" width={90} />
+              </div>
+              <div className="badge">
+                <Image src={icon5} alt="Privacy Protected" width={120} />
               </div>
             </div>
 
