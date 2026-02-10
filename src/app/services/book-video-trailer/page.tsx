@@ -11,6 +11,7 @@ import Categories from '@/app/home/components/Categories'
 import CTA from '@/app/home/components/Features'
 import ProcedureSection from '@/app/home/components/procedure'
 import Component0 from '../bookwriting/components/Special'
+import VideoBookSection from './components/videosection'
 
 export const metadata = {
   title: "Book Video Trailer Creation | Mediterranean Publishing – Bring Your Story to Life",
@@ -53,6 +54,7 @@ const AgencyStartUpPage = () => {
       <Clients />
       <div className="divider mt-5" />
       <AboutUs />
+      <VideoBookSection />
       <Component0 id={8} />
       <CTA />
       <PricingComponent defaultTab={4} />
