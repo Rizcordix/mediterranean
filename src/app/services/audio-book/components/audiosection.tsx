@@ -10,8 +10,8 @@ const AudiobookSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentAudiobook, setCurrentAudiobook] = useState<any>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
+    const [currentTime, setCurrentTime] = useState(0);
+    const [duration, setDuration] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -88,6 +88,42 @@ const AudiobookSection = () => {
       image: "/portfolio_images/6_converted.avif",
       audioUrl: "/audiobook/librarian.mp3"
     },
+    {
+      id: 9,
+      title: "Exiled",
+      subtitle: "In a world of chaos and betrayal, one boy must fight to survive.",
+      author: "Joaquin Lopez",
+      narrator: "Emily Watson",
+      image: "/portfolio_images/exiled.png",
+      audioUrl: "/audiobook/Exiled.mp3"
+    },
+    {
+      id: 10,
+      title: "The Buried",
+      subtitle: "The world above us is gone. But we, the chosen few, have survived.",
+      author: "Melissa Grey",
+      narrator: "Emily Watson",
+      image: "/portfolio_images/buried.png",
+      audioUrl: "/audiobook/theburried.mp3"
+    },
+    {
+      id: 11,
+      title: "Before I Cheat",
+      subtitle: "Nolan must haunt Harriet, but realizes she is not the person needing redemption, leading to a forbidden romance.",
+      author: "Meek White",
+      narrator: "Emily Watson",
+      image: "/portfolio_images/cheat.png",
+      audioUrl: "/audiobook/beforeIcheat.mp3"
+    },
+    {
+      id: 12,
+      title: "Kadashus",
+      subtitle: "In a kingdom poisoned by envy, one knight is cast into exile. Stripped of honor... now driven by vengeance.",
+      author: "Ernesto J. Geigel JR",
+      narrator: "Emily Watson",
+      image: "/portfolio_images/kadashus.png",
+      audioUrl: "/audiobook/kadashus.mp3"
+    }
   ];
 
   useEffect(() => {
