@@ -10,6 +10,7 @@ import AuthorSuccessStories from './components/SuccessStories';
 import Clients from '../../services/bookwriting/components/Clients';
 import FAQ from './components/Faq';
 import FinalCTA from './components/FinalCta';
+import PublishingPartnersShowcase from '../services/components/partners';
 
 export const metadata = {
   title: "Author's Legacy Program | Mediterranean Publishing | Build Your Author Platform",
@@ -100,6 +101,7 @@ const AgencyStartUpPage = () => {
       <Clients />
       {/* <div className="divider mb-5" /> */}
       <TargetAudience />
+      <PublishingPartnersShowcase />
       <CTA />                                                                                 
       <AuthorsLegacyDifference />
       <FeaturesShowcase />
