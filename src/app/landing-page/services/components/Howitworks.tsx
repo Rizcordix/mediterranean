@@ -5,9 +5,11 @@ import image1 from '@/assets/images/landingpage/Steps/1.png';
 import image2 from '@/assets/images/landingpage/Steps/2.png';
 import image3 from '@/assets/images/landingpage/Steps/3.png';
 import image4 from '@/assets/images/landingpage/Steps/4.png';
+import { usePopup } from '@/components/wrappers/PopupContext'
 
 const HowItWorksSection = () => {
   const [activeStep, setActiveStep] = useState(0);
+  const { openQuote } = usePopup()
 
   const steps = [
     {
@@ -131,7 +133,7 @@ const HowItWorksSection = () => {
                   ))}
                 </div>
 
-                <button className="btn-get-started mt-5">
+                <button onClick={openQuote} className="btn-get-started mt-5">
                   Get Started →
                 </button>
               </div>
