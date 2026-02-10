@@ -12,6 +12,7 @@ import CTASection from './components/cta';
 import HowItWorksSection from './components/Howitworks';
 import Clients from './components/Clients';
 import PublishingPackagesComparison from './components/packagescomparision';
+// import PublishingPartnersShowcase from './components/partners';
 
 export const metadata = {
   title: "Publish Your Book in 90 Days | Professional Book Publishing Services",
@@ -120,6 +121,7 @@ const AgencyStartUpPage = () => {
       <PublishingPackagesComparison />
       <PublishingFeatures />
       <LaunchOfferSection />
+      {/* <PublishingPartnersShowcase /> */}
       <Testimonials />
         
       {/* <PricingComponent /> */}
