@@ -1,12 +1,9 @@
 'use client'
 
-import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Play, X } from 'lucide-react';
+import React, { useState } from 'react';
+import { X } from 'lucide-react';
 
 const VideoBookSection = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentVideo, setCurrentVideo] = useState<any>(null);
 
@@ -115,62 +112,6 @@ const VideoBookSection = () => {
     return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
   };
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (isModalOpen) {
-        if (e.key === 'Escape') {
-          closeModal();
-        }
-      } else {
-        if (e.key === 'ArrowLeft') {
-          handlePrevSlide();
-        } else if (e.key === 'ArrowRight') {
-          handleNextSlide();
-        }
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentSlide, isAnimating, isModalOpen]);
-
-  const booksPerSlide = isMobile ? 1 : 4;
-  const totalSlides = Math.ceil(videoBooks.length / booksPerSlide);
-
-  const handleSlideChange = (index: number) => {
-    if (isAnimating || index === currentSlide) return;
-    setIsAnimating(true);
-    setCurrentSlide(index);
-    setTimeout(() => setIsAnimating(false), 400);
-  };
-
-  const handleNextSlide = () => {
-    if (isAnimating) return;
-    const nextSlide = (currentSlide + 1) % totalSlides;
-    handleSlideChange(nextSlide);
-  };
-
-  const handlePrevSlide = () => {
-    if (isAnimating) return;
-    const prevSlide = currentSlide === 0 ? totalSlides - 1 : currentSlide - 1;
-    handleSlideChange(prevSlide);
-  };
-
-  const getCurrentBooks = () => {
-    const startIndex = currentSlide * booksPerSlide;
-    return videoBooks.slice(startIndex, startIndex + booksPerSlide);
-  };
-
   const openModal = (videoBook: any) => {
     setCurrentVideo(videoBook);
     setIsModalOpen(true);
@@ -195,64 +136,30 @@ const VideoBookSection = () => {
             </h5>
           </div>
 
-          {/* Video Books Slider */}
-          <div className="videobook-slider-container">
-            <button 
-              className="videobook-nav-button videobook-nav-button-left" 
-              onClick={handlePrevSlide}
-              disabled={isAnimating}
-              aria-label="Previous video trailers"
-            >
-              <ChevronLeft size={24} />
-            </button>
-
-            <div className="videobook-books-grid">
-              {getCurrentBooks().map((videoBook, index) => (
-                <div 
-                  key={videoBook.id}
-                  className={`videobook-book-card ${isAnimating ? 'videobook-animating' : ''}`}
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="videobook-book-image-wrapper">
-                    <img 
-                      src={videoBook.image} 
-                      alt={videoBook.title}
-                      className="videobook-book-image"
-                    />
-                    <div className="videobook-play-overlay">
-                      <button 
-                        className="videobook-play-button"
-                        onClick={() => openModal(videoBook)}
-                        aria-label={`Watch trailer for ${videoBook.title}`}
-                      >
-                        <Play size={48} fill="#eeeae7" />
-                      </button>
+          {/* Video Books Grid */}
+          <div className="videobook-books-grid">
+            {videoBooks.map((videoBook) => (
+              <div 
+                key={videoBook.id}
+                className="videobook-book-card"
+                onClick={() => openModal(videoBook)}
+              >
+                <div className="videobook-book-image-wrapper">
+                  <img 
+                    src={videoBook.image} 
+                    alt={videoBook.title}
+                    className="videobook-book-image"
+                  />
+                  <div className="videobook-play-overlay">
+                    <div className="videobook-play-button">
+                      <svg width="68" height="48" viewBox="0 0 68 48" fill="none">
+                        <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#FF0000"/>
+                        <path d="M 45,24 27,14 27,34" fill="#FFFFFF"/>
+                      </svg>
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-
-            <button 
-              className="videobook-nav-button videobook-nav-button-right" 
-              onClick={handleNextSlide}
-              disabled={isAnimating}
-              aria-label="Next video trailers"
-            >
-              <ChevronRight size={24} />
-            </button>
-          </div>
-
-          {/* Navigation Dots */}
-          <div className="videobook-dots-container">
-            {Array.from({ length: totalSlides }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => handleSlideChange(index)}
-                disabled={isAnimating}
-                className={`videobook-dot ${index === currentSlide ? 'videobook-dot-active' : ''}`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
+              </div>
             ))}
           </div>
         </div>
@@ -338,58 +245,19 @@ const VideoBookSection = () => {
           line-height: 1.6;
         }
 
-        .videobook-slider-container {
-          position: relative;
-          padding: 0 3rem;
-        }
-
-        .videobook-nav-button {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          background: rgba(54, 74, 82, 0.9);
-          color: #eeeae7;
-          border: none;
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          z-index: 10;
-          backdrop-filter: blur(10px);
-        }
-
-        .videobook-nav-button:hover:not(:disabled) {
-          background: #364a52;
-          transform: translateY(-50%) scale(1.1);
-        }
-
-        .videobook-nav-button:disabled {
-          opacity: 0.4;
-          cursor: not-allowed;
-        }
-
-        .videobook-nav-button-left {
-          left: 0;
-        }
-
-        .videobook-nav-button-right {
-          right: 0;
-        }
-
         .videobook-books-grid {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
           gap: 2rem;
-          min-height: 400px;
         }
 
-        .videobook-book-card.videobook-animating {
-          opacity: 0;
-          transform: translateY(-20px);
+        .videobook-book-card {
+          cursor: pointer;
+          transition: transform 0.3s ease;
+        }
+
+        .videobook-book-card:hover {
+          transform: translateY(-8px);
         }
 
         .videobook-book-image-wrapper {
@@ -398,12 +266,10 @@ const VideoBookSection = () => {
           border-radius: 8px;
           overflow: hidden;
           box-shadow: 0 10px 30px rgba(15, 37, 47, 0.2);
-          transition: all 0.3s ease;
-          cursor: pointer;
+          transition: box-shadow 0.3s ease;
         }
 
-        .videobook-book-image-wrapper:hover {
-          transform: translateY(-8px);
+        .videobook-book-card:hover .videobook-book-image-wrapper {
           box-shadow: 0 15px 40px rgba(15, 37, 47, 0.3);
         }
 
@@ -419,62 +285,27 @@ const VideoBookSection = () => {
           left: 0;
           right: 0;
           bottom: 0;
-          background: rgba(15, 37, 47, 0.75);
+          background: rgba(15, 37, 47, 0.3);
           display: flex;
           align-items: center;
           justify-content: center;
-          opacity: 0;
-          transition: opacity 0.3s ease;
+          transition: background 0.3s ease;
         }
 
-        .videobook-book-image-wrapper:hover .videobook-play-overlay {
-          opacity: 1;
+        .videobook-book-card:hover .videobook-play-overlay {
+          background: rgba(15, 37, 47, 0.5);
         }
 
         .videobook-play-button {
-          background: none;
-          border: none;
-          color: #eeeae7;
-          cursor: pointer;
           transition: transform 0.3s ease;
-          padding: 1rem;
-        }
-
-        .videobook-play-button:hover {
-          transform: scale(1.15);
-        }
-
-        .videobook-dots-container {
           display: flex;
+          align-items: center;
           justify-content: center;
-          gap: 0.75rem;
-          margin-top: 2.5rem;
+          filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
         }
 
-        .videobook-dot {
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-          background: #d4cfc9;
-          border: none;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          padding: 0;
-        }
-
-        .videobook-dot:hover:not(:disabled) {
-          background: #364a52;
+        .videobook-book-card:hover .videobook-play-button {
           transform: scale(1.2);
-        }
-
-        .videobook-dot:disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
-        }
-
-        .videobook-dot-active {
-          background: #364a52;
-          transform: scale(1.3);
         }
 
         /* Modal Styles */
@@ -577,10 +408,6 @@ const VideoBookSection = () => {
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
           }
-
-          .videobook-slider-container {
-            padding: 0 2.5rem;
-          }
         }
 
         @media (max-width: 768px) {
@@ -593,28 +420,8 @@ const VideoBookSection = () => {
           }
 
           .videobook-books-grid {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            min-height: 450px;
-          }
-
-          .videobook-slider-container {
-            padding: 0 2rem;
-          }
-
-          .videobook-nav-button {
-            width: 36px;
-            height: 36px;
-          }
-
-          .videobook-book-image-wrapper {
-            max-width: 300px;
-            margin: 0 auto;
-          }
-
-          .videobook-play-overlay {
-            opacity: 1;
-            background: rgba(15, 37, 47, 0.4);
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
           }
 
           .videobook-modal-content {
@@ -636,13 +443,9 @@ const VideoBookSection = () => {
             padding: 2rem 0.5rem;
           }
 
-          .videobook-slider-container {
-            padding: 0 1.5rem;
-          }
-
-          .videobook-nav-button {
-            width: 32px;
-            height: 32px;
+          .videobook-books-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
           }
 
           .videobook-section-description {
