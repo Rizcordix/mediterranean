@@ -1,17 +1,14 @@
 'use client'
 
 import React, { useState, useEffect, useRef } from 'react';
-import { ChevronLeft, ChevronRight, Play, X, Pause, Volume2, VolumeX } from 'lucide-react';
+import { X, Pause, Volume2, VolumeX } from 'lucide-react';
 
 const AudiobookSection = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentAudiobook, setCurrentAudiobook] = useState<any>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-    const [currentTime, setCurrentTime] = useState(0);
-    const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -127,16 +124,6 @@ const AudiobookSection = () => {
   ];
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (isModalOpen) {
         if (e.key === 'Escape') {
@@ -145,70 +132,61 @@ const AudiobookSection = () => {
           e.preventDefault();
           togglePlayPause();
         }
-      } else {
-        if (e.key === 'ArrowLeft') {
-          handlePrevSlide();
-        } else if (e.key === 'ArrowRight') {
-          handleNextSlide();
-        }
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentSlide, isAnimating, isModalOpen, isPlaying]);
+  }, [isModalOpen, isPlaying]);
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    const updateTime = () => setCurrentTime(audio.currentTime);
-    const updateDuration = () => setDuration(audio.duration);
-    const handleEnded = () => setIsPlaying(false);
+    const updateTime = () => {
+      setCurrentTime(audio.currentTime);
+    };
+    
+    const updateDuration = () => {
+      if (audio.duration && !isNaN(audio.duration) && isFinite(audio.duration)) {
+        setDuration(audio.duration);
+      }
+    };
+    
+    const handleEnded = () => {
+      setIsPlaying(false);
+      setCurrentTime(0);
+    };
+
+    const handleLoadedMetadata = () => {
+      updateDuration();
+    };
+
+    const handleCanPlay = () => {
+      updateDuration();
+    };
 
     audio.addEventListener('timeupdate', updateTime);
-    audio.addEventListener('loadedmetadata', updateDuration);
+    audio.addEventListener('loadedmetadata', handleLoadedMetadata);
+    audio.addEventListener('canplay', handleCanPlay);
+    audio.addEventListener('durationchange', updateDuration);
     audio.addEventListener('ended', handleEnded);
 
     return () => {
       audio.removeEventListener('timeupdate', updateTime);
-      audio.removeEventListener('loadedmetadata', updateDuration);
+      audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      audio.removeEventListener('canplay', handleCanPlay);
+      audio.removeEventListener('durationchange', updateDuration);
       audio.removeEventListener('ended', handleEnded);
     };
-  }, []);
-
-  const booksPerSlide = isMobile ? 1 : 4;
-  const totalSlides = Math.ceil(audiobooks.length / booksPerSlide);
-
-  const handleSlideChange = (index: number) => {
-    if (isAnimating || index === currentSlide) return;
-    setIsAnimating(true);
-    setCurrentSlide(index);
-    setTimeout(() => setIsAnimating(false), 400);
-  };
-
-  const handleNextSlide = () => {
-    if (isAnimating) return;
-    const nextSlide = (currentSlide + 1) % totalSlides;
-    handleSlideChange(nextSlide);
-  };
-
-  const handlePrevSlide = () => {
-    if (isAnimating) return;
-    const prevSlide = currentSlide === 0 ? totalSlides - 1 : currentSlide - 1;
-    handleSlideChange(prevSlide);
-  };
-
-  const getCurrentBooks = () => {
-    const startIndex = currentSlide * booksPerSlide;
-    return audiobooks.slice(startIndex, startIndex + booksPerSlide);
-  };
+  }, [currentAudiobook]);
 
   const openModal = (audiobook: any) => {
     setCurrentAudiobook(audiobook);
     setIsModalOpen(true);
     setIsPlaying(false);
     setCurrentTime(0);
+    setDuration(0);
   };
 
   const closeModal = () => {
@@ -220,6 +198,7 @@ const AudiobookSection = () => {
     setCurrentAudiobook(null);
     setIsPlaying(false);
     setCurrentTime(0);
+    setDuration(0);
   };
 
   const togglePlayPause = () => {
@@ -228,18 +207,20 @@ const AudiobookSection = () => {
     if (isPlaying) {
       audioRef.current.pause();
     } else {
-      audioRef.current.play();
+      audioRef.current.play().catch(err => {
+        console.error('Error playing audio:', err);
+      });
     }
     setIsPlaying(!isPlaying);
   };
 
-//   const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
-//     const newTime = parseFloat(e.target.value);
-//     if (audioRef.current) {
-//       audioRef.current.currentTime = newTime;
-//       setCurrentTime(newTime);
-//     }
-//   };
+  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newTime = parseFloat(e.target.value);
+    if (audioRef.current && !isNaN(newTime)) {
+      audioRef.current.currentTime = newTime;
+      setCurrentTime(newTime);
+    }
+  };
 
   const toggleMute = () => {
     if (audioRef.current) {
@@ -248,12 +229,17 @@ const AudiobookSection = () => {
     }
   };
 
-//   const formatTime = (time: number) => {
-//     if (isNaN(time)) return '0:00';
-//     const minutes = Math.floor(time / 60);
-//     const seconds = Math.floor(time % 60);
-//     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-//   };
+  const formatTime = (time: number) => {
+    if (isNaN(time) || !isFinite(time)) return '0:00';
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  };
+
+  const getProgressPercentage = () => {
+    if (!duration || duration === 0) return 0;
+    return (currentTime / duration) * 100;
+  };
 
   return (
     <>
@@ -269,64 +255,35 @@ const AudiobookSection = () => {
             </h5>
           </div>
 
-          {/* Audiobooks Slider */}
-          <div className="audiobook-slider-container">
-            <button 
-              className="audiobook-nav-button audiobook-nav-button-left" 
-              onClick={handlePrevSlide}
-              disabled={isAnimating}
-              aria-label="Previous audiobooks"
-            >
-              <ChevronLeft size={24} />
-            </button>
-
-            <div className="audiobook-books-grid">
-              {getCurrentBooks().map((audiobook, index) => (
-                <div 
-                  key={audiobook.id}
-                  className={`audiobook-book-card ${isAnimating ? 'audiobook-animating' : ''}`}
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="audiobook-book-image-wrapper">
-                    <img 
-                      src={audiobook.image} 
-                      alt={audiobook.title}
-                      className="audiobook-book-image"
-                    />
-                    <div className="audiobook-play-overlay">
-                      <button 
-                        className="audiobook-play-button"
-                        onClick={() => openModal(audiobook)}
-                        aria-label={`Play ${audiobook.title}`}
-                      >
-                        <Play size={48} fill="#eeeae7" />
-                      </button>
+          {/* Audiobooks Grid */}
+          <div className="audiobook-books-grid">
+            {audiobooks.map((audiobook) => (
+              <div 
+                key={audiobook.id}
+                className="audiobook-book-card"
+                onClick={() => openModal(audiobook)}
+              >
+                <div className="audiobook-book-image-wrapper">
+                  <img 
+                    src={audiobook.image} 
+                    alt={audiobook.title}
+                    className="audiobook-book-image"
+                  />
+                  <div className="audiobook-play-overlay">
+                    <div className="audiobook-play-button">
+                      <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                        <circle cx="32" cy="32" r="30" fill="#364a52" opacity="0.95"/>
+                        <circle cx="32" cy="32" r="28" fill="#0f252f"/>
+                        <g>
+                          <path d="M 26 20 L 26 44 L 44 32 Z" fill="#eeeae7"/>
+                          <circle cx="32" cy="32" r="3" fill="#eeeae7"/>
+                          <path d="M 28 32 Q 28 28, 32 28 Q 36 28, 36 32 Q 36 36, 32 36 Q 28 36, 28 32" fill="none" stroke="#eeeae7" strokeWidth="1.5" opacity="0.5"/>
+                        </g>
+                      </svg>
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-
-            <button 
-              className="audiobook-nav-button audiobook-nav-button-right" 
-              onClick={handleNextSlide}
-              disabled={isAnimating}
-              aria-label="Next audiobooks"
-            >
-              <ChevronRight size={24} />
-            </button>
-          </div>
-
-          {/* Navigation Dots */}
-          <div className="audiobook-dots-container">
-            {Array.from({ length: totalSlides }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => handleSlideChange(index)}
-                disabled={isAnimating}
-                className={`audiobook-dot ${index === currentSlide ? 'audiobook-dot-active' : ''}`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
+              </div>
             ))}
           </div>
         </div>
@@ -350,11 +307,16 @@ const AudiobookSection = () => {
                 <h2 className="audiobook-modal-title">{currentAudiobook.title}</h2>
                 <p className="audiobook-modal-subtitle">{currentAudiobook.subtitle}</p>
                 <p className="audiobook-modal-author">by {currentAudiobook.author}</p>
+                <p className="audiobook-modal-narrator">Narrated by {currentAudiobook.narrator}</p>
               </div>
             </div>
 
             <div className="audiobook-modal-player">
-              <audio ref={audioRef} src={currentAudiobook.audioUrl} />
+              <audio 
+                ref={audioRef} 
+                src={currentAudiobook.audioUrl}
+                preload="metadata"
+              />
 
               <div className="audiobook-player-controls">
                 <button 
@@ -362,7 +324,11 @@ const AudiobookSection = () => {
                   onClick={togglePlayPause}
                   aria-label={isPlaying ? 'Pause' : 'Play'}
                 >
-                  {isPlaying ? <Pause size={32} /> : <Play size={32} fill="#0f252f" />}
+                  {isPlaying ? <Pause size={32} /> : (
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                      <path d="M 10 6 L 10 26 L 26 16 Z" fill="#0f252f"/>
+                    </svg>
+                  )}
                 </button>
 
                 <button 
@@ -374,19 +340,24 @@ const AudiobookSection = () => {
                 </button>
               </div>
 
-              {/* <div className="audiobook-progress-container">
+              <div className="audiobook-progress-container">
                 <span className="audiobook-time">{formatTime(currentTime)}</span>
-                <input
-                  type="range"
-                  min="0"
-                  max={duration || 0}
-                  value={currentTime}
-                  onChange={handleSeek}
-                  className="audiobook-progress-bar"
-                  aria-label="Seek audio"
-                />
+                <div className="audiobook-progress-wrapper">
+                  <input
+                    type="range"
+                    min="0"
+                    max={duration || 0}
+                    value={currentTime}
+                    onChange={handleSeek}
+                    className="audiobook-progress-bar"
+                    aria-label="Seek audio"
+                    style={{
+                      background: `linear-gradient(to right, #364a52 0%, #364a52 ${getProgressPercentage()}%, #eeeae7 ${getProgressPercentage()}%, #eeeae7 100%)`
+                    }}
+                  />
+                </div>
                 <span className="audiobook-time">{formatTime(duration)}</span>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
@@ -443,58 +414,19 @@ const AudiobookSection = () => {
           line-height: 1.6;
         }
 
-        .audiobook-slider-container {
-          position: relative;
-          padding: 0 3rem;
-        }
-
-        .audiobook-nav-button {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          background: rgba(54, 74, 82, 0.9);
-          color: #eeeae7;
-          border: none;
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          z-index: 10;
-          backdrop-filter: blur(10px);
-        }
-
-        .audiobook-nav-button:hover:not(:disabled) {
-          background: #364a52;
-          transform: translateY(-50%) scale(1.1);
-        }
-
-        .audiobook-nav-button:disabled {
-          opacity: 0.4;
-          cursor: not-allowed;
-        }
-
-        .audiobook-nav-button-left {
-          left: 0;
-        }
-
-        .audiobook-nav-button-right {
-          right: 0;
-        }
-
         .audiobook-books-grid {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
           gap: 2rem;
-          min-height: 400px;
         }
 
-        .audiobook-book-card.audiobook-animating {
-          opacity: 0;
-          transform: translateY(-20px);
+        .audiobook-book-card {
+          cursor: pointer;
+          transition: transform 0.3s ease;
+        }
+
+        .audiobook-book-card:hover {
+          transform: translateY(-8px);
         }
 
         .audiobook-book-image-wrapper {
@@ -503,12 +435,10 @@ const AudiobookSection = () => {
           border-radius: 8px;
           overflow: hidden;
           box-shadow: 0 10px 30px rgba(15, 37, 47, 0.2);
-          transition: all 0.3s ease;
-          cursor: pointer;
+          transition: box-shadow 0.3s ease;
         }
 
-        .audiobook-book-image-wrapper:hover {
-          transform: translateY(-8px);
+        .audiobook-book-card:hover .audiobook-book-image-wrapper {
           box-shadow: 0 15px 40px rgba(15, 37, 47, 0.3);
         }
 
@@ -524,62 +454,27 @@ const AudiobookSection = () => {
           left: 0;
           right: 0;
           bottom: 0;
-          background: rgba(15, 37, 47, 0.75);
+          background: rgba(15, 37, 47, 0.3);
           display: flex;
           align-items: center;
           justify-content: center;
-          opacity: 0;
-          transition: opacity 0.3s ease;
+          transition: background 0.3s ease;
         }
 
-        .audiobook-book-image-wrapper:hover .audiobook-play-overlay {
-          opacity: 1;
+        .audiobook-book-card:hover .audiobook-play-overlay {
+          background: rgba(15, 37, 47, 0.5);
         }
 
         .audiobook-play-button {
-          background: none;
-          border: none;
-          color: #eeeae7;
-          cursor: pointer;
           transition: transform 0.3s ease;
-          padding: 1rem;
-        }
-
-        .audiobook-play-button:hover {
-          transform: scale(1.15);
-        }
-
-        .audiobook-dots-container {
           display: flex;
+          align-items: center;
           justify-content: center;
-          gap: 0.75rem;
-          margin-top: 2.5rem;
+          filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
         }
 
-        .audiobook-dot {
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-          background: #d4cfc9;
-          border: none;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          padding: 0;
-        }
-
-        .audiobook-dot:hover:not(:disabled) {
-          background: #364a52;
+        .audiobook-book-card:hover .audiobook-play-button {
           transform: scale(1.2);
-        }
-
-        .audiobook-dot:disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
-        }
-
-        .audiobook-dot-active {
-          background: #364a52;
-          transform: scale(1.3);
         }
 
         /* Modal Styles */
@@ -589,7 +484,7 @@ const AudiobookSection = () => {
           left: 0;
           right: 0;
           bottom: 0;
-          background: rgba(15, 37, 47, 0.9);
+          background: rgba(15, 37, 47, 0.95);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -621,6 +516,7 @@ const AudiobookSection = () => {
           align-items: center;
           justify-content: center;
           transition: transform 0.2s ease;
+          z-index: 10;
         }
 
         .audiobook-modal-close:hover {
@@ -639,6 +535,7 @@ const AudiobookSection = () => {
           object-fit: cover;
           border-radius: 8px;
           box-shadow: 0 5px 15px rgba(15, 37, 47, 0.2);
+          flex-shrink: 0;
         }
 
         .audiobook-modal-info {
@@ -653,6 +550,7 @@ const AudiobookSection = () => {
           margin-bottom: 0.5rem;
           font-size: 1.5rem;
           font-weight: 700;
+          line-height: 1.3;
         }
 
         .audiobook-modal-subtitle {
@@ -660,6 +558,7 @@ const AudiobookSection = () => {
           font-style: italic;
           margin-bottom: 0.75rem;
           font-size: 0.95rem;
+          line-height: 1.4;
         }
 
         .audiobook-modal-author {
@@ -730,17 +629,28 @@ const AudiobookSection = () => {
           color: #0f252f;
           font-size: 0.9rem;
           font-weight: 500;
-          min-width: 40px;
+          min-width: 45px;
+          font-variant-numeric: tabular-nums;
+        }
+
+        .audiobook-progress-wrapper {
+          flex: 1;
+          position: relative;
         }
 
         .audiobook-progress-bar {
-          flex: 1;
+          width: 100%;
           height: 6px;
           border-radius: 3px;
-          background: #eeeae7;
           outline: none;
           cursor: pointer;
           -webkit-appearance: none;
+          appearance: none;
+          transition: height 0.2s ease;
+        }
+
+        .audiobook-progress-bar:hover {
+          height: 8px;
         }
 
         .audiobook-progress-bar::-webkit-slider-thumb {
@@ -751,6 +661,7 @@ const AudiobookSection = () => {
           background: #364a52;
           cursor: pointer;
           transition: transform 0.2s ease;
+          box-shadow: 0 2px 4px rgba(15, 37, 47, 0.3);
         }
 
         .audiobook-progress-bar::-webkit-slider-thumb:hover {
@@ -765,20 +676,22 @@ const AudiobookSection = () => {
           border: none;
           cursor: pointer;
           transition: transform 0.2s ease;
+          box-shadow: 0 2px 4px rgba(15, 37, 47, 0.3);
         }
 
         .audiobook-progress-bar::-moz-range-thumb:hover {
           transform: scale(1.2);
         }
 
+        .audiobook-progress-bar::-moz-range-track {
+          background: transparent;
+          border: none;
+        }
+
         @media (max-width: 1024px) {
           .audiobook-books-grid {
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
-          }
-
-          .audiobook-slider-container {
-            padding: 0 2.5rem;
           }
         }
 
@@ -792,28 +705,8 @@ const AudiobookSection = () => {
           }
 
           .audiobook-books-grid {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            min-height: 450px;
-          }
-
-          .audiobook-slider-container {
-            padding: 0 2rem;
-          }
-
-          .audiobook-nav-button {
-            width: 36px;
-            height: 36px;
-          }
-
-          .audiobook-book-image-wrapper {
-            max-width: 300px;
-            margin: 0 auto;
-          }
-
-          .audiobook-play-overlay {
-            opacity: 1;
-            background: rgba(15, 37, 47, 0.4);
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
           }
 
           .audiobook-modal-content {
@@ -830,6 +723,10 @@ const AudiobookSection = () => {
             width: 150px;
             height: 225px;
           }
+
+          .audiobook-modal-title {
+            font-size: 1.3rem;
+          }
         }
 
         @media (max-width: 480px) {
@@ -837,13 +734,9 @@ const AudiobookSection = () => {
             padding: 2rem 0.5rem;
           }
 
-          .audiobook-slider-container {
-            padding: 0 1.5rem;
-          }
-
-          .audiobook-nav-button {
-            width: 32px;
-            height: 32px;
+          .audiobook-books-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
           }
 
           .audiobook-section-description {
@@ -866,6 +759,11 @@ const AudiobookSection = () => {
           .audiobook-mute-button {
             width: 40px;
             height: 40px;
+          }
+
+          .audiobook-time {
+            font-size: 0.85rem;
+            min-width: 40px;
           }
         }
       `}</style>
