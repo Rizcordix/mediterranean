@@ -9,13 +9,20 @@ import clients5 from '@/assets/images/clients/logos/6.png'
 import clients6 from '@/assets/images/clients/logos/7.png'
 import clients7 from '@/assets/images/clients/logos/8.png'
 import clients8 from '@/assets/images/clients/logos/9.png'
+import clients9 from '@/assets/images/clients/logos/10.png'
+import clients10 from '@/assets/images/clients/logos/11.png'
+import clients11 from '@/assets/images/clients/logos/12.png'
+import clients12 from '@/assets/images/clients/logos/13.png'
+import clients13 from '@/assets/images/clients/logos/14.png'
+import clients14 from '@/assets/images/clients/logos/15.png'
+import clients15 from '@/assets/images/clients/logos/1.png'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 const TinySlider = dynamic(() => import('@/components/TinySlider'), { ssr: false })
 import { Col, Container, Row } from 'react-bootstrap'
 
 const Clients = () => {
-  const clients = [clients1, clients2, clients3, clients4, clients5, clients6, clients7, clients8]
+  const clients = [clients1, clients2, clients3, clients4, clients5, clients6, clients7, clients8, clients9, clients10, clients11, clients12, clients13, clients14, clients15]
 
   const courseSliderSettings: TinySliderSettings = {
     arrowKeys: true,
