@@ -18,7 +18,7 @@ const PublishingPackagesComparison: React.FC = () => {
     { name: 'Publishing platforms', deal1: 'Amazon', deal2: 'Amazon + 5', deal3: '10+ Platforms' },
     { name: 'Printed copy', deal1: false, deal2: '1', deal3: '2' },
     { name: 'Access to author copy', deal1: true, deal2: true, deal3: true },
-    { name: 'Isbn', deal1: 'Asin', deal2: '1x Standard', deal3: '2x Standard' },
+    { name: 'ISBN', deal1: 'ASIN', deal2: '1x Standard', deal3: '2x Standard' },
     { name: 'Audio book', deal1: false, deal2: false, deal3: true },
     { name: 'Book trailer', deal1: false, deal2: false, deal3: '30 Sec Video Trailer' },
     { name: 'Account creation and formation', deal1: true, deal2: true, deal3: true },
