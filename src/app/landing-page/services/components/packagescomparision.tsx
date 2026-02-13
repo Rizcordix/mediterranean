@@ -1,157 +1,38 @@
 "use client";
-import React, { useState } from 'react';
+import React from 'react';
 
 interface PackageFeature {
-  text: string;
-  startUp: 'full' | 'partial' | 'none';
-  standard: 'full' | 'partial' | 'none';
-  elite: 'full' | 'partial' | 'none';
-}
-
-interface PackageCategory {
-  title: string;
-  features: PackageFeature[];
+  name: string;
+  deal1: string | boolean;
+  deal2: string | boolean;
+  deal3: string | boolean;
 }
 
 const PublishingPackagesComparison: React.FC = () => {
-  const [expandedCategories, setExpandedCategories] = useState<Set<number>>(new Set());
-
-  const toggleCategory = (index: number) => {
-    const newExpanded = new Set(expandedCategories);
-    if (newExpanded.has(index)) {
-      newExpanded.delete(index);
-    } else {
-      newExpanded.add(index);
-    }
-    setExpandedCategories(newExpanded);
-  };
-
-  const calculateCategoryPercentage = (features: PackageFeature[], packageType: 'startUp' | 'standard' | 'elite') => {
-    const total = features.length;
-    const available = features.filter(f => f[packageType] === 'full').length;
-    const partial = features.filter(f => f[packageType] === 'partial').length;
-    return {
-      full: (available / total) * 100,
-      partial: (partial / total) * 100,
-      percentage: Math.round(((available + partial * 0.5) / total) * 100)
-    };
-  };
-
-  const PieChart = ({ percentage, size = 60 }: { percentage: number; size?: number }) => {
-    const strokeWidth = 6;
-    const radius = (size - strokeWidth) / 2;
-    const circumference = 2 * Math.PI * radius;
-    const offset = circumference - (percentage / 100) * circumference;
-
-    return (
-      <svg width={size} height={size} className="pie-chart">
-        <circle
-          cx={size / 2}
-          cy={size / 2}
-          r={radius}
-          fill="none"
-          stroke="#eeeae7"
-          strokeWidth={strokeWidth}
-        />
-        <circle
-          cx={size / 2}
-          cy={size / 2}
-          r={radius}
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={strokeWidth}
-          strokeDasharray={circumference}
-          strokeDashoffset={offset}
-          strokeLinecap="round"
-          transform={`rotate(-90 ${size / 2} ${size / 2})`}
-          className="pie-progress"
-        />
-        <text
-          x={size / 2}
-          y={size / 2}
-          textAnchor="middle"
-          dominantBaseline="middle"
-          className="pie-text"
-        >
-          {percentage}%
-        </text>
-      </svg>
-    );
-  };
-
-  const categoriesData: PackageCategory[] = [
-    {
-      title: 'Manuscript Preparation',
-      features: [
-        { text: 'Proofreading', startUp: 'full', standard: 'full', elite: 'full' },
-        { text: 'Editing', startUp: 'full', standard: 'full', elite: 'full' },
-        { text: 'Critique Author Review Report', startUp: 'none', standard: 'full', elite: 'none' },
-        { text: 'Editorial Support', startUp: 'none', standard: 'full', elite: 'full' },
-        { text: 'Interior Layout', startUp: 'full', standard: 'full', elite: 'none' },
-        { text: 'Typesetting', startUp: 'none', standard: 'none', elite: 'full' },
-        { text: 'Layout Adjustment', startUp: 'none', standard: 'none', elite: 'full' },
-        { text: 'Basic Formatting', startUp: 'full', standard: 'none', elite: 'none' },
-        { text: 'Publishing Standard Formatting', startUp: 'none', standard: 'full', elite: 'full' },
-        { text: '2 Revisions Per Draft', startUp: 'full', standard: 'none', elite: 'none' },
-        { text: '5 Revisions Per Draft', startUp: 'none', standard: 'full', elite: 'full' }
-      ]
-    },
-    {
-      title: 'Cover Preparation',
-      features: [
-        { text: 'Book Cover', startUp: 'full', standard: 'full', elite: 'none' },
-        { text: 'Graphic OR Illustrated Design', startUp: 'none', standard: 'none', elite: 'full' },
-        { text: 'Cover Layout', startUp: 'none', standard: 'none', elite: 'full' },
-        { text: 'Cover Formatting', startUp: 'none', standard: 'none', elite: 'full' },
-        { text: 'Front, Back & Spine', startUp: 'none', standard: 'none', elite: 'full' },
-        { text: 'ISBN + Barcode (2X)', startUp: 'none', standard: 'none', elite: 'full' }
-      ]
-    },
-    {
-      title: 'Publication Setup',
-      features: [
-        { text: 'Account Creation', startUp: 'full', standard: 'full', elite: 'full' },
-        { text: 'Account Verification', startUp: 'full', standard: 'full', elite: 'full' },
-        { text: 'Account Optimization', startUp: 'none', standard: 'none', elite: 'full' },
-        { text: 'Available on Amazon KDP', startUp: 'full', standard: 'none', elite: 'none' },
-        { text: 'Available on Amazon & Kindle', startUp: 'none', standard: 'none', elite: 'full' },
-        { text: 'Available on Barnes & Noble', startUp: 'none', standard: 'none', elite: 'full' },
-        { text: 'Regional Publication (100+ Platforms)', startUp: 'none', standard: 'full', elite: 'none' },
-        { text: 'eBook Format', startUp: 'full', standard: 'full', elite: 'full' },
-        { text: 'Paperback Format', startUp: 'none', standard: 'full', elite: 'full' },
-        { text: 'Hardcover Format', startUp: 'none', standard: 'none', elite: 'full' },
-        { text: '30 - 60 Seconds Video Trailer', startUp: 'none', standard: 'full', elite: 'none' }
-      ]
-    },
-    {
-      title: 'Reports and Dashboard',
-      features: [
-        { text: 'Sales Register', startUp: 'partial', standard: 'full', elite: 'full' },
-        { text: 'Sales Profitability Report', startUp: 'none', standard: 'full', elite: 'full' },
-        { text: 'Sales Order Register', startUp: 'partial', standard: 'full', elite: 'full' },
-        { text: 'Pending Sales Order', startUp: 'none', standard: 'full', elite: 'full' },
-        { text: 'Customer Sales Register', startUp: 'partial', standard: 'none', elite: 'full' },
-        { text: 'Purchase Register', startUp: 'none', standard: 'none', elite: 'full' },
-        { text: 'Supplier Register', startUp: 'none', standard: 'none', elite: 'none' }
-      ]
-    },
-    {
-      title: 'Guarantees',
-      features: [
-        { text: 'No Royalties Share', startUp: 'full', standard: 'full', elite: 'full' },
-        { text: '100% Ownership Rights', startUp: 'full', standard: 'full', elite: 'full' },
-        { text: '100% Satisfaction', startUp: 'full', standard: 'full', elite: 'full' }
-      ]
-    }
+  const features: PackageFeature[] = [
+    { name: 'Price', deal1: '$175', deal2: '$275', deal3: '$499' },
+    { name: 'Proofreading', deal1: 'no', deal2: 'basic', deal3: 'professional' },
+    { name: 'Formatting', deal1: 'ebook', deal2: 'ebook + paperback', deal3: 'all format' },
+    { name: 'Custom cover design', deal1: true, deal2: 'y', deal3: true },
+    { name: 'Revisions', deal1: 'no', deal2: '2', deal3: 'unlimited' },
+    { name: 'Publishing platforms', deal1: 'Amazon', deal2: 'Amazon + 5', deal3: '10+ platforms' },
+    { name: 'Printed copy', deal1: false, deal2: '1', deal3: '2' },
+    { name: 'Access to author copy', deal1: true, deal2: true, deal3: true },
+    { name: 'ISBN', deal1: 'Asin', deal2: '1x standard', deal3: '2x standard' },
+    { name: 'Audio book', deal1: 'Add on', deal2: 'Add on', deal3: true },
+    { name: 'Book trailer', deal1: 'add on', deal2: 'addon', deal3: '30 sec video trailer' },
+    { name: 'Account creation and formation', deal1: true, deal2: true, deal3: true },
+    { name: 'Ownership', deal1: '100%', deal2: '100%', deal3: '100%' },
+    { name: 'Social media posting', deal1: false, deal2: false, deal3: 'limited' },
   ];
 
-  const renderFeatureIcon = (status: 'full' | 'partial' | 'none') => {
-    if (status === 'full') {
-      return <span className="icon-full">●</span>;
-    } else if (status === 'partial') {
-      return <span className="icon-partial">◐</span>;
+  const renderValue = (value: string | boolean) => {
+    if (value === true || value === 'yes' || value === 'y') {
+      return <span className="check-icon">✓</span>;
+    } else if (value === false || value === 'no') {
+      return <span className="dash-icon">-</span>;
     } else {
-      return <span className="icon-none">✕</span>;
+      return <span className="text-value">{value}</span>;
     }
   };
 
@@ -172,88 +53,91 @@ const PublishingPackagesComparison: React.FC = () => {
 
         {/* Comparison Table */}
         <div className="comparison-table">
-          {/* Table Header */}
-          <div className="table-header">
-            <div className="header-cell category-header">
-              <div className="category-label">Features</div>
-            </div>
-            <div className="header-cell package-header">
-              <div className="package-name">Start Up Package</div>
-              <div className="package-pricing">
-                <div className="original-price">$600</div>
-                <div className="discounted-price">$149</div>
+          {/* Desktop View */}
+          <div className="desktop-table">
+            {/* Table Header */}
+            <div className="table-header">
+              <div className="header-cell features-header">
+                <span>Features</span>
+              </div>
+              <div className="header-cell package-header">
+                <div className="package-name">Start Up Package</div>
+                <div className="package-label">Deal 1</div>
+              </div>
+              <div className="header-cell package-header popular">
+                <div className="popular-badge">MOST POPULAR</div>
+                <div className="package-name">Standard Package</div>
+                <div className="package-label">Deal 2</div>
+              </div>
+              <div className="header-cell package-header">
+                <div className="package-name">Authors Elite</div>
+                <div className="package-label">Deal 3</div>
               </div>
             </div>
-            <div className="header-cell package-header popular">
-              <div className="popular-badge">MOST SOLD</div>
-              <div className="package-name">Standard Package</div>
-              <div className="package-pricing">
-                <div className="original-price">$900</div>
-                <div className="discounted-price">$299</div>
-              </div>
-            </div>
-            <div className="header-cell package-header">
-              <div className="package-name">Authors Elite</div>
-              <div className="package-pricing">
-                <div className="original-price">$3500</div>
-                <div className="discounted-price">$1299</div>
-              </div>
+
+            {/* Table Body */}
+            <div className="table-body">
+              {features.map((feature, index) => (
+                <div key={index} className={`feature-row ${index === 0 ? 'price-row' : ''}`}>
+                  <div className="feature-name">{feature.name}</div>
+                  <div className="feature-value">{renderValue(feature.deal1)}</div>
+                  <div className="feature-value popular-col">{renderValue(feature.deal2)}</div>
+                  <div className="feature-value">{renderValue(feature.deal3)}</div>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Table Body - Expandable Categories */}
-          <div className="table-body">
-            {categoriesData.map((category, index) => (
-              <div key={index} className="category-section">
-                {/* Category Header (Clickable) */}
-                <div 
-                  className={`category-row ${expandedCategories.has(index) ? 'expanded' : ''}`}
-                  onClick={() => toggleCategory(index)}
-                >
-                  <div className="category-title-cell">
-                    <span className="expand-icon">
-                      {expandedCategories.has(index) ? '−' : '+'}
-                    </span>
-                    <span className="category-title">{category.title}</span>
-                  </div>
-                  <div className="category-indicator startup-col">
-                    <PieChart 
-                      percentage={calculateCategoryPercentage(category.features, 'startUp').percentage} 
-                    />
-                  </div>
-                  <div className="category-indicator standard-col">
-                    <PieChart 
-                      percentage={calculateCategoryPercentage(category.features, 'standard').percentage} 
-                    />
-                  </div>
-                  <div className="category-indicator elite-col">
-                    <PieChart 
-                      percentage={calculateCategoryPercentage(category.features, 'elite').percentage} 
-                    />
-                  </div>
-                </div>
-
-                {/* Features (Expandable) */}
-                {expandedCategories.has(index) && (
-                  <div className="features-section">
-                    {category.features.map((feature, fIdx) => (
-                      <div key={fIdx} className="feature-row">
-                        <div className="feature-name-cell">{feature.text}</div>
-                        <div className="feature-value-cell">
-                          {renderFeatureIcon(feature.startUp)}
-                        </div>
-                        <div className="feature-value-cell popular-col">
-                          {renderFeatureIcon(feature.standard)}
-                        </div>
-                        <div className="feature-value-cell">
-                          {renderFeatureIcon(feature.elite)}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
+          {/* Mobile View */}
+          <div className="mobile-cards">
+            {/* Start Up Package Card */}
+            <div className="mobile-card">
+              <div className="card-header">
+                <h3 className="card-title">Start Up Package</h3>
+                <p className="card-subtitle">Deal 1</p>
               </div>
-            ))}
+              <div className="card-body">
+                {features.map((feature, index) => (
+                  <div key={index} className={`card-feature ${index === 0 ? 'price-feature' : ''}`}>
+                    <span className="card-feature-name">{feature.name}</span>
+                    <span className="card-feature-value">{renderValue(feature.deal1)}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Standard Package Card */}
+            <div className="mobile-card popular-card">
+              <div className="popular-badge-mobile">MOST POPULAR</div>
+              <div className="card-header">
+                <h3 className="card-title">Standard Package</h3>
+                <p className="card-subtitle">Deal 2</p>
+              </div>
+              <div className="card-body">
+                {features.map((feature, index) => (
+                  <div key={index} className={`card-feature ${index === 0 ? 'price-feature' : ''}`}>
+                    <span className="card-feature-name">{feature.name}</span>
+                    <span className="card-feature-value">{renderValue(feature.deal2)}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Authors Elite Card */}
+            <div className="mobile-card">
+              <div className="card-header">
+                <h3 className="card-title">Authors Elite</h3>
+                <p className="card-subtitle">Deal 3</p>
+              </div>
+              <div className="card-body">
+                {features.map((feature, index) => (
+                  <div key={index} className={`card-feature ${index === 0 ? 'price-feature' : ''}`}>
+                    <span className="card-feature-name">{feature.name}</span>
+                    <span className="card-feature-value">{renderValue(feature.deal3)}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -261,10 +145,9 @@ const PublishingPackagesComparison: React.FC = () => {
       <style jsx>{`
         .comparison-wrapper {
           background: linear-gradient(135deg, #eeeae7 0%, #e5e1de 100%);
-          padding: 80px 20px;
+          padding: 50px 20px;
           position: relative;
           overflow: hidden;
-          min-height: 100vh;
         }
 
         .background-pattern {
@@ -294,72 +177,78 @@ const PublishingPackagesComparison: React.FC = () => {
         /* Header */
         .header {
           text-align: center;
-          margin-bottom: 60px;
+          margin-bottom: 40px;
         }
 
         .header-title {
           color: #0f252f;
           letter-spacing: -0.5px;
           font-weight: 700;
-          margin-bottom: 1rem;
-          font-size: 2.5rem;
+          margin-bottom: 0.75rem;
+          font-size: 2rem;
         }
 
         .header-subtitle {
-          font-size: 20px;
+          font-size: 18px;
           color: #364a52;
           max-width: 700px;
           margin: 0 auto;
-          line-height: 1.6;
+          line-height: 1.5;
         }
 
         .bestsellers-count {
           color: #0f252f;
           font-weight: 700;
-          font-size: 22px;
+          font-size: 20px;
         }
 
         /* Comparison Table */
         .comparison-table {
           background: #ffffff;
-          border-radius: 24px;
+          border-radius: 16px;
           overflow: hidden;
           box-shadow: 
             0 20px 60px rgba(15, 37, 47, 0.15),
             0 0 0 1px rgba(15, 37, 47, 0.05);
-          border: none;
+        }
+
+        /* Desktop Table */
+        .desktop-table {
+          display: block;
+        }
+
+        .mobile-cards {
+          display: none;
         }
 
         /* Table Header */
         .table-header {
           display: grid;
-          grid-template-columns: 2fr 1fr 1fr 1fr;
+          grid-template-columns: 1.5fr 1fr 1fr 1fr;
           background: linear-gradient(135deg, #0f252f 0%, #1a3542 100%);
-          border-bottom: none;
-          padding: 8px 0;
+          padding: 0;
         }
 
         .header-cell {
-          padding: 36px 24px;
+          padding: 24px 20px;
           text-align: center;
           border-right: 1px solid rgba(255, 255, 255, 0.1);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
         }
 
         .header-cell:last-child {
           border-right: none;
         }
 
-        .category-header {
+        .features-header {
           background: transparent;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .category-label {
-          color: #eeeae7;
-          font-size: 1.8rem;
-          font-weight: 700;
+          font-size: 16px;
+          font-weight: 800;
+          color: #ffffff;
           text-transform: uppercase;
           letter-spacing: 1.5px;
         }
@@ -375,48 +264,32 @@ const PublishingPackagesComparison: React.FC = () => {
 
         .popular-badge {
           position: absolute;
-          top: 8px;
+          top: 6px;
           left: 50%;
           transform: translateX(-50%);
           background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
           color: #0f252f;
-          padding: 6px 20px;
-          font-size: 10px;
+          padding: 3px 14px;
+          font-size: 8px;
           font-weight: 800;
-          letter-spacing: 1.5px;
+          letter-spacing: 1px;
           text-transform: uppercase;
-          border-radius: 20px;
-          box-shadow: 0 4px 15px rgba(255, 165, 0, 0.4);
+          border-radius: 10px;
+          box-shadow: 0 2px 8px rgba(255, 165, 0, 0.4);
         }
 
         .package-name {
-          font-size: 20px;
-          font-weight: 700;
-          color: #ffffff;
-          margin-bottom: 16px;
-          margin-top: 8px;
-          letter-spacing: 0.3px;
-        }
-
-        .package-pricing {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 8px;
-        }
-
-        .original-price {
-          font-size: 16px;
-          color: rgba(255, 255, 255, 0.5);
-          text-decoration: line-through;
-          font-weight: 500;
-        }
-
-        .discounted-price {
-          font-size: 32px;
-          color: #ffffff;
+          font-size: 17px;
           font-weight: 800;
-          letter-spacing: -1px;
+          color: #ffffff;
+          letter-spacing: 0.5px;
+          margin-top: 8px;
+        }
+
+        .package-label {
+          font-size: 12px;
+          color: rgba(255, 255, 255, 0.8);
+          font-weight: 600;
         }
 
         /* Table Body */
@@ -424,136 +297,10 @@ const PublishingPackagesComparison: React.FC = () => {
           background: #ffffff;
         }
 
-        .category-section {
-          border-bottom: 1px solid #f0f0f0;
-        }
-
-        .category-section:last-child {
-          border-bottom: none;
-        }
-
-        /* Category Row (Clickable) */
-        .category-row {
-          display: grid;
-          grid-template-columns: 2fr 1fr 1fr 1fr;
-          background: #fafafa;
-          cursor: pointer;
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          border-bottom: 1px solid #f0f0f0;
-        }
-
-        .category-row:hover {
-          background: #f5f5f5;
-          box-shadow: inset 0 0 0 1px rgba(15, 37, 47, 0.05);
-        }
-
-        .category-row.expanded {
-          background: #f8f6f4;
-          border-bottom: 2px solid #0f252f;
-        }
-
-        .category-title-cell {
-          padding: 24px 28px;
-          display: flex;
-          align-items: center;
-          gap: 16px;
-        }
-
-        .expand-icon {
-          width: 28px;
-          height: 28px;
-          background: linear-gradient(135deg, #364a52 0%, #0f252f 100%);
-          color: #ffffff;
-          border-radius: 6px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 20px;
-          font-weight: 700;
-          flex-shrink: 0;
-          transition: all 0.3s ease;
-          box-shadow: 0 2px 8px rgba(15, 37, 47, 0.15);
-        }
-
-        .category-row:hover .expand-icon {
-          transform: scale(1.1);
-          box-shadow: 0 4px 12px rgba(15, 37, 47, 0.25);
-        }
-
-        .category-row.expanded .expand-icon {
-          background: linear-gradient(135deg, #0f252f 0%, #364a52 100%);
-          transform: rotate(180deg);
-        }
-
-        .category-title {
-          font-size: 16px;
-          font-weight: 700;
-          color: #0f252f;
-          text-transform: uppercase;
-          letter-spacing: 0.8px;
-        }
-
-        .category-indicator {
-          border-right: 1px solid #f0f0f0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 24px;
-        }
-
-        .category-indicator:last-child {
-          border-right: none;
-        }
-
-        .startup-col {
-          color: #e67e22;
-        }
-
-        .standard-col {
-          background: rgba(15, 37, 47, 0.02);
-          color: #27ae60;
-        }
-
-        .elite-col {
-          color: #3498db;
-        }
-
-        /* Pie Chart */
-        .pie-chart {
-          filter: drop-shadow(0 2px 4px rgba(15, 37, 47, 0.1));
-        }
-
-        .pie-progress {
-          transition: stroke-dashoffset 0.6s ease;
-        }
-
-        .pie-text {
-          font-size: 14px;
-          font-weight: 700;
-          fill: currentColor;
-        }
-
-        /* Features Section */
-        .features-section {
-          background: #ffffff;
-          animation: slideDown 0.3s ease;
-        }
-
-        @keyframes slideDown {
-          from {
-            opacity: 0;
-            max-height: 0;
-          }
-          to {
-            opacity: 1;
-            max-height: 1000px;
-          }
-        }
-
         .feature-row {
           display: grid;
-          grid-template-columns: 2fr 1fr 1fr 1fr;
-          border-bottom: 1px solid #f8f8f8;
+          grid-template-columns: 1.5fr 1fr 1fr 1fr;
+          border-bottom: 1px solid #f0f0f0;
           transition: background 0.2s ease;
         }
 
@@ -565,124 +312,206 @@ const PublishingPackagesComparison: React.FC = () => {
           border-bottom: none;
         }
 
-        .feature-name-cell {
-          padding: 18px 28px 18px 72px;
-          font-size: 14.5px;
-          color: #364a52;
-          display: flex;
-          align-items: center;
-          line-height: 1.5;
-          font-weight: 500;
+        .feature-row.price-row {
+          background: #f8f6f4;
+          font-weight: 700;
         }
 
-        .feature-value-cell {
-          padding: 18px 24px;
+        .feature-row.price-row:hover {
+          background: #f5f3f1;
+        }
+
+        .feature-name {
+          padding: 14px 24px;
+          font-size: 14px;
+          color: #0f252f;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          text-transform: capitalize;
+        }
+
+        .price-row .feature-name {
+          font-weight: 800;
+          font-size: 15px;
+        }
+
+        .feature-value {
+          padding: 14px 24px;
           display: flex;
           align-items: center;
           justify-content: center;
-          border-right: 1px solid #f8f8f8;
-          font-size: 22px;
+          border-right: 3px solid #eeeae7;
+          font-size: 14px;
+          font-weight: 700;
         }
 
-        .feature-value-cell:last-child {
+        .feature-value:last-child {
           border-right: none;
         }
 
-        .feature-value-cell.popular-col {
+        .feature-value.popular-col {
           background: rgba(15, 37, 47, 0.02);
         }
 
-        .icon-full {
+        .check-icon {
           color: #0f252f;
-          font-size: 24px;
-          filter: drop-shadow(0 2px 4px rgba(15, 37, 47, 0.15));
+          font-size: 22px;
+          font-weight: 900;
         }
 
-        .icon-partial {
-          color: #364a52;
-          font-size: 24px;
-          filter: drop-shadow(0 2px 4px rgba(54, 74, 82, 0.15));
-        }
-
-        .icon-none {
+        .dash-icon {
           color: #d4d0cd;
-          font-size: 18px;
-          opacity: 0.6;
+          font-size: 28px;
+          font-weight: 300;
+        }
+
+        .text-value {
+          color: #364a52;
+          font-weight: 600;
+          text-align: center;
+          font-size: 13px;
+        }
+
+        .price-row .text-value {
+          color: #0f252f;
+          font-weight: 900;
+          font-size: 22px;
+        }
+
+        /* Mobile Cards */
+        .mobile-card {
+          background: #ffffff;
+          border-radius: 12px;
+          margin-bottom: 24px;
+          overflow: hidden;
+          box-shadow: 0 4px 20px rgba(15, 37, 47, 0.1);
+          position: relative;
+        }
+
+        .mobile-card.popular-card {
+          border: 2px solid #FFD700;
+          box-shadow: 0 6px 24px rgba(255, 215, 0, 0.3);
+        }
+
+        .popular-badge-mobile {
+          background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+          color: #0f252f;
+          padding: 6px 16px;
+          font-size: 10px;
+          font-weight: 800;
+          letter-spacing: 1.2px;
+          text-transform: uppercase;
+          text-align: center;
+        }
+
+        .card-header {
+          background: linear-gradient(135deg, #0f252f 0%, #1a3542 100%);
+          padding: 24px 20px;
+          text-align: center;
+        }
+
+        .card-title {
+          font-size: 20px;
+          font-weight: 700;
+          color: #ffffff;
+          margin-bottom: 4px;
+        }
+
+        .card-subtitle {
+          font-size: 13px;
+          color: rgba(255, 255, 255, 0.7);
+          margin: 0;
+        }
+
+        .card-body {
+          padding: 0;
+        }
+
+        .card-feature {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 16px 20px;
+          border-bottom: 1px solid #f0f0f0;
+        }
+
+        .card-feature:last-child {
+          border-bottom: none;
+        }
+
+        .card-feature.price-feature {
+          background: #f8f6f4;
+          font-weight: 700;
+        }
+
+        .card-feature-name {
+          font-size: 14px;
+          color: #0f252f;
+          font-weight: 500;
+          text-transform: capitalize;
+        }
+
+        .price-feature .card-feature-name {
+          font-weight: 700;
+          font-size: 15px;
+        }
+
+        .card-feature-value {
+          font-size: 14px;
+        }
+
+        .price-feature .text-value {
+          font-size: 22px;
         }
 
         /* Responsive Styles */
-        @media (max-width: 1200px) {
-          .table-header,
-          .category-row,
-          .feature-row {
-            grid-template-columns: 1.5fr 1fr 1fr 1fr;
-          }
-
-          .package-name {
-            font-size: 18px;
-          }
-
-          .discounted-price {
-            font-size: 28px;
-          }
-        }
-
         @media (max-width: 968px) {
           .comparison-wrapper {
-            padding: 60px 15px;
+            padding: 40px 15px;
           }
 
           .header-title {
-            font-size: 2rem;
+            font-size: 1.75rem;
           }
 
-          .table-header,
-          .category-row,
+          .table-header {
+            grid-template-columns: 1.2fr 1fr 1fr 1fr;
+          }
+
           .feature-row {
             grid-template-columns: 1.2fr 1fr 1fr 1fr;
           }
 
           .header-cell {
-            padding: 28px 16px;
+            padding: 20px 12px;
           }
 
           .package-name {
-            font-size: 16px;
+            font-size: 15px;
           }
 
-          .discounted-price {
-            font-size: 24px;
-          }
-
-          .category-title-cell {
-            padding: 20px 20px;
-          }
-
-          .feature-name-cell {
-            padding: 16px 20px 16px 60px;
+          .feature-name {
+            padding: 12px 16px;
             font-size: 13px;
           }
 
-          .feature-value-cell {
-            padding: 16px 16px;
+          .feature-value {
+            padding: 12px 12px;
           }
         }
 
         @media (max-width: 768px) {
-          .comparison-table {
-            overflow-x: auto;
+          .desktop-table {
+            display: none;
           }
 
-          .table-header,
-          .category-row,
-          .feature-row {
-            min-width: 700px;
+          .mobile-cards {
+            display: block;
           }
-        }
 
-        @media (max-width: 576px) {
           .comparison-wrapper {
-            padding: 50px 10px;
+            padding: 50px 15px;
           }
 
           .header {
@@ -697,18 +526,55 @@ const PublishingPackagesComparison: React.FC = () => {
             font-size: 18px;
           }
 
-          .bestsellers-count {
+          .comparison-table {
+            background: transparent;
+            box-shadow: none;
+          }
+        }
+
+        @media (max-width: 576px) {
+          .comparison-wrapper {
+            padding: 40px 10px;
+          }
+
+          .header-title {
             font-size: 1.5rem;
           }
 
-          .comparison-table {
-            border-radius: 20px;
+          .header-subtitle {
+            font-size: 16px;
           }
 
-          .table-header,
-          .category-row,
-          .feature-row {
-            min-width: 650px;
+          .bestsellers-count {
+            font-size: 18px;
+          }
+
+          .mobile-card {
+            margin-bottom: 20px;
+          }
+
+          .card-header {
+            padding: 20px 16px;
+          }
+
+          .card-title {
+            font-size: 18px;
+          }
+
+          .card-feature {
+            padding: 14px 16px;
+          }
+
+          .card-feature-name {
+            font-size: 13px;
+          }
+
+          .card-feature-value {
+            font-size: 13px;
+          }
+
+          .price-feature .text-value {
+            font-size: 20px;
           }
         }
       `}</style>
