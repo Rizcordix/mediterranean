@@ -11,28 +11,32 @@ interface PackageFeature {
 const PublishingPackagesComparison: React.FC = () => {
   const features: PackageFeature[] = [
     { name: 'Price', deal1: '$175', deal2: '$275', deal3: '$775' },
-    { name: 'Proofreading', deal1: 'no', deal2: 'basic', deal3: 'professional' },
-    { name: 'Formatting', deal1: 'ebook', deal2: 'ebook + paperback', deal3: 'all format' },
+    { name: 'Proofreading', deal1: 'no', deal2: 'Basic', deal3: 'Professional' },
+    { name: 'Formatting', deal1: 'Ebook', deal2: 'Ebook + Paperback', deal3: 'All Format' },
     { name: 'Custom cover design', deal1: true, deal2: 'y', deal3: true },
-    { name: 'Revisions', deal1: 'no', deal2: '2', deal3: 'unlimited' },
-    { name: 'Publishing platforms', deal1: 'Amazon', deal2: 'Amazon + 5', deal3: '10+ platforms' },
+    { name: 'Revisions', deal1: 'no', deal2: '2', deal3: 'Unlimited' },
+    { name: 'Publishing platforms', deal1: 'Amazon', deal2: 'Amazon + 5', deal3: '10+ Platforms' },
     { name: 'Printed copy', deal1: false, deal2: '1', deal3: '2' },
     { name: 'Access to author copy', deal1: true, deal2: true, deal3: true },
-    { name: 'ISBN', deal1: 'Asin', deal2: '1x standard', deal3: '2x standard' },
-    { name: 'Audio book', deal1: 'Add on', deal2: 'Add on', deal3: true },
-    { name: 'Book trailer', deal1: 'add on', deal2: 'addon', deal3: '30 sec video trailer' },
+    { name: 'Isbn', deal1: 'Asin', deal2: '1x Standard', deal3: '2x Standard' },
+    { name: 'Audio book', deal1: false, deal2: false, deal3: true },
+    { name: 'Book trailer', deal1: false, deal2: false, deal3: '30 Sec Video Trailer' },
     { name: 'Account creation and formation', deal1: true, deal2: true, deal3: true },
     { name: 'Ownership', deal1: '100%', deal2: '100%', deal3: '100%' },
-    { name: 'Social media posting', deal1: false, deal2: false, deal3: 'limited' },
+    { name: 'Social media posting', deal1: false, deal2: false, deal3: 'Limited' },
   ];
 
-  const renderValue = (value: string | boolean) => {
+  const capitalizeFirstLetter = (str: string): string => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
+  const renderValue = (value: string | boolean, isPrice: boolean = false) => {
     if (value === true || value === 'yes' || value === 'y') {
       return <span className="check-icon">✓</span>;
     } else if (value === false || value === 'no') {
       return <span className="dash-icon">-</span>;
     } else {
-      return <span className="text-value">{value}</span>;
+      return <span className={`text-value ${isPrice ? 'price-text' : ''}`}>{value}</span>;
     }
   };
 
@@ -62,16 +66,16 @@ const PublishingPackagesComparison: React.FC = () => {
               </div>
               <div className="header-cell package-header">
                 <div className="package-name">Start Up Package</div>
-                <div className="package-label">Deal 1</div>
               </div>
-              <div className="header-cell package-header popular">
+              <div className="header-cell package-header popular-header">
                 <div className="popular-badge">MOST POPULAR</div>
-                <div className="package-name">Standard Package</div>
-                <div className="package-label">Deal 2</div>
+                <div className="package-name package-name-split">
+                  <span style={{fontSize: '20px'}}>Standard</span>
+                  <span>Package</span>
+                </div>
               </div>
               <div className="header-cell package-header">
                 <div className="package-name">Authors Elite</div>
-                <div className="package-label">Deal 3</div>
               </div>
             </div>
 
@@ -79,10 +83,16 @@ const PublishingPackagesComparison: React.FC = () => {
             <div className="table-body">
               {features.map((feature, index) => (
                 <div key={index} className={`feature-row ${index === 0 ? 'price-row' : ''}`}>
-                  <div className="feature-name">{feature.name}</div>
-                  <div className="feature-value">{renderValue(feature.deal1)}</div>
-                  <div className="feature-value popular-col">{renderValue(feature.deal2)}</div>
-                  <div className="feature-value">{renderValue(feature.deal3)}</div>
+                  <div className="feature-name">{capitalizeFirstLetter(feature.name)}</div>
+                  <div className="feature-value">
+                    {renderValue(feature.deal1, index === 0)}
+                  </div>
+                  <div className="feature-value popular-col">
+                    {renderValue(feature.deal2, index === 0)}
+                  </div>
+                  <div className="feature-value">
+                    {renderValue(feature.deal3, index === 0)}
+                  </div>
                 </div>
               ))}
             </div>
@@ -94,13 +104,14 @@ const PublishingPackagesComparison: React.FC = () => {
             <div className="mobile-card">
               <div className="card-header">
                 <h3 className="card-title">Start Up Package</h3>
-                <p className="card-subtitle">Deal 1</p>
               </div>
               <div className="card-body">
                 {features.map((feature, index) => (
                   <div key={index} className={`card-feature ${index === 0 ? 'price-feature' : ''}`}>
-                    <span className="card-feature-name">{feature.name}</span>
-                    <span className="card-feature-value">{renderValue(feature.deal1)}</span>
+                    <span className="card-feature-name">{capitalizeFirstLetter(feature.name)}</span>
+                    <span className="card-feature-value">
+                      {renderValue(feature.deal1, index === 0)}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -110,14 +121,18 @@ const PublishingPackagesComparison: React.FC = () => {
             <div className="mobile-card popular-card">
               <div className="popular-badge-mobile">MOST POPULAR</div>
               <div className="card-header">
-                <h3 className="card-title">Standard Package</h3>
-                <p className="card-subtitle">Deal 2</p>
+                <h3 className="card-title card-title-split">
+                  <span>Standard</span>
+                  <span>Package</span>
+                </h3>
               </div>
               <div className="card-body">
                 {features.map((feature, index) => (
                   <div key={index} className={`card-feature ${index === 0 ? 'price-feature' : ''}`}>
-                    <span className="card-feature-name">{feature.name}</span>
-                    <span className="card-feature-value">{renderValue(feature.deal2)}</span>
+                    <span className="card-feature-name">{capitalizeFirstLetter(feature.name)}</span>
+                    <span className="card-feature-value">
+                      {renderValue(feature.deal2, index === 0)}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -127,13 +142,14 @@ const PublishingPackagesComparison: React.FC = () => {
             <div className="mobile-card">
               <div className="card-header">
                 <h3 className="card-title">Authors Elite</h3>
-                <p className="card-subtitle">Deal 3</p>
               </div>
               <div className="card-body">
                 {features.map((feature, index) => (
                   <div key={index} className={`card-feature ${index === 0 ? 'price-feature' : ''}`}>
-                    <span className="card-feature-name">{feature.name}</span>
-                    <span className="card-feature-value">{renderValue(feature.deal3)}</span>
+                    <span className="card-feature-name">{capitalizeFirstLetter(feature.name)}</span>
+                    <span className="card-feature-value">
+                      {renderValue(feature.deal3, index === 0)}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -142,7 +158,10 @@ const PublishingPackagesComparison: React.FC = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style jsx global>{`
+        /* =============================================
+           WRAPPER & BACKGROUND
+           ============================================= */
         .comparison-wrapper {
           background: linear-gradient(135deg, #eeeae7 0%, #e5e1de 100%);
           padding: 50px 20px;
@@ -168,13 +187,15 @@ const PublishingPackagesComparison: React.FC = () => {
         }
 
         .comparison-container {
-          max-width: 1400px;
+          max-width: 1200px;
           margin: 0 auto;
           position: relative;
           z-index: 1;
         }
 
-        /* Header */
+        /* =============================================
+           HEADER SECTION
+           ============================================= */
         .header {
           text-align: center;
           margin-bottom: 40px;
@@ -202,7 +223,9 @@ const PublishingPackagesComparison: React.FC = () => {
           font-size: 20px;
         }
 
-        /* Comparison Table */
+        /* =============================================
+           MAIN TABLE CONTAINER
+           ============================================= */
         .comparison-table {
           background: #ffffff;
           border-radius: 16px;
@@ -212,25 +235,23 @@ const PublishingPackagesComparison: React.FC = () => {
             0 0 0 1px rgba(15, 37, 47, 0.05);
         }
 
-        /* Desktop Table */
+        /* =============================================
+           DESKTOP TABLE
+           ============================================= */
         .desktop-table {
           display: block;
         }
 
-        .mobile-cards {
-          display: none;
-        }
-
-        /* Table Header */
+        /* TABLE HEADER */
         .table-header {
           display: grid;
-          grid-template-columns: 1.5fr 1fr 1fr 1fr;
+          grid-template-columns: 1.2fr 1fr 1fr 1fr;
           background: linear-gradient(135deg, #0f252f 0%, #1a3542 100%);
           padding: 0;
         }
 
         .header-cell {
-          padding: 24px 20px;
+          padding: 14px 20px;
           text-align: center;
           border-right: 1px solid rgba(255, 255, 255, 0.1);
           display: flex;
@@ -245,7 +266,6 @@ const PublishingPackagesComparison: React.FC = () => {
         }
 
         .features-header {
-          background: transparent;
           font-size: 16px;
           font-weight: 800;
           color: #ffffff;
@@ -255,10 +275,9 @@ const PublishingPackagesComparison: React.FC = () => {
 
         .package-header {
           position: relative;
-          background: transparent;
         }
 
-        .package-header.popular {
+        .popular-header {
           background: rgba(255, 255, 255, 0.05);
         }
 
@@ -286,20 +305,21 @@ const PublishingPackagesComparison: React.FC = () => {
           margin-top: 8px;
         }
 
-        .package-label {
-          font-size: 12px;
-          color: rgba(255, 255, 255, 0.8);
-          font-weight: 600;
+        .package-name-split {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          margin-top: 8px;
         }
 
-        /* Table Body */
+        /* TABLE BODY */
         .table-body {
           background: #ffffff;
         }
 
         .feature-row {
           display: grid;
-          grid-template-columns: 1.5fr 1fr 1fr 1fr;
+          grid-template-columns: 1.2fr 1fr 1fr 1fr;
           border-bottom: 1px solid #f0f0f0;
           transition: background 0.2s ease;
         }
@@ -312,15 +332,40 @@ const PublishingPackagesComparison: React.FC = () => {
           border-bottom: none;
         }
 
-        .feature-row.price-row {
-          background: #f8f6f4;
-          font-weight: 700;
+        /* PRICE ROW - Special Styling */
+        .price-row {
+          background: #f8f6f4 !important;
         }
 
-        .feature-row.price-row:hover {
-          background: #f5f3f1;
+        .price-row:hover {
+          background: #f5f3f1 !important;
         }
 
+        .price-row .feature-name {
+          font-weight: 800;
+          font-size: 16px !important;
+          color: #0f252f;
+        }
+
+        .price-row .feature-value {
+          font-size: 36px !important;
+          font-weight: 900 !important;
+          padding: 20px 24px !important;
+        }
+
+        .price-row .text-value {
+          font-size: 36px !important;
+          font-weight: 900 !important;
+          color: #0f252f !important;
+        }
+
+        .price-row .price-text {
+          font-size: 26px !important;
+          font-weight: 900 !important;
+          color: #0f252f !important;
+        }
+
+        /* REGULAR FEATURE ROW */
         .feature-name {
           padding: 14px 24px;
           font-size: 14px;
@@ -328,12 +373,6 @@ const PublishingPackagesComparison: React.FC = () => {
           font-weight: 600;
           display: flex;
           align-items: center;
-          text-transform: capitalize;
-        }
-
-        .price-row .feature-name {
-          font-weight: 800;
-          font-size: 15px;
         }
 
         .feature-value {
@@ -354,16 +393,17 @@ const PublishingPackagesComparison: React.FC = () => {
           background: rgba(15, 37, 47, 0.02);
         }
 
+        /* VALUE DISPLAY STYLES */
         .check-icon {
           color: #0f252f;
-          font-size: 22px;
+          font-size: 13px;
           font-weight: 900;
         }
 
         .dash-icon {
-          color: #d4d0cd;
-          font-size: 28px;
-          font-weight: 300;
+          color: #5f5e5e;
+          font-size: 13px;
+          font-weight: 900;
         }
 
         .text-value {
@@ -373,13 +413,13 @@ const PublishingPackagesComparison: React.FC = () => {
           font-size: 13px;
         }
 
-        .price-row .text-value {
-          color: #0f252f;
-          font-weight: 900;
-          font-size: 22px;
+        /* =============================================
+           MOBILE CARDS
+           ============================================= */
+        .mobile-cards {
+          display: none;
         }
 
-        /* Mobile Cards */
         .mobile-card {
           background: #ffffff;
           border-radius: 12px;
@@ -415,13 +455,13 @@ const PublishingPackagesComparison: React.FC = () => {
           font-size: 20px;
           font-weight: 700;
           color: #ffffff;
-          margin-bottom: 4px;
+          margin: 0;
         }
 
-        .card-subtitle {
-          font-size: 13px;
-          color: rgba(255, 255, 255, 0.7);
-          margin: 0;
+        .card-title-split {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
         }
 
         .card-body {
@@ -440,32 +480,51 @@ const PublishingPackagesComparison: React.FC = () => {
           border-bottom: none;
         }
 
+        /* MOBILE PRICE FEATURE */
         .card-feature.price-feature {
           background: #f8f6f4;
-          font-weight: 700;
+          padding: 20px !important;
         }
 
+        .price-feature .card-feature-name {
+          font-weight: 800;
+          font-size: 16px !important;
+        }
+
+        .price-feature .card-feature-value {
+          font-size: 36px !important;
+          font-weight: 900 !important;
+        }
+
+        .price-feature .text-value {
+          font-size: 16px !important;
+          font-weight: 900 !important;
+          color: #0f252f !important;
+        }
+
+        .price-feature .price-text {
+          font-size: 36px !important;
+          font-weight: 900 !important;
+          color: #0f252f !important;
+        }
+
+        /* REGULAR CARD FEATURE */
         .card-feature-name {
           font-size: 14px;
           color: #0f252f;
           font-weight: 500;
-          text-transform: capitalize;
-        }
-
-        .price-feature .card-feature-name {
-          font-weight: 700;
-          font-size: 15px;
         }
 
         .card-feature-value {
           font-size: 14px;
+          font-weight: 600;
+          color: #364a52;
+          text-align: right;
         }
 
-        .price-feature .text-value {
-          font-size: 22px;
-        }
-
-        /* Responsive Styles */
+        /* =============================================
+           RESPONSIVE - TABLET
+           ============================================= */
         @media (max-width: 968px) {
           .comparison-wrapper {
             padding: 40px 15px;
@@ -501,6 +560,9 @@ const PublishingPackagesComparison: React.FC = () => {
           }
         }
 
+        /* =============================================
+           RESPONSIVE - MOBILE
+           ============================================= */
         @media (max-width: 768px) {
           .desktop-table {
             display: none;
@@ -532,6 +594,9 @@ const PublishingPackagesComparison: React.FC = () => {
           }
         }
 
+        /* =============================================
+           RESPONSIVE - SMALL MOBILE
+           ============================================= */
         @media (max-width: 576px) {
           .comparison-wrapper {
             padding: 40px 10px;
@@ -573,8 +638,16 @@ const PublishingPackagesComparison: React.FC = () => {
             font-size: 13px;
           }
 
+          .price-feature .card-feature-value {
+            font-size: 28px !important;
+          }
+
           .price-feature .text-value {
-            font-size: 20px;
+            font-size: 28px !important;
+          }
+
+          .price-feature .price-text {
+            font-size: 28px !important;
           }
         }
       `}</style>
