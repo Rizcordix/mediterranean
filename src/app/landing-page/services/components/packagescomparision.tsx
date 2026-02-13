@@ -10,7 +10,7 @@ interface PackageFeature {
 
 const PublishingPackagesComparison: React.FC = () => {
   const features: PackageFeature[] = [
-    { name: 'Price', deal1: '$175', deal2: '$275', deal3: '$499' },
+    { name: 'Price', deal1: '$175', deal2: '$275', deal3: '$775' },
     { name: 'Proofreading', deal1: 'no', deal2: 'basic', deal3: 'professional' },
     { name: 'Formatting', deal1: 'ebook', deal2: 'ebook + paperback', deal3: 'all format' },
     { name: 'Custom cover design', deal1: true, deal2: 'y', deal3: true },
