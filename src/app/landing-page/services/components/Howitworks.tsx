@@ -82,6 +82,11 @@ const HowItWorksSection = () => {
     }
   ];
 
+  const toggleStep = (index: number) => {
+    // On mobile, allow closing. Keep step 0 as fallback for desktop view
+    setActiveStep(activeStep === index ? 0 : index);
+  };
+
   return (
     <section className="how-it-works-section">
       <div className="container">
@@ -96,14 +101,12 @@ const HowItWorksSection = () => {
           </p>
         </div>
 
-        {/* New Integrated Container 
-          wraps both navigation and content 
-        */}
-        <div className="integrated-container">
+        {/* Desktop View - Integrated Container */}
+        <div className="integrated-container desktop-view">
           
           {/* Step Navigation */}
           <div className="steps-nav">
-            <div className="row gx-3"> {/* Added gx-3 for better spacing between tabs */}
+            <div className="row gx-3">
               {steps.map((step, index) => (
                 <div key={step.id} className="col-6 col-md-3 mb-3 mb-md-0">
                   <button
@@ -151,6 +154,70 @@ const HowItWorksSection = () => {
           </div>
         </div>
 
+        {/* Mobile View - Accordion */}
+        <div className="mobile-accordion mobile-view">
+          {steps.map((step, index) => (
+            <div key={step.id} className="accordion-item">
+              <button
+                className={`accordion-header ${activeStep === index ? 'active' : ''}`}
+                onClick={() => toggleStep(index)}
+              >
+                <div className="accordion-header-content">
+                  <span className="step-number-mobile">Step {step.id}</span>
+                  <span className="step-title-mobile">{step.title}</span>
+                </div>
+                <svg 
+                  className={`accordion-chevron ${activeStep === index ? 'rotated' : ''}`}
+                  width="20" 
+                  height="20" 
+                  viewBox="0 0 20 20" 
+                  fill="none"
+                >
+                  <path 
+                    d="M5 7.5L10 12.5L15 7.5" 
+                    stroke="currentColor" 
+                    strokeWidth="2" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+
+              <div className={`accordion-content ${activeStep === index ? 'expanded' : ''}`}>
+                <div className="accordion-content-inner">
+                  {/* Image */}
+                  <div className="step-image-container-mobile">
+                    <img 
+                      src={step.image.src} 
+                      alt={step.title}
+                      className="img-fluid step-image"
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <div className="step-details">
+                    <h3 className="step-subtitle-mobile">{step.subtitle}</h3>
+                    
+                    <div className="features-list-mobile">
+                      {step.features.map((feature, idx) => (
+                        <div key={idx} className="feature-item-mobile">
+                          <div className="feature-icon-mobile">{feature.icon}</div>
+                          <p className="feature-text-mobile">{feature.text}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+
+          {/* Get Started Button - Always visible on mobile */}
+          <button onClick={openQuote} className="btn-get-started-mobile">
+            Get Started →
+          </button>
+        </div>
+
       </div>
 
       <style jsx>{`
@@ -190,23 +257,31 @@ const HowItWorksSection = () => {
           margin-bottom: 0;
         }
 
-        /* === New Integrated Container Styles === */
+        /* Desktop/Tablet View */
+        .desktop-view {
+          display: block;
+        }
+
+        .mobile-view {
+          display: none;
+        }
+
+        /* === Integrated Container Styles === */
         .integrated-container {
           background: white;
           border-radius: 24px;
-          padding: 40px; /* Padding for the whole white box */
+          padding: 40px;
           box-shadow: 0 8px 30px rgba(15, 37, 47, 0.08);
           margin-top: 60px;
         }
 
         /* === Navigation Styles === */
         .steps-nav {
-          margin-bottom: 50px; /* Space between tabs and content content */
+          margin-bottom: 50px;
         }
 
         .step-nav-btn {
           width: 100%;
-          /* Changed: removed border and background for inactive state */
           background: transparent;
           border: none; 
           border-radius: 12px;
@@ -219,12 +294,10 @@ const HowItWorksSection = () => {
           gap: 6px;
         }
 
-        /* Hover state for inactive tabs */
         .step-nav-btn:not(.active):hover {
            background: rgba(15, 37, 47, 0.05);
         }
         
-        /* Changed: Active state mimics Mediterranean Publishing but uses your dark blue color */
         .step-nav-btn.active {
           background: #0f252f;
           box-shadow: 0 4px 12px rgba(15, 37, 47, 0.15);
@@ -234,7 +307,7 @@ const HowItWorksSection = () => {
         .step-number {
           font-size: 13px;
           font-weight: 600;
-          color: #364a52; /* Lighter color for inactive state */
+          color: #364a52;
           opacity: 0.8;
           display: block;
           transition: all 0.3s ease;
@@ -259,11 +332,10 @@ const HowItWorksSection = () => {
 
         /* === Content Styles === */
         .step-content {
-          /* Changed: Removed previous container styles as it's now inside wrapper */
           background: transparent;
           box-shadow: none;
           border-radius: 0;
-          padding: 0 10px; /* Added slight horizontal padding for inner alignment */
+          padding: 0 10px;
           margin-top: 0;
         }
 
@@ -295,7 +367,7 @@ const HowItWorksSection = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: #f4f2f0; /* Slightly darker inner bg for contrast on white */
+          background: #f4f2f0;
           border-radius: 10px;
           color: #0f252f;
         }
@@ -330,7 +402,6 @@ const HowItWorksSection = () => {
           position: relative;
           border-radius: 16px;
           overflow: hidden;
-          /* Subtle shadow for image to pop slightly from white background */
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
         }
 
@@ -340,34 +411,188 @@ const HowItWorksSection = () => {
           display: block;
         }
 
+        /* === Mobile Accordion Styles === */
+        .mobile-accordion {
+          margin-top: 40px;
+        }
+
+        .accordion-item {
+          background: white;
+          border-radius: 16px;
+          margin-bottom: 12px;
+          overflow: hidden;
+          box-shadow: 0 2px 8px rgba(15, 37, 47, 0.08);
+        }
+
+        .accordion-header {
+          width: 100%;
+          background: white;
+          border: none;
+          padding: 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .accordion-header.active {
+          background: #0f252f;
+        }
+
+        .accordion-header-content {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          text-align: left;
+        }
+
+        .step-number-mobile {
+          font-size: 12px;
+          font-weight: 600;
+          color: #364a52;
+          opacity: 0.8;
+        }
+
+        .accordion-header.active .step-number-mobile {
+          color: #eeeae7;
+          opacity: 1;
+        }
+
+        .step-title-mobile {
+          font-size: 16px;
+          font-weight: 700;
+          color: #0f252f;
+        }
+
+        .accordion-header.active .step-title-mobile {
+          color: white;
+        }
+
+        .accordion-chevron {
+          flex-shrink: 0;
+          color: #364a52;
+          transition: transform 0.3s ease;
+        }
+
+        .accordion-header.active .accordion-chevron {
+          color: white;
+        }
+
+        .accordion-chevron.rotated {
+          transform: rotate(180deg);
+        }
+
+        .accordion-content {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.4s ease;
+        }
+
+        .accordion-content.expanded {
+          max-height: 2000px;
+        }
+
+        .accordion-content-inner {
+          padding: 0 20px 24px 20px;
+        }
+
+        .step-image-container-mobile {
+          border-radius: 12px;
+          overflow: hidden;
+          margin-bottom: 20px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .step-subtitle-mobile {
+          color: #0f252f;
+          font-size: 20px;
+          font-weight: 700;
+          margin-bottom: 16px;
+          line-height: 1.3;
+        }
+
+        .features-list-mobile {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+
+        .feature-item-mobile {
+          display: flex;
+          gap: 12px;
+          align-items: flex-start;
+        }
+
+        .feature-icon-mobile {
+          font-size: 20px;
+          flex-shrink: 0;
+          width: 36px;
+          height: 36px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #f4f2f0;
+          border-radius: 8px;
+        }
+
+        .feature-text-mobile {
+          color: #364a52;
+          font-size: 14px;
+          line-height: 1.6;
+          margin: 0;
+          padding-top: 4px;
+        }
+
+        .btn-get-started-mobile {
+          background: #0f252f;
+          color: white;
+          border: none;
+          border-radius: 8px;
+          padding: 16px;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+          width: 100%;
+          margin-top: 24px;
+          transition: all 0.3s ease;
+        }
+
+        .btn-get-started-mobile:hover {
+          background: #364a52;
+        }
+
+        /* Tablet Adjustments */
         @media (max-width: 991px) {
           .section-title { font-size: 32px; }
           .section-subtitle { font-size: 24px; }
           
           .integrated-container {
-              padding: 30px 20px;
+            padding: 30px 20px;
           }
           
           .step-main-title { font-size: 26px; text-align: center; }
           .features-list { margin-top: 20px; }
           .btn-get-started { width: 100%; margin-top: 30px !important; }
           .step-content { padding: 0; }
-           /* On tablet/mobile, image goes on top (handled by bootstrap order classes) */
         }
 
+        /* Mobile View - Switch to Accordion */
         @media (max-width: 767px) {
           .how-it-works-section { padding: 60px 0; }
           .section-title { font-size: 28px; }
           .section-subtitle { font-size: 20px; }
-          .section-description { font-size: 16px; }
-          
-          .integrated-container { margin-top: 40px; }
+          .section-description { 
+            font-size: 16px; 
+          }
 
-          .step-nav-btn { padding: 12px; border-radius: 10px;}
-          .step-nav-title { font-size: 14px; }
-          
-          .step-main-title { font-size: 22px; }
-          .feature-text { font-size: 15px; }
+          .desktop-view {
+            display: none;
+          }
+
+          .mobile-view {
+            display: block;
+          }
         }
       `}</style>
     </section>

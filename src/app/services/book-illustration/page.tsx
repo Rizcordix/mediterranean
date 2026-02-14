@@ -11,6 +11,7 @@ import Categories from '@/app/home/components/Categories'
 import CTA from '@/app/home/components/Features'
 import ProcedureSection from '@/app/home/components/procedure'
 import Component0 from '../bookwriting/components/Special'
+import IllustrationsSection from './components/illustrations'
 
 export const metadata = {
   title: "Book Illustration Services | Mediterranean Publishing – Bring Your Story to Life",
@@ -54,6 +55,7 @@ const AgencyStartUpPage = () => {
       <Clients />
       <div className="divider mt-5" />
       <AboutUs />
+      <IllustrationsSection />
       <Component0 id={9} />
       <CTA />
       <PricingComponent defaultTab={2} />

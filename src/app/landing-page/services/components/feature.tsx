@@ -11,6 +11,7 @@ import {
   Target,
   ChevronRight,
   Check,
+  ChevronDown,
 } from "lucide-react";
 
 const PublishingFeatures: React.FC = () => {
@@ -147,6 +148,10 @@ const PublishingFeatures: React.FC = () => {
     },
   ];
 
+  const toggleFeature = (index: number) => {
+    setActiveFeature(activeFeature === index ? 0 : index);
+  };
+
   return (
     <div className="features-container">
       <div className="features-content">
@@ -155,7 +160,8 @@ const PublishingFeatures: React.FC = () => {
           <p className="subtitle">One Vision. One Team. Real Results.</p>
         </div>
 
-        <div className="features-layout">
+        {/* Desktop View */}
+        <div className="features-layout desktop-view">
           {/* Left sidebar navigation */}
           <div className="features-nav">
             {features.map((feature, index) => (
@@ -193,6 +199,50 @@ const PublishingFeatures: React.FC = () => {
               <strong>Perfect For:</strong> {features[activeFeature].perfectFor}
             </div>
           </div>
+        </div>
+
+        {/* Mobile Accordion View */}
+        <div className="mobile-accordion mobile-view">
+          {features.map((feature, index) => (
+            <div key={index} className="accordion-item">
+              <button
+                className={`accordion-header ${activeFeature === index ? "active" : ""}`}
+                onClick={() => toggleFeature(index)}
+              >
+                <div className="accordion-header-left">
+                  <div className="nav-icon-mobile">{feature.icon}</div>
+                  <span className="nav-title-mobile">{feature.title}</span>
+                </div>
+                <ChevronDown 
+                  size={20} 
+                  className={`accordion-chevron ${activeFeature === index ? "rotated" : ""}`}
+                />
+              </button>
+
+              <div className={`accordion-content ${activeFeature === index ? "expanded" : ""}`}>
+                <div className="accordion-content-inner">
+                  <h3 className="content-headline-mobile">{feature.headline}</h3>
+                  <p className="content-description-mobile">{feature.description}</p>
+
+                  <div className="benefits-section-mobile">
+                    <h4>What&apos;s Included:</h4>
+                    <ul className="benefits-list-mobile">
+                      {feature.benefits.map((benefit, idx) => (
+                        <li key={idx}>
+                          <Check size={16} />
+                          <span>{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="perfect-for-mobile">
+                    <strong>Perfect For:</strong> {feature.perfectFor}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -247,8 +297,27 @@ const PublishingFeatures: React.FC = () => {
           margin: 0;
         }
 
-        .features-layout {
+        /* Desktop/Tablet View - Always show on desktop */
+        .desktop-view {
           display: grid;
+        }
+
+        /* Mobile View - Hidden on desktop */
+        .mobile-view {
+          display: none;
+        }
+
+        @media (min-width: 769px) {
+          .mobile-view {
+            display: none !important;
+          }
+          
+          .desktop-view {
+            display: grid !important;
+          }
+        }
+
+        .features-layout {
           grid-template-columns: 320px 1fr;
           gap: 40px;
           align-items: start;
@@ -408,6 +477,157 @@ const PublishingFeatures: React.FC = () => {
           color: #0f252f;
         }
 
+        /* Mobile Accordion Styles */
+        .mobile-accordion {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .accordion-item {
+          background: white;
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: 0 2px 8px rgba(15, 37, 47, 0.08);
+        }
+
+        .accordion-header {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 16px;
+          background: white;
+          border: none;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .accordion-header.active {
+          background: linear-gradient(135deg, #364a52 0%, #0f252f 100%);
+        }
+
+        .accordion-header-left {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          flex: 1;
+        }
+
+        .nav-icon-mobile {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          border-radius: 8px;
+          background-color: rgba(54, 74, 82, 0.1);
+          color: #364a52;
+          flex-shrink: 0;
+        }
+
+        .accordion-header.active .nav-icon-mobile {
+          background-color: rgba(255, 255, 255, 0.2);
+          color: white;
+        }
+
+        .nav-title-mobile {
+          font-weight: 600;
+          font-size: 0.95rem;
+          color: #0f252f;
+          text-align: left;
+        }
+
+        .accordion-header.active .nav-title-mobile {
+          color: white;
+        }
+
+        .accordion-chevron {
+          flex-shrink: 0;
+          color: #364a52;
+          transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .accordion-header.active .accordion-chevron {
+          color: white;
+        }
+
+        .accordion-chevron.rotated {
+          transform: rotate(180deg);
+        }
+
+        .accordion-content {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.4s ease;
+        }
+
+        .accordion-content.expanded {
+          max-height: 3000px;
+        }
+
+        .accordion-content-inner {
+          padding: 20px;
+          border-top: 1px solid #eeeae7;
+        }
+
+        .content-headline-mobile {
+          font-size: 1.5rem;
+          color: #0f252f;
+          margin-bottom: 12px;
+          line-height: 1.3;
+        }
+
+        .content-description-mobile {
+          font-size: 0.95rem;
+          color: #364a52;
+          line-height: 1.6;
+          margin-bottom: 24px;
+        }
+
+        .benefits-section-mobile h4 {
+          font-size: 1.1rem;
+          color: #0f252f;
+          margin-bottom: 12px;
+        }
+
+        .benefits-list-mobile {
+          list-style: none;
+          padding: 0;
+          margin: 0 0 20px 0;
+          display: grid;
+          gap: 10px;
+        }
+
+        .benefits-list-mobile li {
+          display: flex;
+          align-items: flex-start;
+          gap: 10px;
+          font-size: 0.9rem;
+          color: #364a52;
+          line-height: 1.5;
+        }
+
+        .benefits-list-mobile li svg {
+          color: #4caf50;
+          flex-shrink: 0;
+          margin-top: 2px;
+        }
+
+        .perfect-for-mobile {
+          padding: 16px;
+          background-color: #eeeae7;
+          border-left: 4px solid #364a52;
+          border-radius: 8px;
+          font-size: 0.9rem;
+          color: #364a52;
+          line-height: 1.5;
+        }
+
+        .perfect-for-mobile strong {
+          color: #0f252f;
+        }
+
         /* Responsive Design */
         @media (max-width: 968px) {
           .features-layout {
@@ -432,6 +652,14 @@ const PublishingFeatures: React.FC = () => {
         }
 
         @media (max-width: 768px) {
+          .features-container {
+            padding: 60px 20px;
+          }
+
+          .section-header {
+            margin-bottom: 40px;
+          }
+
           .section-header h2 {
             font-size: 2rem;
           }
@@ -440,20 +668,12 @@ const PublishingFeatures: React.FC = () => {
             font-size: 1.1rem;
           }
 
-          .features-nav {
-            grid-template-columns: 1fr;
+          .desktop-view {
+            display: none !important;
           }
 
-          .feature-content {
-            padding: 24px;
-          }
-
-          .content-headline {
-            font-size: 1.5rem;
-          }
-
-          .content-description {
-            font-size: 1rem;
+          .mobile-view {
+            display: flex !important;
           }
         }
       `}</style>

@@ -690,6 +690,77 @@ try {
           max-height: 200px !important;
         }
 
+
+        @media (max-width: 399px) {
+  .hero-section {
+    padding: 80px 0 60px 0;
+  }
+
+  .hero-title {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+  }
+
+  .features-list {
+    margin-bottom: 24px;
+  }
+
+  .features-list li {
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+    padding-left: 20px;
+  }
+
+  .trust-badges {
+    gap: 12px;
+  }
+
+  .badge-logo {
+    width: 80px;
+    height: auto;
+  }
+
+  .badge-text {
+    font-size: 0.75rem;
+  }
+
+  .badge-divider {
+    height: 35px;
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+  }
+
+  .form-card {
+    padding: 20px 16px;
+  }
+
+  .form-title {
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+  }
+
+  .custom-input {
+    padding: 10px 12px 7px 38px;
+    font-size: 0.85rem;
+  }
+
+  .btn-submit {
+    padding: 11px;
+    font-size: 0.85rem;
+  }
+
+  .hero-fade-overlay {
+    height: 50px;
+  }
+}
+
       `}</style>
     </>
   );
