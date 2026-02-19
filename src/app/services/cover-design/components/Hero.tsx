@@ -8,7 +8,7 @@ import { Button, Col, Container, Row } from 'react-bootstrap'
 import { usePopup } from '@/components/wrappers/PopupContext'
 // const GlightBox = dynamic(() => import('@/components/GlightBox'), { ssr: false })
 import Image from 'next/image'
-import image1 from '@/assets/images/services/bookcover1.png'
+import image1 from '@/assets/images/services/bookcover11.png'
 
 const Hero = () => {
   const { openQuote } = usePopup();
