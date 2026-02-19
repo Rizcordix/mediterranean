@@ -1,7 +1,7 @@
 import React from 'react';
 // import Image from 'next/image';
 import Image from 'next/image'
-import image2 from '@/assets/images/services/bookcover2.png'
+import image2 from '@/assets/images/services/bookcover22.png'
 
 const Details = () => {
   return (
