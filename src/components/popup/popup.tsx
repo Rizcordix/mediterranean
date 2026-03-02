@@ -346,7 +346,7 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
         }
 
         .consent-check {
-          margin-bottom: 16px;
+          margin-bottom: 1px;
           padding-left: 0;
           display: flex;
           align-items: flex-start;
@@ -387,6 +387,14 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
           cursor: pointer;
           line-height: 1.5;
           flex: 1;
+        }
+
+        .consent-disclaimer {
+          font-size: 0.65rem;
+          color: #888;
+          line-height: 1.4;
+          margin-bottom: 16px;
+          text-align: left;
         }
 
         .text-link {
@@ -730,6 +738,10 @@ const PopupCard = ({ showOnEveryVisit = true, delayMs = 600 }: Props) => {
                   <label className="form-check-label" htmlFor="consent-popup">
                     I consent to the <a href='/text-message-consent-agreement' target='_blank' className="text-link">text messages agreement</a>
                   </label>
+                </div>
+
+                <div className="consent-disclaimer">
+                  By providing a telephone number and submitting this form you are consenting to be contacted by SMS text message. Message & data rates may apply. Message frequency may vary. You can reply STOP to opt-out of further messaging. Reply HELP for more information. Please refer to our <a href='/privacy' className="text-link">Privacy Policy</a>
                 </div>
 
                 <button 
