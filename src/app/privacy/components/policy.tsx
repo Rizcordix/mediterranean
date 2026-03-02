@@ -26,6 +26,14 @@ const sectionsData: Section[] = [
     ]
   },
   {
+    id: 'communication',
+    title: 'SMS Communication Policy',
+    content: [
+      'By providing your phone number to Mediterranean Publishing, you consent to receive SMS messages regarding your inquiry, services, or account updates. Message and Data Rates may apply. Message frequency may vary. You can STOP messaging by sending STOP and get more help by sending HELP.',
+      'We do not sell, rent, or share your phone number or personal information with third parties for marketing or lead generation purposes.'
+    ]
+  },
+  {
     id: 'privacy',
     title: 'Privacy and Data Protection',
     content: [

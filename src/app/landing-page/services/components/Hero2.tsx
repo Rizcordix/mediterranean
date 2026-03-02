@@ -270,6 +270,10 @@ try {
                       </label>
                     </div>
 
+                    <div className="consent-disclaimer">
+                      By providing a telephone number and submitting this form you are consenting to be contacted by SMS text message. Message & data rates may apply. Message frequency may vary. You can reply STOP to opt-out of further messaging. Reply HELP for more information. Please refer to our <a href='/privacy' className="text-link">Privacy Policy</a>
+                    </div>
+
                     <button 
                       type="button" 
                       onClick={handleSubmit} 
@@ -501,7 +505,7 @@ try {
         }
 
         .consent-check {
-          margin-bottom: 18px;
+          margin-bottom: 1px;
           display: flex;
           align-items: flex-start;
           padding-left: 4px;
@@ -529,7 +533,13 @@ try {
           cursor: pointer;
           line-height: 1.4;
         }
-
+        .consent-disclaimer {
+          font-size: 0.65rem;
+          color: #888;
+          line-height: 1.4;
+          margin-bottom: 16px;
+          text-align: left;
+        }
         .text-link {
           color: #364a52;
           text-decoration: underline;
