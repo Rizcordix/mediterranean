@@ -10,7 +10,6 @@ interface PackageFeature {
 
 const PublishingPackagesComparison: React.FC = () => {
   const features: PackageFeature[] = [
-    { name: 'Price', deal1: '$175', deal2: '$275', deal3: '$775' },
     { name: 'Proofreading', deal1: 'no', deal2: 'Basic', deal3: 'Professional' },
     { name: 'Formatting', deal1: 'Ebook', deal2: 'Ebook + Paperback', deal3: 'All Format' },
     { name: 'Custom cover design', deal1: true, deal2: 'y', deal3: true },
@@ -82,7 +81,7 @@ const PublishingPackagesComparison: React.FC = () => {
             {/* Table Body */}
             <div className="table-body">
               {features.map((feature, index) => (
-                <div key={index} className={`feature-row ${index === 0 ? 'price-row' : ''}`}>
+                <div key={index} className={`feature-row `}>
                   <div className="feature-name">{capitalizeFirstLetter(feature.name)}</div>
                   <div className="feature-value">
                     {renderValue(feature.deal1, index === 0)}
@@ -107,7 +106,7 @@ const PublishingPackagesComparison: React.FC = () => {
               </div>
               <div className="card-body">
                 {features.map((feature, index) => (
-                  <div key={index} className={`card-feature ${index === 0 ? 'price-feature' : ''}`}>
+                  <div key={index} className={`card-feature`}>
                     <span className="card-feature-name">{capitalizeFirstLetter(feature.name)}</span>
                     <span className="card-feature-value">
                       {renderValue(feature.deal1, index === 0)}
@@ -128,7 +127,7 @@ const PublishingPackagesComparison: React.FC = () => {
               </div>
               <div className="card-body">
                 {features.map((feature, index) => (
-                  <div key={index} className={`card-feature ${index === 0 ? 'price-feature' : ''}`}>
+                  <div key={index} className={`card-feature `}>
                     <span className="card-feature-name">{capitalizeFirstLetter(feature.name)}</span>
                     <span className="card-feature-value">
                       {renderValue(feature.deal2, index === 0)}

@@ -8,6 +8,8 @@ import logo3 from '@/assets/images/icons/payment/mastercard2.svg'
 import logo4 from '@/assets/images/icons/payment/paypal2.svg'
 import logo5 from '@/assets/images/icons/payment/visa2.svg'
 import logo6 from '@/assets/images/icons/payment/stripe.svg'
+import USflag from '@/assets/images/flag-main/us.svg'
+import UKflag from '@/assets/images/flag-main/gb.svg'
 
 
 
@@ -132,15 +134,29 @@ const Footer = () => {
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                     <circle cx="12" cy="10" r="3" />
                   </svg>
-                  <span>6340 N Eldridge Pkwy suite N, Houston, Texas 77041, United States</span>
-                  <span>Suite C141, 4 - 6, Greatorex Street,, London, United Kingdom, E1 5NF</span>
+                  <div className="contact-entries">
+                    <div className="contact-entry">
+                      <span>6340 N Eldridge Pkwy suite N, Houston, Texas 77041, United States </span>
+                    </div>
+                    <div className="contact-entry">
+                      <span>Suite C141, 4 - 6, Greatorex Street, London, United Kingdom, E1 5NF</span>
+                    </div>
+                  </div>
                 </li>
                 <li>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                   </svg>
-                  <a href="tel:+12812470786">+1 281-247-0786</a>
-                  <a href="tel:+447400705723">+44 7400 705723</a>
+                  <div className="contact-entries">
+                    <div className="contact-entry">
+                      <Image src={USflag} alt="US Flag" width={16} height={10} className="country-flag" />
+                      <a href="tel:+12812470786">+1 281-247-0786</a>
+                    </div>
+                    <div className="contact-entry">
+                      <Image src={UKflag} alt="UK Flag" width={16} height={10} className="country-flag" />
+                      <a href="tel:+447400705723">+44 7400 705723</a>
+                    </div>
+                  </div>
                 </li>
                 <li>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -448,6 +464,27 @@ const Footer = () => {
           font-size: 14px;
           line-height: 1.6;
           color: #2d4a54;
+        }
+
+        .contact-entries {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+
+        .country-flag {
+          flex-shrink: 0;
+          width: 22px !important;
+          height: 15px !important;
+          border-radius: 3px;
+          object-fit: cover;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+        }
+
+        .contact-entry {
+          display: flex;
+          align-items: center;  /* was: baseline */
+          gap: 8px;
         }
 
         .contact-info svg {
