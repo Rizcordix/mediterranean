@@ -136,7 +136,7 @@ const Footer = () => {
                   </svg>
                   <div className="contact-entries">
                     <div className="contact-entry">
-                      <span>6340 N Eldridge Pkwy suite N, Houston, Texas 77041, United States </span>
+                      <span>11011 Richmond Ave Suite 711, Houston TX 77042</span>
                     </div>
                     <div className="contact-entry">
                       <span>Suite C141, 4 - 6, Greatorex Street, London, United Kingdom, E1 5NF</span>

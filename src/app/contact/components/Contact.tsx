@@ -132,7 +132,7 @@ const Contact = () => {
                     <i className="ti-map-alt" />
                   </div>
                   <h5 className="mb-2">Our Location</h5>
-                  <p>6340 N Eldridge Pkwy suite N, Houston, Texas 77041, United States</p>
+                  <p>11011 Richmond Ave Suite 711, Houston TX 77042</p>
                 </div>
                 <div className="all-text-white mb-4">
                   <div className="fs-4">
