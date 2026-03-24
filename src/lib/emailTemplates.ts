@@ -97,7 +97,7 @@ export function getContactFormEmail(data: {
           <!-- Footer -->
           <div style="${footerStyle}">
             <p style="margin: 5px 0;">© 2024 Mediterranean Publishing. All rights reserved.</p>
-            <p style="margin: 5px 0;">6340 N Eldridge Pkwy suite N, Houston, Texas 77041, United States</p>
+            <p style="margin: 5px 0;">11011 Richmond Ave Suite 711, Houston TX 77042</p>
             <p style="margin: 10px 0 0 0;">
               <a href="https://www.mediterraneanpublishing.com/privacy" style="color: #fff; text-decoration: none;">Privacy Policy</a> | 
               <a href="https://www.mediterraneanpublishing.com/terms" style="color: #fff; text-decoration: none;">Terms & Conditions</a>
@@ -170,7 +170,7 @@ export function getDiscountFormEmail(data: {
           <!-- Footer -->
           <div style="${footerStyle}">
             <p style="margin: 5px 0;">© 2024 Mediterranean Publishing. All rights reserved.</p>
-            <p style="margin: 5px 0;">6340 N Eldridge Pkwy suite N, Houston, Texas 77041, United States</p>
+            <p style="margin: 5px 0;">11011 Richmond Ave Suite 711, Houston TX 77042</p>
             <p style="margin: 10px 0 0 0;">
               <a href="https://www.mediterraneanpublishing.com/privacy" style="color: #fff; text-decoration: none;">Privacy Policy</a> | 
               <a href="https://www.mediterraneanpublishing.com/terms" style="color: #fff; text-decoration: none;">Terms & Conditions</a>
@@ -268,7 +268,7 @@ export function getQuoteFormEmail(data: {
           <!-- Footer -->
           <div style="${footerStyle}">
             <p style="margin: 5px 0;">© 2024 Mediterranean Publishing. All rights reserved.</p>
-            <p style="margin: 5px 0;">6340 N Eldridge Pkwy suite N, Houston, Texas 77041, United States</p>
+            <p style="margin: 5px 0;">11011 Richmond Ave Suite 711, Houston TX 77042</p>
             <p style="margin: 10px 0 0 0;">
               <a href="https://www.mediterraneanpublishing.com/privacy" style="color: #fff; text-decoration: none;">Privacy Policy</a> | 
               <a href="https://www.mediterraneanpublishing.com/terms" style="color: #fff; text-decoration: none;">Terms & Conditions</a>
@@ -329,7 +329,7 @@ export function getNewsletterEmail(data: { email: string }) {
           <!-- Footer -->
           <div style="${footerStyle}">
             <p style="margin: 5px 0;">© 2024 Mediterranean Publishing. All rights reserved.</p>
-            <p style="margin: 5px 0;">6340 N Eldridge Pkwy suite N, Houston, Texas 77041, United States</p>
+            <p style="margin: 5px 0;">11011 Richmond Ave Suite 711, Houston TX 77042</p>
             <p style="margin: 10px 0 0 0;">
               <a href="https://www.mediterraneanpublishing.com/privacy" style="color: #fff; text-decoration: none;">Privacy Policy</a> | 
               <a href="https://www.mediterraneanpublishing.com/terms" style="color: #fff; text-decoration: none;">Terms & Conditions</a>
@@ -405,7 +405,7 @@ export function getReportFormEmail(data: {
           <!-- Footer -->
           <div style="${footerStyle}">
             <p style="margin: 5px 0;">© 2024 Mediterranean Publishing. All rights reserved.</p>
-            <p style="margin: 5px 0;">6340 N Eldridge Pkwy suite N, Houston, Texas 77041, United States</p>
+            <p style="margin: 5px 0;">11011 Richmond Ave Suite 711, Houston TX 77042</p>
             <p style="margin: 10px 0 0 0;">
               <a href="https://www.mediterraneanpublishing.com/privacy" style="color: #fff; text-decoration: none;">Privacy Policy</a> | 
               <a href="https://www.mediterraneanpublishing.com/terms" style="color: #fff; text-decoration: none;">Terms & Conditions</a>
@@ -482,7 +482,7 @@ export function getLandingPageFormEmail(data: {
           <!-- Footer -->
           <div style="${footerStyle}">
             <p style="margin: 5px 0;">© 2024 Mediterranean Publishing. All rights reserved.</p>
-            <p style="margin: 5px 0;">6340 N Eldridge Pkwy suite N, Houston, Texas 77041, United States</p>
+            <p style="margin: 5px 0;">11011 Richmond Ave Suite 711, Houston TX 77042</p>
             <p style="margin: 10px 0 0 0;">
               <a href="https://www.mediterraneanpublishing.com/privacy" style="color: #fff; text-decoration: none;">Privacy Policy</a> | 
               <a href="https://www.mediterraneanpublishing.com/terms" style="color: #fff; text-decoration: none;">Terms & Conditions</a>
