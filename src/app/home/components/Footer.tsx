@@ -14,7 +14,7 @@ import UKflag from '@/assets/images/flag-main/gb.svg'
 
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear()
+  // const currentYear = new Date().getFullYear()
 
   return (
     <footer className="footer-modern">
@@ -206,7 +206,7 @@ const Footer = () => {
         <div className="container-custom">
           <div className="footer-bottom-content">
             <div className="copyright">
-              © {currentYear} All Rights Reserved by <a href="https://www.mediterraneanpublishing.com">Mediterranean Publishing</a>
+              © 2022 All Rights Reserved by <a href="https://www.mediterraneanpublishing.com">Mediterranean Publishing</a>
             </div>
             <div className="legal-links">
               <a href="/privacy">Privacy Policy</a>
