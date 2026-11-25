@@ -73,7 +73,7 @@ const TopNavbar = () => {
               <ul className="nav list-unstyled ms-3">
                 <li className="nav-item me-3">
                   <Link className="navbar-link" href="">
-                    <strong>Phone:</strong> (251) 854-6308
+                    <strong>Phone:</strong> +1 727-405-3480
                   </Link>
                 </li>
                 <li className="nav-item me-3">

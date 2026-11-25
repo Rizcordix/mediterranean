@@ -28,7 +28,7 @@ const Footer = () => {
                     1421 Coburn, Near Center Point, IL 61548.
                   </li>
                   <li className="list-inline-item me-4">
-                    <i className="me-1 text-primary ti-headphone-alt" /> (251) 854-6308
+                    <i className="me-1 text-primary ti-headphone-alt" /> +1 727-405-3480
                   </li>
                   <li className="list-inline-item me-4">
                     <i className="me-1 text-primary ti-email" />{' '}

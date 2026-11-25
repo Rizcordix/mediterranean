@@ -39,7 +39,7 @@ const Footer = () => {
                     1421 Coburn Hollow Road Metamora, Near Center Point, IL 61548.{' '}
                   </li>
                   <li className="d-flex mb-3">
-                    <i className="me-3 display-8 ti-headphone-alt" /> (251) 854-6308{' '}
+                    <i className="me-3 display-8 ti-headphone-alt" /> +1 727-405-3480{' '}
                   </li>
                   <li className="d-flex mb-3">
                     <i className="me-3 display-8 ti-email" /> help@larexa.com
