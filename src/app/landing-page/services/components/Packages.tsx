@@ -254,7 +254,7 @@ const PublishingPackages: React.FC = () => {
                     <div className="contact-box">
                       <div className="contact-label">📞 TALK TO US</div>
                       <div className="contact-value">
-                        <a href="tel:+12812470786">+1 281-247-0786</a>
+                        <a href="tel:+17274053480">+1 727-405-3480</a>
                       </div>
                     </div>
                     <div className="contact-box clickable">

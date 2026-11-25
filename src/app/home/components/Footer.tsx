@@ -150,7 +150,7 @@ const Footer = () => {
                   <div className="contact-entries">
                     <div className="contact-entry">
                       <Image src={USflag} alt="US Flag" width={16} height={10} className="country-flag" />
-                      <a href="tel:+12812470786">+1 281-247-0786</a>
+                      <a href="tel:+17274053480">+1 727-405-3480</a>
                     </div>
                     <div className="contact-entry">
                       <Image src={UKflag} alt="UK Flag" width={16} height={10} className="country-flag" />

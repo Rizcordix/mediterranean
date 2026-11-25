@@ -22,8 +22,8 @@ const TopNavbar = () => {
           </Link>
           <div className="navbar-nav">
             <div className="nav-item border-0 d-none d-lg-inline-block align-self-center">
-              <Link href="tel:+1-800-979-0191" className="btn btn-sm btn-light mb-0">
-                <i className="fas fa-phone-alt me-2 fa-flip-horizontal"></i>+1-800-979-0191
+              <Link href="tel:+17274053480" className="btn btn-sm btn-light mb-0">
+                <i className="fas fa-phone-alt me-2 fa-flip-horizontal"></i>+1 727-405-3480
               </Link>
             </div>
             <div className="nav-item border-0 d-none d-lg-inline-block align-self-center ms-3">
