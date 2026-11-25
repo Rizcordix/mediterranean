@@ -51,5 +51,13 @@
     "eslint-config-next": "15.1.6",
     "prettier": "3.4.2",
     "typescript": "5.7.3"
+  },
+  "overrides": {
+    "motion-dom": "12.23.23",
+    "motion-utils": "12.23.6"
+  },
+  "resolutions": {
+    "motion-dom": "12.23.23",
+    "motion-utils": "12.23.6"
   }
 }
